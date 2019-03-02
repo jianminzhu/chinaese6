@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>图片上传</title>
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__admin__/style/bootstrap.css" rel="stylesheet">
+    <link href="__admin__/style/font-awesome.css" rel="stylesheet">
+    <link href="__admin__/style/weather-icons.css" rel="stylesheet">
+</head>
+<body>
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li style="padding-left:11.5%">上传图片</li>
+    </ul>
+</div>
+<div class="widget">
+    <div class="widget-body">
+        <div id="horizontal-form">
+            <form class="form-horizontal" role="form" action="/index.php/index/image/upload" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label no-padding-right">缩略图</label>
+                    <div class="col-sm-6">
+                        <input placeholder="" name="image" type="file">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">提交图片</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

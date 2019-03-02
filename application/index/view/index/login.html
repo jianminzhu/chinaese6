@@ -1,0 +1,127 @@
+<html>
+<head>
+    {include file="../application/index/view/index/_commoncss.html" /}
+</head>
+</html>
+<span>
+<div id="headerouter" class="col-12 absolute top-0 min-height-12">
+    <div class="overlay-7 fixed top-0 left-0 right-0 bottom-0"></div>
+    <div class="absolute top-0 left-0 col-12 z2 flex items-center justify-between">
+        <a href="/zc" class="flex items-center white text-decoration-none m3">
+            <svg class="logo-heart site-logo">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-logoheart"></use>
+            </svg>
+            <svg class="logo-domain mx1">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#site-logo-chinalovecupid"></use>
+            </svg>
+        </a>
+
+        <div class="mx3 flex items-center">
+
+            <div class="membernav">
+                <ul dir="ltr">
+                    <li class="py1 px2 rounded">
+                        <a class="flex items-center border-none">
+                            <span data-lang="en">English</span>&nbsp;
+                           |&nbsp;&nbsp;<span data-lang="zh">中文</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="relative white flex">
+    <div class="min-height-12 col-12 flex flex-column items-center justify-center">
+
+        <div class="login relative max-width-1 white mx-auto">
+            <h1 class="center"> {:lang('会员登录')}</h1>
+            <div class="loginform">
+
+
+                <form id="f" method="post" target="_self" action="/index.php/index/a/doLogin">
+                    <input type="hidden" name="mht"
+                           value="EBD780D96C16F9B908032BC18841DF6FABD9DC755A9D86476B9742B4D130CDA5">
+                    <input type="hidden" name="page" value="">
+                    <div class="flex flex-column">
+                        <label class="white">{:lang("邮箱")}</label>
+
+                        <div class="mb2">
+
+                            <div class="form-field mb1 relative" aria-invalid="false">
+                                <input type="email" name="email" value="a@g.cn" id="form-login-email"
+                                       class="col-12 touched"
+                                       required="" data-required-message="{:lang('请输入电子邮箱地址')}" autofocus="true"
+                                       data-validator-error="true">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="flex flex-column">
+                        <label class="white">{:lang("密码")}</label>
+
+                        <div class="mb2">
+
+                            <div class="form-field mb1 relative" aria-invalid="false">
+                                <input type="password" name="pwd" value="123456" id="form-login-password"
+                                       class="col-12"
+                                       required="" data-required-message="{:lang('请输入密码')}" pattern=".{6,}">
+                            </div>
+                        </div>
+
+
+                        <div class="flex justify-end">
+                            <a class="white" href="/index.php/index/a/showforgotpassword" tabindex="4">{:lang('忘记密码')}</a>
+                        </div>
+
+                    </div>
+
+
+                    <div class="mb2">
+                        <label for="RememberMe">
+                            <input type="checkbox" name="RememberMe" class="hide" id="RememberMe">
+                            <div class="icon icon-30 relative green inline-block align-middle">
+                                <svg class="absolute icon-30 left-0">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         xlink:href="/assets/desktop/icons/icons.svg#icon-checkbox-on"></use>
+                                </svg>
+                                <svg class="absolute icon-30 unchecked">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         xlink:href="/assets/desktop/icons/icons.svg#icon-checkbox-off"></use>
+                                </svg>
+                            </div>
+                            <div class="white ms1 inline-block col-10 align-middle">{:lang('保持我的登入状态')}</div>
+                        </label>
+                    </div>
+
+                    <p class="p0 mt0 mb3"><em>{:lang('若您是使用共用电脑,请不要勾选这个选项')}</em></p>
+                    <button type="submit"
+                            class="h3 rounded py1 px2 btn-color btn-bg border-none col-12 relative overflow-hidden shadow"
+                            tabindex="3" data-disable-on-click="true">{:lang('登录')}
+                    </button>
+
+
+                    <input name="ioBB" id="ioBB" type="hidden"
+                           value="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"
+                           readonly="readonly">
+                    <input name="fpBB" id="fpBB" type="hidden"
+                           value="0400036pPztnELoHcCiyOFFxUKhM3nxUPKEwsR9WT0SMDOp48P7owMmHW+kuNaqVxopoB+UpExs5whAuDzUVJ+FbG7mZEwC88QBymnDI/4qKc97u1A0UPZTojWd+1mGAhruKiukgjSlgpNGqDEHBx0MagplI2gbzvPYuPljubQOyZ+mu77I9/kqLj2tGMuSZx2KTux353dTxOZIdwAkXAB+g9h8YtF9NQQTHItt09g+LM3THf6y9C8OPD5vo/6oqSeBaiz/8E93rWp9QPwCU8Z23jnwB7SaH85JmyAfUMZ5LKFqFl81CC76WZGNEIoxmgqEesBx6w1tx0mMZz7HtmSQrKuHt39bvxE86eVaYJEF00M2dmwpFJMf4g/ggSL7Z3oPfanSmezzFHEJsIDgJ9mgQp+ZjVekMYG3J7yZHbT+hap8T0tJPmnbeZcp/aGHCqy0n6uFgohzG6tiJmExOZgury9FlvZKtN8vrSzKz6zFbyZbyxPMQMv7YZ9mxtLKX2QfnqAcXocFNhY8EvyZXeo4ioYsVcXn6/giLdNymITnEQuUlL3DOwAl0hlzqeMmBCH/iLD4mV3TQqnzxiKnJyv/EMBNNLCqPmXfJ/XQXiHK5P5ncGPTl+LTqLLI+vS3zO1UWKyNRXh0mw7IE4h4xTtKmuEjXzk77ILZ/eUsQ7RNrLro1kTKIs1496YkpIh3A707lm2e25SQbo1NZbeXrQb3NMesx/hh8hZ5Ou6828R9GQm6kHLdnyFIQwcv2RovzmXNT1g9RJPeBNicb7yAKVlYU34/VcdsVtZ270iAXyzfkdDPXIj00GhUM5qDmBw5iIUYrXbY+Ny6EWFSWyWZ9R/10NnOGfywAA9RFjPJV6TCEjn+0+9d9ASD4otFWwM1TOcz7xOOYoyaxWIw4fFf2NX4F+7OqVRr/Rk17VnCYrvQRdjqbzo9+2ftBrTiEuyx+fdZIO0PdhRirnrsUUA3pDXHzRR0J0Z3KrDBtoN6ijYgbJ3b6DLgVREB6fbEF7qX4nrCgnWumEkZF9YX97CRKDwrr9AQy/m2yvWeD32G7Kj6L/EBTtyYQ67QiCGsQ5DiXAm4WwGZT68bgPOnWgfibu+RO9OXdby9G8x4cndSpTEwoFZ+29vefadtj4qx8byglFPMsxKZFk5ZzIub+Z3QwtujFTiYg2wn1WUxgZNfbcjbO4PMKkM9hAjJ7vTx7Oo8rV7VmV6i8/tb5alAK/XRNo3H5dEyAZ5slTMaJ1NQZqcWoc2k+rym6u2/MA0N13n2vmAeyqDSatRe1Z88HYYNdyOmCGZlI2gbzvPYuiQVaBlYkVltq+mN+F72lOtXh35GdB6Cc0rdKBra3m4ZY2J8KBBfTKRmgzmwa5FMtCwOA7mJyJcXb8RzWdzZK4bduoeAODFWWo8p+hQUPdJOAmeNHH6+w6ooTGaKqFVy+BHVeMuR/drLOzmD3zH2D3IWYFRa7DoIvDBnJX4bcBxzxEKpivlDSI0Bx8tJD/NY1yBdxEk8VEJRNZaUxOG/c1dgE8GYoAM5IPZXqgfurrz1LHPv0IlDV8mtGMuSZx2KTux353dTxOZIdwAkXAB+g9h8YtF9NQQTHItt09g+LM3THf6y9C8OPD5vo/6oqSeBaDw0jf8W5P+OSPzahlHQ9xqQyD9AsUse5rW09opJ81ux0CR6MBmWVNxuHhc3qoL5gWJXoLIg30SmWlu96hD8dKp/sgjo4zY+6CmKcdU2xmokMgog1WtCs0gQzLAvqxNSurW09opJ81ux0CR6MBmWVNxuHhc3qoL5gWJXoLIg30SmWlu96hD8dKp/sgjo4zY+6RJCMrgooV/eUjSmuI4m70MnFYHYbGcoC9rzXkQ89wYbG/+TEqTfGUKKkUvQ7ozBm3gOs17hqOTmnYxgCpIheUqKGzfKI+FYas3tXlNLk5zN8889ofVb2oUSRF/zYXAHEvUdBvVL9SAL6vLEakL8uFA=="
+                           readonly="readonly">
+
+
+                </form>
+
+
+            </div>
+            <div class="h3 center mt3 link-color">
+                {:lang('还不是会员?')}<a href="/index.php/index/member/reg"><strong>{:lang('立即免费加入!')}</strong></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</span>

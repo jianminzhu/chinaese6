@@ -1,0 +1,363 @@
+<html dir="ltr" lang="en" data-device="desktop">
+<head>
+    {include file="../application/index/view/index/_commoncss.html" /}
+</head>
+<body>
+
+<!-- Non-modal notices -->
+<div id="notices" role="dialog">
+    <div class="notices-content"></div>
+</div>
+<!--Header start-->
+
+
+<div id="headerouter" class="col-12 absolute top-0 min-height-12">
+    <div class="overlay-7 fixed top-0 left-0 right-0 bottom-0"></div>
+    <div class="absolute top-0 left-0 col-12 z2 flex items-center justify-between">
+
+        <a href="/" class="flex items-center white text-decoration-none m3">
+
+        </a>
+
+        <div class="mx3 flex items-center">
+            <div class="membernav">
+                <ul dir="ltr">
+                    <li class="py1 px2 rounded">
+                        <a class="flex items-center border-none">
+                            <span data-lang="en">English</span>&nbsp;
+                            |&nbsp;&nbsp;<span data-lang="zh">中文</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <a class="btn-bg btn-color block py1 px2 button relative overflow-hidden rounded shadow ms3 my3"
+               href="/index.php/index/a/login">Login</a>
+
+        </div>
+    </div>
+</div>
+
+
+<!--Header end-->
+<!--Body start-->
+
+<div class="flex items-center justify-center absolute top-0 right-0 bottom-0 left-0">
+    <div id="showstep1" class="flex fade-in body-font-color bg-white mt4 p3 rounded relative">
+        <div class="max-width-1 me4">
+
+            <h1 class="center h1 m0 mb2 mx-auto color-dark-grey">
+                {:lang("免费加入")}
+            </h1>
+            <form name="registration" id="form-registration" action="/index.php/index/m/savereg"
+                  method="post" data-path="en" novalidate="">
+
+                <div class="mb2">
+
+                    <label for="nickname">{:lang("昵称")}</label>
+
+                    <div class="form-field mb1 relative" aria-invalid="false">
+                        <input type="text" name="nickname" id="nickname" class="col-12" required=""
+                               data-required-message="Please enter your first name" maxlength="30">
+                    </div>
+                </div>
+
+
+                <div class="flex mb2">
+
+                    <div class="col-7">
+                        <label class="pt1 block">{:lang("注册页面性别选择")}</label>
+                        <div class="flex items-center" data-append-outside="true"
+                             data-validate-requireone="Please select your gender.">
+                            <label for="radio1" class="me2 flex" title="Male">
+                                <input type="radio" name="gender" value="253" id="radio1" data-validate="requireone">
+                                <div class="icon icon-30 radio-theme circle relative inline-block align-middle">
+                                    <svg class="icon-30 absolute white checked">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                             xlink:href="/assets/desktop/icons/icons.svg#icon-radio-ticked"></use>
+                                    </svg>
+                                    <svg class="icon-30 absolute circle white unchecked">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                             xlink:href="/assets/desktop/icons/icons.svg#icon-clear-circle"></use>
+                                    </svg>
+                                </div>
+                                <div class="icon-30 radio-theme inline-block align-middle">
+                                    <svg class="icon-30">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                             xlink:href="/assets/desktop/icons/icons.svg#icon-male"></use>
+                                    </svg>
+                                </div>
+                            </label>
+                            <label for="radio2" class="flex" title="Female">
+                                <input type="radio" name="gender" value="254" id="radio2" data-validate="requireone">
+                                <div class="icon icon-30 radio-theme circle relative inline-block align-middle">
+                                    <svg class="icon-30 absolute white checked">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                             xlink:href="/assets/desktop/icons/icons.svg#icon-radio-ticked"></use>
+                                    </svg>
+                                    <svg class="icon-30 absolute circle white unchecked">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                             xlink:href="/assets/desktop/icons/icons.svg#icon-clear-circle"></use>
+                                    </svg>
+                                </div>
+                                <div class="icon-30 radio-theme inline-block align-middle">
+                                    <svg class="icon-30">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                             xlink:href="/assets/desktop/icons/icons.svg#icon-female"></use>
+                                    </svg>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="flex-auto">
+                        <label for="age" class="age pt1 block">{:lang("年龄")}</label>
+                        <select name="age" id="age" class="col-12" required=""
+                                data-required-message="Please enter your age">
+                            <option value=""></option>
+
+                            <option value="18">18</option>
+
+                            <option value="19">19</option>
+
+                            <option value="20">20</option>
+
+                            <option value="21">21</option>
+
+                            <option value="22">22</option>
+
+                            <option value="23">23</option>
+
+                            <option value="24">24</option>
+
+                            <option value="25">25</option>
+
+                            <option value="26">26</option>
+
+                            <option value="27">27</option>
+
+                            <option value="28">28</option>
+
+                            <option value="29">29</option>
+
+                            <option value="30">30</option>
+
+                            <option value="31">31</option>
+
+                            <option value="32">32</option>
+
+                            <option value="33">33</option>
+
+                            <option value="34">34</option>
+
+                            <option value="35">35</option>
+
+                            <option value="36">36</option>
+
+                            <option value="37">37</option>
+
+                            <option value="38">38</option>
+
+                            <option value="39">39</option>
+
+                            <option value="40">40</option>
+
+                            <option value="41">41</option>
+
+                            <option value="42">42</option>
+
+                            <option value="43">43</option>
+
+                            <option value="44">44</option>
+
+                            <option value="45">45</option>
+
+                            <option value="46">46</option>
+
+                            <option value="47">47</option>
+
+                            <option value="48">48</option>
+
+                            <option value="49">49</option>
+
+                            <option value="50">50</option>
+
+                            <option value="51">51</option>
+
+                            <option value="52">52</option>
+
+                            <option value="53">53</option>
+
+                            <option value="54">54</option>
+
+                            <option value="55">55</option>
+
+                            <option value="56">56</option>
+
+                            <option value="57">57</option>
+
+                            <option value="58">58</option>
+
+                            <option value="59">59</option>
+
+                            <option value="60">60</option>
+
+                            <option value="61">61</option>
+
+                            <option value="62">62</option>
+
+                            <option value="63">63</option>
+
+                            <option value="64">64</option>
+
+                            <option value="65">65</option>
+
+                            <option value="66">66</option>
+
+                            <option value="67">67</option>
+
+                            <option value="68">68</option>
+
+                            <option value="69">69</option>
+
+                            <option value="70">70</option>
+
+                            <option value="71">71</option>
+
+                            <option value="72">72</option>
+
+                            <option value="73">73</option>
+
+                            <option value="74">74</option>
+
+                            <option value="75">75</option>
+
+                            <option value="76">76</option>
+
+                            <option value="77">77</option>
+
+                            <option value="78">78</option>
+
+                            <option value="79">79</option>
+
+                            <option value="80">80</option>
+
+                            <option value="81">81</option>
+
+                            <option value="82">82</option>
+
+                            <option value="83">83</option>
+
+                            <option value="84">84</option>
+
+                            <option value="85">85</option>
+
+                            <option value="86">86</option>
+
+                            <option value="87">87</option>
+
+                            <option value="88">88</option>
+
+                            <option value="89">89</option>
+
+                            <option value="90">90</option>
+
+                            <option value="91">91</option>
+
+                            <option value="92">92</option>
+
+                            <option value="93">93</option>
+
+                            <option value="94">94</option>
+
+                            <option value="95">95</option>
+
+                            <option value="96">96</option>
+
+                            <option value="97">97</option>
+
+                            <option value="98">98</option>
+
+                            <option value="99">99</option>
+
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="mb2">
+                    <label for="email">{:lang("邮箱")}</label>
+                    <div class="form-field mb1 relative" aria-invalid="false">
+                        <input type="email" name="email" value="a@g.cn" id="email"
+                               class="col-12 touched"
+                               required="" data-required-message="{:lang('请输入电子邮箱地址')}" autofocus="true"
+                               data-validator-error="true">
+                    </div>
+                </div>
+
+
+                <div class="relative">
+
+                    <div class="tooltip-text  h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">You
+                        can use letters or numbers (8 - 20 characters). <br>
+                        IMPORTANT: For extra security ensure that your new password is NOT the same as your email
+                        password.
+                    </div>
+
+                    <div class="mb2 tooltip">
+                        <label for="password">{:lang("密码")}</label>
+                        <div class="form-field mb1 relative" aria-invalid="false">
+                            <input type="password" name="password" id="password" class="col-12" required=""
+                                   data-required-message="{:lang('请输入密码')}" minlength="8" maxlength="20"
+                                   placeholder="Your ChinaLoveCupid password">
+                        </div>
+                    </div>
+
+                    <div class="tooltip-text  h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">You
+                        can use letters or numbers (8 - 20 characters). <br>
+                        IMPORTANT: For extra security ensure that your new password is NOT the same as your email
+                        password.
+                    </div>
+                </div>
+
+
+                <div class="h6">
+                    <div class="mb2">
+                        <label for="terms">
+                            <input type="checkbox" name="terms" class="hide" id="terms" required="" checked="">
+                            <div class="icon icon-30 relative green inline-block align-middle">
+                                <svg class="absolute icon-30 left-0">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         xlink:href="/assets/desktop/icons/icons.svg#icon-checkbox-on"></use>
+                                </svg>
+                                <svg class="absolute icon-30 unchecked">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         xlink:href="/assets/desktop/icons/icons.svg#icon-checkbox-off"></use>
+                                </svg>
+                            </div>
+                            <div class="ms1 inline-block col-10 align-middle"><span>Yes, I Agree to the</span> <span
+                                    href="http://www.chinalove1.com/en/general/termsofuse" target="_blank">Terms of
+                                Use</span> and <span href="http://www.chinalove1.com/en/general/privacystatement"
+                                                     target="blank">Privacy Statement</span></div>
+                        </label>
+                    </div>
+
+
+                </div>
+                <button type="submit"
+                        class="col-12 h3 py1 px2 btn-color btn-bg center border-none rounded relative overflow-hidden flex items-center justify-center">
+                    <svg class="item-start icon-30 fill-white">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                             xlink:href="/assets/desktop/icons/icons.svg#icon-lock"></use>
+                    </svg>
+                    <p class="h3 flex-auto center m0">{:lang('注册')}</p>
+                </button>
+            </form>
+
+
+        </div>
+
+    </div>
+</div>
+<!--Body end-->
+</body>
+</html>

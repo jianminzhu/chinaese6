@@ -1,0 +1,2860 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" dir="ltr" data-device="desktop">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>ChinaLoveCupid.com</title>
+    <meta id="defaultmessage" content="处理过程中发生问题">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1, user-scalable=no, maximum-scale=1, shrink-to-fit=no">
+    <meta name="stm-result" content="ok">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link type="text/css" rel="stylesheet" href="/assets/css/basscss/basscss.min.css?v=165">
+    <link type="text/css" rel="stylesheet" href="/assets/css/site/modal/modal.css?v=165">
+    <link type="text/css" rel="stylesheet" href="/assets/css/global/global.css?v=165">
+    <link type="text/css" rel="stylesheet" href="/assets/css/global/global_removetextstyling.css?v=165">
+
+    <link rel="stylesheet" href="/assets/desktop/css/chinalovecupid-hybrid.css?v=23">
+
+    <link type="text/css" rel="stylesheet" href="/assets/css/site/generic/membercolor.css?v=165">
+    <link type="text/css" rel="stylesheet" href="/assets/css/site/generic/membercolor_chinalovecupid.css?v=165">
+    <link type="text/css" rel="stylesheet" href="/assets/css/site/generic/memberheader.css?v=165">
+    <link type="text/css" rel="stylesheet" href="/assets/css/site/generic/memberlayout.css?v=165">
+
+    <link type="text/css" rel="stylesheet" href="/assets/css/site/generic/memberHeader_removetextstyling.css?v=165">
+
+    <link type="text/css" rel="stylesheet" href="/assets/css/site/profilemanagement/profilemanagement.css?v=165">
+
+    <link type="text/css" rel="stylesheet"
+          href="/assets/js/spry/widgets/textareavalidation/spryvalidationtextarea.css?v=165">
+
+    <link type="text/css" rel="stylesheet"
+          href="/assets/js/spry/widgets/textfieldvalidation/spryvalidationtextfield.css?v=165">
+
+    <link type="text/css" rel="stylesheet"
+          href="/assets/js/spry/widgets/checkboxvalidation/spryvalidationcheckbox.css?v=165">
+
+    <link type="text/css" rel="stylesheet"
+          href="/assets/js/spry/widgets/selectvalidation/spryvalidationselect.css?v=165">
+
+    <link type="text/css" rel="stylesheet" href="/assets/js/spry/widgets/radiovalidation/spryvalidationradio.css?v=165">
+
+    <link type="text/css" rel="stylesheet"
+          href="/assets/css/site/profilemanagement/profilemanagement_removeTextStyling.css?v=165">
+
+
+</head>
+<body>
+{include file="../application/index/view/index/_head.html" /}
+
+<div id="bannerwrapper" class="clearfix flex " style="padding-left: 0px;">
+    <div id="bannerpage">
+        <div id="main-content">
+            <div class="roundedContainer">
+                <div class="mainHeading clearfix"><h1>{:lang("文档编辑")}</h1>
+
+                </div>
+                <ul class="formContainer">
+
+
+
+                    <li class="sectionHeading clearfix"><h2>基本资料</h2></li>
+                    <li class="clearfix">
+                        <label class="questionLabel">名字:</label>
+                        <span id="firstName_validate">
+                        <input type="text" name="firstName" id="firstName" onchange="" onblur="" onfocus="" size="20"
+                               value="{$u.nickname|default=''}" style="" class="" autocomplete="off">
+                    <span class="textfieldRequiredMsg">名字: 请输入字元</span> <span
+                                class="textfieldMaxCharsMsg">名字: 最多输入30个字</span>
+                        </span>
+                    </li>
+
+                    <li class="clearfix">
+                        <label class="questionLabel">我是:</label>
+                        <span id="gender_validate">
+                        <select name="gender" id="gender">
+                            <option value="2" {$u.sex==null?"selected=''":""}>请选择</option>
+                            <option value="1" {$u.sex==1?"selected=''":""} >男性</option>
+                            <option value="0" {$u.sex==0?"selected=''":""}>女性</option>
+
+                	</select>
+                    	<span class="selectRequiredMsg"></span>
+                    </span>
+                    </li>
+                    <li class="clearfix">
+                        <label class="questionLabel">国家:</label>
+                        <span id="r_country_validate">
+                        <select name="countryLive" id="r_country">
+
+
+                                <option value="7">阿尔巴尼亚</option>
+
+
+                                <option value="5">阿尔及尼亚</option>
+
+
+                                <option value="4">阿富汗</option>
+
+
+                                <option value="12">阿根廷</option>
+
+
+                                <option value="3">阿拉伯聯合大公國</option>
+
+
+                                <option value="1">阿盧巴</option>
+
+
+                                <option value="147">阿曼</option>
+
+
+                                <option value="6">阿塞拜疆</option>
+
+
+                                <option value="61">埃及</option>
+
+
+                                <option value="67">埃塞俄比亚</option>
+
+
+                                <option value="62">爱尔兰</option>
+
+
+                                <option value="64">爱沙尼亚</option>
+
+
+                                <option value="9">安道尔</option>
+
+
+                                <option value="10">安哥拉</option>
+
+
+                                <option value="15">安圭拉岛</option>
+
+
+                                <option value="2">安提瓜及巴不达</option>
+
+
+                                <option value="14">奥地利</option>
+
+
+                                <option value="13">澳大利亚</option>
+
+
+                                <option value="134">澳门(中国)</option>
+
+
+                                <option value="18">巴巴多斯</option>
+
+
+                                <option value="173">巴布亚新几内亚</option>
+
+
+                                <option value="22">巴哈马</option>
+
+
+                                <option value="169">巴基斯坦</option>
+
+
+                                <option value="166">巴拉圭</option>
+
+
+                                <option value="93">巴勒斯坦</option>
+
+
+                                <option value="17">巴林</option>
+
+
+                                <option value="171">巴拿马</option>
+
+
+                                <option value="30">巴西</option>
+
+
+                                <option value="28">白俄罗斯</option>
+
+
+                                <option value="20">百慕达</option>
+
+
+                                <option value="32">保加利亚</option>
+
+
+                                <option value="116">北朝鲜</option>
+
+
+                                <option value="49">北马里亚纳群岛</option>
+
+
+                                <option value="27">贝南</option>
+
+
+                                <option value="21">比利时</option>
+
+
+                                <option value="100">冰岛</option>
+
+
+                                <option value="181">波多黎各</option>
+
+
+                                <option value="170">波兰</option>
+
+
+                                <option value="19">波扎那</option>
+
+
+                                <option value="26">玻利维亚</option>
+
+
+                                <option value="25">玻斯尼亚</option>
+
+
+                                <option value="224">伯克尼</option>
+
+
+                                <option value="24">伯利兹</option>
+
+
+                                <option value="174">帛琉</option>
+
+
+                                <option value="31">不丹</option>
+
+
+                                <option value="35">布隆迪</option>
+
+
+                                <option value="33">布为特岛</option>
+
+
+                                <option value="63">赤道及内亚</option>
+
+
+                                <option value="56">丹麦</option>
+
+
+                                <option value="86">德国</option>
+
+
+                                <option value="213">东帝汶</option>
+
+
+                                <option value="210">多哥</option>
+
+
+                                <option value="58">多米尼克</option>
+
+
+                                <option value="59">多明尼加共和国</option>
+
+
+                                <option value="182">俄罗斯</option>
+
+
+                                <option value="60">厄瓜多尔</option>
+
+
+                                <option value="65">厄立特里亚</option>
+
+
+                                <option value="74">伐茹岛</option>
+
+
+                                <option value="76">法国</option>
+
+
+                                <option value="75">法属波利尼西亚</option>
+
+
+                                <option value="92">法属圭亚那</option>
+
+
+                                <option value="69">法属圭亚那</option>
+
+
+                                <option value="77">法属南极领地</option>
+
+
+                                <option value="232">梵蒂冈城</option>
+
+
+                                <option value="180">菲律宾</option>
+
+
+                                <option value="71">斐济</option>
+
+
+                                <option value="70">芬兰</option>
+
+
+                                <option value="53">佛得角</option>
+
+
+                                <option value="72">福克兰群岛</option>
+
+
+                                <option value="78">甘比亚</option>
+
+
+                                <option value="40">刚果</option>
+
+
+                                <option value="41">刚果</option>
+
+
+                                <option value="48">哥仑比亚</option>
+
+
+                                <option value="50">哥斯達黎亞</option>
+
+
+                                <option value="84">格恩西</option>
+
+
+                                <option value="85">格陵兰岛</option>
+
+
+                                <option value="83">格瑞纳达</option>
+
+
+                                <option value="52">古巴</option>
+
+
+                                <option value="87">瓜德罗普岛</option>
+
+
+                                <option value="88">关岛</option>
+
+
+                                <option value="121">哈萨克</option>
+
+
+                                <option value="94">海地</option>
+
+
+                                <option value="118">韩国</option>
+
+
+                                <option value="96">河地</option>
+
+
+                                <option value="158">荷兰</option>
+
+
+                                <option value="163">荷属安替列斯群岛</option>
+
+
+                                <option value="246">黑山</option>
+
+
+                                <option value="97">洪都拉斯</option>
+
+
+                                <option value="57">吉布地</option>
+
+
+                                <option value="115">吉尔吉斯</option>
+
+
+                                <option value="91">几内亚</option>
+
+
+                                <option value="175">几内亚比绍共和国</option>
+
+
+                                <option value="36">加拿大</option>
+
+
+                                <option value="81">加纳</option>
+
+
+                                <option value="79">加彭</option>
+
+
+                                <option value="37">柬埔寨</option>
+
+
+                                <option value="68">捷克</option>
+
+
+                                <option value="46">喀买隆</option>
+
+
+                                <option value="176">卡达</option>
+
+
+                                <option value="44">卡门群岛</option>
+
+
+                                <option value="54">科克群岛</option>
+
+
+                                <option value="47">科斯罗</option>
+
+
+                                <option value="108">科特迪瓦</option>
+
+
+                                <option value="120">科威特</option>
+
+
+                                <option value="45">可可斯群岛</option>
+
+
+                                <option value="117">克里巴提</option>
+
+
+                                <option value="98">克罗埃西亚</option>
+
+
+                                <option value="114">肯亚</option>
+
+
+                                <option value="244">库拉索</option>
+
+
+                                <option value="124">拉特威尼亚</option>
+
+
+                                <option value="126">赖比瑞亚</option>
+
+
+                                <option value="129">赖索托</option>
+
+
+                                <option value="123">黎巴嫩</option>
+
+
+                                <option value="125">立陶宛</option>
+
+
+                                <option value="131">利比亚</option>
+
+
+                                <option value="122">寮国</option>
+
+
+                                <option value="128">列支敦士登</option>
+
+
+                                <option value="177">留尼旺岛</option>
+
+
+                                <option value="130">卢森堡</option>
+
+
+                                <option value="183">卢旺达</option>
+
+
+                                <option value="179">罗马尼亚</option>
+
+
+                                <option value="132">马达加斯加</option>
+
+
+                                <option value="135">马多瓦</option>
+
+
+                                <option value="148">马尔代夫</option>
+
+
+                                <option value="146">马耳他</option>
+
+
+                                <option value="139">马拉维</option>
+
+
+                                <option value="150">马来西亚</option>
+
+
+                                <option value="141">马里</option>
+
+
+                                <option value="140">马其顿</option>
+
+
+                                <option value="178">马绍尔群岛</option>
+
+
+                                <option value="133">马提尼克</option>
+
+
+                                <option value="145">马提尼亚</option>
+
+
+                                <option value="136">马幼提</option>
+
+
+                                <option value="223">美国</option>
+
+
+                                <option value="221">美属边疆群岛</option>
+
+
+                                <option value="231">美属佛吉尼亚岛</option>
+
+
+                                <option value="11">美属萨摩亚</option>
+
+
+                                <option value="137">蒙古</option>
+
+
+                                <option value="138">蒙色提</option>
+
+
+                                <option value="23">孟加拉</option>
+
+
+                                <option value="168">秘鲁</option>
+
+
+                                <option value="73">密克罗西尼亚</option>
+
+
+                                <option value="242">缅甸</option>
+
+
+                                <option value="144">模里西斯</option>
+
+
+                                <option value="143">摩洛哥</option>
+
+
+                                <option value="142">摩纳哥</option>
+
+
+                                <option value="151">莫桑比克</option>
+
+
+                                <option value="149">墨西哥</option>
+
+
+                                <option value="233">纳米比亚</option>
+
+
+                                <option value="188">南非</option>
+
+
+                                <option value="16">南极洲</option>
+
+
+                                <option value="201">南乔治亚群岛</option>
+
+
+                                <option value="161">瑙鲁</option>
+
+
+                                <option value="160">尼泊尔</option>
+
+
+                                <option value="164">尼加拉瓜</option>
+
+
+                                <option value="155">尼日尔</option>
+
+
+                                <option value="157">尼日利亚</option>
+
+
+                                <option value="153">纽邬岛</option>
+
+
+                                <option value="159">挪威</option>
+
+
+                                <option value="154">诺福克岛</option>
+
+
+                                <option value="167">皮特卡岛</option>
+
+
+                                <option value="172">葡萄牙</option>
+
+
+                                <option value="80">乔治亚</option>
+
+
+                                <option value="110">日本</option>
+
+
+                                <option value="200">瑞典</option>
+
+
+                                <option value="203">瑞士</option>
+
+
+                                <option value="66">萨尔瓦多</option>
+
+
+                                <option value="236">萨摩亚</option>
+
+
+                                <option value="238">塞尔维亚</option>
+
+
+                                <option value="192">塞拉利昂</option>
+
+
+                                <option value="189">塞内加尔</option>
+
+
+                                <option value="55">塞普路斯</option>
+
+
+                                <option value="187">塞舌尔群岛</option>
+
+
+                                <option value="184">沙特阿拉伯</option>
+
+
+                                <option value="119">圣诞岛</option>
+
+
+                                <option value="211">圣多美岛和普林西比岛</option>
+
+
+                                <option value="190">圣海伦</option>
+
+
+                                <option value="186">圣卡特</option>
+
+
+                                <option value="197">圣露西亚</option>
+
+
+                                <option value="193">圣马</option>
+
+
+                                <option value="245">圣马丁岛</option>
+
+
+                                <option value="185">圣皮埃尔</option>
+
+
+                                <option value="227">圣文森及格瑞那丁</option>
+
+
+                                <option value="199">史巴答</option>
+
+
+                                <option value="39">斯里兰卡</option>
+
+
+                                <option value="127">斯洛伐克</option>
+
+
+                                <option value="191">斯洛文尼亚</option>
+
+
+                                <option value="237">斯威士兰</option>
+
+
+                                <option value="198">苏丹</option>
+
+
+                                <option value="243">苏丹南部</option>
+
+
+                                <option value="162">苏利南</option>
+
+
+                                <option value="29">所罗门岛</option>
+
+
+                                <option value="195">索马里</option>
+
+
+                                <option value="206">塔吉克</option>
+
+
+                                <option value="218">塔桑尼亚</option>
+
+
+                                <option value="216">台湾(中国)</option>
+
+
+                                <option value="205">泰国</option>
+
+
+                                <option value="209">汤加</option>
+
+
+                                <option value="204">特立尼达和多巴哥</option>
+
+
+                                <option value="212">突尼斯</option>
+
+
+                                <option value="214">土耳其</option>
+
+
+                                <option value="217">土库曼</option>
+
+
+                                <option value="207">土库斯和凯科斯群岛</option>
+
+
+                                <option value="215">土瓦魯</option>
+
+
+                                <option value="208">托克勞群島</option>
+
+
+                                <option value="156">万那杜</option>
+
+
+                                <option value="90">危地马拉</option>
+
+
+                                <option value="228">委内瑞拉</option>
+
+
+                                <option value="34">文莱</option>
+
+
+                                <option value="234">沃利斯和富图纳群岛</option>
+
+
+                                <option value="219">乌干达</option>
+
+
+                                <option value="222">乌克兰</option>
+
+
+                                <option value="225">乌拉圭</option>
+
+
+                                <option value="226">乌兹别克</option>
+
+
+                                <option value="196">西班牙</option>
+
+
+                                <option value="235">西撒哈拉</option>
+
+
+                                <option value="89">希腊</option>
+
+
+                                <option value="95">香港(中国)</option>
+
+
+                                <option value="241">辛巴威</option>
+
+
+                                <option value="194">新加坡</option>
+
+
+                                <option value="152">新克罗第尼亚</option>
+
+
+                                <option value="165">新西兰</option>
+
+
+                                <option value="99">匈牙利</option>
+
+
+                                <option value="202">叙利亚</option>
+
+
+                                <option value="112">牙买加</option>
+
+
+                                <option value="8">亚美尼亚</option>
+
+
+                                <option value="239">也门</option>
+
+
+                                <option value="109">伊拉克</option>
+
+
+                                <option value="105">伊朗</option>
+
+
+                                <option value="106">以色列</option>
+
+
+                                <option value="107">意大利</option>
+
+
+                                <option value="103">印度</option>
+
+
+                                <option value="101">印度尼西亚</option>
+
+
+                                <option value="220">英国</option>
+
+
+                                <option value="104">英国印度海领地</option>
+
+
+                                <option value="102">英属地曼岛</option>
+
+
+                                <option value="229">英属佛吉尼亚岛</option>
+
+
+                                <option value="113">约旦</option>
+
+
+                                <option value="230">越南</option>
+
+
+                                <option value="240">赞比亚</option>
+
+
+                                <option value="111">泽西岛</option>
+
+
+                                <option value="38">乍得</option>
+
+
+                                <option value="82">直布罗陀</option>
+
+
+                                <option value="43">智利</option>
+
+
+                                <option value="51">中非共和国</option>
+
+
+                                <option value="42" selected="">中国</option>
+
+                	</select>
+
+                    	<span class="selectRequiredMsg">国家: 请输入字元</span>
+
+                    </span>
+
+                        <script type="text/javascript">
+                            <!--
+
+                            var r_country = new Spry.Widget.ValidationSelect("r_country_validate", {
+                                isRequired: true,
+                                validateOn: ['change']
+                            });
+
+                            //-->
+                        </script>
+
+                    </li>
+                    <li class="clearfix">
+                        <label class="questionLabel">省/县:</label>
+                        <span id="r_state_validate">
+                        <select name="stateLive" id="r_state">
+
+
+                                <option value="563">安徽</option>
+
+
+                                <option value="583" selected="">北京</option>
+
+
+                                <option value="569">福建</option>
+
+
+                                <option value="577">甘肃</option>
+
+
+                                <option value="590">广东</option>
+
+
+                                <option value="578">广西</option>
+
+
+                                <option value="579">贵州</option>
+
+
+                                <option value="591">海南</option>
+
+
+                                <option value="572">河北</option>
+
+
+                                <option value="571">河南</option>
+
+
+                                <option value="570">黑龙江</option>
+
+
+                                <option value="574">湖北省</option>
+
+
+                                <option value="573">湖南</option>
+
+
+                                <option value="567">吉林</option>
+
+
+                                <option value="566">江苏</option>
+
+
+                                <option value="565">江西</option>
+
+
+                                <option value="580">辽宁</option>
+
+
+                                <option value="581">内蒙古</option>
+
+
+                                <option value="582">宁夏</option>
+
+
+                                <option value="568">青海</option>
+
+
+                                <option value="586">山东</option>
+
+
+                                <option value="585">山西</option>
+
+
+                                <option value="587">陕西</option>
+
+
+                                <option value="584">上海</option>
+
+
+                                <option value="592">四川</option>
+
+
+                                <option value="588">天津</option>
+
+
+                                <option value="576">西藏</option>
+
+
+                                <option value="575">新疆</option>
+
+
+                                <option value="589">云南</option>
+
+
+                                <option value="564">浙江</option>
+
+
+
+
+                                <option value="593">重庆</option>
+
+                	</select>
+
+                    	<span class="selectRequiredMsg">省/县: 请输入字元</span>
+
+                    </span>
+
+                        <script type="text/javascript">
+                            <!--
+
+                            var r_state = new Spry.Widget.ValidationSelect("r_state_validate", {
+                                isRequired: true,
+                                validateOn: ['change']
+                            });
+
+                            //-->
+                        </script>
+
+                    </li>
+                    <li class="clearfix">
+                        <label class="questionLabel">市:</label>
+                        <span id="r_city_validate">
+                        <select name="cityLive" id="r_city">
+
+
+                                <option value="310322" selected="">北京</option>
+
+
+                                <option value="1510804">房山</option>
+
+                	</select>
+
+                    	<span class="selectRequiredMsg">市: 请输入字元</span>
+
+                    </span>
+
+                        <script type="text/javascript">
+                            <!--
+
+                            var r_city = new Spry.Widget.ValidationSelect("r_city_validate", {
+                                isRequired: true,
+                                validateOn: ['change']
+                            });
+
+                            //-->
+                        </script>
+
+                    </li>
+
+                    <li class="sectionHeading clearfix"><h2>外表</h2></li>
+
+
+                    <li class="clearfix  ">
+                        <label class="questionLabel">身高:</label>
+                        <span id="height_validate">
+                        <select name="height" id="height">
+
+                            <option value="">请选择..</option>
+
+
+                                <option value="140">140 cm</option>
+
+
+                                <option value="141">141 cm</option>
+
+
+                                <option value="142">142 cm</option>
+
+
+                                <option value="143">143 cm</option>
+
+
+                                <option value="144">144 cm</option>
+
+
+                                <option value="145">145 cm</option>
+
+
+                                <option value="146">146 cm</option>
+
+
+                                <option value="147">147 cm</option>
+
+
+                                <option value="148">148 cm</option>
+
+
+                                <option value="149">149 cm</option>
+
+
+                                <option value="150">150 cm</option>
+
+
+                                <option value="151">151 cm</option>
+
+
+                                <option value="152">152 cm</option>
+
+
+                                <option value="153">153 cm</option>
+
+
+                                <option value="154">154 cm</option>
+
+
+                                <option value="155">155 cm</option>
+
+
+                                <option value="156">156 cm</option>
+
+
+                                <option value="157">157 cm</option>
+
+
+                                <option value="158">158 cm</option>
+
+
+                                <option value="159">159 cm</option>
+
+
+                                <option value="160">160 cm</option>
+
+
+                                <option value="161">161 cm</option>
+
+
+                                <option value="162">162 cm</option>
+
+
+                                <option value="163">163 cm</option>
+
+
+                                <option value="164">164 cm</option>
+
+
+                                <option value="165">165 cm</option>
+
+
+                                <option value="166">166 cm</option>
+
+
+                                <option value="167">167 cm</option>
+
+
+                                <option value="168">168 cm</option>
+
+
+                                <option value="169">169 cm</option>
+
+
+                                <option value="170">170 cm</option>
+
+
+                                <option value="171">171 cm</option>
+
+
+                                <option value="172">172 cm</option>
+
+
+                                <option value="173">173 cm</option>
+
+
+                                <option value="174">174 cm</option>
+
+
+                                <option value="175">175 cm</option>
+
+
+                                <option value="176">176 cm</option>
+
+
+                                <option value="177">177 cm</option>
+
+
+                                <option value="178">178 cm</option>
+
+
+                                <option value="179">179 cm</option>
+
+
+                                <option value="180">180 cm</option>
+
+
+                                <option value="181">181 cm</option>
+
+
+                                <option value="182">182 cm</option>
+
+
+                                <option value="183">183 cm</option>
+
+
+                                <option value="184">184 cm</option>
+
+
+                                <option value="185">185 cm</option>
+
+
+                                <option value="186">186 cm</option>
+
+
+                                <option value="187">187 cm</option>
+
+
+                                <option value="188">188 cm</option>
+
+
+                                <option value="189">189 cm</option>
+
+
+                                <option value="190">190 cm</option>
+
+
+                                <option value="191">191 cm</option>
+
+
+                                <option value="192">192 cm</option>
+
+
+                                <option value="193">193 cm</option>
+
+
+                                <option value="194">194 cm</option>
+
+
+                                <option value="195">195 cm</option>
+
+
+                                <option value="196">196 cm</option>
+
+
+                                <option value="197">197 cm</option>
+
+
+                                <option value="198">198 cm</option>
+
+
+                                <option value="199">199 cm</option>
+
+
+                                <option value="200">200 cm</option>
+
+
+                                <option value="201">201 cm</option>
+
+
+                                <option value="202">202 cm</option>
+
+
+                                <option value="203">203 cm</option>
+
+
+                                <option value="204">204 cm</option>
+
+
+                                <option value="205">205 cm</option>
+
+
+                                <option value="206">206 cm</option>
+
+
+                                <option value="207">207 cm</option>
+
+
+                                <option value="208">208 cm</option>
+
+
+                                <option value="209">209 cm</option>
+
+
+                                <option value="210">210 cm</option>
+
+
+                                <option value="211">211 cm</option>
+
+
+                                <option value="212">212 cm</option>
+
+
+                                <option value="213">213 cm</option>
+
+
+                                <option value="214">214 cm</option>
+
+
+                                <option value="215">215 cm</option>
+
+
+                                <option value="216">216 cm</option>
+
+
+                                <option value="217">217 cm</option>
+
+
+                                <option value="218">218 cm</option>
+
+
+                                <option value="219">219 cm</option>
+
+
+                                <option value="220">220 cm</option>
+
+                	</select>
+
+                    	<span class="selectRequiredMsg">身高: 请输入字元</span>
+
+                    </span>
+
+                        <script type="text/javascript">
+                            <!--
+
+                            var height = new Spry.Widget.ValidationSelect("height_validate", {
+                                isRequired: true,
+                                validateOn: ['change']
+                            });
+
+                            //-->
+                        </script>
+
+                    </li>
+
+                    <li class="clearfix  ">
+                        <label class="questionLabel">体重: </label>
+                        <span id="weight_validate">
+                        <select name="weight" id="weight">
+
+                            <option value="">请选择..</option>
+
+
+                                <option value="40">40 kg</option>
+
+
+                                <option value="41">41 kg</option>
+
+
+                                <option value="42">42 kg</option>
+
+
+                                <option value="43">43 kg</option>
+
+
+                                <option value="44">44 kg</option>
+
+
+                                <option value="45">45 kg</option>
+
+
+                                <option value="46">46 kg</option>
+
+
+                                <option value="47">47 kg</option>
+
+
+                                <option value="48">48 kg</option>
+
+
+                                <option value="49">49 kg</option>
+
+
+                                <option value="50">50 kg</option>
+
+
+                                <option value="51">51 kg</option>
+
+
+                                <option value="52">52 kg</option>
+
+
+                                <option value="53">53 kg</option>
+
+
+                                <option value="54">54 kg</option>
+
+
+                                <option value="55">55 kg</option>
+
+
+                                <option value="56">56 kg</option>
+
+
+                                <option value="57">57 kg</option>
+
+
+                                <option value="58">58 kg</option>
+
+
+                                <option value="59">59 kg</option>
+
+
+                                <option value="60">60 kg</option>
+
+
+                                <option value="61">61 kg</option>
+
+
+                                <option value="62">62 kg</option>
+
+
+                                <option value="63">63 kg</option>
+
+
+                                <option value="64">64 kg</option>
+
+
+                                <option value="65">65 kg</option>
+
+
+                                <option value="66">66 kg</option>
+
+
+                                <option value="67">67 kg</option>
+
+
+                                <option value="68">68 kg</option>
+
+
+                                <option value="69">69 kg</option>
+
+
+                                <option value="70">70 kg</option>
+
+
+                                <option value="71">71 kg</option>
+
+
+                                <option value="72">72 kg</option>
+
+
+                                <option value="73">73 kg</option>
+
+
+                                <option value="74">74 kg</option>
+
+
+                                <option value="75">75 kg</option>
+
+
+                                <option value="76">76 kg</option>
+
+
+                                <option value="77">77 kg</option>
+
+
+                                <option value="78">78 kg</option>
+
+
+                                <option value="79">79 kg</option>
+
+
+                                <option value="80">80 kg</option>
+
+
+                                <option value="81">81 kg</option>
+
+
+                                <option value="82">82 kg</option>
+
+
+                                <option value="83">83 kg</option>
+
+
+                                <option value="84">84 kg</option>
+
+
+                                <option value="85">85 kg</option>
+
+
+                                <option value="86">86 kg</option>
+
+
+                                <option value="87">87 kg</option>
+
+
+                                <option value="88">88 kg</option>
+
+
+                                <option value="89">89 kg</option>
+
+
+                                <option value="90">90 kg</option>
+
+
+                                <option value="91">91 kg</option>
+
+
+                                <option value="92">92 kg</option>
+
+
+                                <option value="93">93 kg</option>
+
+
+                                <option value="94">94 kg</option>
+
+
+                                <option value="95">95 kg</option>
+
+
+                                <option value="96">96 kg</option>
+
+
+                                <option value="97">97 kg</option>
+
+
+                                <option value="98">98 kg</option>
+
+
+                                <option value="99">99 kg</option>
+
+
+                                <option value="100">100 kg</option>
+
+
+                                <option value="101">101 kg</option>
+
+
+                                <option value="102">102 kg</option>
+
+
+                                <option value="103">103 kg</option>
+
+
+                                <option value="104">104 kg</option>
+
+
+                                <option value="105">105 kg</option>
+
+
+                                <option value="106">106 kg</option>
+
+
+                                <option value="107">107 kg</option>
+
+
+                                <option value="108">108 kg</option>
+
+
+                                <option value="109">109 kg</option>
+
+
+                                <option value="110">110 kg</option>
+
+
+                                <option value="111">111 kg</option>
+
+
+                                <option value="112">112 kg</option>
+
+
+                                <option value="113">113 kg</option>
+
+
+                                <option value="114">114 kg</option>
+
+
+                                <option value="115">115 kg</option>
+
+
+                                <option value="116">116 kg</option>
+
+
+                                <option value="117">117 kg</option>
+
+
+                                <option value="118">118 kg</option>
+
+
+                                <option value="119">119 kg</option>
+
+
+                                <option value="120">120 kg</option>
+
+
+                                <option value="121">121 kg</option>
+
+
+                                <option value="122">122 kg</option>
+
+
+                                <option value="123">123 kg</option>
+
+
+                                <option value="124">124 kg</option>
+
+
+                                <option value="125">125 kg</option>
+
+
+                                <option value="126">126 kg</option>
+
+
+                                <option value="127">127 kg</option>
+
+
+                                <option value="128">128 kg</option>
+
+
+                                <option value="129">129 kg</option>
+
+
+                                <option value="130">130 kg</option>
+
+
+                                <option value="131">131 kg</option>
+
+
+                                <option value="132">132 kg</option>
+
+
+                                <option value="133">133 kg</option>
+
+
+                                <option value="134">134 kg</option>
+
+
+                                <option value="135">135 kg</option>
+
+
+                                <option value="136">136 kg</option>
+
+
+                                <option value="137">137 kg</option>
+
+
+                                <option value="138">138 kg</option>
+
+
+                                <option value="139">139 kg</option>
+
+
+                                <option value="140">140 kg</option>
+
+
+                                <option value="141">141 kg</option>
+
+
+                                <option value="142">142 kg</option>
+
+
+                                <option value="143">143 kg</option>
+
+
+                                <option value="144">144 kg</option>
+
+
+                                <option value="145">145 kg</option>
+
+
+                                <option value="146">146 kg</option>
+
+
+                                <option value="147">147 kg</option>
+
+
+                                <option value="148">148 kg</option>
+
+
+                                <option value="149">149 kg</option>
+
+
+                                <option value="150">150 kg</option>
+
+
+                                <option value="151">151 kg</option>
+
+
+                                <option value="152">152 kg</option>
+
+
+                                <option value="153">153 kg</option>
+
+
+                                <option value="154">154 kg</option>
+
+
+                                <option value="155">155 kg</option>
+
+
+                                <option value="156">156 kg</option>
+
+
+                                <option value="157">157 kg</option>
+
+
+                                <option value="158">158 kg</option>
+
+
+                                <option value="159">159 kg</option>
+
+
+                                <option value="160">160 kg</option>
+
+
+                                <option value="161">161 kg</option>
+
+
+                                <option value="162">162 kg</option>
+
+
+                                <option value="163">163 kg</option>
+
+
+                                <option value="164">164 kg</option>
+
+
+                                <option value="165">165 kg</option>
+
+
+                                <option value="166">166 kg</option>
+
+
+                                <option value="167">167 kg</option>
+
+
+                                <option value="168">168 kg</option>
+
+
+                                <option value="169">169 kg</option>
+
+
+                                <option value="170">170 kg</option>
+
+
+                                <option value="171">171 kg</option>
+
+
+                                <option value="172">172 kg</option>
+
+
+                                <option value="173">173 kg</option>
+
+
+                                <option value="174">174 kg</option>
+
+
+                                <option value="175">175 kg</option>
+
+
+                                <option value="176">176 kg</option>
+
+
+                                <option value="177">177 kg</option>
+
+
+                                <option value="178">178 kg</option>
+
+
+                                <option value="179">179 kg</option>
+
+
+                                <option value="180">180 kg</option>
+
+
+                                <option value="181">181 kg</option>
+
+
+                                <option value="182">182 kg</option>
+
+
+                                <option value="183">183 kg</option>
+
+
+                                <option value="184">184 kg</option>
+
+
+                                <option value="185">185 kg</option>
+
+
+                                <option value="186">186 kg</option>
+
+
+                                <option value="187">187 kg</option>
+
+
+                                <option value="188">188 kg</option>
+
+
+                                <option value="189">189 kg</option>
+
+
+                                <option value="190">190 kg</option>
+
+
+                                <option value="191">191 kg</option>
+
+
+                                <option value="192">192 kg</option>
+
+
+                                <option value="193">193 kg</option>
+
+
+                                <option value="194">194 kg</option>
+
+
+                                <option value="195">195 kg</option>
+
+
+                                <option value="196">196 kg</option>
+
+
+                                <option value="197">197 kg</option>
+
+
+                                <option value="198">198 kg</option>
+
+
+                                <option value="199">199 kg</option>
+
+
+                                <option value="200">200 kg</option>
+
+
+                                <option value="201">201 kg</option>
+
+
+                                <option value="202">202 kg</option>
+
+
+                                <option value="203">203 kg</option>
+
+
+                                <option value="204">204 kg</option>
+
+
+                                <option value="205">205 kg</option>
+
+
+                                <option value="206">206 kg</option>
+
+
+                                <option value="207">207 kg</option>
+
+
+                                <option value="208">208 kg</option>
+
+
+                                <option value="209">209 kg</option>
+
+
+                                <option value="210">210 kg</option>
+
+
+                                <option value="211">211 kg</option>
+
+
+                                <option value="212">212 kg</option>
+
+
+                                <option value="213">213 kg</option>
+
+
+                                <option value="214">214 kg</option>
+
+
+                                <option value="215">215 kg</option>
+
+
+                                <option value="216">216 kg</option>
+
+
+                                <option value="217">217 kg</option>
+
+
+                                <option value="218">218 kg</option>
+
+
+                                <option value="219">219 kg</option>
+
+
+                                <option value="220">220 kg</option>
+
+                	</select>
+
+                    	<span class="selectRequiredMsg">体重 : 请输入字元</span>
+
+                    </span>
+
+                        <script type="text/javascript">
+                            <!--
+
+                            var weight = new Spry.Widget.ValidationSelect("weight_validate", {
+                                isRequired: true,
+                                validateOn: ['change']
+                            });
+
+                            //-->
+                        </script>
+
+                    </li>
+
+
+
+
+
+                    <li class="clearfix  ">
+                        <label class="questionLabel">国籍:</label>
+                        <span id="nationality_validate">
+                        <select name="nationality" id="nationality">
+
+                            <option value="">请选择..</option>
+
+
+                                <option value="7">阿尔巴尼亚</option>
+
+
+                                <option value="5">阿尔及尼亚</option>
+
+
+                                <option value="4">阿富汗</option>
+
+
+                                <option value="12">阿根廷</option>
+
+
+                                <option value="3">阿拉伯聯合大公國</option>
+
+
+                                <option value="1">阿盧巴</option>
+
+
+                                <option value="147">阿曼</option>
+
+
+                                <option value="6">阿塞拜疆</option>
+
+
+                                <option value="61">埃及</option>
+
+
+                                <option value="67">埃塞俄比亚</option>
+
+
+                                <option value="62">爱尔兰</option>
+
+
+                                <option value="64">爱沙尼亚</option>
+
+
+                                <option value="9">安道尔</option>
+
+
+                                <option value="10">安哥拉</option>
+
+
+                                <option value="15">安圭拉岛</option>
+
+
+                                <option value="2">安提瓜及巴不达</option>
+
+
+                                <option value="14">奥地利</option>
+
+
+                                <option value="13">澳大利亚</option>
+
+
+                                <option value="134">澳门(中国)</option>
+
+
+                                <option value="18">巴巴多斯</option>
+
+
+                                <option value="173">巴布亚新几内亚</option>
+
+
+                                <option value="22">巴哈马</option>
+
+
+                                <option value="169">巴基斯坦</option>
+
+
+                                <option value="166">巴拉圭</option>
+
+
+                                <option value="93">巴勒斯坦</option>
+
+
+                                <option value="17">巴林</option>
+
+
+                                <option value="171">巴拿马</option>
+
+
+                                <option value="30">巴西</option>
+
+
+                                <option value="28">白俄罗斯</option>
+
+
+                                <option value="20">百慕达</option>
+
+
+                                <option value="32">保加利亚</option>
+
+
+                                <option value="116">北朝鲜</option>
+
+
+                                <option value="49">北马里亚纳群岛</option>
+
+
+                                <option value="27">贝南</option>
+
+
+                                <option value="21">比利时</option>
+
+
+                                <option value="100">冰岛</option>
+
+
+                                <option value="181">波多黎各</option>
+
+
+                                <option value="170">波兰</option>
+
+
+                                <option value="19">波扎那</option>
+
+
+                                <option value="26">玻利维亚</option>
+
+
+                                <option value="25">玻斯尼亚</option>
+
+
+                                <option value="224">伯克尼</option>
+
+
+                                <option value="24">伯利兹</option>
+
+
+                                <option value="174">帛琉</option>
+
+
+                                <option value="31">不丹</option>
+
+
+                                <option value="35">布隆迪</option>
+
+
+                                <option value="33">布为特岛</option>
+
+
+                                <option value="63">赤道及内亚</option>
+
+
+                                <option value="56">丹麦</option>
+
+
+                                <option value="86">德国</option>
+
+
+                                <option value="213">东帝汶</option>
+
+
+                                <option value="210">多哥</option>
+
+
+                                <option value="58">多米尼克</option>
+
+
+                                <option value="59">多明尼加共和国</option>
+
+
+                                <option value="182">俄罗斯</option>
+
+
+                                <option value="60">厄瓜多尔</option>
+
+
+                                <option value="65">厄立特里亚</option>
+
+
+                                <option value="74">伐茹岛</option>
+
+
+                                <option value="76">法国</option>
+
+
+                                <option value="75">法属波利尼西亚</option>
+
+
+                                <option value="92">法属圭亚那</option>
+
+
+                                <option value="69">法属圭亚那</option>
+
+
+                                <option value="77">法属南极领地</option>
+
+
+                                <option value="232">梵蒂冈城</option>
+
+
+                                <option value="180">菲律宾</option>
+
+
+                                <option value="71">斐济</option>
+
+
+                                <option value="70">芬兰</option>
+
+
+                                <option value="53">佛得角</option>
+
+
+                                <option value="72">福克兰群岛</option>
+
+
+                                <option value="78">甘比亚</option>
+
+
+                                <option value="40">刚果</option>
+
+
+                                <option value="41">刚果</option>
+
+
+                                <option value="48">哥仑比亚</option>
+
+
+                                <option value="50">哥斯達黎亞</option>
+
+
+                                <option value="84">格恩西</option>
+
+
+                                <option value="85">格陵兰岛</option>
+
+
+                                <option value="83">格瑞纳达</option>
+
+
+                                <option value="52">古巴</option>
+
+
+                                <option value="87">瓜德罗普岛</option>
+
+
+                                <option value="88">关岛</option>
+
+
+                                <option value="121">哈萨克</option>
+
+
+                                <option value="94">海地</option>
+
+
+                                <option value="118">韩国</option>
+
+
+                                <option value="96">河地</option>
+
+
+                                <option value="158">荷兰</option>
+
+
+                                <option value="163">荷属安替列斯群岛</option>
+
+
+                                <option value="97">洪都拉斯</option>
+
+
+                                <option value="57">吉布地</option>
+
+
+                                <option value="115">吉尔吉斯</option>
+
+
+                                <option value="91">几内亚</option>
+
+
+                                <option value="175">几内亚比绍共和国</option>
+
+
+                                <option value="36">加拿大</option>
+
+
+                                <option value="81">加纳</option>
+
+
+                                <option value="79">加彭</option>
+
+
+                                <option value="37">柬埔寨</option>
+
+
+                                <option value="68">捷克</option>
+
+
+                                <option value="46">喀买隆</option>
+
+
+                                <option value="176">卡达</option>
+
+
+                                <option value="44">卡门群岛</option>
+
+
+                                <option value="54">科克群岛</option>
+
+
+                                <option value="47">科斯罗</option>
+
+
+                                <option value="108">科特迪瓦</option>
+
+
+                                <option value="120">科威特</option>
+
+
+                                <option value="45">可可斯群岛</option>
+
+
+                                <option value="117">克里巴提</option>
+
+
+                                <option value="98">克罗埃西亚</option>
+
+
+                                <option value="114">肯亚</option>
+
+
+                                <option value="124">拉特威尼亚</option>
+
+
+                                <option value="126">赖比瑞亚</option>
+
+
+                                <option value="129">赖索托</option>
+
+
+                                <option value="123">黎巴嫩</option>
+
+
+                                <option value="125">立陶宛</option>
+
+
+                                <option value="131">利比亚</option>
+
+
+                                <option value="122">寮国</option>
+
+
+                                <option value="128">列支敦士登</option>
+
+
+                                <option value="177">留尼旺岛</option>
+
+
+                                <option value="130">卢森堡</option>
+
+
+                                <option value="183">卢旺达</option>
+
+
+                                <option value="179">罗马尼亚</option>
+
+
+                                <option value="132">马达加斯加</option>
+
+
+                                <option value="135">马多瓦</option>
+
+
+                                <option value="148">马尔代夫</option>
+
+
+                                <option value="146">马耳他</option>
+
+
+                                <option value="139">马拉维</option>
+
+
+                                <option value="150">马来西亚</option>
+
+
+                                <option value="141">马里</option>
+
+
+                                <option value="140">马其顿</option>
+
+
+                                <option value="178">马绍尔群岛</option>
+
+
+                                <option value="133">马提尼克</option>
+
+
+                                <option value="145">马提尼亚</option>
+
+
+                                <option value="136">马幼提</option>
+
+
+                                <option value="223">美国</option>
+
+
+                                <option value="221">美属边疆群岛</option>
+
+
+                                <option value="231">美属佛吉尼亚岛</option>
+
+
+                                <option value="11">美属萨摩亚</option>
+
+
+                                <option value="137">蒙古</option>
+
+
+                                <option value="138">蒙色提</option>
+
+
+                                <option value="23">孟加拉</option>
+
+
+                                <option value="168">秘鲁</option>
+
+
+                                <option value="73">密克罗西尼亚</option>
+
+
+                                <option value="242">缅甸</option>
+
+
+                                <option value="144">模里西斯</option>
+
+
+                                <option value="143">摩洛哥</option>
+
+
+                                <option value="142">摩纳哥</option>
+
+
+                                <option value="151">莫桑比克</option>
+
+
+                                <option value="149">墨西哥</option>
+
+
+                                <option value="233">纳米比亚</option>
+
+
+                                <option value="188">南非</option>
+
+
+                                <option value="16">南极洲</option>
+
+
+                                <option value="201">南乔治亚群岛</option>
+
+
+                                <option value="161">瑙鲁</option>
+
+
+                                <option value="160">尼泊尔</option>
+
+
+                                <option value="164">尼加拉瓜</option>
+
+
+                                <option value="155">尼日尔</option>
+
+
+                                <option value="157">尼日利亚</option>
+
+
+                                <option value="153">纽邬岛</option>
+
+
+                                <option value="159">挪威</option>
+
+
+                                <option value="154">诺福克岛</option>
+
+
+                                <option value="167">皮特卡岛</option>
+
+
+                                <option value="172">葡萄牙</option>
+
+
+                                <option value="80">乔治亚</option>
+
+
+                                <option value="110">日本</option>
+
+
+                                <option value="200">瑞典</option>
+
+
+                                <option value="203">瑞士</option>
+
+
+                                <option value="66">萨尔瓦多</option>
+
+
+                                <option value="236">萨摩亚</option>
+
+
+                                <option value="238">塞尔维亚</option>
+
+
+                                <option value="192">塞拉利昂</option>
+
+
+                                <option value="189">塞内加尔</option>
+
+
+                                <option value="55">塞普路斯</option>
+
+
+                                <option value="187">塞舌尔群岛</option>
+
+
+                                <option value="184">沙特阿拉伯</option>
+
+
+                                <option value="119">圣诞岛</option>
+
+
+                                <option value="211">圣多美岛和普林西比岛</option>
+
+
+                                <option value="190">圣海伦</option>
+
+
+                                <option value="186">圣卡特</option>
+
+
+                                <option value="197">圣露西亚</option>
+
+
+                                <option value="193">圣马</option>
+
+
+                                <option value="185">圣皮埃尔</option>
+
+
+                                <option value="227">圣文森及格瑞那丁</option>
+
+
+                                <option value="199">史巴答</option>
+
+
+                                <option value="39">斯里兰卡</option>
+
+
+                                <option value="127">斯洛伐克</option>
+
+
+                                <option value="191">斯洛文尼亚</option>
+
+
+                                <option value="237">斯威士兰</option>
+
+
+                                <option value="198">苏丹</option>
+
+
+                                <option value="162">苏利南</option>
+
+
+                                <option value="29">所罗门岛</option>
+
+
+                                <option value="195">索马里</option>
+
+
+                                <option value="206">塔吉克</option>
+
+
+                                <option value="218">塔桑尼亚</option>
+
+
+                                <option value="216">台湾(中国)</option>
+
+
+                                <option value="205">泰国</option>
+
+
+                                <option value="209">汤加</option>
+
+
+                                <option value="204">特立尼达和多巴哥</option>
+
+
+                                <option value="212">突尼斯</option>
+
+
+                                <option value="214">土耳其</option>
+
+
+                                <option value="217">土库曼</option>
+
+
+                                <option value="207">土库斯和凯科斯群岛</option>
+
+
+                                <option value="215">土瓦魯</option>
+
+
+                                <option value="208">托克勞群島</option>
+
+
+                                <option value="156">万那杜</option>
+
+
+                                <option value="90">危地马拉</option>
+
+
+                                <option value="228">委内瑞拉</option>
+
+
+                                <option value="34">文莱</option>
+
+
+                                <option value="234">沃利斯和富图纳群岛</option>
+
+
+                                <option value="219">乌干达</option>
+
+
+                                <option value="222">乌克兰</option>
+
+
+                                <option value="225">乌拉圭</option>
+
+
+                                <option value="226">乌兹别克</option>
+
+
+                                <option value="196">西班牙</option>
+
+
+                                <option value="235">西撒哈拉</option>
+
+
+                                <option value="89">希腊</option>
+
+
+                                <option value="95">香港(中国)</option>
+
+
+                                <option value="241">辛巴威</option>
+
+
+                                <option value="194">新加坡</option>
+
+
+                                <option value="152">新克罗第尼亚</option>
+
+
+                                <option value="165">新西兰</option>
+
+
+                                <option value="99">匈牙利</option>
+
+
+                                <option value="202">叙利亚</option>
+
+
+                                <option value="112">牙买加</option>
+
+
+                                <option value="8">亚美尼亚</option>
+
+
+                                <option value="239">也门</option>
+
+
+                                <option value="109">伊拉克</option>
+
+
+                                <option value="105">伊朗</option>
+
+
+                                <option value="106">以色列</option>
+
+
+                                <option value="107">意大利</option>
+
+
+                                <option value="103">印度</option>
+
+
+                                <option value="101">印度尼西亚</option>
+
+
+                                <option value="220">英国</option>
+
+
+                                <option value="104">英国印度海领地</option>
+
+
+                                <option value="102">英属地曼岛</option>
+
+
+                                <option value="229">英属佛吉尼亚岛</option>
+
+
+                                <option value="113">约旦</option>
+
+
+                                <option value="230">越南</option>
+
+
+                                <option value="240">赞比亚</option>
+
+
+                                <option value="111">泽西岛</option>
+
+
+                                <option value="38">乍得</option>
+
+
+                                <option value="82">直布罗陀</option>
+
+
+                                <option value="43">智利</option>
+
+
+                                <option value="51">中非共和国</option>
+
+
+                                <option value="42">中国</option>
+
+                	</select>
+
+                    	<span class="selectRequiredMsg">国籍: 请输入字元</span>
+
+                    </span>
+
+                        <script type="text/javascript">
+                            <!--
+
+                            var nationality = new Spry.Widget.ValidationSelect("nationality_validate", {
+                                isRequired: true,
+                                validateOn: ['change']
+                            });
+
+                            //-->
+                        </script>
+
+                    </li>
+
+
+
+
+
+                    <li class="sectionHeading clearfix"><h2>自我简介</h2></li>
+                    <li class="clearfix  ">
+                        <label class="questionLabel">文档标题:</label>
+                        <span id="catchPhrase_validate">
+                        <input type="text" name="catchPhrase" id="catchPhrase" onchange="" onblur="" onfocus=""
+                               size="52" value="" style="" class="" autocomplete="off">
+
+                            <div class="formclear">
+                        <span class="textfieldRequiredMsg">文档标题: 请输入字元</span> <span class="textfieldMaxCharsMsg">文档标题: 最多输入50个字</span>
+                            </div>
+
+                        </span>
+
+                        <script type="text/javascript">
+                            <!--
+
+                            var catchPhrase = new Spry.Widget.ValidationTextField("catchPhrase_validate", "none", {
+                                isRequired: true,
+                                validateOn: ['change'],
+                                maxChars: 50
+                            });
+
+                            //-->
+                        </script>
+
+                    </li>
+                    <li class="clearfix highlight">
+                        <label class="questionLabel">自我介绍:</label>
+                        <span id="selfDescription_validate"> <textarea name="selfDescription" cols="60"
+                                                                       id="selfDescription" rows="5" onblur=""
+                                                                       autocomplete="off"></textarea>
+	                    	<div class="formclear">
+	                    <span class="textareaRequiredMsg">自我介绍: 请输入字元</span>
+	                    	</div>
+
+	                    </span>
+
+                        <script type="text/javascript">
+                            <!--
+
+                            var selfDescription = new Spry.Widget.ValidationTextarea("selfDescription_validate", {
+                                isRequired: true,
+                                validateOn: ['blur']
+                            });
+
+                            //-->
+                        </script>
+
+                    </li>
+
+
+                    <div class="clear"></div>
+                    <li style="text-align:center;border:0">
+                        <button type="submit" name="updateProfileBtn" class="greyShinyButton">发送</button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="roundedContainer">
+                <div class="formContainer">
+                    <div class="mainHeading clearfix"><h1>管理照片</h1></div>
+
+                </div>
+
+                <div class="uploader flex clearfix">
+                    <div class="col-5 inline-block">
+                        <div id="Uploader" class="self-start col-12 center">
+                            <div id="pcPhotoUploadBtn"
+                                 class="plus-in-btn modal-bg-green rounded flex items-center p1 my2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-289 381 32 32" height="20px">
+                                    <path fill="currentColor"
+                                          d="M-261 395h-10v-10c0-1.1-.9-2-2-2s-2 .9-2 2v10h-10c-1.1 0-2 .9-2 2s.9 2 2 2h10v10c0 1.1.9 2 2 2s2-.9 2-2v-10h10c1.1 0 2-.9 2-2s-.9-2-2-2z"></path>
+                                </svg>
+
+                                <div class="white bold h3 col-12">选择档案</div>
+                            </div>
+
+                            <form class="mx-auto block col-4 center" name="uploadPhotoForm"
+                                  action="/zc/profilemanagement/uploadPhoto?photoaction=upload&amp;pcUploader=true&amp;source=fs&amp;device=1"
+                                  method="post" enctype="multipart/form-data">
+
+                                <input type="file" name="uploadForm" value="uploadForm" id="uploadForm2"
+                                       accept="image/jpeg,image/gif,image/png,image/bmp" class="hide">
+                            </form>
+                        </div>
+                        <div class="spinner center self-start col-12 hide"><img
+                                src="/assets/images/generic/loading_icon2.gif"></div>
+                    </div>
+                </div>
+                <form method="post" action="/zc/profilemanagement/editprofilephotos" id="managePhotosForm">
+
+                    <div class="photos clearfix ui-sortable" id="sortable" unselectable="on">
+
+                        <div class="photobg ui-state-disabled profilePhoto" id="p_1" data-id="ui.position">
+                            <div class="photoHeading"><span class="primaryTitle">文档主照</span></div>
+
+                            <div class="photooverlay" id="photoOverlay_1" style="display:none;">
+                                <ul>
+                                    <li>
+                                        <a href="/zc/profilemanagement/editprofilephotos?delete=1&amp;cs=0E6887E6C6CE47D805&amp;esc=4"
+                                           class="delete-photo"
+                                           data-replaceurl="/zc/profilemanagement/editprofilephotos?replace=1"
+                                           data-number="1">删除照片</a></li>
+                                    <li>
+                                    </li>
+                                    <li><a href="/zc/profilemanagement/editprofilephotos?replace=1"
+                                           class="replace-photo">更换照片</a></li>
+
+                                    <li><a href="" class="hide-upgrade">隐藏照片</a></li>
+
+                                </ul>
+                            </div>
+
+                            <a title="click to enlarge photo" id="photoid_1" class="enlargePhoto"
+                               href="/memphoto/photo1/big/4027139.jpg?97AD9AD4-5056-BD58-8426FB1CC6115986?1074"
+                               data-status="1" data-modaltitle="文档主照">
+		<span style="background:url(/memphoto/photo1/small/4027139.jpg?97AD9AD4-5056-BD58-8426FB1CC6115986?8858) center top"
+              class="photo ">
+
+		</span>
+                            </a>
+                            <div class="replace">
+                                <a href="#" data-photooverlayid="photoOverlay_1" class="photoOptions">编辑照片</a>
+                                <a href="#" data-photooverlayid="photoOverlay_1" class="photoOptions">删除照片</a>
+
+                            </div>
+                            <input name="photoOrder" type="hidden" value="1">
+                        </div>
+
+                        <div class="photobg ui-state-disabled" id="p_2" data-id="ui.position">
+                            <div class="photoHeading"><span class="primaryTitle"></span></div>
+
+                            <div class="photooverlay" id="photoOverlay_2" style="display:none;">
+                                <ul>
+                                    <li>
+                                        <a href="/zc/profilemanagement/editprofilephotos?delete=2&amp;cs=0D6887E6C6CE47D805&amp;esc=4"
+                                           class="delete-photo"
+                                           data-replaceurl="/zc/profilemanagement/editprofilephotos?replace=2"
+                                           data-number="2">删除照片</a></li>
+                                    <li>
+                                    </li>
+                                    <li><a href="/zc/profilemanagement/editprofilephotos?replace=2"
+                                           class="replace-photo">更换照片</a></li>
+
+                                </ul>
+                            </div>
+
+                            <a title="click to enlarge photo" id="photoid_2" class="enlargePhoto" href=""
+                               data-status="0" data-modaltitle="照片 2">
+		<span style="background:url(/assets/images/generic/nophoto_Male2.gif) center top" class="photo tipMeNoPhoto"
+              title="使用上列方式来上传照片">
+
+		</span>
+                            </a>
+                            <div class="replace">
+
+                            </div>
+                            <input name="photoOrder" type="hidden" value="2">
+                        </div>
+
+                        <div class="photobg ui-state-disabled" id="p_3" data-id="ui.position">
+                            <div class="photoHeading"><span class="primaryTitle"></span></div>
+
+                            <div class="photooverlay" id="photoOverlay_3" style="display:none;">
+                                <ul>
+                                    <li>
+                                        <a href="/zc/profilemanagement/editprofilephotos?delete=3&amp;cs=0C6887E6C6CE47D805&amp;esc=4"
+                                           class="delete-photo"
+                                           data-replaceurl="/zc/profilemanagement/editprofilephotos?replace=3"
+                                           data-number="3">删除照片</a></li>
+                                    <li>
+                                    </li>
+                                    <li><a href="/zc/profilemanagement/editprofilephotos?replace=3"
+                                           class="replace-photo">更换照片</a></li>
+
+                                </ul>
+                            </div>
+
+                            <a title="click to enlarge photo" id="photoid_3" class="enlargePhoto" href=""
+                               data-status="0" data-modaltitle="照片 3">
+		<span style="background:url(/assets/images/generic/nophoto_Male2.gif) center top" class="photo tipMeNoPhoto"
+              title="使用上列方式来上传照片">
+
+		</span>
+                            </a>
+                            <div class="replace">
+
+                            </div>
+                            <input name="photoOrder" type="hidden" value="3">
+                        </div>
+
+                        <div class="photobg ui-state-disabled" id="p_4" data-id="ui.position">
+                            <div class="photoHeading"><span class="primaryTitle"></span></div>
+
+                            <div class="photooverlay" id="photoOverlay_4" style="display:none;">
+                                <ul>
+                                    <li>
+                                        <a href="/zc/profilemanagement/editprofilephotos?delete=4&amp;cs=0B6887E6C6CE47D805&amp;esc=4"
+                                           class="delete-photo"
+                                           data-replaceurl="/zc/profilemanagement/editprofilephotos?replace=4"
+                                           data-number="4">删除照片</a></li>
+                                    <li>
+                                    </li>
+                                    <li><a href="/zc/profilemanagement/editprofilephotos?replace=4"
+                                           class="replace-photo">更换照片</a></li>
+
+                                </ul>
+                            </div>
+
+                            <a title="click to enlarge photo" id="photoid_4" class="enlargePhoto" href=""
+                               data-status="0" data-modaltitle="照片 4">
+		<span style="background:url(/assets/images/generic/nophoto_Male2.gif) center top" class="photo tipMeNoPhoto"
+              title="使用上列方式来上传照片">
+
+		</span>
+                            </a>
+                            <div class="replace">
+
+                            </div>
+                            <input name="photoOrder" type="hidden" value="4">
+                        </div>
+
+                        <div class="photobg ui-state-disabled" id="p_5" data-id="ui.position">
+                            <div class="photoHeading"><span class="primaryTitle"></span></div>
+
+                            <div class="photooverlay" id="photoOverlay_5" style="display:none;">
+                                <ul>
+                                    <li>
+                                        <a href="/zc/profilemanagement/editprofilephotos?delete=5&amp;cs=0A6887E6C6CE47D805&amp;esc=4"
+                                           class="delete-photo"
+                                           data-replaceurl="/zc/profilemanagement/editprofilephotos?replace=5"
+                                           data-number="5">删除照片</a></li>
+                                    <li>
+                                    </li>
+                                    <li><a href="/zc/profilemanagement/editprofilephotos?replace=5"
+                                           class="replace-photo">更换照片</a></li>
+
+                                </ul>
+                            </div>
+
+                            <a title="click to enlarge photo" id="photoid_5" class="enlargePhoto" href=""
+                               data-status="0" data-modaltitle="照片 5">
+		<span style="background:url(/assets/images/generic/nophoto_Male2.gif) center top" class="photo tipMeNoPhoto"
+              title="使用上列方式来上传照片">
+
+		</span>
+                            </a>
+                            <div class="replace">
+
+                            </div>
+                            <input name="photoOrder" type="hidden" value="5">
+                        </div>
+
+
+                    </div>
+
+                </form>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+</body>
+</html>

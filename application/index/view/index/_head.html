@@ -1,0 +1,44 @@
+<div class="header flex items-center justify-between">
+    <div class="col-6 header-nav-min-width header-nav-max-width z0 mx2">
+        <div class="flex items-center justify-between p0 m0 h3">
+            <a href="/" class="flex" title="xxxx">
+                <div class="z2 center col-12">www.chinalove1.com</div>
+            </a>
+            <a href="/" class="count" >{:lang('首页')}</a>
+
+            <a href="/index.php/index/mail/msglist" class="count" {if condition="$Think.session.isLogin eq true"}data-badge="{$msg.count|default=0}"{/if}>{:lang("消息")}</a>
+            <div class="header-sub-menu relative pointer" data-animation="menu-pop">
+                <div class="block text-decoration-none h3 header-color count"></div>
+            </div>
+            <div class="header-sub-menu relative pointer" data-animation="menu-pop">
+                <div class="block text-decoration-none h3 header-color count"></div>
+            </div>
+        </div>
+    </div>
+    <div class="flex-auto flex items-center justify-end z3 me2">
+        {if condition="$Think.session.isLogin eq true"}
+        <div class="header-sub-menu relative profile-icon" data-animation="menu-pop">
+            <div class="profile-header-image circle shadow border relative mx2 flex items-center justify-center circle overflow-hidden card-image-bg-color">
+                <div class="profile-bg" data-cm-modal-url="" style="background-image:url('/public/upload/{$u.main_pic}')"></div>
+            </div>
+        </div>
+
+
+        {/if}
+        <div>
+            {if condition="$Think.session.isLogin eq true"}
+
+            <a href="/index.php/index/a/logout" type="button" id="loginout"
+               class="h3 rounded py1 px2 btn-color btn-bg border-none col-12 relative overflow-hidden shadow"
+               tabindex="3" data-disable-on-click="true">{:lang("退出")}
+            </a>
+            {else /}
+            <a href="/index.php/index/a/login"
+               class="h3 rounded py1 px2 btn-color btn-bg border-none col-12 relative overflow-hidden shadow"
+               tabindex="3" data-disable-on-click="true">登录
+            </a>
+            {/if}
+        </div>
+    </div>
+</div>
+

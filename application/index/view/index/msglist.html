@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="zh-Hans" data-device="desktop">
+<head>
+
+    {include file="../application/index/view/index/_commoncss.html" /}
+</head>
+<body>
+{include file="../application/index/view/index/_head.html" /}
+
+<!--Header end-->
+<!--Body start-->
+<div class="header-strip height-auto px3 py2">
+    <div class="max-width mx-auto">
+        <div class="tabs flex items-center justify-between">
+
+
+            <h4 class="h4 m0 me3 pb2 border-bottom count count-active" data-badge="4">
+                {:lang('收到消息')}
+            </h4>
+
+            <h4 class="h4 m0 me3 pb2">
+                <a href="/zc/mail/showsent" class="count header-strip-color" id="sent-icon"> {:lang('已发送消息')}Sent</a>
+            </h4>
+            <h4 class="h4 m0 me3 pb2">
+            </h4>
+            <h4 class="h4 m0 me3 pb2">
+            </h4><h4 class="h4 m0 me3 pb2">
+        </h4><h4 class="h4 m0 me3 pb2">
+        </h4>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="max-width mx-auto p2 flex relative">
+    <div class="col-12">
+
+        <div class="flex justify-between list-message-filter">
+            <div class="flex items-center">
+                <p>{:lang("显示")}4封中的第1 - 4封邮件</p>
+                <a href="/zc/mail/showfilter"
+                   class="relative ms4 flex items-center justify-center body-font-color list-message-filter">
+                    <div class="theme-color">过滤讯息</div>
+                    <svg class="ms2 icon-30 fill-grey tooltip">
+                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-filter"></use>
+                    </svg>
+
+                    <div class="tooltip-text tooltip-text tooltip-text-width-auto truncate tooltip-text-center h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
+                        建立讯息过滤!
+                    </div>
+
+                </a>
+
+            </div>
+
+            <div class="flex items-center justify-end">
+
+                <button class="button overflow-hidden pointer h4 py1 px2 me3 rounded bg-theme header-strip-color relative border-none"
+                        id="deleteChecked"
+                        data-formType="delete"
+                        data-submit-text="删除"
+                        data-edit-list="删除"
+                        data-cancel-list="取消">
+                    删除
+                </button>
+
+                <div class="flex items-center">
+                    <p class="me1 my0">排列顺序依:</p>
+                    <form>
+                        <select name="sortby" class="filter" data-auto-load="true">
+
+                            <option value="?orderby=2">
+                                寄件者
+                            </option>
+
+                            <option value="?orderby=4" selected>
+                                日期
+                            </option>
+
+                            <option value="?orderby=3">
+                                会员资格
+                            </option>
+                        </select>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="flex items-start list-message-filter">
+
+            <form id="mailboxform" method="post" data-show-submit="true" class="list-message-filter col-12">
+                <input name="formType" id="formType" type="hidden" value=""/>
+                <div class="flex items-center">
+
+                </div>
+
+                <div class="list-message col col-12 px1 my1">
+
+                    <div class="flex items-center relative height-12">
+                        <div class="flex-none unread me2 height-10 " title="未读"></div>
+                        <label class="flex-none mr2 height-12 msn3 flex items-center hide" data-set-effect="grayscale"
+                               data-edit="删除">
+                            <input name="amid" type="checkbox" value="1406" class="hide">
+                            <div class="remove col-12 height-12 fill-white flex items-center justify-center pointer">
+                                <div class="center">
+                                    <svg class="icon-30 header-strip-fill white">
+                                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-radio-off"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="recover col-12 height-12 fill-white flex items-center justify-center pointer">
+                                <div class="center">
+                                    <svg class="icon-30 header-strip-fill white">
+                                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-radio-on"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </label>
+                        <a href="/zc/mail/showemail?mid=0&p=1&amid=1406" class="body-font-color relative flex-auto"
+                           data-effect="grayscale">
+                            <div class="flex flex-auto items-center">
+                                <div class="me3 relative flex-none">
+                                    <div class="profile-image circle overflow-hidden">
+                                        <div class="fit col-12 height-12 circle flex items-center justify-center site-logo bg-header-background">
+                                            <svg class="icon-50">
+                                                <use xlink:href="#icon-logoheart"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 m0 flex flex-column">
+                                    <div class="flex items-center justify-between relative">
+                                        <div class="flex items-center">
+                                            <h1 class="h2 m0 me2 color-dark-grey unread-message">ChinaLoveCupid.com</h1>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <div class="h5 unread-message">19-2-13</div>
+                                        </div>
+                                    </div>
+                                    <div class="h5 mt1">
+                                        <div class="list-message-text">
+                                            收到更多关注!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="list-message-border col col-12 border-bottom border-color"></div>
+
+
+                <div class="list-message col col-12 px1 my1">
+
+                    <div class="flex items-center relative height-12">
+                        <div class="flex-none unread me2 height-10 " title="未读"></div>
+                        <label class="flex-none mr2 height-12 msn3 flex items-center hide" data-set-effect="grayscale"
+                               data-edit="删除">
+                            <input name="amid" type="checkbox" value="1320" class="hide">
+                            <div class="remove col-12 height-12 fill-white flex items-center justify-center pointer">
+                                <div class="center">
+                                    <svg class="icon-30 header-strip-fill white">
+                                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-radio-off"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="recover col-12 height-12 fill-white flex items-center justify-center pointer">
+                                <div class="center">
+                                    <svg class="icon-30 header-strip-fill white">
+                                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-radio-on"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </label>
+                        <a href="/zc/mail/showemail?mid=0&p=2&amid=1320" class="body-font-color relative flex-auto"
+                           data-effect="grayscale">
+                            <div class="flex flex-auto items-center">
+                                <div class="me3 relative flex-none">
+                                    <div class="profile-image circle overflow-hidden">
+                                        <div class="fit col-12 height-12 circle flex items-center justify-center site-logo bg-header-background">
+                                            <svg class="icon-50">
+                                                <use xlink:href="#icon-logoheart"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 m0 flex flex-column">
+                                    <div class="flex items-center justify-between relative">
+                                        <div class="flex items-center">
+                                            <h1 class="h2 m0 me2 color-dark-grey unread-message">ChinaLoveCupid.com</h1>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <div class="h5 unread-message">19-2-2</div>
+                                        </div>
+                                    </div>
+                                    <div class="h5 mt1">
+                                        <div class="list-message-text">
+                                            主动联系您心仪的对象!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="list-message-border col col-12 border-bottom border-color"></div>
+
+
+                <div class="list-message col col-12 px1 my1">
+
+                    <div class="flex items-center relative height-12">
+                        <div class="flex-none unread me2 height-10 " title="未读"></div>
+                        <label class="flex-none mr2 height-12 msn3 flex items-center hide" data-set-effect="grayscale"
+                               data-edit="删除">
+                            <input name="amid" type="checkbox" value="1422" class="hide">
+                            <div class="remove col-12 height-12 fill-white flex items-center justify-center pointer">
+                                <div class="center">
+                                    <svg class="icon-30 header-strip-fill white">
+                                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-radio-off"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="recover col-12 height-12 fill-white flex items-center justify-center pointer">
+                                <div class="center">
+                                    <svg class="icon-30 header-strip-fill white">
+                                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-radio-on"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </label>
+                        <a href="/zc/mail/showemail?mid=0&p=3&amid=1422" class="body-font-color relative flex-auto"
+                           data-effect="grayscale">
+                            <div class="flex flex-auto items-center">
+                                <div class="me3 relative flex-none">
+                                    <div class="profile-image circle overflow-hidden">
+                                        <div class="fit col-12 height-12 circle flex items-center justify-center site-logo bg-header-background">
+                                            <svg class="icon-50">
+                                                <use xlink:href="#icon-logoheart"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 m0 flex flex-column">
+                                    <div class="flex items-center justify-between relative">
+                                        <div class="flex items-center">
+                                            <h1 class="h2 m0 me2 color-dark-grey unread-message">ChinaLoveCupid.com</h1>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <div class="h5 unread-message">19-1-29</div>
+                                        </div>
+                                    </div>
+                                    <div class="h5 mt1">
+                                        <div class="list-message-text">
+                                            收到更多会员关注!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="list-message-border col col-12 border-bottom border-color"></div>
+
+
+                <div class="list-message col col-12 px1 my1">
+
+                    <div class="flex items-center relative height-12">
+                        <div class="flex-none unread me2 height-10" title="新邮件 - 点选这裡来读取"></div>
+                        <label class="flex-none mr2 height-12 msn3 flex items-center hide" data-set-effect="grayscale"
+                               data-edit="删除">
+                            <input name="mid" type="checkbox" value="3784011" hidden>
+                            <div class="remove col-12 height-12 fill-white flex items-center justify-center pointer">
+                                <div class="center">
+                                    <svg class="icon-30 header-strip-fill white">
+                                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-radio-off"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="recover col-12 height-12 fill-white flex items-center justify-center pointer">
+                                <div class="center">
+                                    <svg class="icon-30 header-strip-fill white">
+                                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-radio-on"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </label>
+                        <label class=" flex-none mr2 height-12 msn3 flex items-center hide" data-set-effect="grayscale"
+                               data-edit="复制">
+                            <input name="mid" type="checkbox" value="3784011" hidden>
+                            <div class="copy col-12 height-12 fill-white flex items-center justify-center pointer">
+                                <div class="center">
+                                    <svg class="icon-30 header-strip-fill white">
+                                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-radio-off"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="undo col-12 height-12 fill-white flex items-center justify-center pointer">
+                                <div class="center">
+                                    <svg class="icon-30 header-strip-fill white">
+                                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-radio-on"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </label>
+                        <a href="/zc/mail/showemail?mid=3784011&p=4" class="body-font-color relative flex-auto"
+                           data-effect="grayscale">
+                            <div class="flex flex-auto items-center">
+                                <div class="me3 relative flex-none">
+                                    <div class="profile-image circle border overflow-hidden">
+                                        <div class="fit col-12 height-12 circle card-image-bg-color">
+
+                                            <div class="profile-bg" data-cm-modal-URL=""
+                                                 style="background-image:url('https://cdn.chinalovecupid.com/memphoto/Photo1/small/3784011.jpg')"></div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-12 m0 flex flex-column">
+                                    <div class="flex items-center justify-between relative">
+
+                                        <div class="flex items-center">
+                                            <h1 class="h2 m0 me2 color-dark-grey unread-message">Jessica</h1>
+                                            <div class="relative icon-membership fill-standard mx2">
+                                                <svg class="tooltip">
+                                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-profile"></use>
+                                                </svg>
+
+                                                <div class="tooltip-text tooltip-text-width-auto truncate tooltip-text-center h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
+                                                    普通会员
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="h5 ml2">40 <span>&#8226;</span> Shanghai, 中国</div>
+                                        </div>
+
+                                        <div class="flex items-center">
+                                            <div class="h5 unread-message">19-1-21</div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="h5 mt1">
+                                        <div class="list-message-text break-word">
+                                            你就是我喜...
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="list-message-border col col-12 border-bottom border-color"></div>
+
+
+                <div class="flex justify-center fixed bottom-0 right-0 left-0 bg-black-alpha-85 p2 center z2 hide"
+                     data-submit>
+
+
+                    <button type="submit" class="bg-green white rounded button py1 px2 shadow h3"></button>
+                </div>
+            </form>
+
+        </div>
+
+
+        <div class="my2 list-message-filter">
+            <p>* 邮件将在收到日起2个月后由系统自动删除</p>
+        </div>
+    </div>
+
+</div>
+
+
+<!--Body end-->
+
+
+</body>
+</html>
