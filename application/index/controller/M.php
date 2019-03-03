@@ -29,7 +29,7 @@ class M extends Controller
 
     public function test()
     {
-        return json_encode(Member::get(10));
+        return json_encode(Member::all());
     }
 
     public function profile()

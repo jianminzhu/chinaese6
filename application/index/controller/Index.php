@@ -48,12 +48,13 @@ class Index extends Controller
     public function headData()
     {
         $loginUser = $this->loginUser();
+        $mid = 0;
         if ($loginUser) {
-
+            $mid = $loginUser->id;
         }
         $pno = intval(request()->param("pno", 1));
         $page = $pno . ",10";
-        $members = Db::table('member')->page($page)->select();
+        $members = Db::table('member')->where('id', "<>",$mid) ->page($page)->select();
         // 或者批量赋值
         $this->assign(
             [

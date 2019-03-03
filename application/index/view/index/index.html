@@ -18,18 +18,11 @@
         <div class="flex flex-wrap items-center flex-auto">
             <div class="mb1 me3 relative flex-none">
                 <div class="profile-image-header circle shadow border">
-
                     <div class="flex items-center justify-center height-12 circle overflow-hidden card-image-bg-color">
-
-                        <a class="col-12 height-12" href="/zc/profile/showProfile/ID/4027139">
-                            <div class="profile-bg" data-cm-modal-url=""
-                                 style="background-image:url('https://cdn.chinalovecupid.com/memphoto/Photo1/big/4027139.jpg?impolicy=facegravity-fcrop-var&amp;w=220&amp;h=220&amp;p=0.1')"></div>
+                        <a class="col-12 height-12" href="/index/m/profile/{$u.id}">
+                            <div class="profile-bg"
+                                 style="background-image:url('http://www.bytrip.com/{$u.main_pic}')"></div>
                         </a>
-
-                        <div class="tooltip-text tooltip-text-bottom h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
-                            加入文档照片是吸引会员注意最有效的方式
-                        </div>
-
                     </div>
                 </div>
                 <div class="icon-holder flex absolute">
@@ -1085,301 +1078,106 @@
 </div>
 <div class="flex flex-wrap justify-center max-width mx-auto" data-reflow="true">
     {volist name="members" id="m"}
-    <div class="card-p card m1 flex overflow-hidden bg-white shadow relative">
-        <a id="{$m.id}" class="absolute top-minus-100">{$m.nickname|default= "" }</a>
+    <div class="card-s card m1 flex flex-wrap overflow-hidden bg-white shadow relative">
+        <a id="{$m.id}" class="absolute top-minus-100"></a>
 
-        <div class="card-p-image overflow-hidden relative card-image-bg-color">
-            <a class="block col-12 height-12 flex items-end"
-               href="/zc/profile/showProfile/ID/4006940?searchposition=1&searchtotal=1000">
-
-                <div class="profile-bg" data-cm-modal-URL=""
-                     style="background-image:url('{$m.main_pic|default="
-                "}')"></div>
+        <a class="flex items-center col-12 justify-center std relative"
+           href="/index.php/index/m/profile/{$m.id}.html">
+            <div class="profile-bg" data-cm-modal-URL=""
+                 style="background-image:url('http://www.bytrip.com/{$m.main_pic}')"></div>
+            <div class="border-box z2 flex items-center justify-center standard-online online circle border-white">
+                <svg class="col-12 height-12" data-tooltip="ttOn">
+                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-online"></use>
+                </svg>
+                <div hidden>{:lang("我在线")}</div>
+            </div>
         </a>
-        <!--<svg class="icon-56 absolute top-0 right-0" data-tooltip="ttPC">
-            <use xlink:href="/assets/desktop/icons/icons.svg#icon-platinum-membership"></use>
-        </svg>
-        <div hidden>白金会员</div>-->
+
+        <div class="sdh col-12 relative flex flex-column">
+
+            <div class="flex items-center mx2 mt2">
+                <a href="/index.php/index/m/profile/{$m.id}.html"
+                   class="h3 color-dark-grey m0 truncate max-width-85">{$m.nickname}</a>
+                <div class="icon-membership ms1 fill-standard relative">
+                    <svg class="ms1 fill-standard relative" data-tooltip="ttCn">
+                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-profile"></use>
+                    </svg>
+                    <div hidden>{:lang("普通会员")}</div>
+                </div>
+            </div>
+
+            <div class="mx2 h5">
+               {$m.age} <span>&#8226;</span>  {$m.address}, {$m.country|default=""}
+            </div>
+
+
+
+            <div class="flex flex-auto items-end justify-between mx2 my2">
+                <div class="flex items-center">
+                    <div data-button="true"
+
+                         class="pointer me3 relative fill-action-unhighlight"
+                         data-animation="pop-fade-out"
+                         data-showInterest="/zc/memberrelationship/showInterest/0E008BE0C7C146B4459D0A"
+                         title="发送秋波给Yu"
+
+                    >
+
+                        <svg class="icon-30">
+                            <use xlink:href="/assets/desktop/icons/icons.svg#icon-heart"></use>
+                        </svg>
+                    </div>
+                    <div class="pointer me3 fill-action-unhighlight relative"
+                         data-button="true"
+                         data-animate-reset="single-heartbeat"
+                         data-chatMemberID="1786380"
+                         title="发送讯息给Yu">
+
+                        <svg class="icon-30">
+                            <use xlink:href="/assets/desktop/icons/icons.svg#icon-messages"></use>
+                        </svg>
+                    </div>
+
+                </div>
+                <div class="fill-action-unhighlight relative" data-button="true" data-animate-reset="heartbeat">
+                    <div class="pointer no-highlight flex items-center"
+                         data-cm-modal-URL="/zc/profile/showphotodisplaywidget?memberid=1786380"
+                         title="照片">
+
+                        <svg class="icon-30">
+                            <use xlink:href="/assets/desktop/icons/icons.svg#icon-camera"></use>
+                        </svg>
+                        <div class="ms2 h5">5</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
-    <div class="flex flex-column col-6 p2">
 
-        <div class="border-box absolute top-0 right-0 m2 flex items-center justify-center online circle border-white fill-grey">
-            <svg class="col-12 height-12" data-tooltip="ttOn">
-                <use xlink:href="/assets/desktop/icons/icons.svg#icon-online"></use>
-            </svg>
-            <div hidden>最后登陆时间: 2 小时前</div>
-        </div>
-
-        <div class="block mt1 flex items-center">
-            <a href="/zc/profile/showProfile/ID/4006940?searchposition=1&searchtotal=1000"
-               class="h2 inline-block m0 truncate max-width-70">{$m.main_pic}</a>
-            <div class="icon-membership fill-platinum inline-block align-middle ms1 relative">
-                <svg data-tooltip="ttCn">
-                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-profile"></use>
-                </svg>
-                <div hidden>白金会员</div>
-            </div>
+    {/volist}
 
 
-            <!--<div class="icon-verified fill-green inline-block relative">
-                <svg data-tooltip="ttCn">
-                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-verification-white"></use>
-                </svg>
-                <div hidden>已验证</div>
-            </div>-->
-
-        </div>
-
-        <div class="h5"><a href="/zc/profile/showProfile/ID/4006940?searchposition=1&searchtotal=1000"> {$m.age} <span>&#8226;</span>
-            {$m.address|default=""}</a></div>
-
-        <!--<div class="h5">
-            寻找: 男性 30 - 45
-        </div>-->
-        <!--<div class="mb2">
 
 
-            <div class="tagline h3 mt2 col-11 text-truncate-multi text-truncate-multi-2"><a
-                    href="/zc/profile/showProfile/ID/4006940?searchposition=1&searchtotal=1000">I am waiting for
-                you</a></div>
 
-            <p class="h4 m0 mt1 text-truncate-multi text-truncate-multi-6"><a
-                    href="/zc/profile/showProfile/ID/4006940?searchposition=1&searchtotal=1000">I am looking for a
-                serious relationship, are you the one special?</a></p>
-
-        </div>-->
-
-
-        <div class="flex flex-auto items-end justify-between ">
-            <div class="flex items-center">
-                <div data-button="true"
-
-                     class="pointer me3 relative fill-action-unhighlight"
-                     data-animation="pop-fade-out"
-                     data-showInterest="/zc/memberrelationship/showInterest/0B0783E0CDCD46B4459D0A"
-                     title="发送秋波给sophie"
-
-                >
-
-                    <svg class="icon-30">
-                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-heart"></use>
-                    </svg>
-                </div>
-                <div class="pointer me3 fill-action-unhighlight relative"
-                     data-button="true"
-                     data-animate-reset="single-heartbeat"
-                     data-chatMemberID="4006940"
-                     title="发送讯息给sophie">
-
-                    <svg class="icon-30">
-                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-messages"></use>
-                    </svg>
-                </div>
-
-            </div>
-            <div class="fill-action-unhighlight relative" data-button="true" data-animate-reset="heartbeat">
-                <div class="pointer no-highlight flex items-center"
-                     data-cm-modal-URL="/zc/profile/showphotodisplaywidget?memberid=4006940"
-                     title="照片">
-
-                    <svg class="icon-30">
-                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-camera"></use>
-                    </svg>
-                    <div class="ms2 h5">2</div>
+    <a href="/?pno={$nextPno}" class="block col m1 card-s">
+        <div class="col-12 height-12">
+            <div class="card height-12 flex items-center justify-center next-button rounded border">
+                <div class="flex items-center">
+                    <div class="center">
+                        <h2 class="h2 m0 caps">下一页</h2>
+                    </div>
+                    <div class="fill-standard">
+                        <svg class="icon-next-button">
+                            <use xlink:href="/assets/desktop/icons/icons.svg#icon-menuright"></use>
+                        </svg>
+                    </div>
                 </div>
             </div>
-        </div>
-
-    </div>
-</div>
-{/volist}
-
-
-<div class="card-s card m1 flex flex-wrap overflow-hidden bg-white shadow relative">
-    <a id="2260491" class="absolute top-minus-100"></a>
-
-    <a class="flex items-center col-12 justify-center std relative"
-       href="/en/profile/showProfile/ID/2260491?searchposition=148&amp;searchtotal=1000">
-
-        <div class="profile-bg" data-cm-modal-url=""
-             style="background-image:url('https://cdn.chinalovecupid.com/memphoto/Photo1/big/2260491.jpg?impolicy=facegravity-fcrop-var&amp;w=250&amp;h=250')"></div>
-
-
-        <div class="border-box z2 flex items-center justify-center standard-online online circle border-white">
-            <svg class="col-12 height-12" data-tooltip="ttOn">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                     xlink:href="/assets/desktop/icons/icons.svg#icon-online"></use>
-            </svg>
-            <div hidden="">I'm Online</div>
         </div>
     </a>
-
-    <div class="sdh col-12 relative flex flex-column">
-
-        <div class="flex items-center mx2 mt2">
-            <a href="/en/profile/showProfile/ID/2260491?searchposition=148&amp;searchtotal=1000"
-               class="h3 color-dark-grey m0 truncate max-width-85">Elva</a>
-            <div class="icon-membership ms1 fill-standard relative">
-                <svg class="ms1 fill-standard relative" data-tooltip="ttCn">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                         xlink:href="/assets/desktop/icons/icons.svg#icon-profile"></use>
-                </svg>
-                <div hidden="">Standard Member</div>
-            </div>
-
-
-        </div>
-
-        <div class="mx2 h5">
-            35 <span>•</span> Taiyuan, Shanxi, China
-        </div>
-
-        <div class="mx2 h5">
-            Seeking: Male 29 - 45
-        </div>
-
-
-        <div class="flex flex-auto items-end justify-between mx2 my2">
-            <div class="flex items-center">
-                <div data-button="true" class="pointer me3 relative fill-action-unhighlight"
-                     data-animation="pop-fade-out"
-                     data-showinterest="/en/memberrelationship/showInterest/0D0585E6C0C047B4459D0A"
-                     title="Show interest in Elva">
-
-                    <svg class="icon-30">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                             xlink:href="/assets/desktop/icons/icons.svg#icon-heart"></use>
-                    </svg>
-                </div>
-                <div class="pointer me3 fill-action-unhighlight relative" data-button="true"
-                     data-animate-reset="single-heartbeat" data-chatmemberid="2260491" title="Send Elva a message">
-
-                    <svg class="icon-30">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                             xlink:href="/assets/desktop/icons/icons.svg#icon-messages"></use>
-                    </svg>
-                </div>
-
-            </div>
-            <div class="fill-action-unhighlight relative" data-button="true" data-animate-reset="heartbeat">
-                <div class="pointer no-highlight flex items-center"
-                     data-cm-modal-url="/en/profile/showphotodisplaywidget?memberid=2260491" title="Photos">
-
-                    <svg class="icon-30">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                             xlink:href="/assets/desktop/icons/icons.svg#icon-camera"></use>
-                    </svg>
-                    <div class="ms2 h5">5</div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<div class="card-s card m1 flex flex-wrap overflow-hidden bg-white shadow relative">
-    <a id="1786380" class="absolute top-minus-100"></a>
-
-    <a class="flex items-center col-12 justify-center std relative"
-       href="/zc/profile/showProfile/ID/1786380?searchposition=35&searchtotal=1000">
-
-        <div class="profile-bg" data-cm-modal-URL=""
-             style="background-image:url('https://cdn.chinalovecupid.com/memphoto/Photo1/big/1786380.jpg?impolicy=facegravity-fcrop-var&w=250&h=250')"></div>
-
-
-        <div class="border-box z2 flex items-center justify-center standard-online online circle border-white">
-            <svg class="col-12 height-12" data-tooltip="ttOn">
-                <use xlink:href="/assets/desktop/icons/icons.svg#icon-online"></use>
-            </svg>
-            <div hidden>我在线</div>
-        </div>
-    </a>
-
-    <div class="sdh col-12 relative flex flex-column">
-
-        <div class="flex items-center mx2 mt2">
-            <a href="/zc/profile/showProfile/ID/1786380?searchposition=35&searchtotal=1000"
-               class="h3 color-dark-grey m0 truncate max-width-85">Yu</a>
-            <div class="icon-membership ms1 fill-standard relative">
-                <svg class="ms1 fill-standard relative" data-tooltip="ttCn">
-                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-profile"></use>
-                </svg>
-                <div hidden>普通会员</div>
-            </div>
-
-
-        </div>
-
-        <div class="mx2 h5">
-            30 <span>&#8226;</span> Zhanjiang, Guangdong, 中国
-        </div>
-
-        <div class="mx2 h5">
-            寻找: 男性 30 - 42
-        </div>
-
-
-        <div class="flex flex-auto items-end justify-between mx2 my2">
-            <div class="flex items-center">
-                <div data-button="true"
-
-                     class="pointer me3 relative fill-action-unhighlight"
-                     data-animation="pop-fade-out"
-                     data-showInterest="/zc/memberrelationship/showInterest/0E008BE0C7C146B4459D0A"
-                     title="发送秋波给Yu"
-
-                >
-
-                    <svg class="icon-30">
-                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-heart"></use>
-                    </svg>
-                </div>
-                <div class="pointer me3 fill-action-unhighlight relative"
-                     data-button="true"
-                     data-animate-reset="single-heartbeat"
-                     data-chatMemberID="1786380"
-                     title="发送讯息给Yu">
-
-                    <svg class="icon-30">
-                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-messages"></use>
-                    </svg>
-                </div>
-
-            </div>
-            <div class="fill-action-unhighlight relative" data-button="true" data-animate-reset="heartbeat">
-                <div class="pointer no-highlight flex items-center"
-                     data-cm-modal-URL="/zc/profile/showphotodisplaywidget?memberid=1786380"
-                     title="照片">
-
-                    <svg class="icon-30">
-                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-camera"></use>
-                    </svg>
-                    <div class="ms2 h5">5</div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-
-<a href="/?pno={$nextPno}" class="block col m1 card-s">
-    <div class="col-12 height-12">
-        <div class="card height-12 flex items-center justify-center next-button rounded border">
-            <div class="flex items-center">
-                <div class="center">
-                    <h2 class="h2 m0 caps">下一页</h2>
-                </div>
-                <div class="fill-standard">
-                    <svg class="icon-next-button">
-                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-menuright"></use>
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </div>
-</a>
 </div>
 
 <div class="max-width mt2 px2 mx-auto">
