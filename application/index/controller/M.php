@@ -38,8 +38,9 @@ class M extends Controller
         $index->headData();
         $id = request()->param("id");
         $member = Member::get($id);
-        return view('/index/profile', ['u' => $member]);
+        return view('/index/profile', ['m' => $member]);
     }
+
 
     public function profiledit()
     {

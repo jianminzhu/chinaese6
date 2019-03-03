@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 
-    <title>Elva / 35 / 女性 / 太原市, 山西, 中国 | ChinaLoveCupid.com</title>
+    <title>{$m.nickname} / {$m.age} / {$m.address},{$m.country|default=""}| www.chinesecompanion.com</title>
 
 
     <meta id="defaultmessage" content="处理过程中发生问题"/>
@@ -29,15 +29,15 @@
 
 
 <div class="absolute right-0 m1 h5 flex">
-    <div class="me3">最后登陆时间: 昨天</div>
-    148 / 1000
+    <div class="me3"><!--最后登陆时间: 昨天--></div>
+    <!--148 / 1000-->
 </div>
 <div class="profile sm-col-9 lg-col-8 mx-auto flex">
     <div class="profile-image circle pointer shadow border me3 relative flex-none">
         <div class="overflow-hidden fit col-12 height-12 circle card-image-bg-color">
 
             <div class="profile-bg" data-cm-modal-URL="/zc/profile/showphotodisplaywidget?memberid=2260491"
-                 style="background-image:url('https://cdn.chinalovecupid.com/memphoto/Photo1/big/2260491.jpg?impolicy=facegravity-fcrop-var&w=200&h=200')"></div>
+                 style="background-image:url('http://www.bytrip.com/{$m.main_pic}')"></div>
 
         </div>
 
@@ -50,7 +50,7 @@
             </svg>
 
             <div class="tooltip-text tooltip-text-width-auto truncate tooltip-text-center h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
-                最后登陆时间: 昨天
+                <!--     最后登陆时间: 昨天-->
             </div>
 
         </div>
@@ -58,27 +58,20 @@
     <div class="profile-details mt3 col-12">
         <div class="profile-details-name flex justify-between">
             <h2 class="m0 mt2 flex items-center color-dark-grey">
-                Elva
-
-
+                {$m.nickname}
             </h2>
         </div>
 
-        <p class="m0">35 <span>&#8226;</span> 太原市, 山西, 中国 </p>
+        <p class="m0">{$m.age} <span>&#8226;</span> {$m.address},{$m.country|default=""} </p>
         <p class="mt1 mb0">
-            女性 /
-            单身 /
-            会员号: 2260491
+            {$m.sex=="0" ? "女" :"男"} /
+            {:lang("会员号")}: {$m.id}
         </p>
 
         <p class="mt0 mb2">
-            寻找 男性 29 - 45 寻找: 友谊, 婚姻对象
         </p>
 
-
         <div class="flex">
-
-
             <div class="flex flex-auto items-center justify-between">
 
                 <div class="flex items-center mxn1 fill-white">
@@ -93,7 +86,7 @@
                         </svg>
 
                         <div class="tooltip-text truncate tooltip-text-width-auto h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
-                            发送秋波给Elva
+                            {:lang("发送秋波给")}{$m.nickname}
                         </div>
 
                     </div>
@@ -105,18 +98,18 @@
                         </svg>
 
                         <div class="tooltip-text truncate tooltip-text-width-auto h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
-                            发送讯息给Elva
+                            {:lang("发送消息给")}{$m.nickname}
                         </div>
 
                     </div>
-                    <div class="pointer circle relative me1 fill-action-highlight" >
+                    <div class="pointer circle relative me1 fill-action-highlight">
 
                         <svg class="icon-50 tooltip">
                             <use xlink:href="/assets/desktop/icons/icons.svg#icon-star"></use>
                         </svg>
 
                         <div class="tooltip-text truncate tooltip-text-center tooltip-text-width-auto h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
-                            将Elva加入最爱
+                            {:lang("加入最爱")}
                         </div>
 
                     </div>
@@ -135,12 +128,12 @@
 
         <div class="row flex items-stretch">
             <div class="col-3 flex items-center justify-between p1">
-                身高:
+                {:lang("身高")}:
             </div>
             <div class="col-5 me3 p1 relative overview-details-bg ">
 
                 <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
-                158 cm
+                {$m.height!=""?$m.height."cm":""}
             </div>
 
 
@@ -148,36 +141,25 @@
 
         <div class="row flex items-stretch">
             <div class="col-3 flex items-center justify-between p1">
-                体重:
+                {:lang("体重")}:
             </div>
             <div class="col-5 me3 p1 relative overview-details-bg ">
                 <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
-                45 kg
+                {$m.weight!=""?$m.weight."kg":""}
             </div>
         </div>
+
 
         <div class="row flex items-stretch">
             <div class="col-3 flex items-center justify-between p1">
-                体型:
+                {:lang("国籍")}:
             </div>
             <div class="col-5 me3 p1 relative overview-details-bg ">
 
-                <div class="nomatch absolute top-0 right-0 bottom-0 left-0" title="会员不符合您搜索条件"></div>
-                娇小
+                <div class="match absolute top-0 right-0 bottom-0 left-0"></div>
+                {$m.country|default= "" }
             </div>
         </div>
-
-        <div class="row flex items-stretch">
-            <div class="col-3 flex items-center justify-between p1">
-                国籍:
-            </div>
-            <div class="col-5 me3 p1 relative overview-details-bg ">
-
-                <div class="match absolute top-0 right-0 bottom-0 left-0" title="会员符合您搜索条件"></div>
-                中国
-            </div>
-        </div>
-
     </div>
 </div>
 </body>

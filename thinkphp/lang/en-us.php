@@ -14,8 +14,16 @@ return [
     /*  公用  */
     "邮箱" => "Email",
     "密码" => "password",
-
+    "发送秋波给" => "sent intrest to ",
+    "发送消息给" => "sent msg to ",
     "昵称"=>"First Name",
+    "加入最爱" => "add to favorite",
+    "女"=>"female",
+    "男"=>"male",
+    "会员号" => "member id",
+    "身高" => "height",
+    "体重" => "weight",
+    "国籍" => "country",
 
     "请输入电子邮箱地址"=>"please input email",
     "请输入密码"=>"please input password",

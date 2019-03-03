@@ -81,7 +81,7 @@
     <meta charset="UTF-8">
     <title>系统发生错误</title>
     <meta name="robots" content="noindex,nofollow"  />
-    <meta http-equiv="refresh" content="0; url=/">  
+
     <style>
         /* Base */
         body {
