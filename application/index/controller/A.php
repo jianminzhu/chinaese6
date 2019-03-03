@@ -28,7 +28,7 @@ class A extends Controller
         session('loginUser', null);
 
         session("isLogin", null);
-        $this->redirect('/index/index');
+        $this->redirect('/');
     }
 
     public function doLogin()
