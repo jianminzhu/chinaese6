@@ -1,9 +1,12 @@
 <?php
 
 namespace app\index\controller;
+require('ext_util/fileUtil.php');
+require('ext_util/BytripUtil.php');
 
 use app\index\model\Member;
 use think\Controller;
+use think\Db;
 
 class M extends Controller
 {
@@ -48,4 +51,25 @@ class M extends Controller
         $dbMember = Member::get(['email' => $loginUser->email]);
         return view('/index/profile_edit', ['u' => $dbMember]);
     }
+
+    public function pics(){
+        $id = request()->param("id");
+        $item = BytripMemberPics($id);
+        if ($item["pics"]) {
+            foreach ($item["pics"] as $pic) {
+                $imgUrl = "http://www.bytrip.com/" . $pic["file_path"];
+                ExtDownload($imgUrl,".");
+
+                try {
+                    Db::table('pics')->insert($pic);
+                } catch (\Exception $e) {
+                }
+
+            }
+        }
+        return   json_encode($item);;
+
+    }
 }
+
+
