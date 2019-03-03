@@ -15,7 +15,7 @@ return [
 
 
     //  'hostname' => '127.0.0.1',
-    'hostname'        => 'localhost',
+    'hostname'        => 'az1-ls7.a2hosting.com',
     'database' => 'chinese6_companion',
     'username' => 'chinese6_test2',
     'password' => 'xAGfF&WzdLP$',
