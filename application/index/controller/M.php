@@ -52,13 +52,14 @@ class M extends Controller
         return view('/index/profile_edit', ['u' => $dbMember]);
     }
 
-    public function pics(){
+    public function pics()
+    {
         $id = request()->param("id");
         $item = BytripMemberPics($id);
         if ($item["pics"]) {
             foreach ($item["pics"] as $pic) {
                 $imgUrl = "http://www.bytrip.com/" . $pic["file_path"];
-                ExtDownload($imgUrl,".");
+                ExtDownload($imgUrl, ".");
 
                 try {
                     Db::table('pics')->insert($pic);
@@ -67,7 +68,7 @@ class M extends Controller
 
             }
         }
-        return   json_encode($item);;
+        return json_encode($item);;
 
     }
 }
