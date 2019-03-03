@@ -14,11 +14,7 @@
 
     <meta name="viewport"
           content="height=device-height, initial-scale=1, user-scalable=no, maximum-scale=1, shrink-to-fit=yes">
-
-
     <meta name="stm-result" content="ok"/>
-
-
     {include file="../application/index/view/index/_commoncss.html" /}
 </head>
 <body>
@@ -29,11 +25,12 @@
     <div id="profileImages" class="images-wrapper relative flex col-12 m0 p0" data-bb="1">
         <div class="profile-tile height-12 flex flex-wrap flex-auto profile-tile-bg-2">
         </div>
-        {volist name="pics" id="pic"}
+        {volist name="pics" id="pic" key="k"}
+        {if condition="$k<10"}
         <div class="profile-tile relative profile-tile-width-5 height-12 profile-tile-bg-1 pointer"
              style="background-image: url('{$pic.file_path}');">
-
         </div>
+        {/if}
 
         {/volist}
 
