@@ -25,6 +25,8 @@ return [
     "体重" => "weight",
     "国籍" => "country",
 
+    "返回搜索结果" => "to search ",
+
     "请输入电子邮箱地址"=>"please input email",
     "请输入密码"=>"please input password",
     "忘记密码" => "forget password",

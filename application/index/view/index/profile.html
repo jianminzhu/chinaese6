@@ -24,13 +24,26 @@
 <body>
 {include file="../application/index/view/index/_head.html" /}
 
+<div class="relative flex">
 
-<br><br>
+    <div id="profileImages" class="images-wrapper relative flex col-12 m0 p0" data-bb="1">
+        <div class="profile-tile height-12 flex flex-wrap flex-auto profile-tile-bg-2">
+        </div>
+        {volist name="pics" id="pic"}
+        <div class="profile-tile relative profile-tile-width-5 height-12 profile-tile-bg-1 pointer"
+             style="background-image: url('{$pic.file_path}');">
+
+        </div>
+
+        {/volist}
 
 
-<div class="absolute right-0 m1 h5 flex">
-    <div class="me3"><!--最后登陆时间: 昨天--></div>
-    <!--148 / 1000-->
+        <div class="profile-tile height-12 flex flex-wrap flex-auto profile-tile-bg-2">
+        </div>
+
+        <a class="back-button m2 py1 px2 pill absolute top-0 left-0" href="/zc/home/showMenu?pageno=1#2653979">{:lang("返回搜索结果")}</a>
+    </div>
+
 </div>
 <div class="profile sm-col-9 lg-col-8 mx-auto flex">
     <div class="profile-image circle pointer shadow border me3 relative flex-none">

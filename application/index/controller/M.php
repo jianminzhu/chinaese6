@@ -41,7 +41,8 @@ class M extends Controller
         $index->headData();
         $id = request()->param("id");
         $member = Member::get($id);
-        return view('/index/profile', ['m' => $member]);
+        $pics = Db::table("pics")->where("m_id", $id)->select();
+        return view('/index/profile', ['m' => $member, "pics" => $pics]);
     }
 
 
@@ -54,7 +55,7 @@ class M extends Controller
 
     public function pics()
     {
-        $ids = Db::table('member')->where ("isUpdateHW", 0)->column("id");
+        $ids = Db::table('member')->where("isUpdateHW", 0)->column("id");
         $all = [];
         foreach ($ids as $id) {
             $all[] = $this->updateMember($id);
