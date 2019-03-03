@@ -1096,14 +1096,8 @@
         <div class="sdh col-12 relative flex flex-column">
 
             <div class="flex items-center mx2 mt2">
-                <atarget="_blank" href="/index.php/index/m/profile?id={$m.id}"
+                <a target="_blank" href="/index.php/index/m/profile?id={$m.id}"
                    class="h3 color-dark-grey m0 truncate max-width-85">{$m.nickname}</a>
-                <div class="icon-membership ms1 fill-standard relative">
-                    <svg class="ms1 fill-standard relative" data-tooltip="ttCn">
-                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-profile"></use>
-                    </svg>
-                    <div hidden>{:lang("普通会员")}</div>
-                </div>
             </div>
 
             <div class="mx2 h5">
@@ -1112,17 +1106,11 @@
 
 
 
-            <div class="flex flex-auto items-end justify-between mx2 my2">
+            <div class="flex flex-auto items-end justify-between mx2 my3">
                 <div class="flex items-center">
-                    <div data-button="true"
-
+                    <div
                          class="pointer me3 relative fill-action-unhighlight"
-                         data-animation="pop-fade-out"
-                         data-showInterest="/zc/memberrelationship/showInterest/0E008BE0C7C146B4459D0A"
-                         title="发送秋波给Yu"
-
                     >
-
                         <svg class="icon-30">
                             <use xlink:href="/assets/desktop/icons/icons.svg#icon-heart"></use>
                         </svg>
