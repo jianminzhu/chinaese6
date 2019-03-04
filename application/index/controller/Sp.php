@@ -87,9 +87,9 @@ class Sp extends Controller
             try {
                 $member["pwd"] = "e3e0e0b164ed59c430312854451d1d22 <br>";
                 Db::table("member")->insert($member);
-                echo "<br>" . "add " . $member["nickname"]." succ";
+                echo " | IN(" . $member["nickname"].")";
             } catch (\Exception $e) {
-                echo "<br>" .   $member["nickname"]." is exists";
+                echo " | EX(" .   $member["nickname"].")";
             }
         }
     }
