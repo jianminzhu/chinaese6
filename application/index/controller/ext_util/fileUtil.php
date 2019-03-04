@@ -5,7 +5,7 @@ function ExtDirectory($dir)
 
 }
 
-function ExtDownload($url, $path = 'downloads/', $withHost = false, $isCover = false)
+function ExtDownloadPic($url, $path = 'downloads/', $withHost = false, $isCover = false)
 {
     $urlParam = parse_url($url);
     $pathinfo = pathinfo($urlParam["path"]);
@@ -20,6 +20,23 @@ function ExtDownload($url, $path = 'downloads/', $withHost = false, $isCover = f
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
         $file = curl_exec($ch);
         curl_close($ch);
+        $resource = fopen($realFileFullPath, 'a');
+        fwrite($resource, $file);
+        fclose($resource);
+    }
+}
+
+
+function ExtDownloadTxt($url, $path = 'downloads/', $withHost = false, $isCover = false)
+{
+    $urlParam = parse_url($url);
+    $pathinfo = pathinfo($urlParam["path"]);
+    $fullPath = $path . ($withHost ? DIRECTORY_SEPARATOR . $urlParam["host"] : "") . DIRECTORY_SEPARATOR . $pathinfo["dirname"];
+    $filename = $pathinfo["basename"];
+    $realFileFullPath = $fullPath . DIRECTORY_SEPARATOR . $filename;
+    if (!file_exists($realFileFullPath) || $isCover) {
+        ExtDirectory($fullPath);
+        $file = file_get_contents($url);
         $resource = fopen($realFileFullPath, 'a');
         fwrite($resource, $file);
         fclose($resource);
