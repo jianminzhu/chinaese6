@@ -67,7 +67,10 @@ class Sp extends Controller
                 $needInsertPics [] = ["m_id" => $member["id"], "file_path" => $img];
             }
             if ($needInsertPics) {
-                Db::table("pics")->insertAll($needInsertPics);
+                try {
+                    Db::table("pics")->insertAll($needInsertPics);
+                } catch (\Exception $e) {
+                }
             }
             $item["needInsertImgs"] = $needInsertImgs;
         }
