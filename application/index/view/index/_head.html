@@ -22,8 +22,6 @@
                 <div class="profile-bg" data-cm-modal-url="" style="background-image:url('/public/upload/{$u.main_pic}')"></div>
             </div>
         </div>
-
-
         {/if}
         <div>
             {if condition="$Think.session.isLogin eq true"}
@@ -35,10 +33,9 @@
             {else /}
             <a href="/index.php/index/a/login"
                class="h3 rounded py1 px2 btn-color btn-bg border-none col-12 relative overflow-hidden shadow"
-               tabindex="3" data-disable-on-click="true">登录
+               tabindex="3" data-disable-on-click="true">{:lang("登录")}
             </a>
             {/if}
         </div>
     </div>
-</div>
-
+</div><
