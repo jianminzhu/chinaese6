@@ -11,7 +11,7 @@
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  * @package phpQuery
  */
-
+require_once "fileUtil.php";
 // class names for instanceof
 // TODO move them as class constants into phpQuery
 define('DOMDOCUMENT', 'DOMDocument');
@@ -404,7 +404,7 @@ abstract class phpQuery {
 	 */
 	public static function newDocumentFile($file, $contentType = null) {
 		$documentID = self::createDocumentWrapper(
-			file_get_contents($file), $contentType
+			ExtGetHtml($file), $contentType
 		);
 		return new phpQueryObject($documentID);
 	}
