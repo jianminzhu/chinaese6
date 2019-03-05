@@ -16,9 +16,7 @@ class SpCupidAddress extends Controller
         foreach ($countyids as $countyid) {
             try {
                 $this->getAllAddress(42);
-                echo $countyid . ' add succ';
             } catch (\Exception $e) {
-                echo $countyid . "  " . $e->getMessage();
             }
         }
         return "succ";
