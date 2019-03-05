@@ -49,8 +49,8 @@ class SpCupidAddress extends Controller
                 $cityid = $city->ATTRIBUTEID;
                 $all[] = [
                     "attributeid" => $cityid,
-                    "translation" => $state->TRANSLATION,
-                    "reorder" => $state->REORDER,
+                    "translation" => $city->TRANSLATION,
+                    "reorder" => $city->REORDER,
                     "countryid" => $countryid,
                     "stateid" => $stateId
                 ];
