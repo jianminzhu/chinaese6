@@ -48,6 +48,7 @@ class SpAddress extends Controller
     {
         $contryStateUrl = "https://www.chinalovecupid.com/zc/widget/loadstates?countryid=$countryid";
         $states = json_decode(ExtGetHtml($contryStateUrl));
+        echo json_encode($states)."ddddddddddddddddddd";
         $all = [];
         foreach ($states as $state) {
             $stateId = $state->ATTRIBUTEID;
