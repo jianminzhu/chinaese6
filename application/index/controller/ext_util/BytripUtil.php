@@ -23,18 +23,18 @@ function BytripSearchMembers($url)
             "profile" => $profile,
             "address" => $address,
             "age" => $age,
-            "sex" => $sex == "男" ? 1: 0
+            "sex" => $sex == "男" ? 1 : 0
         ];
     }
     return $toDbMembers;
 }
 
 
-
-function BytripMemberPics($id)
+function BytripMember($id)
 {
     $url = "http://www.bytrip.com/i/u_$id.html";
     $detail = phpQuery::newDocumentFile($url);
+
     pq($detail);
     $height = null;
     try {
@@ -46,7 +46,10 @@ function BytripMemberPics($id)
         $weight = get_numerics(pq("p.des span:eq(1)")->html())[0];
     } catch (Exception $e) {
     }
+
     $pics = [];
+
+
     foreach (pq("div.m-ablum div.bd li img") as $imgs) {
         try {
             $filePath = parse_url(pq($imgs)->attr("src"))["path"];
@@ -54,5 +57,15 @@ function BytripMemberPics($id)
         } catch (Exception $e) {
         }
     }
-    return ["pics" => $pics, "member" => ["id" => $id, "height" => $height, "weight" => $weight]];
+    $member = ["id" => $id, "height" => $height, "weight" => $weight];
+    $main_pic = pq(" div.m-user > div > div.img > img")->attr("src");
+    $nickname = pq("div.m-user p.information a.name")->html();
+    $member["nickname"] = $nickname;
+    $member["main_pic"] = $main_pic;
+    try {
+        $sex = pq("body > div:nth-child(4) > div > div.view > div.view-left > section.m-peo > table > tbody > tr:nth-child(2) > td:nth-child(2) > b")->html();
+        $member["sex"] = ($sex == "男" ? 1 : 0);
+    } catch (Exception $e) {
+    }
+    return ["pics" => $pics, "member" => $member];
 }

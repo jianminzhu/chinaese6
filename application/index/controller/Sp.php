@@ -10,6 +10,32 @@ use think\Db;
 
 class Sp extends Controller
 {
+
+    public function spiderMembers()
+
+    {
+        $idsStr = request()->param("ids");
+        $patterns = "/\d+/";
+        preg_match_all($patterns, $idsStr, $ids);
+        $a = [];
+        foreach ($ids[0] as $id) {
+            $id = trim($id);
+            if ($id != "") {
+                $member = $this->updateMember($id)["member"];
+                $id = $member["id"];
+                $a[] = "<a target='_blank' href='/index.php/index/m/profile?id=$id'>" . $member["nickname"] . "</a>";
+            }
+        }
+        $html = "
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset=\"UTF-8\"></head><body>
+        " . implode("<br>", $a) . "
+        </body></html>";
+        return $html;
+    }
+
     public function pics()
     {
         $ids = Db::table('member')->where("isUpdateHW", 0)->column("id");
@@ -46,13 +72,18 @@ class Sp extends Controller
      */
     public function updateMember($id)
     {
-        $item = BytripMemberPics($id);
-        if ($item["pics"]) {
-            //height weight
+        $item = BytripMember($id);
+        if ($item["member"]) {
             $member = $item["member"];
-            $member["isUpdateHW"] = 1;
-            Db::table('member')->where(["isUpdateHW" => "0", "id" => $member["id"]])->update($member);
-
+            try {
+                $member["pwd"] = md5("111222333");
+                Db::table("member")->insert($member);
+            } catch (\Exception $e) {
+                $member["isUpdateHW"] = 1;
+                Db::table('member')->where(["isUpdateHW" => "0", "id" => $member["id"]])->update($member);
+            }
+        }
+        if ($item["pics"]) {
             $imgs = [];
             foreach ($item["pics"] as $pic) {
                 $file_path = $pic["file_path"];
@@ -61,7 +92,6 @@ class Sp extends Controller
                 ExtDownloadPic($imgUrl, ".");
             }
             $inDbImgs = Db::table('pics')->whereIn("file_path", $imgs)->column("file_path");
-
             $needInsertImgs = array_diff($imgs, $inDbImgs);
             $needInsertPics = [];
             foreach ($needInsertImgs as $img) {
@@ -84,9 +114,7 @@ class Sp extends Controller
      */
     public function parseMemberTodb($url)
     {
-        echo "<br>" . $url . " starting spider ";
         $members = BytripSearchMembers($url);
-        echo "<br>" . $url . " parse ok ";
         foreach ($members as $member) {
             try {
                 $member["pwd"] = "e3e0e0b164ed59c430312854451d1d22 <br>";
@@ -205,6 +233,7 @@ class Sp extends Controller
         $dataDb = Db::table("address")->select();
         return json_encode($dataDb);
     }
+
 
 }
 

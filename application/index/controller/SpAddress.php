@@ -4,14 +4,25 @@ namespace app\index\controller;
 require('ext_util/fileUtil.php');
 require('ext_util/BytripUtil.php');
 
-use app\index\model\cupidaddress;
 use think\Controller;
 use think\Db;
 
 
-
-class SpCupidAddress extends Controller
+class SpAddress extends Controller
 {
+    public function loadcities()
+    {
+        $stateid = request()->param("stateid");
+        echo $stateid;
+        if ($stateid && trim($stateid) != "") {
+            return json_encode(Db::table("cupidaddress")->where("stateid", $stateid)->select());
+        }
+        $countryid = request()->param("countryid");
+        if ($countryid && trim($countryid) != "") {
+            return json_encode(Db::table("cupidaddress")->where(["countryid" => $countryid, "stateid" => null])->select());
+        }
+        return json_encode([]);
+    }
 
 
     public function allCounty()
@@ -55,7 +66,6 @@ class SpCupidAddress extends Controller
                 ];
             }
         }
-
         return $all;
     }
 

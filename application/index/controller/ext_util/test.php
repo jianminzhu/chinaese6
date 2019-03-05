@@ -1,19 +1,15 @@
 <?php
-include_once "ext_util/fileUtil.php";
-//$url = "http://www.bytrip.com/Index/Fere/index/status/2/area/310100/low_age/18/high_age/60";
-//if ($url != "" && strpos($url, "://www.bytrip.com")) {
-//    echo $url;
-//}
-//
-//
-//echo "aaaaa";
+require_once 'rb.php';
 
 
-$szUrl = "https://www.chinalovecupid.com/zc/widget/loadstates?countryid=5";
-/**
- * @param $szUrl
- * @return mixed
- */
+R::setup("mysql:host=localhost;dbname=test","root","root");
+//创建一个表（也可以指为实例化一个表）
+$tableName ="member";
 
-$data = ExtGetHtml($szUrl);
-echo $data;
+$result = R::getAll("select * from member");
+
+
+echo json_encode($result);
+echo "ddd";
+
+
