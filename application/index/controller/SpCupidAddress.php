@@ -6,7 +6,6 @@ require('ext_util/BytripUtil.php');
 
 use app\index\model\Cupidaddress;
 use think\Controller;
-use think\Db;
 
 class SpCupidAddress extends Controller
 {
@@ -20,7 +19,7 @@ class SpCupidAddress extends Controller
                 $this->getAllAddress(42);
                 echo $countyid . ' add succ';
             } catch (\Exception $e) {
-                echo $countyid ."  ".$e->getMessage();
+                echo $countyid . "  " . $e->getMessage();
             }
         }
         return "succ";
@@ -31,8 +30,9 @@ class SpCupidAddress extends Controller
         $contryStateUrl = "https://www.chinalovecupid.com/zc/widget/loadstates?countryid=$countryid";
         $states = json_decode(ExtGetHtml($contryStateUrl));
         foreach ($states as $state) {
+            $stateId = $state->ATTRIBUTEID;
             $toDb = [
-                "attributeid" => $state->ATTRIBUTEID,
+                "attributeid" => $stateId,
                 "translation" => $state->TRANSLATION,
                 "reorder" => $state->REORDER,
                 "countryid" => $countryid,
@@ -41,6 +41,22 @@ class SpCupidAddress extends Controller
                 $spCupidAddress = new CupidAddress($toDb);
                 $spCupidAddress->save();
             } catch (\Exception $e) {
+            }
+            $citys = json_decode(ExtGetHtml("https: //www.chinalovecupid.com/zc/widget/loadcities?stateid=$stateId"));
+            foreach ($citys as $city) {
+                $stateid = $city->ATTRIBUTEID;
+                $toDb = [
+                    "attributeid" => $stateid,
+                    "translation" => $state->TRANSLATION,
+                    "reorder" => $state->REORDER,
+                    "countryid" => $countryid,
+                    "stateid"=>$stateid
+                ];
+                try {
+                    $spCupidAddress = new CupidAddress($toDb);
+                    $spCupidAddress->save();
+                } catch (\Exception $e) {
+                }
             }
         }
     }
