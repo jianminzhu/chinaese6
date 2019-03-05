@@ -37,7 +37,7 @@ class SpCupidAddress extends Controller
                 "reorder" => $state->REORDER,
                 "countryid" => $countryid,
             ];
-            $citys = json_decode(ExtGetHtml("https: //www.chinalovecupid.com/zc/widget/loadcities?stateid=$stateId"));
+            $citys = json_decode(ExtGetHtml("https://www.chinalovecupid.com/zc/widget/loadcities?stateid=$stateId"));
             foreach ($citys as $city) {
                 $stateid = $city->ATTRIBUTEID;
                 $all[] = [
