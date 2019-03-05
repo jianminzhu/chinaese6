@@ -14,8 +14,13 @@ class SpCupidAddress extends Controller
 {
     public function country()
     {
-        $all= $this->getAllAddress(42);
-        Db::table("cupidaddress")->insertAll($all);
+        $id = 42;
+        $all= $this->getAllAddress($id);
+        try {
+            Db::table("cupidaddress")->insertAll($all);
+        } catch (\Exception $e) {
+            echo "insert county $id exception" . $e->getMessage();
+        }
 
         return json_encode($all);
     }
