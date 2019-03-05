@@ -233,8 +233,6 @@ class Sp extends Controller
         $dataDb = Db::table("address")->select();
         return json_encode($dataDb);
     }
-
-
 }
 
 

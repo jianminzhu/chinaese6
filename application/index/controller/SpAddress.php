@@ -40,6 +40,9 @@ class SpAddress extends Controller
         return "finished";
 
     }
+    public function  test(){
+        return json_encode($this->getAllAddress(42));
+    }
 
     public function getAllAddress($countryid)
     {
