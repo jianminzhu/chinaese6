@@ -4,7 +4,6 @@ namespace app\index\controller;
 require('ext_util/fileUtil.php');
 require('ext_util/BytripUtil.php');
 
-use app\index\model\Cupidaddress;
 use think\Controller;
 
 class SpCupidAddress extends Controller
@@ -29,38 +28,40 @@ class SpCupidAddress extends Controller
     {
         $contryStateUrl = "https://www.chinalovecupid.com/zc/widget/loadstates?countryid=$countryid";
         $states = json_decode(ExtGetHtml($contryStateUrl));
+        $all = [];
         foreach ($states as $state) {
             $stateId = $state->ATTRIBUTEID;
-            $toDb = [
+            $all[] = [
                 "attributeid" => $stateId,
                 "translation" => $state->TRANSLATION,
                 "reorder" => $state->REORDER,
                 "countryid" => $countryid,
             ];
-            try {
-                $spCupidAddress = new CupidAddress($toDb);
-                $spCupidAddress->save();
-            } catch (\Exception $e) {
-            }
             $citys = json_decode(ExtGetHtml("https: //www.chinalovecupid.com/zc/widget/loadcities?stateid=$stateId"));
             foreach ($citys as $city) {
                 $stateid = $city->ATTRIBUTEID;
-                $toDb = [
+                $all[] = [
                     "attributeid" => $stateid,
                     "translation" => $state->TRANSLATION,
                     "reorder" => $state->REORDER,
                     "countryid" => $countryid,
-                    "stateid"=>$stateid
+                    "stateid" => $stateid
                 ];
-                try {
-                    $spCupidAddress = new CupidAddress($toDb);
-                    $spCupidAddress->save();
-                } catch (\Exception $e) {
-                }
             }
         }
+        $sql = "INSERT INTO  `cupidaddress` (  `reorder`,`attributeid`,`translation`,`countryid`,`stateid`)VALUES";
+        $values = [];
+        foreach ($all as $row) {
+            $reorder = $row["reorder"];
+            $attributeid = $row["attributeid"];
+            $translation = $row["translation"];
+            $countryid = $row["countryid"];
+            $stateid = $row["stateid"];
+            $values[] = "('$reorder','$attributeid','$translation','$countryid','$stateid')";
+        }
+        $sql += implode("\n,", $values);
+        return $sql;
     }
-
 }
 
 
