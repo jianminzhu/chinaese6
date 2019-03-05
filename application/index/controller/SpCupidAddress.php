@@ -21,6 +21,7 @@ class SpCupidAddress extends Controller
             try {
                 $countyCiytes = $this->getAllAddress($countyid);
                 Db::table("cupidaddress")->insertAll($countyCiytes);
+                echo "country $countyid succ";
             } catch (\Exception $e) {
                 echo "insert county $countyid exception" . $e->getMessage();
             }
