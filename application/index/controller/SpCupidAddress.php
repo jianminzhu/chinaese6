@@ -4,14 +4,20 @@ namespace app\index\controller;
 require('ext_util/fileUtil.php');
 require('ext_util/BytripUtil.php');
 
+use app\index\model\cupidaddress;
 use think\Controller;
+use think\Db;
+
+
 
 class SpCupidAddress extends Controller
 {
     public function country()
     {
-        return $this->getAllAddress(42);
+        $all= $this->getAllAddress(42);
+        Db::table("cupidaddress")->insertAll($all);
 
+        return json_encode($all);
     }
 
     public function test()
@@ -55,6 +61,12 @@ class SpCupidAddress extends Controller
                 ];
             }
         }
+
+        return $all;
+    }
+
+    public function toSql($all)
+    {
         $sql = "INSERT INTO `cupidaddress` (  `reorder`,`attributeid`,`translation`,`countryid`,`stateid`)VALUES";
         $values = [];
         foreach ($all as $row) {
@@ -67,9 +79,8 @@ class SpCupidAddress extends Controller
             $value = str_replace("]", ")", $value);
             $values[] = $value;
         }
-
         $sql = $sql . implode("\n,", $values);
-        return $sql . ";";
+        return $sql;
     }
 }
 
