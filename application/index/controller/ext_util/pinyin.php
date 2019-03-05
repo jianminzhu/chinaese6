@@ -90,4 +90,4 @@ function pinyin($str, $ret_format = 'all', $placeholder = '_', $allow_chars = '/
     return rtrim($rs, ' ');
 }
 
-echo pinyin("中国", "first");
+echo pinyin("上海");

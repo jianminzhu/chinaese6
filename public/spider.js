@@ -35,7 +35,15 @@ $(function () {
         , "820000"
         , "990000"];
     provices.each(function (i,v) {
-        console.log(v)
+
+        $.ajax({
+            url: "http://www.bytrip.com/By/Program/ajaxGetCity.html"
+            ,data:{id: v},
+            success:function () {
+                console.log()
+            }
+        })
+         
     })
 }) 
  
