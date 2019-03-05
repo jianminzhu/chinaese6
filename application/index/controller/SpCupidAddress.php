@@ -61,7 +61,9 @@ class SpCupidAddress extends Controller
             $translation = $row["translation"];
             $countryid = $row["countryid"];
             $stateid = $row["stateid"];
-            $values[] = "('$reorder','$attributeid','$translation','$countryid','$stateid')";
+            $value = str_replace("[","(",json_encode([$reorder, $attributeid , $translation , $countryid , $stateid ]));
+            $value = str_replace("]",")",$value);
+            $values[] =$value;
         }
         $sql += implode("\n,", $values);
         return $sql.";";
