@@ -46,13 +46,13 @@ class SpCupidAddress extends Controller
             ];
             $citys = json_decode(ExtGetHtml("https://www.chinalovecupid.com/zc/widget/loadcities?stateid=$stateId"));
             foreach ($citys as $city) {
-                $stateid = $city->ATTRIBUTEID;
+                $cityid = $city->ATTRIBUTEID;
                 $all[] = [
-                    "attributeid" => $stateid,
+                    "attributeid" => $cityid,
                     "translation" => $state->TRANSLATION,
                     "reorder" => $state->REORDER,
                     "countryid" => $countryid,
-                    "stateid" => $stateid
+                    "stateid" => $stateId
                 ];
             }
         }
