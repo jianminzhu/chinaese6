@@ -276,7 +276,6 @@ return [
     " 黑山"=>"Montenegro" ,
     " 任何国家"=>"Any Country" ,
      "下一步: 上传多张照片到相片区"=>'Next Step: Complete profile questions',
-
     /*  公用  */
     "邮箱" => "Email",
     "密码" => "password",

@@ -37,13 +37,14 @@ echo number_format(microtime(1) - $start_time, 6);
 
 /**
  * 中文转拼音 (utf8版,gbk转utf8也可用)
- * @param string $str         utf8字符串
- * @param string $ret_format  返回格式 [all:全拼音|first:首字母|one:仅第一字符首字母]
+ * @param string $str utf8字符串
+ * @param string $ret_format 返回格式 [all:全拼音|first:首字母|one:仅第一字符首字母]
  * @param string $placeholder 无法识别的字符占位符
  * @param string $allow_chars 允许的非中文字符
  * @return string             拼音字符串
  */
-function pinyin($str, $ret_format = 'all', $placeholder = '_', $allow_chars = '/[a-zA-Z\d ]/') {
+function pinyin($str, $ret_format = 'all', $placeholder = '_', $allow_chars = '/[a-zA-Z\d ]/')
+{
     static $pinyins = null;
 
     if (null === $pinyins) {
@@ -52,7 +53,7 @@ function pinyin($str, $ret_format = 'all', $placeholder = '_', $allow_chars = '/
         $rows = explode('|', $data);
 
         $pinyins = array();
-        foreach($rows as $v) {
+        foreach ($rows as $v) {
             list($py, $vals) = explode(':', $v);
             $chars = explode(',', $vals);
 
@@ -90,4 +91,15 @@ function pinyin($str, $ret_format = 'all', $placeholder = '_', $allow_chars = '/
     return rtrim($rs, ' ');
 }
 
-echo pinyin("上海");
+function pinyinName($name)
+{
+    if (preg_match('/^[\x{4e00}-\x{9fa5}]+$/u', $name) > 0) {
+        $words = explode(" ", pinyin("$name"));
+        $upFirstWords = [];
+        foreach ($words as $word) {
+            $upFirstWords[] = ucfirst($word);
+        }
+        return implode("", $upFirstWords);
+    }
+    return $name;
+}
