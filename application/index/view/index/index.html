@@ -20,7 +20,7 @@
             <div class="mb1 me3 relative flex-none">
                 <div class="profile-image-header circle shadow border">
                     <div class="flex items-center justify-center height-12 circle overflow-hidden card-image-bg-color">
-                        <a class="col-12 height-12"target="_blank" href="/index.php/index/m/profile?id={$u.id}">
+                        <a class="col-12 height-12" target="_blank" href="/index.php/index/m/profile?id={$u.id}">
                             <div class="profile-bg"
                                  style="background-image:url('http://www.bytrip.com/{$u.main_pic}')"></div>
                         </a>
@@ -141,18 +141,18 @@
 
                 <select name="gender_w" id="form-quick-search-seeking" class="col-12">
 
-                    <option value="-1">不限</option>
+                    <option value="-1">{:lang("不限")}</option>
 
-                    <option value="253">男性</option>
+                    <option value="253">{:lang("男性")}</option>
 
-                    <option value="254" selected="">女性</option>
+                    <option value="254" selected="">{:lang("女性")}</option>
 
                 </select>
 
             </div>
 
             <div class="border-bottom search-age m1">
-                <label for="form-quick-search-age-min">年龄</label>
+                <label for="form-quick-search-age-min">{:lang("年龄")}</label>
                 <div class="flex items-center">
 
 
@@ -503,511 +503,507 @@
 
             <div class="border-bottom m1 col-2">
                 <label for="form-quick-search-country">{:lang("国家")}</label>
+                <select name="countryLive" id="form-quick-search-country" class="col-12 touched"
+                        data-dependentselect="stateLive">
 
-
-                <select name="countryLive" id="form-quick-search-country" class="col-12 touched" data-dependentselect="stateLive">
-
-                    <option value="-1">任何国家</option>
-
-                    <optgroup label="热门搜索国家">
-
-                        <option  value="42">{:lang(" 中国")}</option>
-
+                    <option value="-1">{:lang('任何国家')}</option>
+                    <optgroup label="{:lang('热门国家')}">
+                        <option value="42">{:lang(" 中国")}</option>
                     </optgroup>
 
-                    <optgroup label="所有国家">
+                    <optgroup label="{:lang('所有国家')}">
 
-                        <option  value="7">{:lang(" 阿尔巴尼亚")}</option>
+                        <option value="7">{:lang(" 阿尔巴尼亚")}</option>
 
-                        <option  value="5">{:lang(" 阿尔及尼亚")}</option>
+                        <option value="5">{:lang(" 阿尔及尼亚")}</option>
 
-                        <option  value="4">{:lang(" 阿富汗")}</option>
+                        <option value="4">{:lang(" 阿富汗")}</option>
 
-                        <option  value="12">{:lang(" 阿根廷")}</option>
+                        <option value="12">{:lang(" 阿根廷")}</option>
 
-                        <option  value="3">{:lang(" 阿拉伯聯合大公國")}</option>
+                        <option value="3">{:lang(" 阿拉伯聯合大公國")}</option>
 
-                        <option  value="1">{:lang(" 阿盧巴")}</option>
+                        <option value="1">{:lang(" 阿盧巴")}</option>
 
-                        <option  value="147">{:lang(" 阿曼")}</option>
+                        <option value="147">{:lang(" 阿曼")}</option>
 
-                        <option  value="6">{:lang(" 阿塞拜疆")}</option>
+                        <option value="6">{:lang(" 阿塞拜疆")}</option>
 
-                        <option  value="61">{:lang(" 埃及")}</option>
+                        <option value="61">{:lang(" 埃及")}</option>
 
-                        <option  value="67">{:lang(" 埃塞俄比亚")}</option>
+                        <option value="67">{:lang(" 埃塞俄比亚")}</option>
 
-                        <option  value="62">{:lang(" 爱尔兰")}</option>
+                        <option value="62">{:lang(" 爱尔兰")}</option>
 
-                        <option  value="64">{:lang(" 爱沙尼亚")}</option>
+                        <option value="64">{:lang(" 爱沙尼亚")}</option>
 
-                        <option  value="9">{:lang(" 安道尔")}</option>
+                        <option value="9">{:lang(" 安道尔")}</option>
 
-                        <option  value="10">{:lang(" 安哥拉")}</option>
+                        <option value="10">{:lang(" 安哥拉")}</option>
 
-                        <option  value="15">{:lang(" 安圭拉岛")}</option>
+                        <option value="15">{:lang(" 安圭拉岛")}</option>
 
-                        <option  value="2">{:lang(" 安提瓜及巴不达")}</option>
+                        <option value="2">{:lang(" 安提瓜及巴不达")}</option>
 
-                        <option  value="14">{:lang(" 奥地利")}</option>
+                        <option value="14">{:lang(" 奥地利")}</option>
 
-                        <option  value="13">{:lang(" 澳大利亚")}</option>
+                        <option value="13">{:lang(" 澳大利亚")}</option>
 
-                        <option  value="134">{:lang(" 澳门(中国)")}</option>
+                        <option value="134">{:lang(" 澳门(中国)")}</option>
 
-                        <option  value="18">{:lang(" 巴巴多斯")}</option>
+                        <option value="18">{:lang(" 巴巴多斯")}</option>
 
-                        <option  value="173">{:lang(" 巴布亚新几内亚")}</option>
+                        <option value="173">{:lang(" 巴布亚新几内亚")}</option>
 
-                        <option  value="22">{:lang(" 巴哈马")}</option>
+                        <option value="22">{:lang(" 巴哈马")}</option>
 
-                        <option  value="169">{:lang(" 巴基斯坦")}</option>
+                        <option value="169">{:lang(" 巴基斯坦")}</option>
 
-                        <option  value="166">{:lang(" 巴拉圭")}</option>
+                        <option value="166">{:lang(" 巴拉圭")}</option>
 
-                        <option  value="93">{:lang(" 巴勒斯坦")}</option>
+                        <option value="93">{:lang(" 巴勒斯坦")}</option>
 
-                        <option  value="17">{:lang(" 巴林")}</option>
+                        <option value="17">{:lang(" 巴林")}</option>
 
-                        <option  value="171">{:lang(" 巴拿马")}</option>
+                        <option value="171">{:lang(" 巴拿马")}</option>
 
-                        <option  value="30">{:lang(" 巴西")}</option>
+                        <option value="30">{:lang(" 巴西")}</option>
 
-                        <option  value="28">{:lang(" 白俄罗斯")}</option>
+                        <option value="28">{:lang(" 白俄罗斯")}</option>
 
-                        <option  value="20">{:lang(" 百慕达")}</option>
+                        <option value="20">{:lang(" 百慕达")}</option>
 
-                        <option  value="32">{:lang(" 保加利亚")}</option>
+                        <option value="32">{:lang(" 保加利亚")}</option>
 
-                        <option  value="116">{:lang(" 北朝鲜")}</option>
+                        <option value="116">{:lang(" 北朝鲜")}</option>
 
-                        <option  value="49">{:lang(" 北马里亚纳群岛")}</option>
+                        <option value="49">{:lang(" 北马里亚纳群岛")}</option>
 
-                        <option  value="27">{:lang(" 贝南")}</option>
+                        <option value="27">{:lang(" 贝南")}</option>
 
-                        <option  value="21">{:lang(" 比利时")}</option>
+                        <option value="21">{:lang(" 比利时")}</option>
 
-                        <option  value="100">{:lang(" 冰岛")}</option>
+                        <option value="100">{:lang(" 冰岛")}</option>
 
-                        <option  value="181">{:lang(" 波多黎各")}</option>
+                        <option value="181">{:lang(" 波多黎各")}</option>
 
-                        <option  value="170">{:lang(" 波兰")}</option>
+                        <option value="170">{:lang(" 波兰")}</option>
 
-                        <option  value="19">{:lang(" 波扎那")}</option>
+                        <option value="19">{:lang(" 波扎那")}</option>
 
-                        <option  value="26">{:lang(" 玻利维亚")}</option>
+                        <option value="26">{:lang(" 玻利维亚")}</option>
 
-                        <option  value="25">{:lang(" 玻斯尼亚")}</option>
+                        <option value="25">{:lang(" 玻斯尼亚")}</option>
 
-                        <option  value="224">{:lang(" 伯克尼")}</option>
+                        <option value="224">{:lang(" 伯克尼")}</option>
 
-                        <option  value="24">{:lang(" 伯利兹")}</option>
+                        <option value="24">{:lang(" 伯利兹")}</option>
 
-                        <option  value="174">{:lang(" 帛琉")}</option>
+                        <option value="174">{:lang(" 帛琉")}</option>
 
-                        <option  value="31">{:lang(" 不丹")}</option>
+                        <option value="31">{:lang(" 不丹")}</option>
 
-                        <option  value="35">{:lang(" 布隆迪")}</option>
+                        <option value="35">{:lang(" 布隆迪")}</option>
 
-                        <option  value="33">{:lang(" 布为特岛")}</option>
+                        <option value="33">{:lang(" 布为特岛")}</option>
 
-                        <option  value="63">{:lang(" 赤道及内亚")}</option>
+                        <option value="63">{:lang(" 赤道及内亚")}</option>
 
-                        <option  value="56">{:lang(" 丹麦")}</option>
+                        <option value="56">{:lang(" 丹麦")}</option>
 
-                        <option  value="86">{:lang(" 德国")}</option>
+                        <option value="86">{:lang(" 德国")}</option>
 
-                        <option  value="213">{:lang(" 东帝汶")}</option>
+                        <option value="213">{:lang(" 东帝汶")}</option>
 
-                        <option  value="210">{:lang(" 多哥")}</option>
+                        <option value="210">{:lang(" 多哥")}</option>
 
-                        <option  value="58">{:lang(" 多米尼克")}</option>
+                        <option value="58">{:lang(" 多米尼克")}</option>
 
-                        <option  value="59">{:lang(" 多明尼加共和国")}</option>
+                        <option value="59">{:lang(" 多明尼加共和国")}</option>
 
-                        <option  value="182">{:lang(" 俄罗斯")}</option>
+                        <option value="182">{:lang(" 俄罗斯")}</option>
 
-                        <option  value="60">{:lang(" 厄瓜多尔")}</option>
+                        <option value="60">{:lang(" 厄瓜多尔")}</option>
 
-                        <option  value="65">{:lang(" 厄立特里亚")}</option>
+                        <option value="65">{:lang(" 厄立特里亚")}</option>
 
-                        <option  value="74">{:lang(" 伐茹岛")}</option>
+                        <option value="74">{:lang(" 伐茹岛")}</option>
 
-                        <option  value="76">{:lang(" 法国")}</option>
+                        <option value="76">{:lang(" 法国")}</option>
 
-                        <option  value="75">{:lang(" 法属波利尼西亚")}</option>
+                        <option value="75">{:lang(" 法属波利尼西亚")}</option>
 
-                        <option  value="92">{:lang(" 法属圭亚那")}</option>
+                        <option value="92">{:lang(" 法属圭亚那")}</option>
 
-                        <option  value="69">{:lang(" 法属圭亚那")}</option>
+                        <option value="69">{:lang(" 法属圭亚那")}</option>
 
-                        <option  value="77">{:lang(" 法属南极领地")}</option>
+                        <option value="77">{:lang(" 法属南极领地")}</option>
 
-                        <option  value="232">{:lang(" 梵蒂冈城")}</option>
+                        <option value="232">{:lang(" 梵蒂冈城")}</option>
 
-                        <option  value="180">{:lang(" 菲律宾")}</option>
+                        <option value="180">{:lang(" 菲律宾")}</option>
 
-                        <option  value="71">{:lang(" 斐济")}</option>
+                        <option value="71">{:lang(" 斐济")}</option>
 
-                        <option  value="70">{:lang(" 芬兰")}</option>
+                        <option value="70">{:lang(" 芬兰")}</option>
 
-                        <option  value="53">{:lang(" 佛得角")}</option>
+                        <option value="53">{:lang(" 佛得角")}</option>
 
-                        <option  value="72">{:lang(" 福克兰群岛")}</option>
+                        <option value="72">{:lang(" 福克兰群岛")}</option>
 
-                        <option  value="78">{:lang(" 甘比亚")}</option>
+                        <option value="78">{:lang(" 甘比亚")}</option>
 
-                        <option  value="40">{:lang(" 刚果")}</option>
+                        <option value="40">{:lang(" 刚果")}</option>
 
-                        <option  value="41">{:lang(" 刚果")}</option>
+                        <option value="41">{:lang(" 刚果")}</option>
 
-                        <option  value="48">{:lang(" 哥仑比亚")}</option>
+                        <option value="48">{:lang(" 哥仑比亚")}</option>
 
-                        <option  value="50">{:lang(" 哥斯達黎亞")}</option>
+                        <option value="50">{:lang(" 哥斯達黎亞")}</option>
 
-                        <option  value="84">{:lang(" 格恩西")}</option>
+                        <option value="84">{:lang(" 格恩西")}</option>
 
-                        <option  value="85">{:lang(" 格陵兰岛")}</option>
+                        <option value="85">{:lang(" 格陵兰岛")}</option>
 
-                        <option  value="83">{:lang(" 格瑞纳达")}</option>
+                        <option value="83">{:lang(" 格瑞纳达")}</option>
 
-                        <option  value="52">{:lang(" 古巴")}</option>
+                        <option value="52">{:lang(" 古巴")}</option>
 
-                        <option  value="87">{:lang(" 瓜德罗普岛")}</option>
+                        <option value="87">{:lang(" 瓜德罗普岛")}</option>
 
-                        <option  value="88">{:lang(" 关岛")}</option>
+                        <option value="88">{:lang(" 关岛")}</option>
 
-                        <option  value="121">{:lang(" 哈萨克")}</option>
+                        <option value="121">{:lang(" 哈萨克")}</option>
 
-                        <option  value="94">{:lang(" 海地")}</option>
+                        <option value="94">{:lang(" 海地")}</option>
 
-                        <option  value="118">{:lang(" 韩国")}</option>
+                        <option value="118">{:lang(" 韩国")}</option>
 
-                        <option  value="96">{:lang(" 河地")}</option>
+                        <option value="96">{:lang(" 河地")}</option>
 
-                        <option  value="158">{:lang(" 荷兰")}</option>
+                        <option value="158">{:lang(" 荷兰")}</option>
 
-                        <option  value="163">{:lang(" 荷属安替列斯群岛")}</option>
+                        <option value="163">{:lang(" 荷属安替列斯群岛")}</option>
 
-                        <option  value="246">{:lang(" 黑山")}</option>
+                        <option value="246">{:lang(" 黑山")}</option>
 
-                        <option  value="97">{:lang(" 洪都拉斯")}</option>
+                        <option value="97">{:lang(" 洪都拉斯")}</option>
 
-                        <option  value="57">{:lang(" 吉布地")}</option>
+                        <option value="57">{:lang(" 吉布地")}</option>
 
-                        <option  value="115">{:lang(" 吉尔吉斯")}</option>
+                        <option value="115">{:lang(" 吉尔吉斯")}</option>
 
-                        <option  value="91">{:lang(" 几内亚")}</option>
+                        <option value="91">{:lang(" 几内亚")}</option>
 
-                        <option  value="175">{:lang(" 几内亚比绍共和国")}</option>
+                        <option value="175">{:lang(" 几内亚比绍共和国")}</option>
 
-                        <option  value="36">{:lang(" 加拿大")}</option>
+                        <option value="36">{:lang(" 加拿大")}</option>
 
-                        <option  value="81">{:lang(" 加纳")}</option>
+                        <option value="81">{:lang(" 加纳")}</option>
 
-                        <option  value="79">{:lang(" 加彭")}</option>
+                        <option value="79">{:lang(" 加彭")}</option>
 
-                        <option  value="37">{:lang(" 柬埔寨")}</option>
+                        <option value="37">{:lang(" 柬埔寨")}</option>
 
-                        <option  value="68">{:lang(" 捷克")}</option>
+                        <option value="68">{:lang(" 捷克")}</option>
 
-                        <option  value="46">{:lang(" 喀买隆")}</option>
+                        <option value="46">{:lang(" 喀买隆")}</option>
 
-                        <option  value="176">{:lang(" 卡达")}</option>
+                        <option value="176">{:lang(" 卡达")}</option>
 
-                        <option  value="44">{:lang(" 卡门群岛")}</option>
+                        <option value="44">{:lang(" 卡门群岛")}</option>
 
-                        <option  value="54">{:lang(" 科克群岛")}</option>
+                        <option value="54">{:lang(" 科克群岛")}</option>
 
-                        <option  value="47">{:lang(" 科斯罗")}</option>
+                        <option value="47">{:lang(" 科斯罗")}</option>
 
-                        <option  value="108">{:lang(" 科特迪瓦")}</option>
+                        <option value="108">{:lang(" 科特迪瓦")}</option>
 
-                        <option  value="120">{:lang(" 科威特")}</option>
+                        <option value="120">{:lang(" 科威特")}</option>
 
-                        <option  value="45">{:lang(" 可可斯群岛")}</option>
+                        <option value="45">{:lang(" 可可斯群岛")}</option>
 
-                        <option  value="117">{:lang(" 克里巴提")}</option>
+                        <option value="117">{:lang(" 克里巴提")}</option>
 
-                        <option  value="98">{:lang(" 克罗埃西亚")}</option>
+                        <option value="98">{:lang(" 克罗埃西亚")}</option>
 
-                        <option  value="114">{:lang(" 肯亚")}</option>
+                        <option value="114">{:lang(" 肯亚")}</option>
 
-                        <option  value="244">{:lang(" 库拉索")}</option>
+                        <option value="244">{:lang(" 库拉索")}</option>
 
-                        <option  value="124">{:lang(" 拉特威尼亚")}</option>
+                        <option value="124">{:lang(" 拉特威尼亚")}</option>
 
-                        <option  value="126">{:lang(" 赖比瑞亚")}</option>
+                        <option value="126">{:lang(" 赖比瑞亚")}</option>
 
-                        <option  value="129">{:lang(" 赖索托")}</option>
+                        <option value="129">{:lang(" 赖索托")}</option>
 
-                        <option  value="123">{:lang(" 黎巴嫩")}</option>
+                        <option value="123">{:lang(" 黎巴嫩")}</option>
 
-                        <option  value="125">{:lang(" 立陶宛")}</option>
+                        <option value="125">{:lang(" 立陶宛")}</option>
 
-                        <option  value="131">{:lang(" 利比亚")}</option>
+                        <option value="131">{:lang(" 利比亚")}</option>
 
-                        <option  value="122">{:lang(" 寮国")}</option>
+                        <option value="122">{:lang(" 寮国")}</option>
 
-                        <option  value="128">{:lang(" 列支敦士登")}</option>
+                        <option value="128">{:lang(" 列支敦士登")}</option>
 
-                        <option  value="177">{:lang(" 留尼旺岛")}</option>
+                        <option value="177">{:lang(" 留尼旺岛")}</option>
 
-                        <option  value="130">{:lang(" 卢森堡")}</option>
+                        <option value="130">{:lang(" 卢森堡")}</option>
 
-                        <option  value="183">{:lang(" 卢旺达")}</option>
+                        <option value="183">{:lang(" 卢旺达")}</option>
 
-                        <option  value="179">{:lang(" 罗马尼亚")}</option>
+                        <option value="179">{:lang(" 罗马尼亚")}</option>
 
-                        <option  value="132">{:lang(" 马达加斯加")}</option>
+                        <option value="132">{:lang(" 马达加斯加")}</option>
 
-                        <option  value="135">{:lang(" 马多瓦")}</option>
+                        <option value="135">{:lang(" 马多瓦")}</option>
 
-                        <option  value="148">{:lang(" 马尔代夫")}</option>
+                        <option value="148">{:lang(" 马尔代夫")}</option>
 
-                        <option  value="146">{:lang(" 马耳他")}</option>
+                        <option value="146">{:lang(" 马耳他")}</option>
 
-                        <option  value="139">{:lang(" 马拉维")}</option>
+                        <option value="139">{:lang(" 马拉维")}</option>
 
-                        <option  value="150">{:lang(" 马来西亚")}</option>
+                        <option value="150">{:lang(" 马来西亚")}</option>
 
-                        <option  value="141">{:lang(" 马里")}</option>
+                        <option value="141">{:lang(" 马里")}</option>
 
-                        <option  value="140">{:lang(" 马其顿")}</option>
+                        <option value="140">{:lang(" 马其顿")}</option>
 
-                        <option  value="178">{:lang(" 马绍尔群岛")}</option>
+                        <option value="178">{:lang(" 马绍尔群岛")}</option>
 
-                        <option  value="133">{:lang(" 马提尼克")}</option>
+                        <option value="133">{:lang(" 马提尼克")}</option>
 
-                        <option  value="145">{:lang(" 马提尼亚")}</option>
+                        <option value="145">{:lang(" 马提尼亚")}</option>
 
-                        <option  value="136">{:lang(" 马幼提")}</option>
+                        <option value="136">{:lang(" 马幼提")}</option>
 
-                        <option  value="223">{:lang(" 美国")}</option>
+                        <option value="223">{:lang(" 美国")}</option>
 
-                        <option  value="221">{:lang(" 美属边疆群岛")}</option>
+                        <option value="221">{:lang(" 美属边疆群岛")}</option>
 
-                        <option  value="231">{:lang(" 美属佛吉尼亚岛")}</option>
+                        <option value="231">{:lang(" 美属佛吉尼亚岛")}</option>
 
-                        <option  value="11">{:lang(" 美属萨摩亚")}</option>
+                        <option value="11">{:lang(" 美属萨摩亚")}</option>
 
-                        <option  value="137">{:lang(" 蒙古")}</option>
+                        <option value="137">{:lang(" 蒙古")}</option>
 
-                        <option  value="138">{:lang(" 蒙色提")}</option>
+                        <option value="138">{:lang(" 蒙色提")}</option>
 
-                        <option  value="23">{:lang(" 孟加拉")}</option>
+                        <option value="23">{:lang(" 孟加拉")}</option>
 
-                        <option  value="168">{:lang(" 秘鲁")}</option>
+                        <option value="168">{:lang(" 秘鲁")}</option>
 
-                        <option  value="73">{:lang(" 密克罗西尼亚")}</option>
+                        <option value="73">{:lang(" 密克罗西尼亚")}</option>
 
-                        <option  value="242">{:lang(" 缅甸")}</option>
+                        <option value="242">{:lang(" 缅甸")}</option>
 
-                        <option  value="144">{:lang(" 模里西斯")}</option>
+                        <option value="144">{:lang(" 模里西斯")}</option>
 
-                        <option  value="143">{:lang(" 摩洛哥")}</option>
+                        <option value="143">{:lang(" 摩洛哥")}</option>
 
-                        <option  value="142">{:lang(" 摩纳哥")}</option>
+                        <option value="142">{:lang(" 摩纳哥")}</option>
 
-                        <option  value="151">{:lang(" 莫桑比克")}</option>
+                        <option value="151">{:lang(" 莫桑比克")}</option>
 
-                        <option  value="149">{:lang(" 墨西哥")}</option>
+                        <option value="149">{:lang(" 墨西哥")}</option>
 
-                        <option  value="233">{:lang(" 纳米比亚")}</option>
+                        <option value="233">{:lang(" 纳米比亚")}</option>
 
-                        <option  value="188">{:lang(" 南非")}</option>
+                        <option value="188">{:lang(" 南非")}</option>
 
-                        <option  value="16">{:lang(" 南极洲")}</option>
+                        <option value="16">{:lang(" 南极洲")}</option>
 
-                        <option  value="201">{:lang(" 南乔治亚群岛")}</option>
+                        <option value="201">{:lang(" 南乔治亚群岛")}</option>
 
-                        <option  value="161">{:lang(" 瑙鲁")}</option>
+                        <option value="161">{:lang(" 瑙鲁")}</option>
 
-                        <option  value="160">{:lang(" 尼泊尔")}</option>
+                        <option value="160">{:lang(" 尼泊尔")}</option>
 
-                        <option  value="164">{:lang(" 尼加拉瓜")}</option>
+                        <option value="164">{:lang(" 尼加拉瓜")}</option>
 
-                        <option  value="155">{:lang(" 尼日尔")}</option>
+                        <option value="155">{:lang(" 尼日尔")}</option>
 
-                        <option  value="157">{:lang(" 尼日利亚")}</option>
+                        <option value="157">{:lang(" 尼日利亚")}</option>
 
-                        <option  value="153">{:lang(" 纽邬岛")}</option>
+                        <option value="153">{:lang(" 纽邬岛")}</option>
 
-                        <option  value="159">{:lang(" 挪威")}</option>
+                        <option value="159">{:lang(" 挪威")}</option>
 
-                        <option  value="154">{:lang(" 诺福克岛")}</option>
+                        <option value="154">{:lang(" 诺福克岛")}</option>
 
-                        <option  value="167">{:lang(" 皮特卡岛")}</option>
+                        <option value="167">{:lang(" 皮特卡岛")}</option>
 
-                        <option  value="172">{:lang(" 葡萄牙")}</option>
+                        <option value="172">{:lang(" 葡萄牙")}</option>
 
-                        <option  value="80">{:lang(" 乔治亚")}</option>
+                        <option value="80">{:lang(" 乔治亚")}</option>
 
-                        <option  value="110">{:lang(" 日本")}</option>
+                        <option value="110">{:lang(" 日本")}</option>
 
-                        <option  value="200">{:lang(" 瑞典")}</option>
+                        <option value="200">{:lang(" 瑞典")}</option>
 
-                        <option  value="203">{:lang(" 瑞士")}</option>
+                        <option value="203">{:lang(" 瑞士")}</option>
 
-                        <option  value="66">{:lang(" 萨尔瓦多")}</option>
+                        <option value="66">{:lang(" 萨尔瓦多")}</option>
 
-                        <option  value="236">{:lang(" 萨摩亚")}</option>
+                        <option value="236">{:lang(" 萨摩亚")}</option>
 
-                        <option  value="238">{:lang(" 塞尔维亚")}</option>
+                        <option value="238">{:lang(" 塞尔维亚")}</option>
 
-                        <option  value="192">{:lang(" 塞拉利昂")}</option>
+                        <option value="192">{:lang(" 塞拉利昂")}</option>
 
-                        <option  value="189">{:lang(" 塞内加尔")}</option>
+                        <option value="189">{:lang(" 塞内加尔")}</option>
 
-                        <option  value="55">{:lang(" 塞普路斯")}</option>
+                        <option value="55">{:lang(" 塞普路斯")}</option>
 
-                        <option  value="187">{:lang(" 塞舌尔群岛")}</option>
+                        <option value="187">{:lang(" 塞舌尔群岛")}</option>
 
-                        <option  value="184">{:lang(" 沙特阿拉伯")}</option>
+                        <option value="184">{:lang(" 沙特阿拉伯")}</option>
 
-                        <option  value="119">{:lang(" 圣诞岛")}</option>
+                        <option value="119">{:lang(" 圣诞岛")}</option>
 
-                        <option  value="211">{:lang(" 圣多美岛和普林西比岛")}</option>
+                        <option value="211">{:lang(" 圣多美岛和普林西比岛")}</option>
 
-                        <option  value="190">{:lang(" 圣海伦")}</option>
+                        <option value="190">{:lang(" 圣海伦")}</option>
 
-                        <option  value="186">{:lang(" 圣卡特")}</option>
+                        <option value="186">{:lang(" 圣卡特")}</option>
 
-                        <option  value="197">{:lang(" 圣露西亚")}</option>
+                        <option value="197">{:lang(" 圣露西亚")}</option>
 
-                        <option  value="193">{:lang(" 圣马")}</option>
+                        <option value="193">{:lang(" 圣马")}</option>
 
-                        <option  value="245">{:lang(" 圣马丁岛")}</option>
+                        <option value="245">{:lang(" 圣马丁岛")}</option>
 
-                        <option  value="185">{:lang(" 圣皮埃尔")}</option>
+                        <option value="185">{:lang(" 圣皮埃尔")}</option>
 
-                        <option  value="227">{:lang(" 圣文森及格瑞那丁")}</option>
+                        <option value="227">{:lang(" 圣文森及格瑞那丁")}</option>
 
-                        <option  value="199">{:lang(" 史巴答")}</option>
+                        <option value="199">{:lang(" 史巴答")}</option>
 
-                        <option  value="39">{:lang(" 斯里兰卡")}</option>
+                        <option value="39">{:lang(" 斯里兰卡")}</option>
 
-                        <option  value="127">{:lang(" 斯洛伐克")}</option>
+                        <option value="127">{:lang(" 斯洛伐克")}</option>
 
-                        <option  value="191">{:lang(" 斯洛文尼亚")}</option>
+                        <option value="191">{:lang(" 斯洛文尼亚")}</option>
 
-                        <option  value="237">{:lang(" 斯威士兰")}</option>
+                        <option value="237">{:lang(" 斯威士兰")}</option>
 
-                        <option  value="198">{:lang(" 苏丹")}</option>
+                        <option value="198">{:lang(" 苏丹")}</option>
 
-                        <option  value="243">{:lang(" 苏丹南部")}</option>
+                        <option value="243">{:lang(" 苏丹南部")}</option>
 
-                        <option  value="162">{:lang(" 苏利南")}</option>
+                        <option value="162">{:lang(" 苏利南")}</option>
 
-                        <option  value="29">{:lang(" 所罗门岛")}</option>
+                        <option value="29">{:lang(" 所罗门岛")}</option>
 
-                        <option  value="195">{:lang(" 索马里")}</option>
+                        <option value="195">{:lang(" 索马里")}</option>
 
-                        <option  value="206">{:lang(" 塔吉克")}</option>
+                        <option value="206">{:lang(" 塔吉克")}</option>
 
-                        <option  value="218">{:lang(" 塔桑尼亚")}</option>
+                        <option value="218">{:lang(" 塔桑尼亚")}</option>
 
-                        <option  value="216">{:lang(" 台湾(中国)")}</option>
+                        <option value="216">{:lang(" 台湾(中国)")}</option>
 
-                        <option  value="205">{:lang(" 泰国")}</option>
+                        <option value="205">{:lang(" 泰国")}</option>
 
-                        <option  value="209">{:lang(" 汤加")}</option>
+                        <option value="209">{:lang(" 汤加")}</option>
 
-                        <option  value="204">{:lang(" 特立尼达和多巴哥")}</option>
+                        <option value="204">{:lang(" 特立尼达和多巴哥")}</option>
 
-                        <option  value="212">{:lang(" 突尼斯")}</option>
+                        <option value="212">{:lang(" 突尼斯")}</option>
 
-                        <option  value="214">{:lang(" 土耳其")}</option>
+                        <option value="214">{:lang(" 土耳其")}</option>
 
-                        <option  value="217">{:lang(" 土库曼")}</option>
+                        <option value="217">{:lang(" 土库曼")}</option>
 
-                        <option  value="207">{:lang(" 土库斯和凯科斯群岛")}</option>
+                        <option value="207">{:lang(" 土库斯和凯科斯群岛")}</option>
 
-                        <option  value="215">{:lang(" 土瓦魯")}</option>
+                        <option value="215">{:lang(" 土瓦魯")}</option>
 
-                        <option  value="208">{:lang(" 托克勞群島")}</option>
+                        <option value="208">{:lang(" 托克勞群島")}</option>
 
-                        <option  value="156">{:lang(" 万那杜")}</option>
+                        <option value="156">{:lang(" 万那杜")}</option>
 
-                        <option  value="90">{:lang(" 危地马拉")}</option>
+                        <option value="90">{:lang(" 危地马拉")}</option>
 
-                        <option  value="228">{:lang(" 委内瑞拉")}</option>
+                        <option value="228">{:lang(" 委内瑞拉")}</option>
 
-                        <option  value="34">{:lang(" 文莱")}</option>
+                        <option value="34">{:lang(" 文莱")}</option>
 
-                        <option  value="234">{:lang(" 沃利斯和富图纳群岛")}</option>
+                        <option value="234">{:lang(" 沃利斯和富图纳群岛")}</option>
 
-                        <option  value="219">{:lang(" 乌干达")}</option>
+                        <option value="219">{:lang(" 乌干达")}</option>
 
-                        <option  value="222">{:lang(" 乌克兰")}</option>
+                        <option value="222">{:lang(" 乌克兰")}</option>
 
-                        <option  value="225">{:lang(" 乌拉圭")}</option>
+                        <option value="225">{:lang(" 乌拉圭")}</option>
 
-                        <option  value="226">{:lang(" 乌兹别克")}</option>
+                        <option value="226">{:lang(" 乌兹别克")}</option>
 
-                        <option  value="196">{:lang(" 西班牙")}</option>
+                        <option value="196">{:lang(" 西班牙")}</option>
 
-                        <option  value="235">{:lang(" 西撒哈拉")}</option>
+                        <option value="235">{:lang(" 西撒哈拉")}</option>
 
-                        <option  value="89">{:lang(" 希腊")}</option>
+                        <option value="89">{:lang(" 希腊")}</option>
 
-                        <option  value="95">{:lang(" 香港(中国)")}</option>
+                        <option value="95">{:lang(" 香港(中国)")}</option>
 
-                        <option  value="241">{:lang(" 辛巴威")}</option>
+                        <option value="241">{:lang(" 辛巴威")}</option>
 
-                        <option  value="194">{:lang(" 新加坡")}</option>
+                        <option value="194">{:lang(" 新加坡")}</option>
 
-                        <option  value="152">{:lang(" 新克罗第尼亚")}</option>
+                        <option value="152">{:lang(" 新克罗第尼亚")}</option>
 
-                        <option  value="165">{:lang(" 新西兰")}</option>
+                        <option value="165">{:lang(" 新西兰")}</option>
 
-                        <option  value="99">{:lang(" 匈牙利")}</option>
+                        <option value="99">{:lang(" 匈牙利")}</option>
 
-                        <option  value="202">{:lang(" 叙利亚")}</option>
+                        <option value="202">{:lang(" 叙利亚")}</option>
 
-                        <option  value="112">{:lang(" 牙买加")}</option>
+                        <option value="112">{:lang(" 牙买加")}</option>
 
-                        <option  value="8">{:lang(" 亚美尼亚")}</option>
+                        <option value="8">{:lang(" 亚美尼亚")}</option>
 
-                        <option  value="239">{:lang(" 也门")}</option>
+                        <option value="239">{:lang(" 也门")}</option>
 
-                        <option  value="109">{:lang(" 伊拉克")}</option>
+                        <option value="109">{:lang(" 伊拉克")}</option>
 
-                        <option  value="105">{:lang(" 伊朗")}</option>
+                        <option value="105">{:lang(" 伊朗")}</option>
 
-                        <option  value="106">{:lang(" 以色列")}</option>
+                        <option value="106">{:lang(" 以色列")}</option>
 
-                        <option  value="107">{:lang(" 意大利")}</option>
+                        <option value="107">{:lang(" 意大利")}</option>
 
-                        <option  value="103">{:lang(" 印度")}</option>
+                        <option value="103">{:lang(" 印度")}</option>
 
-                        <option  value="101">{:lang(" 印度尼西亚")}</option>
+                        <option value="101">{:lang(" 印度尼西亚")}</option>
 
-                        <option  value="220">{:lang(" 英国")}</option>
+                        <option value="220">{:lang(" 英国")}</option>
 
-                        <option  value="104">{:lang(" 英国印度海领地")}</option>
+                        <option value="104">{:lang(" 英国印度海领地")}</option>
 
-                        <option  value="102">{:lang(" 英属地曼岛")}</option>
+                        <option value="102">{:lang(" 英属地曼岛")}</option>
 
-                        <option  value="229">{:lang(" 英属佛吉尼亚岛")}</option>
+                        <option value="229">{:lang(" 英属佛吉尼亚岛")}</option>
 
-                        <option  value="113">{:lang(" 约旦")}</option>
+                        <option value="113">{:lang(" 约旦")}</option>
 
-                        <option  value="230">{:lang(" 越南")}</option>
+                        <option value="230">{:lang(" 越南")}</option>
 
-                        <option  value="240">{:lang(" 赞比亚")}</option>
+                        <option value="240">{:lang(" 赞比亚")}</option>
 
-                        <option  value="111">{:lang(" 泽西岛")}</option>
+                        <option value="111">{:lang(" 泽西岛")}</option>
 
-                        <option  value="38">{:lang(" 乍得")}</option>
+                        <option value="38">{:lang(" 乍得")}</option>
 
-                        <option  value="82">{:lang(" 直布罗陀")}</option>
+                        <option value="82">{:lang(" 直布罗陀")}</option>
 
-                        <option  value="43">{:lang(" 智利")}</option>
+                        <option value="43">{:lang(" 智利")}</option>
 
-                        <option  value="51">{:lang(" 中非共和国")}</option>
+                        <option value="51">{:lang(" 中非共和国")}</option>
 
-                        <option  value="42">{:lang(" 中国")}</option>
+                        <option value="42">{:lang(" 中国")}</option>
 
                     </optgroup>
 
@@ -1016,56 +1012,33 @@
             </div>
 
             <div class="border-bottom m1 col-2">
-                <label for="form-quick-search-state">省/县</label>
+
+                <label for="form-quick-search-state">{:lang('省/县')}</label>
 
 
                 <select name="stateLive" id="form-quick-search-state" class="col-12" data-dependentselect="cityLive"
                         formaction="/zc/widget/loadstates?countryid="
                         data-datamap="{&quot;group&quot;:&quot;STATEVALUE&quot;,&quot;text&quot;:&quot;TRANSLATION&quot;,&quot;value&quot;:&quot;ATTRIBUTEID&quot;}">
 
-                    <option value="-1">任何州</option>
+                    <option value="-1">{:lang("任何州")}</option>
 
                 </select>
 
             </div>
 
             <div class="border-bottom m1 col-2">
-                <label for="form-quick-search-city">市</label>
+                <label for="form-quick-search-city">{:lang('市')}</label>
 
 
                 <select name="cityLive" id="form-quick-search-city" class="col-12"
                         formaction="/zc/widget/loadcities?stateid="
                         data-datamap="{&quot;group&quot;:&quot;STATEVALUE&quot;,&quot;text&quot;:&quot;TRANSLATION&quot;,&quot;value&quot;:&quot;ATTRIBUTEID&quot;}">
 
-                    <option value="-1">任何城市</option>
+                    <option value="-1">{:lang("任何城市")}</option>
 
                 </select>
 
             </div>
-
-            <div class="border-bottom m1">
-                <label for="form-quick-search-livingWithinRadius">之内</label>
-                <div class="flex items-center">
-
-                    <select name="livingWithinRadius" id="form-quick-search-livingWithinRadius" class="col-12">
-                        <option value="-1">-</option>
-
-                        <option value="50">50</option>
-
-                        <option value="100">100</option>
-
-                        <option value="250">250</option>
-
-                        <option value="500">500</option>
-
-                    </select>
-                    <p class="p0 m0 weight-400">kms</p>
-
-                    <input type="hidden" name="distanceUnit" value="kms">
-
-                </div>
-            </div>
-
             <input type="hidden" value="1" name="hasPhoto">
             <input type="hidden" value="advanced" name="resulttype">
 
@@ -1082,7 +1055,7 @@
         <a id="{$m.id}" class="absolute top-minus-100"></a>
 
         <a class="flex items-center col-12 justify-center std relative"
-          target="_blank" href="/index.php/index/m/profile?id={$m.id}" >
+           target="_blank" href="/index.php/index/m/profile?id={$m.id}">
             <div class="profile-bg" data-cm-modal-URL=""
                  style="background-image:url('http://www.bytrip.com/{$m.main_pic}')"></div>
             <div class="border-box z2 flex items-center justify-center standard-online online circle border-white">
@@ -1101,15 +1074,14 @@
             </div>
 
             <div class="mx2 my2 h5">
-               {$m.age} <span>&#8226;</span>  {$m.address}, {$m.country|default=""}
+                {$m.age} <span>&#8226;</span> {$m.address}, {$m.country|default=""}
             </div>
-
 
 
             <div class="flex flex-auto items-end justify-between mx2 my3">
                 <div class="flex items-center">
                     <div
-                         class="pointer me3 relative fill-action-unhighlight"
+                            class="pointer me3 relative fill-action-unhighlight"
                     >
                         <svg class="icon-30">
                             <use xlink:href="/assets/desktop/icons/icons.svg#icon-heart"></use>
@@ -1145,9 +1117,6 @@
 
 
     {/volist}
-
-
-
 
 
     <a href="/?pno={$nextPno}" class="block col m1 card-s">

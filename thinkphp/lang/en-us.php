@@ -11,6 +11,20 @@
 
 // 核心中文语言包
 return [
+    "热门国家" => "Popular",
+    "任何国家" => "Any contry",
+    "所有国家" => "All Countries",
+    "任何州" => "Any State",
+    "任何城市" => "Any cities",
+
+    "国家" => "Country",
+    "省/县" => "State/Province",
+    "市" => "City",
+    "年龄"=>"Age",
+    "不限" => "Any",
+    "男性"=>"Male",
+    "女性"=>"Female",
+
     /*  公用  */
     "邮箱" => "Email",
     "密码" => "password",
@@ -24,7 +38,6 @@ return [
     "身高" => "height",
     "体重" => "weight",
     "国籍" => "country",
-    "国家" => "country",
     "返回搜索结果" => "to search ",
 
     "请输入电子邮箱地址"=>"please input email",

@@ -5,6 +5,19 @@ function ExtDirectory($dir)
 
 }
 
+function ExtWriteFile($fileWithPath, $content, $isCover = false)
+{
+    $pathinfo = pathinfo($fileWithPath);
+    $dirname = $pathinfo["dirname"];
+    if (!file_exists($dirname) || $isCover) {
+        ExtDirectory($dirname);
+        $f = fopen($fileWithPath, 'w');
+        fwrite($f, $content);
+        fclose($f);
+    }
+}
+
+
 function ExtDownloadPic($url, $path = 'downloads/', $withHost = false, $isCover = false)
 {
     $urlParam = parse_url($url);
@@ -26,13 +39,13 @@ function ExtDownloadPic($url, $path = 'downloads/', $withHost = false, $isCover 
     }
 }
 
-function ExtGetHtml($szUrl, $encoding = "",$timeout="60", $UserAgent = 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; SLCC1; .NET CLR 2.0.50727; .NET CLR 3.0.04506; .NET CLR 3.5.21022; .NET CLR 1.0.3705; .NET CLR 1.1.4322)')
+function ExtGetHtml($szUrl, $encoding = "", $timeout = "60", $UserAgent = 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; SLCC1; .NET CLR 2.0.50727; .NET CLR 3.0.04506; .NET CLR 3.5.21022; .NET CLR 1.0.3705; .NET CLR 1.1.4322)')
 {
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, $szUrl);
     curl_setopt($curl, CURLOPT_HEADER, 0);  //0表示不输出Header，1表示输出
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($curl,CURLOPT_TIMEOUT,$timeout);
+    curl_setopt($curl, CURLOPT_TIMEOUT, $timeout);
     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
     curl_setopt($curl, CURLOPT_ENCODING, $encoding);

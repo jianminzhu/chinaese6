@@ -32,11 +32,8 @@ class SpAddress extends Controller
         foreach ($countyids as $countyid) {
             try {
                 $countyCiytes = $this->getAllAddress($countyid);
-                echo json_encode($countyCiytes) . "ddddddddddd";
                 Db::table("cupidaddress")->insertAll($countyCiytes);
-                echo "country $countyid succ";
             } catch (\Exception $e) {
-                echo "insert county $countyid exception" . $e->getMessage();
             }
         }
         return "finished";
@@ -48,11 +45,12 @@ class SpAddress extends Controller
         return json_encode($this->getAllAddress(42));
     }
 
+
     public function getAllAddress($countryid)
     {
         $contryStateUrl = "https://www.chinalovecupid.com/zc/widget/loadstates?countryid=$countryid";
         $html = ExtGetHtml($contryStateUrl);
-        echo $html;
+        ExtWriteFile("addresses/$countryid states.json", $html);
         $states = json_decode($html);
         echo json_encode($states) . "ddddddddddddddddddd";
         $all = [];
