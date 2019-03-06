@@ -5,6 +5,7 @@ require('ext_util/fileUtil.php');
 require('ext_util/BytripUtil.php');
 
 use app\index\model\Address;
+use app\index\model\Member;
 use think\Controller;
 use think\Db;
 
@@ -62,6 +63,26 @@ class Sp extends Controller
             }
         }
         return "<br> spider complate";
+    }
+
+    public function downpics()
+    {
+        $pics = Member::table("member")->column("main_pic");
+        foreach ($pics as $pic) {
+            $picUrl = "http://www.bytrip.com/" . $pic;
+            ExtDownloadPic($picUrl);
+            echo $picUrl . "finished";
+        }
+        $pics = Member::table("pics")->column("file_path");
+        foreach ($pics as $pic) {
+            $picUrl = "http://www.bytrip.com/" . $pic;
+            ExtDownloadPic($picUrl);
+            echo $picUrl . "finished";
+        }
+
+
+        return json_encode($pics);
+
     }
 
     /**
