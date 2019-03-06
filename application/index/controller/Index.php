@@ -47,7 +47,8 @@ class Index extends Controller
         $loginUser = $this->loginUser();
         $this->assign([
                 'loginUser' => $loginUser,
-                "msgs" => json_encode(Message::all())
+                "msgs" => json_encode(Message::all()),
+                "lang" => cookie("think_var") ? cookie("think_var") : "en-us"
             ]
         );
     }
@@ -84,8 +85,6 @@ class Index extends Controller
             $this->nickNameToPinYing($cookieLang, $user);
             $mid = $loginUser->id;
         }
-
-
         $pno = intval(request()->param("pno", 1));
         $page = $pno . ",15";
         $dbMembers = Db::table('member')->where('id', "<>", $mid)->page($page)->select();
