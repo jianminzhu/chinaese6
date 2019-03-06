@@ -18,7 +18,7 @@ function ExtWriteFile($fileWithPath, $content, $isCover = false)
 }
 
 
-function ExtDownloadPic($url, $path = 'downloads/', $withHost = false, $isCover = false)
+function ExtDownloadPic($url, $path = '.', $withHost = false, $isCover = false)
 {
     $urlParam = parse_url($url);
     $pathinfo = pathinfo($urlParam["path"]);

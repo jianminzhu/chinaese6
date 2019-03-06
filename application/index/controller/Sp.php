@@ -79,8 +79,6 @@ class Sp extends Controller
             ExtDownloadPic($picUrl);
             echo $picUrl . " finished<br>";
         }
-
-
         return json_encode($pics);
 
     }
