@@ -13,6 +13,7 @@ class Index extends Controller
     public function index()
     {
         $this->headData();
+        $this->search();
         return $this->fetch('index');
     }
 
@@ -20,12 +21,6 @@ class Index extends Controller
     {
         $this->headData();
         return $this->fetch('msglist');
-    }
-
-    public function search()
-    {
-        $this->headData();
-        return $this->fetch('search');
     }
 
     public function isLogin()
@@ -49,32 +44,10 @@ class Index extends Controller
 
     public function headData()
     {
-        $cookieLang = cookie("think_var");
         $loginUser = $this->loginUser();
-        $mid = 0;
-        $user = [];
-        if ($loginUser) {
-            $user = clone $loginUser;
-            $this->nickNameToPinYing($cookieLang, $user);
-            $mid = $loginUser->id;
-        }
-        $pno = intval(request()->param("pno", 1));
-        $page = $pno . ",15";
-        $dbMembers  = Db::table('member')->where('id', "<>", $mid)->page($page)->select();
-        $members = [];
-        foreach ($dbMembers as $member) {
-            $members[]=$this->nickNameToPinYing($cookieLang, $member);
-        }
-        // 或者批量赋值
-        $this->assign(
-            [
-                "members" => $members,
-                'loginUser' => $loginUser
-                , "nextPno" => ++$pno,
-                'u' => $user,
-
-                "msgs" => json_encode(Message::all()),
-                'lang' => $cookieLang
+        $this->assign([
+                'loginUser' => $loginUser,
+                "msgs" => json_encode(Message::all())
             ]
         );
     }
@@ -91,6 +64,37 @@ class Index extends Controller
             $user["address"] = pinyinName($user["address"]);
         }
         return $user;
+    }
+
+    /**
+     * @param $mid
+     * @param $cookieLang
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public function search()
+    {
+
+        $cookieLang = cookie("think_var");
+        $loginUser = $this->loginUser();
+        $mid = 0;
+        if ($loginUser) {
+            $user = clone $loginUser;
+            $this->nickNameToPinYing($cookieLang, $user);
+            $mid = $loginUser->id;
+        }
+
+
+        $pno = intval(request()->param("pno", 1));
+        $page = $pno . ",15";
+        $dbMembers = Db::table('member')->where('id', "<>", $mid)->page($page)->select();
+        $members = [];
+        foreach ($dbMembers as $member) {
+            $members[] = $this->nickNameToPinYing($cookieLang, $member);
+        }
+        $this->assign("members", $members);
+        $this->assign("nextPno", ++$pno);
     }
 
 }

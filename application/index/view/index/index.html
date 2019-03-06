@@ -20,9 +20,9 @@
             <div class="mb1 me3 relative flex-none">
                 <div class="profile-image-header circle shadow border">
                     <div class="flex items-center justify-center height-12 circle overflow-hidden card-image-bg-color">
-                        <a class="col-12 height-12" target="_blank" href="/index.php/index/m/profile?id={$u.id}">
+                        <a class="col-12 height-12" target="_blank" href="/index.php/index/m/profile?id={$loginUser.id}">
                             <div class="profile-bg"
-                                 style="background-image:url('{$u.main_pic}')"></div>
+                                 style="background-image:url('{$loginUser.main_pic}')"></div>
                         </a>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class="me2 col-6">
-                <h1 class="m0 flex items-center">{$u.nickname|default=""},{:lang("您好")}</h1>
+                <h1 class="m0 flex items-center">{$loginUser.nickname|default=""},{:lang("您好")}</h1>
 
                 <a class="next-step block mt1 p1 header-strip-color relative white rounded bg-search button overflow-hidden shadow"
                    href="/zc/profilemanagement/editprofilephotos">
