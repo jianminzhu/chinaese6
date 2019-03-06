@@ -71,13 +71,13 @@ class Sp extends Controller
         foreach ($pics as $pic) {
             $picUrl = "http://www.bytrip.com/" . $pic;
             ExtDownloadPic($picUrl);
-            echo $picUrl . "finished";
+            echo $picUrl . " finished<br>";
         }
         $pics = Member::table("pics")->column("file_path");
         foreach ($pics as $pic) {
             $picUrl = "http://www.bytrip.com/" . $pic;
             ExtDownloadPic($picUrl);
-            echo $picUrl . "finished";
+            echo $picUrl . " finished<br>";
         }
 
 
