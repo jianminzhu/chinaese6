@@ -1,6 +1,6 @@
 <?php
 
-//include_once("../application/index/controller/ext_util/fileUtil.php");
+include_once("../application/index/controller/ext_util/fileUtil.php");
 //
 //$urls = [
 //    "http://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css",
@@ -14,5 +14,5 @@
 //}
 
 
-
+ExtDownloadPic("http://www.bytrip.com/Uploads/Picture/2018-08-03/5b6406109c1f9.jpeg", ".");
 
