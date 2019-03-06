@@ -9,10 +9,10 @@
     <meta name="stm-result" content="ok"/>
     <meta name="keywords" content="{$keywords|default=''}"/>
     {include file="../application/index/view/index/_commoncss.html" /}
+    <script src="/pagejs/index.js"></script>
 </head>
 <body>
 {include file="../application/index/view/index/_head.html" /}
-
 <div class="header-strip height-auto px3 py2">
     {if condition="$Think.session.isLogin eq true"}
     <div class="max-width flex items-center justify-between mx-auto">
@@ -969,7 +969,7 @@
             <div class="card height-12 flex items-center justify-center next-button rounded border">
                 <div class="flex items-center">
                     <div class="center">
-                        <h2 class="h2 m0 caps">下一页</h2>
+                        <h2 class="h2 m0 caps">{:lang("下一页")}</h2>
                     </div>
                     <div class="fill-standard">
                         <svg class="icon-next-button">
@@ -992,7 +992,7 @@
                         <use xlink:href="/assets/desktop/icons/icons.svg#icon-first"></use>
                     </svg>
                 </div>
-                <a href="/?pno=1">第一页</a>
+                <a href="/?pno=1">{:lang("第一页")}</a>
             </div>
 
             <div class="flex items-center opacity-6">
@@ -1001,7 +1001,7 @@
                         <use xlink:href="/assets/desktop/icons/icons.svg#icon-menuleft"></use>
                     </svg>
                 </div>
-                上一页
+                <a href="/?pno={$nextPno-2<=0?1:$nextPno-2}"> {:lang("上一页")}</a>
             </div>
 
         </div>
@@ -1010,7 +1010,7 @@
 
             <a href="/?pno={$nextPno}">
                 <div class="flex items-center">
-                    下一页
+                    {:lang("下一页")}
                     <div class="fill-standard mx1">
                         <svg class="icon-next">
                             <use xlink:href="/assets/desktop/icons/icons.svg#icon-menuright"></use>
@@ -1021,7 +1021,7 @@
 
             <a href="showMenu?pageno=29">
                 <div class="flex items-center ms2">
-                    最末页
+                    {:lang("最末页")}
                     <div class="fill-standard ms1">
                         <svg class="icon-last">
                             <use xlink:href="/assets/desktop/icons/icons.svg#icon-last"></use>

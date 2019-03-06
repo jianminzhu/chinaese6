@@ -5,6 +5,9 @@ namespace app\index\controller;
 use app\index\model\Message;
 use think\Controller;
 use think\Db;
+use think\db\exception\DataNotFoundException;
+use think\db\exception\ModelNotFoundException;
+use think\exception\DbException;
 
 include_once "ext_util/pinyin.php";
 
@@ -13,7 +16,12 @@ class Index extends Controller
     public function index()
     {
         $this->headData();
-        $this->search();
+        try {
+            $this->search();
+        } catch (DataNotFoundException $e) {
+        } catch (ModelNotFoundException $e) {
+        } catch (DbException $e) {
+        }
         return $this->fetch('index');
     }
 
@@ -94,6 +102,7 @@ class Index extends Controller
         }
         $this->assign("members", $members);
         $this->assign("nextPno", ++$pno);
+
     }
 
 }

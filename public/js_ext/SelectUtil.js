@@ -20,3 +20,8 @@ function GenSelectOption(id, data, valueKey, showKey, selectValue) {
         $it.value = selectValue;
     }
 }
+function GenSelect2(main, sencod, data, valueKey, showKey, selectValue) {
+    if (data === void 0) { data = []; }
+    if (showKey === void 0) { showKey = valueKey; }
+    console.log(document.getElementsByName(main)[0]);
+}

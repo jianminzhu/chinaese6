@@ -19,4 +19,15 @@ function GenSelectOption(id, data = [], valueKey , showKey = valueKey,selectValu
     }
 }
 
+function GenSelect2(main,sencod, data = [], valueKey , showKey = valueKey,selectValue) {
+    console.log(document.getElementsByName(main)[0] )
+
+
+
+}
+
+
+
+
+
 
