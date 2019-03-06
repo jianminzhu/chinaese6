@@ -59,7 +59,7 @@ class Index extends Controller
             $mid = $loginUser->id;
         }
         $pno = intval(request()->param("pno", 1));
-        $page = $pno . ",10";
+        $page = $pno . ",15";
         $dbMembers  = Db::table('member')->where('id', "<>", $mid)->page($page)->select();
         $members = [];
         foreach ($dbMembers as $member) {
