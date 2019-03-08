@@ -114,7 +114,7 @@ class Index extends Controller
                 $table->where("age", "<", $age_max);
             }
             if (trim($sex)!=""&& $sex != "-1") {
-                $table->where("sex", ">", $sex);
+                $table->where("sex",   $sex);
             }
             if (trim($countryLive)!=""&& $countryLive != "-1") {
                 $table->where("countryid", $countryLive);
