@@ -15,16 +15,16 @@ $(function () {
         $stateLive.html("");
         $cityLive.html("");
         json("/index.php/index/addr/loadstates", { countryid: countryid }).then(function (data) {
-            data.splice(0, 0, { n: "", v: "-1" });
-            GenSelectOption($stateLive.get(0), data, "v", "n");
+            data.splice(0, 0, { n: "Any", v: "-1", cn: "任意" });
+            GenSelectOption($stateLive.get(0), data, "v", LANG == "en-us" ? "n" : "cn");
         });
     });
     $stateLive.on("change", function () {
         var stateid = $(this).val();
         $cityLive.html("");
         json("/index.php/index/addr/loadstates", { stateid: stateid }).then(function (data) {
-            data.splice(0, 0, { n: "", v: "-1" });
-            GenSelectOption($cityLive.get(0), data, "v", "n");
+            data.splice(0, 0, { n: "Any", v: "-1", cn: "任意" });
+            GenSelectOption($cityLive.get(0), data, "v", LANG == "en-us" ? "n" : "cn");
         });
     });
 });

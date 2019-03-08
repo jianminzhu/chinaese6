@@ -54,12 +54,12 @@ class Addr extends Controller
     {
         $stateid = request()->param("stateid");
         if ($stateid && trim($stateid) != "") {
-            return json_encode(Db::query("select translation as n, attributeid as v from cupidaddress where stateid=?", [$stateid]));
+            return json_encode(Db::query("select translation as n, attributeid as v,chinese as cn from cupidaddress where stateid=?", [$stateid]));
         }
 
         $countryid = request()->param("countryid");
         if ($countryid && trim($countryid) != "") {
-            $data = Db::query("select translation as n, attributeid as v from cupidaddress where stateid is null  and countryid=?", [$countryid]);
+            $data = Db::query("select translation as n, attributeid as v,chinese as cn from cupidaddress where stateid is null  and countryid=?", [$countryid]);
             return json_encode($data);
         }
         return json_encode([]);

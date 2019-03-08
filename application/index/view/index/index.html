@@ -9,6 +9,7 @@
     <meta name="stm-result" content="ok"/>
     <meta name="keywords" content="{$keywords|default=''}"/>
     {include file="../application/index/view/index/_commoncss.html" /}
+    <script>LANG="{$lang}"</script>
     <script src="/js_ext/SelectUtil.js"></script>
     <script src="/pagejs/index.js"></script>
 </head>
@@ -596,7 +597,7 @@
                 </select>
                 {else}
                 <select name="countryLive" class="form-control" data-dependentselect="stateLive">
-                    <option value="-1">任何国家</option>
+                    <option value="-1">任何</option>
 
                     <optgroup label="热门搜索国家">
                         <option value="42">中国</option>
@@ -866,7 +867,7 @@
                         formaction="/zc/widget/loadstates?countryid="
                         data-datamap="{&quot;group&quot;:&quot;STATEVALUE&quot;,&quot;text&quot;:&quot;TRANSLATION&quot;,&quot;value&quot;:&quot;ATTRIBUTEID&quot;}">
 
-                    <option value="-1">{:lang("任何州")}</option>
+                    <option value="-1">{:lang("任何")}</option>
 
                 </select>
 
@@ -880,7 +881,7 @@
                         formaction="/zc/widget/loadcities?stateid="
                         data-datamap="{&quot;group&quot;:&quot;STATEVALUE&quot;,&quot;text&quot;:&quot;TRANSLATION&quot;,&quot;value&quot;:&quot;ATTRIBUTEID&quot;}">
 
-                    <option value="-1">{:lang("任何城市")}</option>
+                    <option value="-1">{:lang("任何")}</option>
 
                 </select>
 
