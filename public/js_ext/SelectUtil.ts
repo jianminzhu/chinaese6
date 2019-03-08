@@ -6,22 +6,20 @@
  * @param  showKey  option中显示值 通过什么key 获取
  * @param  selectedValue 选择的项目
  */
-function GenSelectOption(id, data = [], valueKey , showKey = valueKey,selectValue) {
+function GenSelectOption($it, data = [], valueKey, showKey = valueKey, selectValue=undefined) {
     var options = []
     for (let i = 0; i < data.length; i++) {
         var row = data[i];
         options[options.length] = `<option value="${row[valueKey]}" >${row[showKey]}</option>`
     }
-    let $it = document.getElementById(id);
     $it.innerHTML = options.join("");
     if (selectValue != undefined) {
-        $it.value=selectValue;
+        $it.value = selectValue;
     }
 }
 
-function GenSelect2(main,sencod, data = [], valueKey , showKey = valueKey,selectValue) {
-    console.log(document.getElementsByName(main)[0] )
-
+function GenSelect2(main, sencod, data = [], valueKey, showKey = valueKey, selectValue) {
+    console.log(document.getElementsByName(main)[0])
 
 
 }

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../third/cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <title>采集指定会员</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+
+            <form method="post" action="/index.php/index/addr/saveAddrs" target="_blank">
+                <div class="form-group">
+                    <label>addressJsonStr</label>
+                    <select id="cupid">
+                        <option value="563">安徽</option>
+                        <option value="583">北京</option>
+                        <option value="569">福建</option>
+                        <option value="577">甘肃</option>
+                        <option value="590">广东</option>
+                        <option value="578">广西</option>
+                        <option value="579">贵州</option>
+                        <option value="591">海南</option>
+                        <option value="572">河北</option>
+                        <option value="571">河南</option>
+                        <option value="570">黑龙江</option>
+                        <option value="574">湖北</option>
+                        <option value="573">湖南</option>
+                        <option value="567">吉林</option>
+                        <option value="566">江苏</option>
+                        <option value="565">江西</option>
+                        <option value="580">辽宁</option>
+                        <option value="581">内蒙古</option>
+                        <option value="582">宁夏</option>
+                        <option value="568">青海</option>
+                        <option value="586">山东</option>
+                        <option value="585">山西</option>
+                        <option value="587">陕西</option>
+                        <option value="584">上海</option>
+                        <option value="592">四川</option>
+                        <option value="588">天津</option>
+                        <option value="576">西藏</option>
+                        <option value="575">新疆</option>
+                        <option value="589">云南</option>
+                        <option value="564">浙江</option>
+                        <option value="593">重庆</option>
+
+                    </select>
+                    <select id="bytrip">
+                        <option value="110000">北京</option>
+                        <option value="120000">天津</option>
+                        <option value="130000">河北</option>
+                        <option value="140000">山西</option>
+                        <option value="150000">内蒙古</option>
+                        <option value="210000">辽宁</option>
+                        <option value="220000">吉林</option>
+                        <option value="230000">黑龙江</option>
+                        <option value="110000">北京</option>
+                        <option value="120000">天津</option>
+                        <option value="130000">河北</option>
+                        <option value="140000">山西</option>
+                        <option value="150000">内蒙古</option>
+                        <option value="210000">辽宁</option>
+                        <option value="220000">吉林</option>
+                        <option value="230000">黑龙江</option>
+                        <option value="310000">上海</option>
+                        <option value="320000">江苏</option>
+                        <option value="330000">浙江</option>
+                        <option value="340000">安徽</option>
+                        <option value="350000">福建</option>
+                        <option value="360000">江西</option>
+                        <option value="370000">山东</option>
+                        <option value="410000">河南</option>
+                        <option value="420000">湖北</option>
+                        <option value="430000">湖南</option>
+                        <option value="440000">广东</option>
+                        <option value="450000">广西</option>
+                        <option value="460000">海南</option>
+                        <option value="500000">重庆</option>
+                        <option value="510000">四川</option>
+                        <option value="520000">贵州</option>
+                        <option value="530000">云南</option>
+                        <option value="540000">西藏</option>
+                        <option value="610000">陕西</option>
+                        <option value="620000">甘肃</option>
+                        <option value="630000">青海</option>
+                        <option value="640000">宁夏</option>
+                        <option value="650000">新疆</option>
+                        <option value="710000">台湾</option>
+                        <option value="810000">香港</option>
+                        <option value="820000">澳门</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+                    <label>sqls</label>
+                    <textarea id="out" class="form-control" cols="30" rows="10"></textarea>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="../third/cdn.bootcss.com/jquery/3.3.1/jquery-3.3.1.min.js"></script>
+<!--<script src="./third/cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="./third/cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
+<script>
+    $(function () {
+        var allProvices = {}
+        $("#cupid option").each(function () {
+            var value = $(this).attr("value");
+            var provice = $(this).text();
+            allProvices[provice] = allProvices[provice] || {};
+            allProvices[provice].cupid = value;
+        })
+        $("#bytrip option").each(function () {
+            var value = $(this).attr("value");
+            var provice = $(this).text();
+            allProvices[provice] = allProvices[provice] || {};
+            allProvices[provice].bytrip = value;
+        })
+        sqls = []
+        Reflect.ownKeys(allProvices).forEach(function (key) {
+            let provice = allProvices[key]
+            sqls.push(`UPDATE bytripaddres SET stateid=   ${provice["cupid"]}  WHERE pid=${provice["bytrip"]}`)
+        });
+
+        $("#out").text(sqls.join(";\n"));
+    })
+</script>
+</body>
+</html>

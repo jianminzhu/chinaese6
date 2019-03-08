@@ -7,23 +7,78 @@ require('ext_util/BytripUtil.php');
 use think\Controller;
 use think\Db;
 
-
-class SpAddress extends Controller
+/**
+ * 数组 转 对象
+ *
+ * @param array $arr 数组
+ * @return object
+ */
+function array_to_object($arr)
 {
-    public function loadcities()
+    if (gettype($arr) != 'array') {
+        return;
+    }
+    foreach ($arr as $k => $v) {
+        if (gettype($v) == 'array' || getType($v) == 'object') {
+            $arr[$k] = (object)array_to_object($v);
+        }
+    }
+
+    return (object)$arr;
+}
+
+/**
+ * 对象 转 数组
+ *
+ * @param object $obj 对象
+ * @return array
+ */
+function object_to_array($obj)
+{
+    $obj = (array)$obj;
+    foreach ($obj as $k => $v) {
+        if (gettype($v) == 'resource') {
+            return;
+        }
+        if (gettype($v) == 'object' || gettype($v) == 'array') {
+            $obj[$k] = (array)object_to_array($v);
+        }
+    }
+
+    return $obj;
+}
+
+class Addr extends Controller
+{
+    public function loadstates()
     {
         $stateid = request()->param("stateid");
-        echo $stateid;
         if ($stateid && trim($stateid) != "") {
-            return json_encode(Db::table("cupidaddress")->where("stateid", $stateid)->select());
+            return json_encode(Db::query("select translation as n, attributeid as v from cupidaddress where stateid=?", [$stateid]));
         }
+
         $countryid = request()->param("countryid");
         if ($countryid && trim($countryid) != "") {
-            return json_encode(Db::table("cupidaddress")->where(["countryid" => $countryid, "stateid" => null])->select());
+            $data = Db::query("select translation as n, attributeid as v from cupidaddress where stateid is null  and countryid=?", [$countryid]);
+            return json_encode($data);
         }
         return json_encode([]);
     }
 
+
+    public function saveAddrs()    //    /index.php/index/addr/saveAddrs
+    {
+        $addrs = json_decode(request()->param("addressJsonStr"));
+        foreach ($addrs as $addr) {
+            try {
+
+                Db::table("bytripaddres")->insert(object_to_array($addr));
+            } catch (\Exception $e) {
+                echo "" . $e->getMessage();
+            }
+        }
+        return "finished";
+    }
 
     public function allCounty()
     {
