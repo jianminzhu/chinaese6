@@ -85,6 +85,7 @@ class Index extends Controller
     public function search()
     {
 
+
         $cookieLang = cookie("think_var");
         $loginUser = $this->loginUser();
         $mid = 0;
@@ -95,7 +96,41 @@ class Index extends Controller
         }
         $pno = intval(request()->param("pno", 1));
         $page = $pno . ",15";
-        $dbMembers = Db::table('member')->where('id', "<>", $mid)->page($page)->select();
+        $table = Db::table('member');
+        $table->where('id', "<>", $mid);
+
+        try {
+            $sex = request()->param("sex");
+            $age_min = request()->param("age_min");
+            $age_max = request()->param("age_max");
+            $countryLive = request()->param("countryLive");
+            $stateLive = request()->param("stateLive");
+            $cityLive = request()->param("cityLive");
+
+            if (trim($age_min)!=""&&$age_min != "-1") {
+                $table->where("age", ">", $age_min);
+            }
+            if (trim($age_max)!=""&& $age_max != "-1") {
+                $table->where("age", "<", $age_max);
+            }
+            if (trim($sex)!=""&& $sex != "-1") {
+                $table->where("sex", ">", $sex);
+            }
+            if (trim($countryLive)!=""&& $countryLive != "-1") {
+                $table->where("countryid", $countryLive);
+            }
+            if (trim($stateLive)!=""&& $stateLive != "-1") {
+                $table->where("stateid", $stateLive);
+            }
+            if (trim($cityLive)!=""&& $cityLive != "-1") {
+                $table->where("cityid", $cityLive);
+            }
+        } catch (\Exception $e) {
+
+        }
+
+
+        $dbMembers = $table->page($page)->select();
         $members = [];
         foreach ($dbMembers as $member) {
             $members[] = $this->nickNameToPinYing($cookieLang, $member);

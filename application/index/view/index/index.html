@@ -9,7 +9,7 @@
     <meta name="stm-result" content="ok"/>
     <meta name="keywords" content="{$keywords|default=''}"/>
     {include file="../application/index/view/index/_commoncss.html" /}
-    <script>LANG="{$lang}"</script>
+    <script>LANG = "{$lang}"</script>
     <script src="/js_ext/SelectUtil.js"></script>
     <script src="/pagejs/index.js"></script>
 </head>
@@ -141,14 +141,13 @@
             <div class="border-bottom m1 col-2">
                 <label for="form-quick-search-seeking">{:lang('寻找')}</label>
 
-
-                <select name="gender_w" id="form-quick-search-seeking" class="col-12">
+                <select name="sex" id="form-quick-search-seeking" class="col-12">
 
                     <option value="-1">{:lang("不限")}</option>
 
-                    <option value="253">{:lang("男性")}</option>
+                    <option value="1">{:lang("男性")}</option>
 
-                    <option value="254" selected="">{:lang("女性")}</option>
+                    <option value="0" selected="">{:lang("女性")}</option>
 
                 </select>
 
@@ -335,6 +334,7 @@
                     </select>
                 </div>
             </div>
+
 
             <div class="border-bottom m1 col-2">
                 <label for="form-quick-search-country">{:lang("国家")}</label>
@@ -859,36 +859,23 @@
             </div>
 
             <div class="border-bottom m1 col-2">
-
                 <label for="form-quick-search-state">{:lang('省/县')}</label>
-
-
                 <select name="stateLive" id="form-quick-search-state" class="col-12" data-dependentselect="cityLive"
                         formaction="/zc/widget/loadstates?countryid="
                         data-datamap="{&quot;group&quot;:&quot;STATEVALUE&quot;,&quot;text&quot;:&quot;TRANSLATION&quot;,&quot;value&quot;:&quot;ATTRIBUTEID&quot;}">
-
                     <option value="-1">{:lang("任何")}</option>
-
                 </select>
-
             </div>
 
             <div class="border-bottom m1 col-2">
                 <label for="form-quick-search-city">{:lang('市')}</label>
-
-
                 <select name="cityLive" id="form-quick-search-city" class="col-12"
                         formaction="/zc/widget/loadcities?stateid="
                         data-datamap="{&quot;group&quot;:&quot;STATEVALUE&quot;,&quot;text&quot;:&quot;TRANSLATION&quot;,&quot;value&quot;:&quot;ATTRIBUTEID&quot;}">
-
                     <option value="-1">{:lang("任何")}</option>
-
                 </select>
 
             </div>
-            <input type="hidden" value="1" name="hasPhoto">
-            <input type="hidden" value="advanced" name="resulttype">
-
             <button class="h4 py1 px2 rounded shadow border-none upper-case pointer">{:lang("搜索")}</button>
         </div>
     </form>
