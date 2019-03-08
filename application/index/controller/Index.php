@@ -114,7 +114,7 @@ class Index extends Controller
                 $table->where("age", "<", $age_max);
             }
             if (trim($sex)!=""&& $sex != "-1") {
-                $table->where("sex",   $sex);
+                $table->where("sex", $sex);
             }
             if (trim($countryLive)!=""&& $countryLive != "-1") {
                 $table->where("countryid", $countryLive);
@@ -125,12 +125,19 @@ class Index extends Controller
             if (trim($cityLive)!=""&& $cityLive != "-1") {
                 $table->where("cityid", $cityLive);
             }
+
         } catch (\Exception $e) {
 
         }
 
+        try {
+            $dbMembers = $table->page($page)->select();
+        } catch (DataNotFoundException $e) {
+        } catch (ModelNotFoundException $e) {
+        } catch (DbException $e) {
+        }
 
-        $dbMembers = $table->page($page)->select();
+
         $members = [];
         foreach ($dbMembers as $member) {
             $members[] = $this->nickNameToPinYing($cookieLang, $member);
