@@ -36,7 +36,7 @@ class M extends Controller
         $index = new Index();
         $index->headData();
         $id = request()->param("id");
-        return view('/index/profile',$this->getMember($id) );
+        return view('/index/profile', $this->getMember($id));
     }
 
 
@@ -45,9 +45,9 @@ class M extends Controller
         $index = new Index();
         $index->headData();
         $loginUser = session("loginUser");
-        if($loginUser){
+        if ($loginUser) {
             return view('/index/profiledit', $this->getMember($loginUser->id));
-        }else{
+        } else {
             session("lastUrl", "/index.php/index/index/m/profiledit");
             return redirect('/index.php/index/a/login');
         }
@@ -68,7 +68,6 @@ class M extends Controller
     }
 
 
-
     //上传照片
     public function uploadPhoto()
     {
@@ -82,31 +81,31 @@ class M extends Controller
                 $mid = $loginUser->id;
                 if ($type == "main") {
                     $loginUser->main_pic = $pic_path;
-                    Db::table("member") -> where("id", $mid)->update(['main_pic' => $pic_path]);
-                }else{
-                    $pic = new Pics(["m_id" => $mid, "file_path" =>  $pic_path]);
+                    Db::table("member")->where("id", $mid)->update(['main_pic' => $pic_path]);
+                } else {
+                    $pic = new Pics(["m_id" => $mid, "file_path" => $pic_path]);
                     $pic->save();
                 }
             }
         }
         return redirect("/index.php/index/m/profiledit");
     }  //上传照片
+
     public function uploadInfo()
     {
         if (session('?loginUser')) {
             $loginUser = session("loginUser");
             $mid = $loginUser->id;
             $member = new Member();
-           $this->unsetItem("cityid", -1);
-           $this->unsetItem("stateid", -1);
-           $this->unsetItem("countryid", -1);
+            $this->unsetItem("cityid", -1);
+            $this->unsetItem("stateid", -1);
+            $this->unsetItem("countryid", -1);
             $member->allowField(true)->save($_REQUEST, ['id' => $mid]);
         }
-        return json_encode($_REQUEST);
-//        return redirect("/index.php/index/m/profiledit");
+        return redirect("/index.php/index/m/profiledit");
     }
 
-    public function unsetItem( $key, $compare)
+    public function unsetItem($key, $compare)
     {
         try {
             if ($_REQUEST[$key] == $compare) {
