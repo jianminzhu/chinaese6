@@ -2,7 +2,7 @@
     <div class="max-width mx-auto mt0 px2">
         <div class="flex items-center justify-between mt4 max-width mx-auto"></div>
     </div>
-    <div class="flex flex-wrap justify-center max-width mx-auto" data-reflow="true">
+    <div class="flex flex-wrap justify-center max-width mx-auto" href="#results" data-reflow="true">
         {volist name="members" id="m"}
         <div class="card-s card m1 flex flex-wrap overflow-hidden bg-white shadow relative">
             <a id="{$m.id}" class="absolute top-minus-100"></a>
@@ -64,8 +64,8 @@
             </div>
         </div>
         {/volist}
-        {if condition="$nextPno!=$lastPno"}
-        <a data-page="{$nextPno}" class="block col m1 card-s">
+        {if condition="$pno!=$lastPno"}
+        <a href="#searchForm" data-page="{$nextPno}" class="block col m1 card-s">
             <div class="col-12 height-12">
                 <div class="card height-12 flex items-center justify-center next-button rounded border">
                     <div class="flex items-center">
@@ -92,7 +92,7 @@
                             <use xlink:href="/assets/desktop/icons/icons.svg#icon-first"></use>
                         </svg>
                     </div>
-                    <a data-page="1">{:lang("第一页")}</a>
+                    <a href="#searchForm" data-page="1">{:lang("第一页")}</a>
                 </div>
 
                 <div class="flex items-center opacity-6">
@@ -101,14 +101,14 @@
                             <use xlink:href="/assets/desktop/icons/icons.svg#icon-menuleft"></use>
                         </svg>
                     </div>
-                    <a data-page="{$prevPno}"> {:lang("上一页")}</a>
+                    <a href="#searchForm" data-page="{$prevPno}"> {:lang("上一页")}</a>
                 </div>
 
             </div>
 
             <div class="flex">
 
-                <a data-page="{$nextPno}">
+                <a href="#searchForm" data-page="{$nextPno}">
                     <div class="flex items-center">
                         {:lang("下一页")}
                         <div class="fill-standard mx1">
@@ -119,7 +119,7 @@
                     </div>
                 </a>
 
-                <a data-page="{$lastPno}">
+                <a href="#searchForm" data-page="{$lastPno}">
                     <div class="flex items-center ms2">
                         {:lang("最末页")}
                         <div class="fill-standard ms1">

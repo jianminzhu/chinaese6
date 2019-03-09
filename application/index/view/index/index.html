@@ -136,7 +136,7 @@
 </div>
 {/if}
 <div class="max-width mx-auto mt0 px2">
-    <form name="searchForm"  >
+    <form name="searchForm" id="searchForm"  >
         <div class="search mt2 p2  mx-auto shadow rounded flex flex-wrap items-center justify-between max-width">
             <div class="border-bottom m1 col-2">
                 <label for="form-quick-search-seeking">{:lang('寻找')}</label>
@@ -880,7 +880,7 @@
         </div>
     </form>
 </div>
-<div name="searchResults">
+<div name="searchResults" id="searchResults">
 {include file="../application/index/view/index/search.html" /}
 </div>
 <!--Body end-->
