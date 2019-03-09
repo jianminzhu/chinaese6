@@ -17,7 +17,7 @@ class Index extends Controller
     {
         $this->headData();
         try {
-            $this->search();
+            $this->searchData();
         } catch (DataNotFoundException $e) {
         } catch (ModelNotFoundException $e) {
         } catch (DbException $e) {
@@ -75,6 +75,12 @@ class Index extends Controller
         return $user;
     }
 
+    public function search()
+    {
+        $this->searchData();
+        return view("/index/search");
+    }
+
     /**
      * @param $mid
      * @param $cookieLang
@@ -82,11 +88,14 @@ class Index extends Controller
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public function search()
+    public function searchData()
     {
-
-
         $cookieLang = cookie("think_var");
+        if ($cookieLang) {
+            $this->assign("lang", $cookieLang);
+        } else {
+            $this->assign("lang", "en-us");
+        }
         $loginUser = $this->loginUser();
         $mid = 0;
         if ($loginUser) {
@@ -107,29 +116,29 @@ class Index extends Controller
             $stateLive = request()->param("stateLive");
             $cityLive = request()->param("cityLive");
 
-            if (trim($age_min)!=""&&$age_min != "-1") {
+            if (trim($age_min) != "" && $age_min != "-1") {
                 $table->where("age", ">", $age_min);
             }
-            if (trim($age_max)!=""&& $age_max != "-1") {
+            if (trim($age_max) != "" && $age_max != "-1") {
                 $table->where("age", "<", $age_max);
             }
-            if (trim($sex)!=""&& $sex != "-1") {
+            if (trim($sex) != "" && $sex != "-1") {
                 $table->where("sex", $sex);
             }
-            if (trim($countryLive)!=""&& $countryLive != "-1") {
+            if (trim($countryLive) != "" && $countryLive != "-1") {
                 $table->where("countryid", $countryLive);
             }
-            if (trim($stateLive)!=""&& $stateLive != "-1") {
+            if (trim($stateLive) != "" && $stateLive != "-1") {
                 $table->where("stateid", $stateLive);
             }
-            if (trim($cityLive)!=""&& $cityLive != "-1") {
+            if (trim($cityLive) != "" && $cityLive != "-1") {
                 $table->where("cityid", $cityLive);
             }
 
         } catch (\Exception $e) {
 
         }
-
+        $dbMembers = [];
         try {
             $dbMembers = $table->page($page)->select();
         } catch (DataNotFoundException $e) {
@@ -144,7 +153,6 @@ class Index extends Controller
         }
         $this->assign("members", $members);
         $this->assign("nextPno", ++$pno);
-
     }
 
 }
