@@ -52,11 +52,19 @@ class Index extends Controller
 
     public function headData()
     {
+        $cookieLang = cookie("think_var");
+        $lang = "en-us";
+        if ($cookieLang) {
+            $lang = $cookieLang;
+        } else {
+            cookie("think_var", $lang);
+        }
         $loginUser = $this->loginUser();
         $this->assign([
                 'loginUser' => $loginUser,
                 "msgs" => json_encode(Message::all()),
-                "lang" => cookie("think_var") ? cookie("think_var") : "en-us"
+                "lang" => $lang,
+
             ]
         );
     }
@@ -152,7 +160,7 @@ class Index extends Controller
                 $pno = $lastPno;
                 $nextPno = $pno;
             } else {
-                $nextPno = $pno+1;
+                $nextPno = $pno + 1;
             }
             $dbMembers = $table->page("$pno,$pageSize")->select();
         } catch (DataNotFoundException $e) {
@@ -165,7 +173,7 @@ class Index extends Controller
         }
         $this->assign("members", $members);
         $this->assign("pno", $pno);
-        $this->assign("prevPno", $pno > 1 ?  $pno-1 : $pno);
+        $this->assign("prevPno", $pno > 1 ? $pno - 1 : $pno);
         $this->assign("nextPno", $nextPno);
         $this->assign("lastPno", $lastPno);
     }

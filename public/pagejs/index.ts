@@ -4,7 +4,7 @@ function json(url, data) {
     });
 }
 
-$(function () {
+function search() {
     function s(name) {
         return $(`select[name=${name}]`);
     }
@@ -53,5 +53,8 @@ $(function () {
         });
         return false;
     })
+}
 
+$(function () {
+    search();
 })

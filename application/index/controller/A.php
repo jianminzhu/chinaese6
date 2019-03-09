@@ -4,8 +4,6 @@ namespace app\index\controller;
 
 use app\index\model\Member;
 use think\Controller;
-use think\Session;
-use think\Lang;
 
 /**
  * Class Auth
@@ -24,7 +22,8 @@ class A extends Controller
     /**
      * 安全退出
      */
-    public function logout(){
+    public function logout()
+    {
         session('loginUser', null);
 
         session("isLogin", null);
@@ -50,25 +49,29 @@ class A extends Controller
 
 
         $type = request()->param("type", "");
-         if ($type == "json") {
-             return json_encode(["isSucc" => $isSucc, 'emsg' => $emsg]);//,"phpMd5pwd"=>$phpMd5pwd,"mmd5"=>$mysqlMd5pwd
-         }else{
+        if ($type == "json") {
+            return json_encode(["isSucc" => $isSucc, 'emsg' => $emsg]);//,"phpMd5pwd"=>$phpMd5pwd,"mmd5"=>$mysqlMd5pwd
+        } else {
             if ($isSucc === 1) {
                 $lastUrl = session("lastUrl");
+                if ($lastUrl) {
+                    session("lastUrl", null);
+                    redirect($lastUrl);
+                } else {
 
-                return redirect("/");
+                    return redirect("/");
+                }
+
             } else {
-                return $this->error( "邮箱密码不匹配" ,url("login")  ) ;
+                return $this->error("邮箱密码不匹配", url("login"));
             }
         }
     }
 
 
-
-
-
-    public function tolang() {
-        $lang=input('lang');
+    public function tolang()
+    {
+        $lang = input('lang');
         switch ($lang) {
             case 'en':
                 cookie('think_var', 'en-us');
@@ -77,7 +80,7 @@ class A extends Controller
                 cookie('think_var', 'zh-cn');
                 break;
             default:
-                cookie('think_var','zh-cn');
+                cookie('think_var', 'zh-cn');
                 break;
         }
     }
