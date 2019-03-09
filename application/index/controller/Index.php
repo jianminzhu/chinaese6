@@ -160,6 +160,7 @@ class Index extends Controller
         }
         $lastPno = $pno;
         $nextPno = $pno;
+
         try {
             $pageSize = 15;
             $count = $table->count();
@@ -171,6 +172,7 @@ class Index extends Controller
                 $nextPno = $pno + 1;
             }
             $dbMembers = $table->page("$pno,$pageSize")->select();
+            echo $table->getLastSql();
         } catch (DataNotFoundException $e) {
         } catch (ModelNotFoundException $e) {
         } catch (DbException $e) {

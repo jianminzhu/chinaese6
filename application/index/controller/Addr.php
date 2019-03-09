@@ -52,17 +52,18 @@ class Addr extends Controller
 {
     public function loadstates()
     {
+        $data = [];
         $stateid = request()->param("stateid");
         if ($stateid && trim($stateid) != "") {
-            return json_encode(Db::query("select translation as n, attributeid as v,chinese as cn from cupidaddress where stateid=?", [$stateid]));
+            $data= Db::query("select translation as n, attributeid as v,chinese as cn from cupidaddress where stateid=?", [$stateid]) ;
         }
 
         $countryid = request()->param("countryid");
         if ($countryid && trim($countryid) != "") {
             $data = Db::query("select translation as n, attributeid as v,chinese as cn from cupidaddress where stateid is null  and countryid=?", [$countryid]);
-            return json_encode($data);
+
         }
-        return json_encode([]);
+        return ($data);
     }
 
 
@@ -107,7 +108,6 @@ class Addr extends Controller
         $html = ExtGetHtml($contryStateUrl);
         ExtWriteFile("addresses/$countryid states.json", $html);
         $states = json_decode($html);
-        echo json_encode($states) . "ddddddddddddddddddd";
         $all = [];
         foreach ($states as $state) {
             $stateId = $state->ATTRIBUTEID;

@@ -6,7 +6,8 @@
     <title></title>
     <meta name="keywords" content="{$keywords|default=''}"/>
 
-    <meta name="viewport" content="height=device-height, initial-scale=1, user-scalable=no, maximum-scale=1, shrink-to-fit=yes">
+    <meta name="viewport"
+          content="height=device-height, initial-scale=1, user-scalable=no, maximum-scale=1, shrink-to-fit=yes">
     {include file="../application/index/view/index/_commoncss.html" /}
     <script src="/pagejs/index.js?v=1.1"></script>
 </head>
@@ -133,11 +134,11 @@
 </div>
 {/if}
 <div class="max-width mx-auto mt0 px2">
-    <form name="searchForm" id="searchForm"  >
+    <form name="searchForm" id="searchForm">
         <div class="search mt2 p2  mx-auto shadow rounded flex flex-wrap items-center justify-between max-width">
             <div class="border-bottom m1 col-2">
                 <label for="form-quick-search-seeking">{:lang('寻找')}</label>
-                <input type="hidden" name="pno" value="1" />
+                <input type="hidden" name="pno" value="1"/>
                 <select name="sex" id="form-quick-search-seeking" class="col-12">
 
                     <option value="-1">{:lang("不限")}</option>
@@ -349,19 +350,19 @@
 
             <div class="border-bottom m1 col-2">
                 <label for="form-quick-search-city">{:lang('市')}</label>
-                <select name="city" id="form-quick-search-city" class="col-12"
+                <select name="cityid" id="form-quick-search-city" class="col-12"
                         formaction="/zc/widget/loadcities?stateid="
                         data-datamap="{&quot;group&quot;:&quot;STATEVALUE&quot;,&quot;text&quot;:&quot;TRANSLATION&quot;,&quot;value&quot;:&quot;ATTRIBUTEID&quot;}">
                     <option value="-1">{:lang("任何")}</option>
                 </select>
-
             </div>
-            <button name="b_search" class="h4 py1 px2 rounded shadow border-none upper-case pointer">{:lang("搜索")}</button>
+            <button name="b_search" class="h4 py1 px2 rounded shadow border-none upper-case pointer">{:lang("搜索")}
+            </button>
         </div>
     </form>
 </div>
 <div name="searchResults" id="searchResults">
-{include file="../application/index/view/index/search.html" /}
+    {include file="../application/index/view/index/search.html" /}
 </div>
 <!--Body end-->
 </body>

@@ -90,7 +90,32 @@ class M extends Controller
             }
         }
         return redirect("/index.php/index/m/profiledit");
+    }  //上传照片
+    public function uploadInfo()
+    {
+        if (session('?loginUser')) {
+            $loginUser = session("loginUser");
+            $mid = $loginUser->id;
+            $member = new Member();
+           $this->unsetItem("cityid", -1);
+           $this->unsetItem("stateid", -1);
+           $this->unsetItem("countryid", -1);
+            $member->allowField(true)->save($_REQUEST, ['id' => $mid]);
+        }
+        return json_encode($_REQUEST);
+//        return redirect("/index.php/index/m/profiledit");
     }
+
+    public function unsetItem( $key, $compare)
+    {
+        try {
+            if ($_REQUEST[$key] == $compare) {
+                unset($_REQUEST[$key]);
+            }
+        } catch (\Exception $e) {
+        }
+    }
+
 
     public function deletePhoto()
     {

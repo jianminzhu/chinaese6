@@ -90,7 +90,7 @@
                 </div>
                 <div>
                     <div class="photos clearfix ui-sortable" id="sortable" unselectable="on">
-                        <div class="photobg "  name="uploadImg">
+                        <div class="photobg " name="uploadImg">
                             <form class="form-horizontal" style="display:none" action="/index.php/index/m/uploadPhoto"
                                   method="post"
                                   enctype="multipart/form-data">
@@ -116,7 +116,7 @@
                                 <ul>
                                     <li>
                                         <a href="/index.php/index/m/deletePhoto?id={$pic.id}"
-                                           class="delete-photo pointer" >{:lang("删除照片")}</a>
+                                           class="delete-photo pointer">{:lang("删除照片")}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -138,21 +138,21 @@
                 </div>
             </div>
             <div class="roundedContainer">
-                <div class="mainHeading clearfix"><h1>{:lang("文档编辑")}</h1>
-                </div>
-                <ul class="formContainer">
-                    <li class="sectionHeading clearfix"><h2>{:lang("基本资料")}</h2></li>
-                    <li class="clearfix">
-                        <label class="questionLabel">{:lang("名字")}:</label>
-                        <span id="firstName_validate">
+                <form action="/index.php/index/m/uploadInfo" method="post">
+                    <div class="mainHeading clearfix"><h1>{:lang("文档编辑")}</h1>
+                    </div>
+                    <ul class="formContainer">
+                        <li class="sectionHeading clearfix"><h2>{:lang("基本资料")}</h2></li>
+                        <li class="clearfix">
+                            <label class="questionLabel">{:lang("名字")}:</label>
+                            <span id="firstName_validate">
                         <input type="text" name="firstName" id="firstName" onchange="" onblur="" onfocus="" size="20"
                                value="{$u.nickname|default=''}" style="" class="" autocomplete="off">
-                    <span class="textfieldRequiredMsg"> </span>
-                    </li>
-
-                    <li class="clearfix">
-                        <label class="questionLabel">{:lang("我是")}:</label>
-                        <span id="gender_validate">
+                            <span class="textfieldRequiredMsg"> </span></span>
+                        </li>
+                        <li class="clearfix">
+                            <label class="questionLabel">{:lang("我是")}:</label>
+                            <span id="gender_validate">
                           <select name="sex">
                                 <option value="-1">{:lang("请选择")}</option>
                                 <option value="1" {$loginUser.sex=="0"?' selected=""':""}>{:lang("男性")}</option>
@@ -161,33 +161,32 @@
                             </select>
                     	<span class="selectRequiredMsg"></span>
                     </span>
-                    </li>
-                    <li class="clearfix">
-                        <label class="questionLabel">{:lang("国家")}:</label>
-                        <span id="r_country_validate">
+                        </li>
+                        <li class="clearfix">
+                            <label class="questionLabel">{:lang("国家")}:</label>
+                            <span id="r_country_validate">
                          {include file="../application/index/view/index/_select_country.html" /}
                             <span class="selectRequiredMsg"></span>
                         </span>
-                    </li>
-                    <li class="clearfix">
-                        <label class="questionLabel">{:lang("省/县")}:</label>
-                        <span id="r_state_validate">
+                        </li>
+                        <li class="clearfix">
+                            <label class="questionLabel">{:lang("省/县")}:</label>
+                            <span id="r_state_validate">
                         <select name="stateid"></select>
                     	<span class="selectRequiredMsg"></span>
                     </span>
-                    </li>
-                    <li class="clearfix">
-                        <label class="questionLabel">{:lang("市")}:</label>
-                        <span id="r_city_validate">
-                            <select name="cityid" id="r_city"></select>
-                    	<span class="selectRequiredMsg"></span>
-
+                        </li>
+                        <li class="clearfix">
+                            <label class="questionLabel">{:lang("市")}:</label>
+                            <span id="r_city_validate">
+                            <select name="cityid"></select>
+                    	    <span class="selectRequiredMsg"></span>
                     </span>
-                    </li>
-                    <li class="sectionHeading clearfix"><h2>{:lang("外表")}</h2></li>
-                    <li class="clearfix  ">
-                        <label class="questionLabel">{:lang("身高")}:</label>
-                        <span id="height_validate">
+                        </li>
+                        <li class="sectionHeading clearfix"><h2>{:lang("外表")}</h2></li>
+                        <li class="clearfix  ">
+                            <label class="questionLabel">{:lang("身高")}:</label>
+                            <span id="height_validate">
                         <select name="height" id="height">
                             <option value="-1">{:lang("请选择")}</option>
 <option {$u.height==140?'selected=""':""}value="140">140 cm</option>
@@ -275,10 +274,10 @@
                 	</select>
                     	<span class="selectRequiredMsg"></span>
                     </span>
-                    </li>
-                    <li class="clearfix  ">
-                        <label class="questionLabel">{:lang("体重")}: </label>
-                        <span id="weight_validate">
+                        </li>
+                        <li class="clearfix  ">
+                            <label class="questionLabel">{:lang("体重")}: </label>
+                            <span id="weight_validate">
                         <select name="weight" id="weight">
 
 <option value="-1">{:lang("请选择")}..</option>
@@ -467,23 +466,22 @@
 
                     	<span class="selectRequiredMsg"></span>
                     </span>
-
-
-                    </li>
-                    <li class="clearfix ">
-                        <label class="questionLabel">{:lang("自我介绍")}:</label>
-                        <span id="selfDescription_validate">
+                        </li>
+                        <li class="clearfix ">
+                            <label class="questionLabel">{:lang("自我介绍")}:</label>
+                            <span id="selfDescription_validate">
                             <textarea name="profile" cols="60" rows="5">{$m.profile|default=""}</textarea>
 	                    	<div class="formclear">
 	                    <span class="textareaRequiredMsg"></span>
 	                    	</div>
 	                    </span>
-                    </li>
-                    <div class="clear"></div>
-                    <li style="text-align:center;border:0">
-                        <button type="submit" name="updateProfileBtn" class="greyShinyButton">{:lang("保存")}</button>
-                    </li>
-                </ul>
+                        </li>
+                        <div class="clear"></div>
+                        <li style="text-align:center;border:0">
+                            <button type="submit" name="updateProfileBtn" class="greyShinyButton">{:lang("保存")}</button>
+                        </li>
+                    </ul>
+                </form>
             </div>
 
 

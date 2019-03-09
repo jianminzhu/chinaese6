@@ -1,7 +1,7 @@
 $(function () {
     function json(url, data) {
         return $.ajax({url: url, data: data, dataType: "json"}).then(function (data) {
-            return eval(data);
+            return (data);
         });
     }
     function s(name) {
@@ -13,8 +13,8 @@ $(function () {
     var $cityLive = s("cityid")
     $countryLive.on("change", function () {
         var countryid = $(this).val()
-        $stateLive.html("");
-        $cityLive.html("");
+        $stateLive.html("<option value=\"-1\">Any</option>");
+        $cityLive.html("<option value=\"-1\">Any</option>");
         json("/index.php/index/addr/loadstates", {countryid: countryid}).then(function (data) {
             data.splice(0, 0, {n: "Any", v: "-1", cn: "任意"})
             GenSelectOption($stateLive.get(0), data, "v", LANG == "en-us" ? "n" : "cn");
@@ -22,7 +22,7 @@ $(function () {
     })
     $stateLive.on("change", function () {
         var stateid = $(this).val()
-        $cityLive.html("");
+        $cityLive.html("<option value=\"-1\">Any</option>");
         json("/index.php/index/addr/loadstates", {stateid: stateid}).then(function (data) {
             data.splice(0, 0, {n: "Any", v: "-1", cn: "任意"})
             GenSelectOption($cityLive.get(0), data, "v", LANG == "en-us" ? "n" : "cn");
