@@ -8,7 +8,7 @@ use think\Db;
 
 class Mail extends Controller
 {
-        public function send()
+    public function send()
     {
         $params = request()->param();
         $msg = new Message($params);
@@ -53,12 +53,17 @@ class Mail extends Controller
     public function msglist()
     {
         $index = new Index();
-        $u = $index->loginUser();
         $index = new Index();
         $index->headData();
         if ($index->isLogin()) {
-            Db::table("msg")->where("to_m_id")
-            return $this->fetch('/index/msglist');
+            $u = $index->loginUser();
+            $to_m_id = $u->id;
+            $msgs = Db::query("
+                   SELECT msg.id as msgid, msg.msg,f.* ,send_status,read_status,send_date  FROM message  AS msg
+                    LEFT JOIN member AS f ON f.id = msg.`from_m_id` 
+                    where to_m_id=$to_m_id  
+            ");
+            return view('/index/msglist', ["msgs" => $msgs]);
         } else {
             session("lastUrl", "/index/mail/msglist");
             return redirect('/index.php/index/a/login');

@@ -69,10 +69,9 @@
             </h2>
         </div>
 
-        <p class="m0">{$m.age} <span>&#8226;</span> {$m.address},{$m.country|default=""} </p>
+        <p class="m0">{$m.age==0?lang("保密"):""} <span>&#8226;</span> {$m.address},{$m.country|default=""} </p>
         <p class="mt1 mb0">
-            {$m.sex=="0" ? "女" :"男"} /
-            {:lang("会员号")}: {$m.id}
+            {$m.sex=="0" ?lang("女性"):lang("男性")}
         </p>
 
         <p class="mt0 mb2">

@@ -38,6 +38,7 @@ return [
     "删除照片" => "Delete Photo",
     "头像" => "Primary Photo",
     "修改头像" => "Edit Photo",
+    "保密" => "Secret",
 
     //search
     "最末页" => "LAST",
