@@ -17,11 +17,13 @@
     </div>
     <div class="flex-auto flex items-center justify-end z3 me2">
         {if condition="$Think.session.isLogin eq true"}
+        <a href="/index.php/index/m/profiledit">
         <div class="header-sub-menu relative profile-icon" data-animation="menu-pop">
             <div class="profile-header-image circle shadow border relative mx2 flex items-center justify-center circle overflow-hidden card-image-bg-color">
-                <div class="profile-bg" data-cm-modal-url="" style="background-image:url('{$loginUser.main_pic}')"></div>
+                <div class="profile-bg"  style="background-image:url('{$loginUser.main_pic}')"></div>
             </div>
         </div>
+        </a>
         {/if}
         <div>
             {if condition="$Think.session.isLogin eq true"}

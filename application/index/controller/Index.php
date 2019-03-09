@@ -70,6 +70,7 @@ class Index extends Controller
         $loginUser = $this->loginUser();
         $this->assign([
                 'loginUser' => $loginUser,
+                'u' => $loginUser,
                 "msgs" => json_encode(Message::all()),
                 "lang" => $toLang,
             ]

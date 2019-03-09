@@ -2,7 +2,6 @@
 
 namespace app\index\controller;
 
-use app\index\model\Pics;
 use think\Controller;
 
 
@@ -33,44 +32,5 @@ class Image extends Controller
             return;
         }
         return view();
-    }
-
-    function getRoot($file = ".")
-    {
-        $fileUrl = str_replace('\\', '/', realpath(dirname($file) . '/')) . "/";
-        return $fileUrl;
-    }
-
-    //上传图片函数
-    public function upload()
-    {
-        $pic_path = "上传成功";
-        if (session('?loginUser')) {
-            $loginUser = session("loginUser");
-            session("loginUser");
-            $pic_path = $this->saveUploadImage();
-            if ($pic_path) {
-                $pic = new Pics(["m_id" => $loginUser->id, "file_path" => $pic_path]);
-                $pic->save();
-            }
-        }
-        return "上传成功" . $pic_path;
-
-    }
-
-    /**
-     * @return mixed
-     */
-    public function saveUploadImage()
-    {
-        $file = request()->file('image');
-        if ($file) {
-            $info = $file->move($this->getRoot() . '/uploads');
-            if ($info) {
-                return str_replace('\\', '/', $info->getSaveName());
-            } else {
-                return "";
-            }
-        }
     }
 }

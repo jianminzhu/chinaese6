@@ -32,7 +32,12 @@ return [
     "我是" => "I'm ",
     "自我介绍"=>"A little about yourself",
     "外表" => "Your Lifestyle",
-
+    "管理照片" => "Manage Photos",
+    "保存" => "save",
+    "上传照片"=>"Upload Photo",
+    "删除照片" => "Delete Photo",
+    "头像" => "Primary Photo",
+    "修改头像" => "Edit Photo",
 
     //search
     "最末页" => "LAST",

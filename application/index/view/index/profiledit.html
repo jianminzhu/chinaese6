@@ -49,6 +49,94 @@
 <div id="bannerwrapper" class="clearfix flex " style="padding-left: 0px;">
     <div id="bannerpage">
         <div id="main-content">
+
+
+            <div class="roundedContainer">
+                <div class="formContainer">
+                    <div class="mainHeading clearfix"><h1>{:lang("管理照片")}</h1></div>
+
+                </div>
+                <script>$(function () {
+                    $("[data-opt-uploadPhoto]").click(function () {
+                        let closest = $(this).closest("div[name=uploadImg]");
+                        closest.find("form [name=image]").trigger('click');
+                    })
+                    $("[name=image]").change(function () {
+                        $(this).closest("form").trigger("submit")
+                    })
+                })</script>
+                <div class="uploader flex clearfix">
+                    <div class="col-5 inline-block">
+                        <div id="Uploader" class="self-start col-12 center" name="uploadImg">
+                            <form style="display:none" action="/index.php/index/m/uploadPhoto" method="post"
+                                  enctype="multipart/form-data">
+                                <input placeholder="" name="image" type="file" class="white bold h3 ">
+                            </form>
+                            <div id="pcPhotoUploadBtn"
+                                 class="plus-in-btn modal-bg-green rounded flex items-center p1 my2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-289 381 32 32" height="20px">
+                                    <path fill="currentColor"
+                                          d="M-261 395h-10v-10c0-1.1-.9-2-2-2s-2 .9-2 2v10h-10c-1.1 0-2 .9-2 2s.9 2 2 2h10v10c0 1.1.9 2 2 2s2-.9 2-2v-10h10c1.1 0 2-.9 2-2s-.9-2-2-2z"></path>
+                                </svg>
+                                <div class="white bold h3 col-8" data-opt-uploadPhoto>
+                                    {:lang("上传照片")}
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="spinner center self-start col-12 hide"><img
+                                src="/assets/images/generic/loading_icon2.gif"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="photos clearfix ui-sortable" id="sortable" unselectable="on">
+                        <div class="photobg "  name="uploadImg">
+                            <form class="form-horizontal" style="display:none" action="/index.php/index/m/uploadPhoto"
+                                  method="post"
+                                  enctype="multipart/form-data">
+                                <input type="text" name="type" value="main">
+                                <input placeholder="" name="image" type="file" class="white bold h3 ">
+                            </form>
+                            <div class="photoHeading"><span class="primaryTitle">{:lang("头像")}</span></div>
+                            <span class="photo">
+                                    <div class="profile-tile relative profile-tile-width-5 height-12 profile-tile-bg-1 pointer"
+                                         data-opt="showPicMenu"
+                                         onclick="$(this).closest('div.photobg').find('[data-view=deletePhoto]').toggle();"
+                                         style="background-image: url('{$u.main_pic}');"></div>
+                            </span>
+                            <div class="replace">
+                                <span data-opt-uploadPhoto>{:lang("修改头像")}</span>
+                            </div>
+                            <input name="photoOrder" type="hidden" value="2">
+                        </div>
+                        {volist name="pics" id="pic" key="k"}
+                        <div class="photobg ">
+                            <div class="photoHeading"><span class="primaryTitle"></span></div>
+                            <div class="photooverlay" data-view="deletePhoto" style="display:none;">
+                                <ul>
+                                    <li>
+                                        <a href="/index.php/index/m/deletePhoto?id={$pic.id}"
+                                           class="delete-photo pointer" >{:lang("删除照片")}</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <span class="photo">
+                                    <div class="profile-tile relative profile-tile-width-5 height-12 profile-tile-bg-1 pointer"
+                                         onclick="$(this).closest('div.photobg').find('[data-view=deletePhoto]').toggle();"
+                                         style="background-image: url('{$pic.file_path}');"></div>
+                                </span>
+
+                            <div class="replace">
+
+                            </div>
+                            <input name="photoOrder" type="hidden" value="2">
+                        </div>
+                        {/volist}
+                    </div>
+
+                </div>
+            </div>
             <div class="roundedContainer">
                 <div class="mainHeading clearfix"><h1>{:lang("文档编辑")}</h1>
                 </div>
@@ -59,18 +147,16 @@
                         <span id="firstName_validate">
                         <input type="text" name="firstName" id="firstName" onchange="" onblur="" onfocus="" size="20"
                                value="{$u.nickname|default=''}" style="" class="" autocomplete="off">
-                    <span class="textfieldRequiredMsg">名字: 请输入字元</span> <span
-                                class="textfieldMaxCharsMsg">名字: 最多输入30个字</span>
-                        </span>
+                    <span class="textfieldRequiredMsg"> </span>
                     </li>
 
                     <li class="clearfix">
                         <label class="questionLabel">{:lang("我是")}:</label>
                         <span id="gender_validate">
-                          <select name="sex"  >
+                          <select name="sex">
                                 <option value="-1">{:lang("请选择")}</option>
                                 <option value="1" {$loginUser.sex=="0"?' selected=""':""}>{:lang("男性")}</option>
-                                <option value="0" {$loginUser.sex=="0"?' selected=""':""}>{:lang("女性")}</option>
+                              <option value="0" {$loginUser.sex=="0"?' selected=""':""}>{:lang("女性")}</option>
 
                             </select>
                     	<span class="selectRequiredMsg"></span>
@@ -384,225 +470,20 @@
 
 
                     </li>
-
-                    <li class="clearfix highlight">
+                    <li class="clearfix ">
                         <label class="questionLabel">{:lang("自我介绍")}:</label>
                         <span id="selfDescription_validate">
-                            <textarea name="profile" cols="60" >{$m.profile|default=""}</textarea>
+                            <textarea name="profile" cols="60" rows="5">{$m.profile|default=""}</textarea>
 	                    	<div class="formclear">
 	                    <span class="textareaRequiredMsg"></span>
 	                    	</div>
-
 	                    </span>
                     </li>
-
-
                     <div class="clear"></div>
                     <li style="text-align:center;border:0">
-                        <button type="submit" name="updateProfileBtn" class="greyShinyButton">发送</button>
+                        <button type="submit" name="updateProfileBtn" class="greyShinyButton">{:lang("保存")}</button>
                     </li>
                 </ul>
-            </div>
-
-            <div class="roundedContainer">
-                <div class="formContainer">
-                    <div class="mainHeading clearfix"><h1>管理照片</h1></div>
-
-                </div>
-
-                <div class="uploader flex clearfix">
-                    <div class="col-5 inline-block">
-                        <div id="Uploader" class="self-start col-12 center">
-                            <div id="pcPhotoUploadBtn"
-                                 class="plus-in-btn modal-bg-green rounded flex items-center p1 my2">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-289 381 32 32" height="20px">
-                                    <path fill="currentColor"
-                                          d="M-261 395h-10v-10c0-1.1-.9-2-2-2s-2 .9-2 2v10h-10c-1.1 0-2 .9-2 2s.9 2 2 2h10v10c0 1.1.9 2 2 2s2-.9 2-2v-10h10c1.1 0 2-.9 2-2s-.9-2-2-2z"></path>
-                                </svg>
-
-                                <div class="white bold h3 col-12">选择档案</div>
-                            </div>
-
-                            <form class="mx-auto block col-4 center" name="uploadPhotoForm"
-                                  action="/zc/profilemanagement/uploadPhoto?photoaction=upload&amp;pcUploader=true&amp;source=fs&amp;device=1"
-                                  method="post" enctype="multipart/form-data">
-
-                                <input type="file" name="uploadForm" value="uploadForm" id="uploadForm2"
-                                       accept="image/jpeg,image/gif,image/png,image/bmp" class="hide">
-                            </form>
-                        </div>
-                        <div class="spinner center self-start col-12 hide"><img
-                                src="/assets/images/generic/loading_icon2.gif"></div>
-                    </div>
-                </div>
-                <form method="post" action="/zc/profilemanagement/editprofilephotos" id="managePhotosForm">
-
-                    <div class="photos clearfix ui-sortable" id="sortable" unselectable="on">
-
-                        <div class="photobg ui-state-disabled profilePhoto" id="p_1" data-id="ui.position">
-                            <div class="photoHeading"><span class="primaryTitle">文档主照</span></div>
-
-                            <div class="photooverlay" id="photoOverlay_1" style="display:none;">
-                                <ul>
-                                    <li>
-                                        <a href="/zc/profilemanagement/editprofilephotos?delete=1&amp;cs=0E6887E6C6CE47D805&amp;esc=4"
-                                           class="delete-photo"
-                                           data-replaceurl="/zc/profilemanagement/editprofilephotos?replace=1"
-                                           data-number="1">删除照片</a></li>
-                                    <li>
-                                    </li>
-                                    <li><a href="/zc/profilemanagement/editprofilephotos?replace=1"
-                                           class="replace-photo">更换照片</a></li>
-
-                                    <li><a href="" class="hide-upgrade">隐藏照片</a></li>
-
-                                </ul>
-                            </div>
-
-                            <a title="click to enlarge photo" id="photoid_1" class="enlargePhoto"
-                               href="/memphoto/photo1/big/4027139.jpg?97AD9AD4-5056-BD58-8426FB1CC6115986?1074"
-                               data-status="1" data-modaltitle="文档主照">
-		<span style="background:url(/memphoto/photo1/small/4027139.jpg?97AD9AD4-5056-BD58-8426FB1CC6115986?8858) center top"
-              class="photo ">
-
-		</span>
-                            </a>
-                            <div class="replace">
-                                <a href="#" data-photooverlayid="photoOverlay_1" class="photoOptions">编辑照片</a>
-                                <a href="#" data-photooverlayid="photoOverlay_1" class="photoOptions">删除照片</a>
-
-                            </div>
-                            <input name="photoOrder" type="hidden" value="1">
-                        </div>
-
-                        <div class="photobg ui-state-disabled" id="p_2" data-id="ui.position">
-                            <div class="photoHeading"><span class="primaryTitle"></span></div>
-
-                            <div class="photooverlay" id="photoOverlay_2" style="display:none;">
-                                <ul>
-                                    <li>
-                                        <a href="/zc/profilemanagement/editprofilephotos?delete=2&amp;cs=0D6887E6C6CE47D805&amp;esc=4"
-                                           class="delete-photo"
-                                           data-replaceurl="/zc/profilemanagement/editprofilephotos?replace=2"
-                                           data-number="2">删除照片</a></li>
-                                    <li>
-                                    </li>
-                                    <li><a href="/zc/profilemanagement/editprofilephotos?replace=2"
-                                           class="replace-photo">更换照片</a></li>
-
-                                </ul>
-                            </div>
-
-                            <a title="click to enlarge photo" id="photoid_2" class="enlargePhoto" href=""
-                               data-status="0" data-modaltitle="照片 2">
-		<span style="background:url(/assets/images/generic/nophoto_Male2.gif) center top" class="photo tipMeNoPhoto"
-              title="使用上列方式来上传照片">
-
-		</span>
-                            </a>
-                            <div class="replace">
-
-                            </div>
-                            <input name="photoOrder" type="hidden" value="2">
-                        </div>
-
-                        <div class="photobg ui-state-disabled" id="p_3" data-id="ui.position">
-                            <div class="photoHeading"><span class="primaryTitle"></span></div>
-
-                            <div class="photooverlay" id="photoOverlay_3" style="display:none;">
-                                <ul>
-                                    <li>
-                                        <a href="/zc/profilemanagement/editprofilephotos?delete=3&amp;cs=0C6887E6C6CE47D805&amp;esc=4"
-                                           class="delete-photo"
-                                           data-replaceurl="/zc/profilemanagement/editprofilephotos?replace=3"
-                                           data-number="3">删除照片</a></li>
-                                    <li>
-                                    </li>
-                                    <li><a href="/zc/profilemanagement/editprofilephotos?replace=3"
-                                           class="replace-photo">更换照片</a></li>
-
-                                </ul>
-                            </div>
-
-                            <a title="click to enlarge photo" id="photoid_3" class="enlargePhoto" href=""
-                               data-status="0" data-modaltitle="照片 3">
-		<span style="background:url(/assets/images/generic/nophoto_Male2.gif) center top" class="photo tipMeNoPhoto"
-              title="使用上列方式来上传照片">
-
-		</span>
-                            </a>
-                            <div class="replace">
-
-                            </div>
-                            <input name="photoOrder" type="hidden" value="3">
-                        </div>
-
-                        <div class="photobg ui-state-disabled" id="p_4" data-id="ui.position">
-                            <div class="photoHeading"><span class="primaryTitle"></span></div>
-
-                            <div class="photooverlay" id="photoOverlay_4" style="display:none;">
-                                <ul>
-                                    <li>
-                                        <a href="/zc/profilemanagement/editprofilephotos?delete=4&amp;cs=0B6887E6C6CE47D805&amp;esc=4"
-                                           class="delete-photo"
-                                           data-replaceurl="/zc/profilemanagement/editprofilephotos?replace=4"
-                                           data-number="4">删除照片</a></li>
-                                    <li>
-                                    </li>
-                                    <li><a href="/zc/profilemanagement/editprofilephotos?replace=4"
-                                           class="replace-photo">更换照片</a></li>
-
-                                </ul>
-                            </div>
-
-                            <a title="click to enlarge photo" id="photoid_4" class="enlargePhoto" href=""
-                               data-status="0" data-modaltitle="照片 4">
-		<span style="background:url(/assets/images/generic/nophoto_Male2.gif) center top" class="photo tipMeNoPhoto"
-              title="使用上列方式来上传照片">
-
-		</span>
-                            </a>
-                            <div class="replace">
-
-                            </div>
-                            <input name="photoOrder" type="hidden" value="4">
-                        </div>
-
-                        <div class="photobg ui-state-disabled" id="p_5" data-id="ui.position">
-                            <div class="photoHeading"><span class="primaryTitle"></span></div>
-
-                            <div class="photooverlay" id="photoOverlay_5" style="display:none;">
-                                <ul>
-                                    <li>
-                                        <a href="/zc/profilemanagement/editprofilephotos?delete=5&amp;cs=0A6887E6C6CE47D805&amp;esc=4"
-                                           class="delete-photo"
-                                           data-replaceurl="/zc/profilemanagement/editprofilephotos?replace=5"
-                                           data-number="5">删除照片</a></li>
-                                    <li>
-                                    </li>
-                                    <li><a href="/zc/profilemanagement/editprofilephotos?replace=5"
-                                           class="replace-photo">更换照片</a></li>
-
-                                </ul>
-                            </div>
-
-                            <a title="click to enlarge photo" id="photoid_5" class="enlargePhoto" href=""
-                               data-status="0" data-modaltitle="照片 5">
-		<span style="background:url(/assets/images/generic/nophoto_Male2.gif) center top" class="photo tipMeNoPhoto"
-              title="使用上列方式来上传照片">
-
-		</span>
-                            </a>
-                            <div class="replace">
-
-                            </div>
-                            <input name="photoOrder" type="hidden" value="5">
-                        </div>
-
-
-                    </div>
-
-                </form>
             </div>
 
 
