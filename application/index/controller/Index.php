@@ -132,10 +132,10 @@ class Index extends Controller
             $cityLive = request()->param("cityid");
 
             if (trim($age_min) != "" && $age_min != "-1") {
-                $table->where("age", ">", $age_min);
+                $table->where("age", ">=", $age_min);
             }
             if (trim($age_max) != "" && $age_max != "-1") {
-                $table->where("age", "<", $age_max);
+                $table->where("age", "<=", $age_max);
             }
             if (trim($sex) != "" && $sex != "-1") {
                 $table->where("sex", $sex);
@@ -172,7 +172,6 @@ class Index extends Controller
                 $nextPno = $pno + 1;
             }
             $dbMembers = $table->page("$pno,$pageSize")->select();
-            echo $table->getLastSql();
         } catch (DataNotFoundException $e) {
         } catch (ModelNotFoundException $e) {
         } catch (DbException $e) {
