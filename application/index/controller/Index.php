@@ -52,19 +52,26 @@ class Index extends Controller
 
     public function headData()
     {
-        $cookieLang = cookie("think_var");
-        $lang = "en-us";
-        if ($cookieLang) {
-            $lang = $cookieLang;
+        $lang = request()->param("lang");
+        $toLang = "";
+        if ($lang) {
+            $toLang = $lang;
         } else {
-            cookie("think_var", $lang);
+            $cookieLang = cookie("think_var");
+            if ($cookieLang) {
+                $toLang = $cookieLang;
+            }
         }
+        if ($toLang == "zh-cn" || $toLang = "en-us") {
+        } else {
+            $toLang = "en-us";
+        }
+        cookie("think_var", $toLang);
         $loginUser = $this->loginUser();
         $this->assign([
                 'loginUser' => $loginUser,
                 "msgs" => json_encode(Message::all()),
-                "lang" => $lang,
-
+                "lang" => $toLang,
             ]
         );
     }
@@ -119,9 +126,9 @@ class Index extends Controller
             $sex = request()->param("sex");
             $age_min = request()->param("age_min");
             $age_max = request()->param("age_max");
-            $countryLive = request()->param("countryLive");
-            $stateLive = request()->param("stateLive");
-            $cityLive = request()->param("cityLive");
+            $countryLive = request()->param("countryid");
+            $stateLive = request()->param("stateid");
+            $cityLive = request()->param("cityid");
 
             if (trim($age_min) != "" && $age_min != "-1") {
                 $table->where("age", ">", $age_min);

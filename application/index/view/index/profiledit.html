@@ -1,0 +1,616 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" dir="ltr" data-device="desktop">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{:lang("文档编辑")} {$loginUser.nickname}</title>
+    <meta id="defaultmessage" content="处理过程中发生问题">
+    <meta name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1, user-scalable=no, maximum-scale=1, shrink-to-fit=no">
+    <meta name="stm-result" content="ok">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="/assets/css/basscss/basscss.min.css?v=165">
+    <link type="text/css" rel="stylesheet" href="/assets/css/site/modal/modal.css?v=165">
+    <link type="text/css" rel="stylesheet" href="/assets/css/global/global.css?v=165">
+    <link type="text/css" rel="stylesheet" href="/assets/css/global/global_removetextstyling.css?v=165">
+
+    <link rel="stylesheet" href="/assets/desktop/css/chinalovecupid-hybrid.css?v=23">
+
+    <link type="text/css" rel="stylesheet" href="/assets/css/site/generic/membercolor.css?v=165">
+    <link type="text/css" rel="stylesheet" href="/assets/css/site/generic/membercolor_chinalovecupid.css?v=165">
+    <link type="text/css" rel="stylesheet" href="/assets/css/site/generic/memberheader.css?v=165">
+    <link type="text/css" rel="stylesheet" href="/assets/css/site/generic/memberlayout.css?v=165">
+
+    <link type="text/css" rel="stylesheet" href="/assets/css/site/generic/memberHeader_removetextstyling.css?v=165">
+
+    <link type="text/css" rel="stylesheet" href="/assets/css/site/profilemanagement/profilemanagement.css?v=165">
+
+    <link type="text/css" rel="stylesheet"
+          href="/assets/js/spry/widgets/textareavalidation/spryvalidationtextarea.css?v=165">
+
+    <link type="text/css" rel="stylesheet"
+          href="/assets/js/spry/widgets/textfieldvalidation/spryvalidationtextfield.css?v=165">
+
+    <link type="text/css" rel="stylesheet"
+          href="/assets/js/spry/widgets/checkboxvalidation/spryvalidationcheckbox.css?v=165">
+
+    <link type="text/css" rel="stylesheet"
+          href="/assets/js/spry/widgets/selectvalidation/spryvalidationselect.css?v=165">
+
+    <link type="text/css" rel="stylesheet" href="/assets/js/spry/widgets/radiovalidation/spryvalidationradio.css?v=165">
+
+    <link type="text/css" rel="stylesheet"
+          href="/assets/css/site/profilemanagement/profilemanagement_removeTextStyling.css?v=165">
+
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/pagejs/SelectCountryStateCity.js"></script>
+    <script src="/js/tolang.js"></script>
+</head>
+<body>
+{include file="../application/index/view/index/_head.html" /}
+<div id="bannerwrapper" class="clearfix flex " style="padding-left: 0px;">
+    <div id="bannerpage">
+        <div id="main-content">
+            <div class="roundedContainer">
+                <div class="mainHeading clearfix"><h1>{:lang("文档编辑")}</h1>
+                </div>
+                <ul class="formContainer">
+                    <li class="sectionHeading clearfix"><h2>{:lang("基本资料")}</h2></li>
+                    <li class="clearfix">
+                        <label class="questionLabel">{:lang("名字")}:</label>
+                        <span id="firstName_validate">
+                        <input type="text" name="firstName" id="firstName" onchange="" onblur="" onfocus="" size="20"
+                               value="{$u.nickname|default=''}" style="" class="" autocomplete="off">
+                    <span class="textfieldRequiredMsg">名字: 请输入字元</span> <span
+                                class="textfieldMaxCharsMsg">名字: 最多输入30个字</span>
+                        </span>
+                    </li>
+
+                    <li class="clearfix">
+                        <label class="questionLabel">{:lang("我是")}:</label>
+                        <span id="gender_validate">
+                          <select name="sex"  >
+                                <option value="-1">{:lang("请选择")}</option>
+                                <option value="1" {$loginUser.sex=="0"?' selected=""':""}>{:lang("男性")}</option>
+                                <option value="0" {$loginUser.sex=="0"?' selected=""':""}>{:lang("女性")}</option>
+
+                            </select>
+                    	<span class="selectRequiredMsg"></span>
+                    </span>
+                    </li>
+                    <li class="clearfix">
+                        <label class="questionLabel">{:lang("国家")}:</label>
+                        <span id="r_country_validate">
+                         {include file="../application/index/view/index/_select_country.html" /}
+                            <span class="selectRequiredMsg"></span>
+                        </span>
+                    </li>
+                    <li class="clearfix">
+                        <label class="questionLabel">{:lang("省/县")}:</label>
+                        <span id="r_state_validate">
+                        <select name="stateid"></select>
+                    	<span class="selectRequiredMsg"></span>
+                    </span>
+                    </li>
+                    <li class="clearfix">
+                        <label class="questionLabel">{:lang("市")}:</label>
+                        <span id="r_city_validate">
+                            <select name="cityid" id="r_city"></select>
+                    	<span class="selectRequiredMsg"></span>
+
+                    </span>
+                    </li>
+                    <li class="sectionHeading clearfix"><h2>{:lang("外表")}</h2></li>
+                    <li class="clearfix  ">
+                        <label class="questionLabel">{:lang("身高")}:</label>
+                        <span id="height_validate">
+                        <select name="height" id="height">
+                            <option value="-1">{:lang("请选择")}</option>
+<option {$u.height==140?'selected=""':""}value="140">140 cm</option>
+<option {$u.height==141?'selected=""':""}value="141">141 cm</option>
+<option {$u.height==142?'selected=""':""}value="142">142 cm</option>
+<option {$u.height==143?'selected=""':""}value="143">143 cm</option>
+<option {$u.height==144?'selected=""':""}value="144">144 cm</option>
+<option {$u.height==145?'selected=""':""}value="145">145 cm</option>
+<option {$u.height==146?'selected=""':""}value="146">146 cm</option>
+<option {$u.height==147?'selected=""':""}value="147">147 cm</option>
+<option {$u.height==148?'selected=""':""}value="148">148 cm</option>
+<option {$u.height==149?'selected=""':""}value="149">149 cm</option>
+<option {$u.height==150?'selected=""':""}value="150">150 cm</option>
+<option {$u.height==151?'selected=""':""}value="151">151 cm</option>
+<option {$u.height==152?'selected=""':""}value="152">152 cm</option>
+<option {$u.height==153?'selected=""':""}value="153">153 cm</option>
+<option {$u.height==154?'selected=""':""}value="154">154 cm</option>
+<option {$u.height==155?'selected=""':""}value="155">155 cm</option>
+<option {$u.height==156?'selected=""':""}value="156">156 cm</option>
+<option {$u.height==157?'selected=""':""}value="157">157 cm</option>
+<option {$u.height==158?'selected=""':""}value="158">158 cm</option>
+<option {$u.height==159?'selected=""':""}value="159">159 cm</option>
+<option {$u.height==160?'selected=""':""}value="160">160 cm</option>
+<option {$u.height==161?'selected=""':""}value="161">161 cm</option>
+<option {$u.height==162?'selected=""':""}value="162">162 cm</option>
+<option {$u.height==163?'selected=""':""}value="163">163 cm</option>
+<option {$u.height==164?'selected=""':""}value="164">164 cm</option>
+<option {$u.height==165?'selected=""':""}value="165">165 cm</option>
+<option {$u.height==166?'selected=""':""}value="166">166 cm</option>
+<option {$u.height==167?'selected=""':""}value="167">167 cm</option>
+<option {$u.height==168?'selected=""':""}value="168">168 cm</option>
+<option {$u.height==169?'selected=""':""}value="169">169 cm</option>
+<option {$u.height==170?'selected=""':""}value="170">170 cm</option>
+<option {$u.height==171?'selected=""':""}value="171">171 cm</option>
+<option {$u.height==172?'selected=""':""}value="172">172 cm</option>
+<option {$u.height==173?'selected=""':""}value="173">173 cm</option>
+<option {$u.height==174?'selected=""':""}value="174">174 cm</option>
+<option {$u.height==175?'selected=""':""}value="175">175 cm</option>
+<option {$u.height==176?'selected=""':""}value="176">176 cm</option>
+<option {$u.height==177?'selected=""':""}value="177">177 cm</option>
+<option {$u.height==178?'selected=""':""}value="178">178 cm</option>
+<option {$u.height==179?'selected=""':""}value="179">179 cm</option>
+<option {$u.height==180?'selected=""':""}value="180">180 cm</option>
+<option {$u.height==181?'selected=""':""}value="181">181 cm</option>
+<option {$u.height==182?'selected=""':""}value="182">182 cm</option>
+<option {$u.height==183?'selected=""':""}value="183">183 cm</option>
+<option {$u.height==184?'selected=""':""}value="184">184 cm</option>
+<option {$u.height==185?'selected=""':""}value="185">185 cm</option>
+<option {$u.height==186?'selected=""':""}value="186">186 cm</option>
+<option {$u.height==187?'selected=""':""}value="187">187 cm</option>
+<option {$u.height==188?'selected=""':""}value="188">188 cm</option>
+<option {$u.height==189?'selected=""':""}value="189">189 cm</option>
+<option {$u.height==190?'selected=""':""}value="190">190 cm</option>
+<option {$u.height==191?'selected=""':""}value="191">191 cm</option>
+<option {$u.height==192?'selected=""':""}value="192">192 cm</option>
+<option {$u.height==193?'selected=""':""}value="193">193 cm</option>
+<option {$u.height==194?'selected=""':""}value="194">194 cm</option>
+<option {$u.height==195?'selected=""':""}value="195">195 cm</option>
+<option {$u.height==196?'selected=""':""}value="196">196 cm</option>
+<option {$u.height==197?'selected=""':""}value="197">197 cm</option>
+<option {$u.height==198?'selected=""':""}value="198">198 cm</option>
+<option {$u.height==199?'selected=""':""}value="199">199 cm</option>
+<option {$u.height==200?'selected=""':""}value="200">200 cm</option>
+<option {$u.height==201?'selected=""':""}value="201">201 cm</option>
+<option {$u.height==202?'selected=""':""}value="202">202 cm</option>
+<option {$u.height==203?'selected=""':""}value="203">203 cm</option>
+<option {$u.height==204?'selected=""':""}value="204">204 cm</option>
+<option {$u.height==205?'selected=""':""}value="205">205 cm</option>
+<option {$u.height==206?'selected=""':""}value="206">206 cm</option>
+<option {$u.height==207?'selected=""':""}value="207">207 cm</option>
+<option {$u.height==208?'selected=""':""}value="208">208 cm</option>
+<option {$u.height==209?'selected=""':""}value="209">209 cm</option>
+<option {$u.height==210?'selected=""':""}value="210">210 cm</option>
+<option {$u.height==211?'selected=""':""}value="211">211 cm</option>
+<option {$u.height==212?'selected=""':""}value="212">212 cm</option>
+<option {$u.height==213?'selected=""':""}value="213">213 cm</option>
+<option {$u.height==214?'selected=""':""}value="214">214 cm</option>
+<option {$u.height==215?'selected=""':""}value="215">215 cm</option>
+<option {$u.height==216?'selected=""':""}value="216">216 cm</option>
+<option {$u.height==217?'selected=""':""}value="217">217 cm</option>
+<option {$u.height==218?'selected=""':""}value="218">218 cm</option>
+<option {$u.height==219?'selected=""':""}value="219">219 cm</option>
+<option {$u.height==220?'selected=""':""}value="220">220 cm</option>
+
+                	</select>
+                    	<span class="selectRequiredMsg"></span>
+                    </span>
+                    </li>
+                    <li class="clearfix  ">
+                        <label class="questionLabel">{:lang("体重")}: </label>
+                        <span id="weight_validate">
+                        <select name="weight" id="weight">
+
+<option value="-1">{:lang("请选择")}..</option>
+<option {$u.weight=="40"?"selected=''":""} value="40">40 kg</option>
+<option {$u.weight=="41"?"selected=''":""} value="41">41 kg</option>
+<option {$u.weight=="42"?"selected=''":""} value="42">42 kg</option>
+<option {$u.weight=="43"?"selected=''":""} value="43">43 kg</option>
+<option {$u.weight=="44"?"selected=''":""} value="44">44 kg</option>
+<option {$u.weight=="45"?"selected=''":""} value="45">45 kg</option>
+<option {$u.weight=="46"?"selected=''":""} value="46">46 kg</option>
+<option {$u.weight=="47"?"selected=''":""} value="47">47 kg</option>
+<option {$u.weight=="48"?"selected=''":""} value="48">48 kg</option>
+<option {$u.weight=="49"?"selected=''":""} value="49">49 kg</option>
+<option {$u.weight=="50"?"selected=''":""} value="50">50 kg</option>
+<option {$u.weight=="51"?"selected=''":""} value="51">51 kg</option>
+<option {$u.weight=="52"?"selected=''":""} value="52">52 kg</option>
+<option {$u.weight=="53"?"selected=''":""} value="53">53 kg</option>
+<option {$u.weight=="54"?"selected=''":""} value="54">54 kg</option>
+<option {$u.weight=="55"?"selected=''":""} value="55">55 kg</option>
+<option {$u.weight=="56"?"selected=''":""} value="56">56 kg</option>
+<option {$u.weight=="57"?"selected=''":""} value="57">57 kg</option>
+<option {$u.weight=="58"?"selected=''":""} value="58">58 kg</option>
+<option {$u.weight=="59"?"selected=''":""} value="59">59 kg</option>
+<option {$u.weight=="60"?"selected=''":""} value="60">60 kg</option>
+<option {$u.weight=="61"?"selected=''":""} value="61">61 kg</option>
+<option {$u.weight=="62"?"selected=''":""} value="62">62 kg</option>
+<option {$u.weight=="63"?"selected=''":""} value="63">63 kg</option>
+<option {$u.weight=="64"?"selected=''":""} value="64">64 kg</option>
+<option {$u.weight=="65"?"selected=''":""} value="65">65 kg</option>
+<option {$u.weight=="66"?"selected=''":""} value="66">66 kg</option>
+<option {$u.weight=="67"?"selected=''":""} value="67">67 kg</option>
+<option {$u.weight=="68"?"selected=''":""} value="68">68 kg</option>
+<option {$u.weight=="69"?"selected=''":""} value="69">69 kg</option>
+<option {$u.weight=="70"?"selected=''":""} value="70">70 kg</option>
+<option {$u.weight=="71"?"selected=''":""} value="71">71 kg</option>
+<option {$u.weight=="72"?"selected=''":""} value="72">72 kg</option>
+<option {$u.weight=="73"?"selected=''":""} value="73">73 kg</option>
+<option {$u.weight=="74"?"selected=''":""} value="74">74 kg</option>
+<option {$u.weight=="75"?"selected=''":""} value="75">75 kg</option>
+<option {$u.weight=="76"?"selected=''":""} value="76">76 kg</option>
+<option {$u.weight=="77"?"selected=''":""} value="77">77 kg</option>
+<option {$u.weight=="78"?"selected=''":""} value="78">78 kg</option>
+<option {$u.weight=="79"?"selected=''":""} value="79">79 kg</option>
+<option {$u.weight=="80"?"selected=''":""} value="80">80 kg</option>
+<option {$u.weight=="81"?"selected=''":""} value="81">81 kg</option>
+<option {$u.weight=="82"?"selected=''":""} value="82">82 kg</option>
+<option {$u.weight=="83"?"selected=''":""} value="83">83 kg</option>
+<option {$u.weight=="84"?"selected=''":""} value="84">84 kg</option>
+<option {$u.weight=="85"?"selected=''":""} value="85">85 kg</option>
+<option {$u.weight=="86"?"selected=''":""} value="86">86 kg</option>
+<option {$u.weight=="87"?"selected=''":""} value="87">87 kg</option>
+<option {$u.weight=="88"?"selected=''":""} value="88">88 kg</option>
+<option {$u.weight=="89"?"selected=''":""} value="89">89 kg</option>
+<option {$u.weight=="90"?"selected=''":""} value="90">90 kg</option>
+<option {$u.weight=="91"?"selected=''":""} value="91">91 kg</option>
+<option {$u.weight=="92"?"selected=''":""} value="92">92 kg</option>
+<option {$u.weight=="93"?"selected=''":""} value="93">93 kg</option>
+<option {$u.weight=="94"?"selected=''":""} value="94">94 kg</option>
+<option {$u.weight=="95"?"selected=''":""} value="95">95 kg</option>
+<option {$u.weight=="96"?"selected=''":""} value="96">96 kg</option>
+<option {$u.weight=="97"?"selected=''":""} value="97">97 kg</option>
+<option {$u.weight=="98"?"selected=''":""} value="98">98 kg</option>
+<option {$u.weight=="99"?"selected=''":""} value="99">99 kg</option>
+<option {$u.weight=="100"?"selected=''":""} value="100">100 kg</option>
+<option {$u.weight=="101"?"selected=''":""} value="101">101 kg</option>
+<option {$u.weight=="102"?"selected=''":""} value="102">102 kg</option>
+<option {$u.weight=="103"?"selected=''":""} value="103">103 kg</option>
+<option {$u.weight=="104"?"selected=''":""} value="104">104 kg</option>
+<option {$u.weight=="105"?"selected=''":""} value="105">105 kg</option>
+<option {$u.weight=="106"?"selected=''":""} value="106">106 kg</option>
+<option {$u.weight=="107"?"selected=''":""} value="107">107 kg</option>
+<option {$u.weight=="108"?"selected=''":""} value="108">108 kg</option>
+<option {$u.weight=="109"?"selected=''":""} value="109">109 kg</option>
+<option {$u.weight=="110"?"selected=''":""} value="110">110 kg</option>
+<option {$u.weight=="111"?"selected=''":""} value="111">111 kg</option>
+<option {$u.weight=="112"?"selected=''":""} value="112">112 kg</option>
+<option {$u.weight=="113"?"selected=''":""} value="113">113 kg</option>
+<option {$u.weight=="114"?"selected=''":""} value="114">114 kg</option>
+<option {$u.weight=="115"?"selected=''":""} value="115">115 kg</option>
+<option {$u.weight=="116"?"selected=''":""} value="116">116 kg</option>
+<option {$u.weight=="117"?"selected=''":""} value="117">117 kg</option>
+<option {$u.weight=="118"?"selected=''":""} value="118">118 kg</option>
+<option {$u.weight=="119"?"selected=''":""} value="119">119 kg</option>
+<option {$u.weight=="120"?"selected=''":""} value="120">120 kg</option>
+<option {$u.weight=="121"?"selected=''":""} value="121">121 kg</option>
+<option {$u.weight=="122"?"selected=''":""} value="122">122 kg</option>
+<option {$u.weight=="123"?"selected=''":""} value="123">123 kg</option>
+<option {$u.weight=="124"?"selected=''":""} value="124">124 kg</option>
+<option {$u.weight=="125"?"selected=''":""} value="125">125 kg</option>
+<option {$u.weight=="126"?"selected=''":""} value="126">126 kg</option>
+<option {$u.weight=="127"?"selected=''":""} value="127">127 kg</option>
+<option {$u.weight=="128"?"selected=''":""} value="128">128 kg</option>
+<option {$u.weight=="129"?"selected=''":""} value="129">129 kg</option>
+<option {$u.weight=="130"?"selected=''":""} value="130">130 kg</option>
+<option {$u.weight=="131"?"selected=''":""} value="131">131 kg</option>
+<option {$u.weight=="132"?"selected=''":""} value="132">132 kg</option>
+<option {$u.weight=="133"?"selected=''":""} value="133">133 kg</option>
+<option {$u.weight=="134"?"selected=''":""} value="134">134 kg</option>
+<option {$u.weight=="135"?"selected=''":""} value="135">135 kg</option>
+<option {$u.weight=="136"?"selected=''":""} value="136">136 kg</option>
+<option {$u.weight=="137"?"selected=''":""} value="137">137 kg</option>
+<option {$u.weight=="138"?"selected=''":""} value="138">138 kg</option>
+<option {$u.weight=="139"?"selected=''":""} value="139">139 kg</option>
+<option {$u.weight=="140"?"selected=''":""} value="140">140 kg</option>
+<option {$u.weight=="141"?"selected=''":""} value="141">141 kg</option>
+<option {$u.weight=="142"?"selected=''":""} value="142">142 kg</option>
+<option {$u.weight=="143"?"selected=''":""} value="143">143 kg</option>
+<option {$u.weight=="144"?"selected=''":""} value="144">144 kg</option>
+<option {$u.weight=="145"?"selected=''":""} value="145">145 kg</option>
+<option {$u.weight=="146"?"selected=''":""} value="146">146 kg</option>
+<option {$u.weight=="147"?"selected=''":""} value="147">147 kg</option>
+<option {$u.weight=="148"?"selected=''":""} value="148">148 kg</option>
+<option {$u.weight=="149"?"selected=''":""} value="149">149 kg</option>
+<option {$u.weight=="150"?"selected=''":""} value="150">150 kg</option>
+<option {$u.weight=="151"?"selected=''":""} value="151">151 kg</option>
+<option {$u.weight=="152"?"selected=''":""} value="152">152 kg</option>
+<option {$u.weight=="153"?"selected=''":""} value="153">153 kg</option>
+<option {$u.weight=="154"?"selected=''":""} value="154">154 kg</option>
+<option {$u.weight=="155"?"selected=''":""} value="155">155 kg</option>
+<option {$u.weight=="156"?"selected=''":""} value="156">156 kg</option>
+<option {$u.weight=="157"?"selected=''":""} value="157">157 kg</option>
+<option {$u.weight=="158"?"selected=''":""} value="158">158 kg</option>
+<option {$u.weight=="159"?"selected=''":""} value="159">159 kg</option>
+<option {$u.weight=="160"?"selected=''":""} value="160">160 kg</option>
+<option {$u.weight=="161"?"selected=''":""} value="161">161 kg</option>
+<option {$u.weight=="162"?"selected=''":""} value="162">162 kg</option>
+<option {$u.weight=="163"?"selected=''":""} value="163">163 kg</option>
+<option {$u.weight=="164"?"selected=''":""} value="164">164 kg</option>
+<option {$u.weight=="165"?"selected=''":""} value="165">165 kg</option>
+<option {$u.weight=="166"?"selected=''":""} value="166">166 kg</option>
+<option {$u.weight=="167"?"selected=''":""} value="167">167 kg</option>
+<option {$u.weight=="168"?"selected=''":""} value="168">168 kg</option>
+<option {$u.weight=="169"?"selected=''":""} value="169">169 kg</option>
+<option {$u.weight=="170"?"selected=''":""} value="170">170 kg</option>
+<option {$u.weight=="171"?"selected=''":""} value="171">171 kg</option>
+<option {$u.weight=="172"?"selected=''":""} value="172">172 kg</option>
+<option {$u.weight=="173"?"selected=''":""} value="173">173 kg</option>
+<option {$u.weight=="174"?"selected=''":""} value="174">174 kg</option>
+<option {$u.weight=="175"?"selected=''":""} value="175">175 kg</option>
+<option {$u.weight=="176"?"selected=''":""} value="176">176 kg</option>
+<option {$u.weight=="177"?"selected=''":""} value="177">177 kg</option>
+<option {$u.weight=="178"?"selected=''":""} value="178">178 kg</option>
+<option {$u.weight=="179"?"selected=''":""} value="179">179 kg</option>
+<option {$u.weight=="180"?"selected=''":""} value="180">180 kg</option>
+<option {$u.weight=="181"?"selected=''":""} value="181">181 kg</option>
+<option {$u.weight=="182"?"selected=''":""} value="182">182 kg</option>
+<option {$u.weight=="183"?"selected=''":""} value="183">183 kg</option>
+<option {$u.weight=="184"?"selected=''":""} value="184">184 kg</option>
+<option {$u.weight=="185"?"selected=''":""} value="185">185 kg</option>
+<option {$u.weight=="186"?"selected=''":""} value="186">186 kg</option>
+<option {$u.weight=="187"?"selected=''":""} value="187">187 kg</option>
+<option {$u.weight=="188"?"selected=''":""} value="188">188 kg</option>
+<option {$u.weight=="189"?"selected=''":""} value="189">189 kg</option>
+<option {$u.weight=="190"?"selected=''":""} value="190">190 kg</option>
+<option {$u.weight=="191"?"selected=''":""} value="191">191 kg</option>
+<option {$u.weight=="192"?"selected=''":""} value="192">192 kg</option>
+<option {$u.weight=="193"?"selected=''":""} value="193">193 kg</option>
+<option {$u.weight=="194"?"selected=''":""} value="194">194 kg</option>
+<option {$u.weight=="195"?"selected=''":""} value="195">195 kg</option>
+<option {$u.weight=="196"?"selected=''":""} value="196">196 kg</option>
+<option {$u.weight=="197"?"selected=''":""} value="197">197 kg</option>
+<option {$u.weight=="198"?"selected=''":""} value="198">198 kg</option>
+<option {$u.weight=="199"?"selected=''":""} value="199">199 kg</option>
+<option {$u.weight=="200"?"selected=''":""} value="200">200 kg</option>
+<option {$u.weight=="201"?"selected=''":""} value="201">201 kg</option>
+<option {$u.weight=="202"?"selected=''":""} value="202">202 kg</option>
+<option {$u.weight=="203"?"selected=''":""} value="203">203 kg</option>
+<option {$u.weight=="204"?"selected=''":""} value="204">204 kg</option>
+<option {$u.weight=="205"?"selected=''":""} value="205">205 kg</option>
+<option {$u.weight=="206"?"selected=''":""} value="206">206 kg</option>
+<option {$u.weight=="207"?"selected=''":""} value="207">207 kg</option>
+<option {$u.weight=="208"?"selected=''":""} value="208">208 kg</option>
+<option {$u.weight=="209"?"selected=''":""} value="209">209 kg</option>
+<option {$u.weight=="210"?"selected=''":""} value="210">210 kg</option>
+<option {$u.weight=="211"?"selected=''":""} value="211">211 kg</option>
+<option {$u.weight=="212"?"selected=''":""} value="212">212 kg</option>
+<option {$u.weight=="213"?"selected=''":""} value="213">213 kg</option>
+<option {$u.weight=="214"?"selected=''":""} value="214">214 kg</option>
+<option {$u.weight=="215"?"selected=''":""} value="215">215 kg</option>
+<option {$u.weight=="216"?"selected=''":""} value="216">216 kg</option>
+<option {$u.weight=="217"?"selected=''":""} value="217">217 kg</option>
+<option {$u.weight=="218"?"selected=''":""} value="218">218 kg</option>
+<option {$u.weight=="219"?"selected=''":""} value="219">219 kg</option>
+<option {$u.weight=="220"?"selected=''":""} value="220">220 kg</option>
+                	</select>
+
+                    	<span class="selectRequiredMsg"></span>
+                    </span>
+
+
+                    </li>
+
+                    <li class="clearfix highlight">
+                        <label class="questionLabel">{:lang("自我介绍")}:</label>
+                        <span id="selfDescription_validate">
+                            <textarea name="profile" cols="60" >{$m.profile|default=""}</textarea>
+	                    	<div class="formclear">
+	                    <span class="textareaRequiredMsg"></span>
+	                    	</div>
+
+	                    </span>
+                    </li>
+
+
+                    <div class="clear"></div>
+                    <li style="text-align:center;border:0">
+                        <button type="submit" name="updateProfileBtn" class="greyShinyButton">发送</button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="roundedContainer">
+                <div class="formContainer">
+                    <div class="mainHeading clearfix"><h1>管理照片</h1></div>
+
+                </div>
+
+                <div class="uploader flex clearfix">
+                    <div class="col-5 inline-block">
+                        <div id="Uploader" class="self-start col-12 center">
+                            <div id="pcPhotoUploadBtn"
+                                 class="plus-in-btn modal-bg-green rounded flex items-center p1 my2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="-289 381 32 32" height="20px">
+                                    <path fill="currentColor"
+                                          d="M-261 395h-10v-10c0-1.1-.9-2-2-2s-2 .9-2 2v10h-10c-1.1 0-2 .9-2 2s.9 2 2 2h10v10c0 1.1.9 2 2 2s2-.9 2-2v-10h10c1.1 0 2-.9 2-2s-.9-2-2-2z"></path>
+                                </svg>
+
+                                <div class="white bold h3 col-12">选择档案</div>
+                            </div>
+
+                            <form class="mx-auto block col-4 center" name="uploadPhotoForm"
+                                  action="/zc/profilemanagement/uploadPhoto?photoaction=upload&amp;pcUploader=true&amp;source=fs&amp;device=1"
+                                  method="post" enctype="multipart/form-data">
+
+                                <input type="file" name="uploadForm" value="uploadForm" id="uploadForm2"
+                                       accept="image/jpeg,image/gif,image/png,image/bmp" class="hide">
+                            </form>
+                        </div>
+                        <div class="spinner center self-start col-12 hide"><img
+                                src="/assets/images/generic/loading_icon2.gif"></div>
+                    </div>
+                </div>
+                <form method="post" action="/zc/profilemanagement/editprofilephotos" id="managePhotosForm">
+
+                    <div class="photos clearfix ui-sortable" id="sortable" unselectable="on">
+
+                        <div class="photobg ui-state-disabled profilePhoto" id="p_1" data-id="ui.position">
+                            <div class="photoHeading"><span class="primaryTitle">文档主照</span></div>
+
+                            <div class="photooverlay" id="photoOverlay_1" style="display:none;">
+                                <ul>
+                                    <li>
+                                        <a href="/zc/profilemanagement/editprofilephotos?delete=1&amp;cs=0E6887E6C6CE47D805&amp;esc=4"
+                                           class="delete-photo"
+                                           data-replaceurl="/zc/profilemanagement/editprofilephotos?replace=1"
+                                           data-number="1">删除照片</a></li>
+                                    <li>
+                                    </li>
+                                    <li><a href="/zc/profilemanagement/editprofilephotos?replace=1"
+                                           class="replace-photo">更换照片</a></li>
+
+                                    <li><a href="" class="hide-upgrade">隐藏照片</a></li>
+
+                                </ul>
+                            </div>
+
+                            <a title="click to enlarge photo" id="photoid_1" class="enlargePhoto"
+                               href="/memphoto/photo1/big/4027139.jpg?97AD9AD4-5056-BD58-8426FB1CC6115986?1074"
+                               data-status="1" data-modaltitle="文档主照">
+		<span style="background:url(/memphoto/photo1/small/4027139.jpg?97AD9AD4-5056-BD58-8426FB1CC6115986?8858) center top"
+              class="photo ">
+
+		</span>
+                            </a>
+                            <div class="replace">
+                                <a href="#" data-photooverlayid="photoOverlay_1" class="photoOptions">编辑照片</a>
+                                <a href="#" data-photooverlayid="photoOverlay_1" class="photoOptions">删除照片</a>
+
+                            </div>
+                            <input name="photoOrder" type="hidden" value="1">
+                        </div>
+
+                        <div class="photobg ui-state-disabled" id="p_2" data-id="ui.position">
+                            <div class="photoHeading"><span class="primaryTitle"></span></div>
+
+                            <div class="photooverlay" id="photoOverlay_2" style="display:none;">
+                                <ul>
+                                    <li>
+                                        <a href="/zc/profilemanagement/editprofilephotos?delete=2&amp;cs=0D6887E6C6CE47D805&amp;esc=4"
+                                           class="delete-photo"
+                                           data-replaceurl="/zc/profilemanagement/editprofilephotos?replace=2"
+                                           data-number="2">删除照片</a></li>
+                                    <li>
+                                    </li>
+                                    <li><a href="/zc/profilemanagement/editprofilephotos?replace=2"
+                                           class="replace-photo">更换照片</a></li>
+
+                                </ul>
+                            </div>
+
+                            <a title="click to enlarge photo" id="photoid_2" class="enlargePhoto" href=""
+                               data-status="0" data-modaltitle="照片 2">
+		<span style="background:url(/assets/images/generic/nophoto_Male2.gif) center top" class="photo tipMeNoPhoto"
+              title="使用上列方式来上传照片">
+
+		</span>
+                            </a>
+                            <div class="replace">
+
+                            </div>
+                            <input name="photoOrder" type="hidden" value="2">
+                        </div>
+
+                        <div class="photobg ui-state-disabled" id="p_3" data-id="ui.position">
+                            <div class="photoHeading"><span class="primaryTitle"></span></div>
+
+                            <div class="photooverlay" id="photoOverlay_3" style="display:none;">
+                                <ul>
+                                    <li>
+                                        <a href="/zc/profilemanagement/editprofilephotos?delete=3&amp;cs=0C6887E6C6CE47D805&amp;esc=4"
+                                           class="delete-photo"
+                                           data-replaceurl="/zc/profilemanagement/editprofilephotos?replace=3"
+                                           data-number="3">删除照片</a></li>
+                                    <li>
+                                    </li>
+                                    <li><a href="/zc/profilemanagement/editprofilephotos?replace=3"
+                                           class="replace-photo">更换照片</a></li>
+
+                                </ul>
+                            </div>
+
+                            <a title="click to enlarge photo" id="photoid_3" class="enlargePhoto" href=""
+                               data-status="0" data-modaltitle="照片 3">
+		<span style="background:url(/assets/images/generic/nophoto_Male2.gif) center top" class="photo tipMeNoPhoto"
+              title="使用上列方式来上传照片">
+
+		</span>
+                            </a>
+                            <div class="replace">
+
+                            </div>
+                            <input name="photoOrder" type="hidden" value="3">
+                        </div>
+
+                        <div class="photobg ui-state-disabled" id="p_4" data-id="ui.position">
+                            <div class="photoHeading"><span class="primaryTitle"></span></div>
+
+                            <div class="photooverlay" id="photoOverlay_4" style="display:none;">
+                                <ul>
+                                    <li>
+                                        <a href="/zc/profilemanagement/editprofilephotos?delete=4&amp;cs=0B6887E6C6CE47D805&amp;esc=4"
+                                           class="delete-photo"
+                                           data-replaceurl="/zc/profilemanagement/editprofilephotos?replace=4"
+                                           data-number="4">删除照片</a></li>
+                                    <li>
+                                    </li>
+                                    <li><a href="/zc/profilemanagement/editprofilephotos?replace=4"
+                                           class="replace-photo">更换照片</a></li>
+
+                                </ul>
+                            </div>
+
+                            <a title="click to enlarge photo" id="photoid_4" class="enlargePhoto" href=""
+                               data-status="0" data-modaltitle="照片 4">
+		<span style="background:url(/assets/images/generic/nophoto_Male2.gif) center top" class="photo tipMeNoPhoto"
+              title="使用上列方式来上传照片">
+
+		</span>
+                            </a>
+                            <div class="replace">
+
+                            </div>
+                            <input name="photoOrder" type="hidden" value="4">
+                        </div>
+
+                        <div class="photobg ui-state-disabled" id="p_5" data-id="ui.position">
+                            <div class="photoHeading"><span class="primaryTitle"></span></div>
+
+                            <div class="photooverlay" id="photoOverlay_5" style="display:none;">
+                                <ul>
+                                    <li>
+                                        <a href="/zc/profilemanagement/editprofilephotos?delete=5&amp;cs=0A6887E6C6CE47D805&amp;esc=4"
+                                           class="delete-photo"
+                                           data-replaceurl="/zc/profilemanagement/editprofilephotos?replace=5"
+                                           data-number="5">删除照片</a></li>
+                                    <li>
+                                    </li>
+                                    <li><a href="/zc/profilemanagement/editprofilephotos?replace=5"
+                                           class="replace-photo">更换照片</a></li>
+
+                                </ul>
+                            </div>
+
+                            <a title="click to enlarge photo" id="photoid_5" class="enlargePhoto" href=""
+                               data-status="0" data-modaltitle="照片 5">
+		<span style="background:url(/assets/images/generic/nophoto_Male2.gif) center top" class="photo tipMeNoPhoto"
+              title="使用上列方式来上传照片">
+
+		</span>
+                            </a>
+                            <div class="replace">
+
+                            </div>
+                            <input name="photoOrder" type="hidden" value="5">
+                        </div>
+
+
+                    </div>
+
+                </form>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+</body>
+</html>

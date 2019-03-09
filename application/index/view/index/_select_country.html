@@ -1,5 +1,10 @@
+
+
+<script>LANG = "{$lang}"</script>
+<script src="/js_ext/SelectUtil.js"></script>
+<script src="/pagejs/SelectCountryStateCity.js"></script>
 {if condition="$lang=='en-us'"}
-<select name="countryLive" class="col-12 touched" data-dependentselect="stateLive">
+<select name="countryid">
     <option value="-1">Any Country</option>
     <optgroup label="Popular">
         <option value="42">China</option>
@@ -256,14 +261,11 @@
 
 </select>
 {else}
-<select name="countryLive" class="form-control" data-dependentselect="stateLive">
+<select name="countryid" >
     <option value="-1">任何</option>
-
-    <optgroup label="热门搜索国家">
+    <optgroup label="热门国家">
         <option value="42">中国</option>
-
     </optgroup>
-
     <optgroup label="所有国家">
         <option value="7">阿尔巴尼亚</option>
         <option value="5">阿尔及尼亚</option>

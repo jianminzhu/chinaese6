@@ -4,13 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
-    <meta name="viewport"
-          content="height=device-height, initial-scale=1, user-scalable=no, maximum-scale=1, shrink-to-fit=yes">
-    <meta name="stm-result" content="ok"/>
     <meta name="keywords" content="{$keywords|default=''}"/>
     {include file="../application/index/view/index/_commoncss.html" /}
-    <script>LANG = "{$lang}"</script>
-    <script src="/js_ext/SelectUtil.js"></script>
     <script src="/pagejs/index.js?v=1.1"></script>
 </head>
 <body>
@@ -338,13 +333,12 @@
 
             <div class="border-bottom m1 col-2">
                 <label for="form-quick-search-country">{:lang("国家")}</label>
-
                 {include file="../application/index/view/index/_select_country.html" /}
             </div>
 
             <div class="border-bottom m1 col-2">
                 <label for="form-quick-search-state">{:lang('省/县')}</label>
-                <select name="stateLive" id="form-quick-search-state" class="col-12" data-dependentselect="cityLive"
+                <select name="stateid" id="form-quick-search-state" class="col-12" data-dependentselect="cityLive"
                         formaction="/zc/widget/loadstates?countryid="
                         data-datamap="{&quot;group&quot;:&quot;STATEVALUE&quot;,&quot;text&quot;:&quot;TRANSLATION&quot;,&quot;value&quot;:&quot;ATTRIBUTEID&quot;}">
                     <option value="-1">{:lang("任何")}</option>
@@ -353,7 +347,7 @@
 
             <div class="border-bottom m1 col-2">
                 <label for="form-quick-search-city">{:lang('市')}</label>
-                <select name="cityLive" id="form-quick-search-city" class="col-12"
+                <select name="city" id="form-quick-search-city" class="col-12"
                         formaction="/zc/widget/loadcities?stateid="
                         data-datamap="{&quot;group&quot;:&quot;STATEVALUE&quot;,&quot;text&quot;:&quot;TRANSLATION&quot;,&quot;value&quot;:&quot;ATTRIBUTEID&quot;}">
                     <option value="-1">{:lang("任何")}</option>

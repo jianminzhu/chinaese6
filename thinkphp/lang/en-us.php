@@ -23,7 +23,18 @@ return [
     "男性" => "Male",
     "女性" => "Female",
     "搜索" => "Search",
+    "请选择"=>"",
 
+    //profiledit
+    "名字" => "name",
+    "文档编辑"=>"Edit profile",
+    "基本资料" => "Base Info",
+    "我是" => "I'm ",
+    "自我介绍"=>"A little about yourself",
+    "外表" => "Your Lifestyle",
+
+
+    //search
     "最末页" => "LAST",
     "下一页" => "NEXT",
     "上一页" => "PREVIOUS",

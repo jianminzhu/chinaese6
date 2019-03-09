@@ -37,7 +37,6 @@ class A extends Controller
         $pwd = $p["pwd"];
         $phpMd5pwd = md5(trim($pwd));
         $dbMember = Member::get(['email' => $email]);
-//        $dbMember = Db::table("member")->where("email",$email)->find( );
         $isSucc = 0;
         $emsg = "";
         $mysqlMd5pwd = $dbMember['pwd'];
@@ -46,8 +45,6 @@ class A extends Controller
             session("isLogin", true);
             $isSucc = 1;
         }
-
-
         $type = request()->param("type", "");
         if ($type == "json") {
             return json_encode(["isSucc" => $isSucc, 'emsg' => $emsg]);//,"phpMd5pwd"=>$phpMd5pwd,"mmd5"=>$mysqlMd5pwd

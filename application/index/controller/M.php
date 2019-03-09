@@ -46,7 +46,7 @@ class M extends Controller
         $index->headData();
         $loginUser = session("loginUser");
         if($loginUser){
-            return view('/index/profile_edit', ['u' => $loginUser]);
+            return view('/index/profiledit', ['u' => $loginUser]);
         }else{
             session("lastUrl", "/index.php/index/index/m/profiledit");
             return redirect('/index.php/index/a/login');
