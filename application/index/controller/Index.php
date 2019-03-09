@@ -103,8 +103,7 @@ class Index extends Controller
             $this->nickNameToPinYing($cookieLang, $user);
             $mid = $loginUser->id;
         }
-        $pno = intval(request()->param("pno", 1));
-        $page = $pno . ",15";
+
         $table = Db::table('member');
         $table->where('id', "<>", $mid);
 
@@ -139,20 +138,36 @@ class Index extends Controller
 
         }
         $dbMembers = [];
+        $pno = intval(request()->param("pno", 1));
+        if ($pno < 0) {
+            $pno = 1;
+        }
+        $lastPno = $pno;
+        $nextPno = $pno;
         try {
-            $dbMembers = $table->page($page)->select();
+            $pageSize = 5;
+            $count = $table->count();
+            $lastPno = ceil($count / $pageSize);
+            if ($pno >= $lastPno) {
+                $pno = $lastPno;
+                $nextPno = $pno;
+            } else {
+                $nextPno = $pno+1;
+            }
+            $dbMembers = $table->page("$pno,$pageSize")->select();
         } catch (DataNotFoundException $e) {
         } catch (ModelNotFoundException $e) {
         } catch (DbException $e) {
         }
-
-
         $members = [];
         foreach ($dbMembers as $member) {
             $members[] = $this->nickNameToPinYing($cookieLang, $member);
         }
         $this->assign("members", $members);
-        $this->assign("nextPno", ++$pno);
+        $this->assign("pno", $pno);
+        $this->assign("prevPno", $pno > 1 ?  $pno-1 : $pno);
+        $this->assign("nextPno", $nextPno);
+        $this->assign("lastPno", $lastPno);
     }
 
 }

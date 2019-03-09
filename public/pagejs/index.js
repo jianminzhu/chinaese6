@@ -27,4 +27,22 @@ $(function () {
             GenSelectOption($cityLive.get(0), data, "v", LANG == "en-us" ? "n" : "cn");
         });
     });
+    var $form = $('form[name="searchForm"]');
+    var $bsearch = $form.find("[name=b_search]");
+    $("body").delegate("a[data-page]", "click", function () {
+        var clickPage = $(this).data("page");
+        if (clickPage != $form.find("[name=pno]").val()) {
+            $form.find("[name=pno]").val(clickPage);
+            $bsearch.trigger("click");
+        }
+    });
+    $bsearch.on("click", function () {
+        $form.trigger("click");
+    });
+    $form.on("submit", function () {
+        $.ajax({ url: "/index.php/index/index/search?" + $form.serialize(), dataType: "html" }).then(function (html) {
+            $("[name=searchResults]").html(html);
+        });
+        return false;
+    });
 });
