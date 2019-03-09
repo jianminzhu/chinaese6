@@ -145,7 +145,7 @@ class Index extends Controller
         $lastPno = $pno;
         $nextPno = $pno;
         try {
-            $pageSize = 5;
+            $pageSize = 15;
             $count = $table->count();
             $lastPno = ceil($count / $pageSize);
             if ($pno >= $lastPno) {
