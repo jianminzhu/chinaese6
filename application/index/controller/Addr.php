@@ -55,12 +55,12 @@ class Addr extends Controller
         $data = [];
         $stateid = request()->param("stateid");
         if ($stateid && trim($stateid) != "") {
-            $data= Db::query("select translation as n, attributeid as v,chinese as cn from cupidaddress where stateid=?", [$stateid]) ;
+            $data= Db::query("select translation as n, attributeid as v,chinese as cn from cupidaddress where stateid=? order by sort asc", [$stateid]) ;
         }
 
         $countryid = request()->param("countryid");
         if ($countryid && trim($countryid) != "") {
-            $data = Db::query("select translation as n, attributeid as v,chinese as cn from cupidaddress where stateid is null  and countryid=?", [$countryid]);
+            $data = Db::query("select translation as n, attributeid as v,chinese as cn from cupidaddress where stateid is null  and countryid=? order by sort asc", [$countryid]);
 
         }
         return ($data);

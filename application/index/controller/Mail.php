@@ -52,13 +52,12 @@ class Mail extends Controller
 
     public function msglist()
     {
-
         $index = new Index();
-
         $u = $index->loginUser();
         $index = new Index();
         $index->headData();
         if ($index->isLogin()) {
+            Db::table("msg")->where("to_m_id")
             return $this->fetch('/index/msglist');
         } else {
             session("lastUrl", "/index/mail/msglist");
