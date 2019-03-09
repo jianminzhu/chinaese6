@@ -38,6 +38,9 @@ $(function () {
             $bsearch.trigger("click");
         }
     })
+    $("select").on("change",function () {
+        $("input[name=pno]").val(1)
+    })
     $bsearch.on("click", function () {
         $form.trigger("click");
     })
