@@ -38,15 +38,18 @@ $(function () {
             $bsearch.trigger("click");
         }
     })
-    $("select").on("change",function () {
+    $("select").on("change", function () {
         $("input[name=pno]").val(1)
     })
     $bsearch.on("click", function () {
         $form.trigger("click");
     })
     $form.on("submit", function () {
+
+        let $searchResults = $("[name=searchResults]");
+        $searchResults.html("")
         $.ajax({url: "/index.php/index/index/search?" + $form.serialize(), dataType: "html"}).then(function (html) {
-            $("[name=searchResults]").html(html)
+            $searchResults.html(html)
         });
         return false;
     })

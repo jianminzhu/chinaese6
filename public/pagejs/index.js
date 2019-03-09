@@ -43,8 +43,10 @@ $(function () {
         $form.trigger("click");
     });
     $form.on("submit", function () {
+        var $searchResults = $("[name=searchResults]");
+        $searchResults.html("");
         $.ajax({ url: "/index.php/index/index/search?" + $form.serialize(), dataType: "html" }).then(function (html) {
-            $("[name=searchResults]").html(html);
+            $searchResults.html(html);
         });
         return false;
     });
