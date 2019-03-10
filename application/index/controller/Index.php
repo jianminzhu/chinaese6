@@ -121,6 +121,8 @@ class Index extends Controller
         }
 
         $table = Db::table('member');
+        $table->where('id', "<>", $mid);
+
         try {
             $sex = request()->param("sex");
             $age_min = request()->param("age_min");

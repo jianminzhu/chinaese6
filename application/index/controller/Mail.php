@@ -50,7 +50,7 @@ class Mail extends Controller
                     LEFT JOIN member AS f ON f.id = msg.`from_m_id` 
                     where msg.id=$id  and msg.to_m_id=$mid
             ");
-            return view('/index/msgDetail', ["msg" =>count( $msg)>0?$msg[0]:[]]);
+            return view('/index/msgDetail', ["msg" => count($msg) > 0 ? $msg[0] : []]);
         } else {
             session("lastUrl", "/index.php/index/mail/msgDetail?id=$id");
             return redirect('/index.php/index/a/login');
@@ -60,7 +60,6 @@ class Mail extends Controller
     public function msglist()
     {
         $index = new Index();
-        $index = new Index();
         $index->headData();
         if ($index->isLogin()) {
             $u = $index->loginUser();
@@ -69,6 +68,25 @@ class Mail extends Controller
                    SELECT msg.id as msgid, msg.msg,f.* ,send_status,read_status,send_date  FROM message  AS msg
                     LEFT JOIN member AS f ON f.id = msg.`from_m_id` 
                     where to_m_id=$to_m_id  
+            ");
+            return view('/index/msglist', ["msgs" => $msgs]);
+        } else {
+            session("lastUrl", "/index/mail/msglist");
+            return redirect('/index.php/index/a/login');
+        }
+    }
+
+    public function showSentMsg()
+    {
+        $index = new Index();
+        $index->headData();
+        if ($index->isLogin()) {
+            $u = $index->loginUser();
+            $m_id = $u->id;
+            $msgs = Db::query("
+                   SELECT msg.id as msgid, msg.msg,f.* ,send_status,read_status,send_date  FROM message  AS msg
+                    LEFT JOIN member AS f ON f.id = msg.`from_m_id` 
+                    where f_m_id=$m_id  
             ");
             return view('/index/msglist', ["msgs" => $msgs]);
         } else {
