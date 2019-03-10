@@ -69,7 +69,7 @@
             </h2>
         </div>
 
-        <p class="m0">{$m.age==0?lang("保密"):""} <span>&#8226;</span> {$m.address},{$m.country|default=""} </p>
+        <p class="m0">{$m.age==0?lang("保密"):""} <span>&nbsp </span> {$m.address!=""?$m.address.",":""}{$m.country|default=""} </p>
         <p class="mt1 mb0">
             {$m.sex=="0" ?lang("女性"):lang("男性")}
         </p>

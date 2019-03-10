@@ -121,8 +121,6 @@ class Index extends Controller
         }
 
         $table = Db::table('member');
-        $table->where('id', "<>", $mid);
-
         try {
             $sex = request()->param("sex");
             $age_min = request()->param("age_min");
@@ -172,6 +170,7 @@ class Index extends Controller
                 $nextPno = $pno + 1;
             }
             $dbMembers = $table->page("$pno,$pageSize")->select();
+//            echo $table->getLastSql();
         } catch (DataNotFoundException $e) {
         } catch (ModelNotFoundException $e) {
         } catch (DbException $e) {

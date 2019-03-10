@@ -43,6 +43,7 @@
                 </div>
                 <div class="list-message-border col col-12 border-bottom border-color"></div>
                 {volist name="msgs" id="msg"  }
+                <a href="/index.php/index/mail/msgDetail?id={$msg.msgid}">
                 <div class="list-message col col-12 px1 my1">
                     <div class="flex items-center relative height-12">
                         <div class="flex-none unread me2 height-10"  ></div>
@@ -50,7 +51,7 @@
                                 <div class="me3 relative flex-none">
                                     <div class="profile-image circle border overflow-hidden">
                                         <div class="fit col-12 height-12 circle card-image-bg-color">
-                                           <a href="/index.php/index/m/profile?id={$msg.id}"> <div class="profile-bg"  style="background-image:url('{$msg.main_pic}')"></div></a>
+                                            <div class="profile-bg"  style="background-image:url('{$msg.main_pic}')"></div> 
                                         </div>
                                     </div>
 
@@ -60,32 +61,22 @@
 
                                         <div class="flex items-center">
                                             <h1 class="h2 m0 me2 color-dark-grey unread-message">{$msg.nickname}</h1>
-                                            <div class="relative icon-membership fill-standard mx2">
-                                                <svg class="tooltip">
-                                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-profile"></use>
-                                                </svg>
-
-                                            </div>
-                                            <div class="h5 ml2">{$msg.age} <span>&#8226;</span> {$msg.address}, {$msg.countryid}</div>
+                                            <div class="h5 ml2">{:lang("年龄")}: {$msg.age==0?lang("保密"):""}  {$msg.address!=""?$msg.address." , ":""}{$msg.countryid}</div>
                                         </div>
 
                                         <div class="flex items-center">
-                                            <div class="h5 unread-message">19-1-21</div>
+                                            <div class="h5 unread-message">{$msg.send_date } </div>
 
                                         </div>
 
                                     </div>
 
-                                    <div class="h5 mt1">
-                                        <div class="list-message-text break-word">
-                                            {$msg.msg|default=""}
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                     </div>
                 </div>
-
+                </a>
+                <div class="list-message-border col col-12 border-bottom border-color"></div>
                 {/volist}
 
                 <div class="list-message-border col col-12 border-bottom border-color"></div>

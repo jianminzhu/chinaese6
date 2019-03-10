@@ -40,14 +40,21 @@ class Mail extends Controller
     {
         $index = new Index();
         $index->headData();
+        $id = request()->param("id");
         if ($index->isLogin()) {
+            $u = $index->loginUser();
+            $mid = $u->id;
             session("lastUrl", "/index/mail/fromfavorite");
-            return $this->fetch('/index/msgDetail');
+            $msg = Db::query("
+                   SELECT msg.id as msgid, msg.msg,f.* ,send_status,read_status,send_date  FROM message  AS msg
+                    LEFT JOIN member AS f ON f.id = msg.`from_m_id` 
+                    where msg.id=$id  and msg.to_m_id=$mid
+            ");
+            return view('/index/msgDetail', ["msg" =>count( $msg)>0?$msg[0]:[]]);
         } else {
-
-
+            session("lastUrl", "/index.php/index/mail/msgDetail?id=$id");
+            return redirect('/index.php/index/a/login');
         }
-        return $this->fetch();
     }
 
     public function msglist()
