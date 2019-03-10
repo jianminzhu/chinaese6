@@ -139,7 +139,7 @@ class Pay extends Controller
             ->setInvoiceNumber(uniqid());
 
 
-        $baseUrl = "http://localhost/index.php/index/pay/test";
+        $baseUrl = "http://travelling.chinesecompanion.com/index.php/index/pay/test";
         $redirectUrls = new RedirectUrls();
         $redirectUrls->setReturnUrl($baseUrl . '?lz_type=1')
             ->setCancelUrl($baseUrl . '?lz_type=2');

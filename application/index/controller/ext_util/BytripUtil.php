@@ -11,6 +11,7 @@ function BytripSearchMembers($url)
 {
     pq(phpQuery::newDocumentFile($url));
     $members = pq("div.travel-bd > ul > li");
+    $page = pq("a.end");
     $toDbMembers = [];
     foreach ($members as $m) {
         $jit = pq($m);
@@ -26,7 +27,7 @@ function BytripSearchMembers($url)
             "sex" => $sex == "男" ? 1 : 0
         ];
     }
-    return $toDbMembers;
+    return [$toDbMembers, $page];
 }
 
 

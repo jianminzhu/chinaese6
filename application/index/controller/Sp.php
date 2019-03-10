@@ -59,21 +59,32 @@ class Sp extends Controller
         foreach ($urls as $url) {
             $url = trim($url);
             if ($url != "" && strpos($url, "://www.bytrip.com")) {
-                $this->parseMemberTodb($url);
+                echo "spider starting  url  $url ";
+                $members = $this->parseMemberTodb($url);
+                $mids = [];
+                foreach ($members as $member) {
+                    $mids[] = $member["id"];
+                }
+                $this->downpics($mids);
+
             }
         }
         return "<br> spider complate";
     }
 
-    public function downpics()
+    public function downpics($mids=[])
     {
-        $pics = Member::table("member")->column("main_pic");
+        $memberTable = Db::table("member");
+        if ($mids) {
+            $memberTable->where("id", "in", $memberTable);
+        }
+        $pics = $memberTable->column("main_pic");
         foreach ($pics as $pic) {
             $picUrl = "http://www.bytrip.com/" . $pic;
             ExtDownloadPic($picUrl);
             echo $picUrl . " finished<br>";
         }
-        $pics = Member::table("pics")->column("file_path");
+        $pics = Db::table("pics")->column("file_path");
         foreach ($pics as $pic) {
             $picUrl = "http://www.bytrip.com/" . $pic;
             ExtDownloadPic($picUrl);
@@ -135,16 +146,17 @@ class Sp extends Controller
      */
     public function parseMemberTodb($url)
     {
-        $members = BytripSearchMembers($url);
+        list($members ,$page)= BytripSearchMembers($url);
         foreach ($members as $member) {
             try {
-                $member["pwd"] = "e3e0e0b164ed59c430312854451d1d22 <br>";
+                $member["pwd"] = "e3e0e0b164ed59c430312854451d1d22";
                 Db::table("member")->insert($member);
                 echo " | IN(" . $member["nickname"] . ")";
             } catch (\Exception $e) {
                 echo " | EX(" . $member["nickname"] . ")";
             }
         }
+        return $members;
     }
 
     public function pidAddress()
