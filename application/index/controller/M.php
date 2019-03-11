@@ -8,14 +8,13 @@ use app\index\model\Member;
 use app\index\model\Pics;
 use think\Controller;
 use think\Db;
-use think\Loader;
 
 class M extends Controller
 {
 
-    public function reg($emsgs = [])
+    public function reg($data=["param"=>[],"emsgs"=>[]])
     {
-        return view('/index/reg', ["emsgs" => $emsgs]);
+        return view('/index/reg', $data);
     }
 
 
@@ -25,19 +24,20 @@ class M extends Controller
         $emsgs = [];
         $email = request()->param("email");
         $pwd = request()->param("pwd");
-        if (!$email) {
-            $emsgs[] = lang("邮箱必须填写");
+        if (!$email&&trim($email)==="") {
+            $emsgs["email"] = lang("邮箱必须填写");
         }
         if (!$pwd) {
-            $emsgs[] = lang("密码必须填写");
+            $emsgs["pwd"] = lang("密码必须填写");
+        }else{
+            if (strlen($pwd)< 6) {
+                $emsgs["pwd"] = lang("密码必须大于等于6位");
+            }
         }
-        if ($emsgs) {
-            return $this->reg($emsgs,["param"=>$param]);
-        } else {
+        if (count($emsgs) == 0) {
             $count = Db::table("member")->where("email", $email)->count();
             if ($count > 0) {
-                $emsgs[] = lang("邮箱已经被注册");
-                return $this->reg($emsgs);
+                $emsgs["email"] = lang("邮箱已经被注册");
             } else {
                 try {
                     $nickname = request()->param("nickname");
@@ -47,15 +47,19 @@ class M extends Controller
                         "nickname" => $nickname,
                         "sex" => $sex,
                         "age" => $age,
-                        "email" => $email,
-                        "pwd" =>md5($pwd)
+                        "email" => trim($email),
+                        "pwd" => md5($pwd)
                     ];
                     Db::table("member")->insert($data);
-                    echo 111111;
-                   return $this->redirect('index/a/login', ["email" => $email,"pwd"=>$pwd]);
                 } catch (\Exception $e) {
+                    $emsgs["db"] = lang("系统异常，请稍后重试");
                 }
             }
+        }
+        if (count($emsgs) == 0) {
+            return $this->redirect('index/a/login', ["email" => $email, "pwd" => $pwd]);
+        } else {
+            return $this->reg(["param" => $param, "emsgs" => $emsgs]);
         }
     }
 

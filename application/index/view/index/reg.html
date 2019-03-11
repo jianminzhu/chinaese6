@@ -50,17 +50,16 @@
             </h1>
             <form name="registration" id="form-registration" action="/index.php/index/m/savereg"
                   method="post" data-path="en" novalidate="">
-                <div><span class="error-message ms1">This email already exists</span>
-                </div>
+
                 <div class="mb2">
                     <label for="nickname">{:lang("昵称")}</label>
                     <div class="form-field mb1 relative" aria-invalid="false">
                         <input type="text" name="nickname" id="nickname" class="col-12" required=""
-                               data-required-message="Please enter your first name" value="{$param.nickname|default=''}" maxlength="30">
+                               data-required-message="Please enter your first name" value="{$param['nickname']|default=''}"
+                               maxlength="30">
                     </div>
                 </div>
                 <div class="flex mb2">
-
                     <div class="col-7">
                         <label class="pt1 block">{:lang("注册页面性别选择")}</label>
                         <div class="flex items-center" data-append-outside="true"
@@ -284,21 +283,23 @@
                 <div class="mb2">
                     <label for="email">{:lang("邮箱")}</label>
                     <div class="form-field mb1 relative" aria-invalid="false">
-                        <input type="email" name="email" value="a@g.cn" id="email"
+                        <input type="email" name="email" value="{$param['email']|default=''}" id="email"
                                class="col-12 touched"
                                required="" data-required-message="{:lang('请输入电子邮箱地址')}" autofocus="true"
                                data-validator-error="true">
                     </div>
+                    {if condition='array_key_exists("email",$emsgs)'}
+                    <div class="invalidMessage flex items-center mt1">
+                        <svg class="icon-24 fill-red flex-none">
+                            <use xlink:href="/assets/desktop/icons/icons.svg#icon-warning"></use>
+                        </svg>
+                        <span class="error-message ms1">{$emsgs["email"]}</span>
+                    </div>
+                    {/if}
                 </div>
 
 
                 <div class="relative">
-                    <div class="tooltip-text  h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">You
-                        can use letters or numbers (8 - 20 characters). <br>
-                        IMPORTANT: For extra security ensure that your new password is NOT the same as your email
-                        password.
-                    </div>
-
                     <div class="mb2 tooltip">
                         <label for="pwd">{:lang("密码")}</label>
                         <div class="form-field mb1 relative" aria-invalid="false">
@@ -307,12 +308,14 @@
                                    placeholder="{:lang('登录网站的密码')}">
                         </div>
                     </div>
-
-                    <div class="tooltip-text  h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">You
-                        can use letters or numbers (8 - 20 characters). <br>
-                        IMPORTANT: For extra security ensure that your new password is NOT the same as your email
-                        password.
+                    {if condition='array_key_exists("pwd",$emsgs)'}
+                    <div class="invalidMessage flex items-center mt1">
+                        <svg class="icon-24 fill-red flex-none">
+                            <use xlink:href="/assets/desktop/icons/icons.svg#icon-warning"></use>
+                        </svg>
+                        <span class="error-message ms1">{$emsgs["pwd"]}</span>
                     </div>
+                    {/if}
                 </div>
 
 
