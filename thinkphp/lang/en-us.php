@@ -46,6 +46,10 @@ return [
     "上一页" => "PREVIOUS",
     "第一页" => "FIRST",
 
+    //reg
+    "登录网站的密码" => "Your password",
+    "邮箱已经被注册" => "The email has registed",
+
 
     "下一步: 上传多张照片到相片区" => 'Next Step: Complete profile questions',
     /*  公用  */

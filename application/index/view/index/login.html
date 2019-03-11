@@ -51,8 +51,9 @@
                         <div class="mb2">
 
                             <div class="form-field mb1 relative" aria-invalid="false">
-                                <input type="email" name="email" value="t@test.cn" id="form-login-email"
+                                <input type="email" name="email" value="{$email|default='t@test.cn'}" id="form-login-email"
                                        class="col-12 touched"
+
                                        required="" data-required-message="{:lang('请输入电子邮箱地址')}" autofocus="true"
                                        data-validator-error="true">
                             </div>
@@ -115,7 +116,7 @@
 
             </div>
             <div class="h3 center mt3 link-color">
-                {:lang('还不是会员?')}<a href="/index.php/index/member/reg"><strong>{:lang('立即免费加入!')}</strong></a>
+                {:lang('还不是会员?')}<a href="/index.php/index/m/reg"><strong>{:lang('立即免费加入!')}</strong></a>
             </div>
         </div>
     </div>

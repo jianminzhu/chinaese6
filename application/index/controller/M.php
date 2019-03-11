@@ -8,26 +8,54 @@ use app\index\model\Member;
 use app\index\model\Pics;
 use think\Controller;
 use think\Db;
+use think\Loader;
 
 class M extends Controller
 {
 
-    public function reg()
+    public function reg($emsgs = [])
     {
-        return view('/index/reg');
+        return view('/index/reg', ["emsgs" => $emsgs]);
     }
 
 
     public function savereg()
     {
-        $member = new Member(request()->param());
-        try {
-            $member->pwd = md5($member->password);
-            $member->allowField(['nickname', 'email', "pwd"])->save();
-            session("loginUser", $member);
-            return redirect("/", "", 302);
-        } catch (\Exception $e) {
-            return redirect('/')->params(['emsg' => $e->getMessage()], 302);
+        $param = request()->param();
+        $emsgs = [];
+        $email = request()->param("email");
+        $pwd = request()->param("pwd");
+        if (!$email) {
+            $emsgs[] = lang("邮箱必须填写");
+        }
+        if (!$pwd) {
+            $emsgs[] = lang("密码必须填写");
+        }
+        if ($emsgs) {
+            return $this->reg($emsgs,["param"=>$param]);
+        } else {
+            $count = Db::table("member")->where("email", $email)->count();
+            if ($count > 0) {
+                $emsgs[] = lang("邮箱已经被注册");
+                return $this->reg($emsgs);
+            } else {
+                try {
+                    $nickname = request()->param("nickname");
+                    $sex = request()->param("sex");
+                    $age = request()->param("age");
+                    $data = [
+                        "nickname" => $nickname,
+                        "sex" => $sex,
+                        "age" => $age,
+                        "email" => $email,
+                        "pwd" =>md5($pwd)
+                    ];
+                    Db::table("member")->insert($data);
+                    echo 111111;
+                   return $this->redirect('index/a/login', ["email" => $email,"pwd"=>$pwd]);
+                } catch (\Exception $e) {
+                }
+            }
         }
     }
 

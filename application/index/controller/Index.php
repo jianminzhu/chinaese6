@@ -86,7 +86,10 @@ class Index extends Controller
     {
         if ($cookieLang == "en-us" && $user) {
             $user["nickname"] = pinyinName($user["nickname"]);
-            $user["address"] = pinyinName($user["address"]);
+            try {
+                $user["address"] = pinyinName($user["address"]);
+            } catch (\Exception $e) {
+            }
         }
         return $user;
     }

@@ -13,9 +13,9 @@ use think\Controller;
 class A extends Controller
 {
 
-    public function login()
+    public function login($data=[])
     {
-        return view('/index/login');
+        return view('/index/login',$data);
     }
 
 

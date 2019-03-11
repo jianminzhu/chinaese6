@@ -50,18 +50,15 @@
             </h1>
             <form name="registration" id="form-registration" action="/index.php/index/m/savereg"
                   method="post" data-path="en" novalidate="">
-
+                <div><span class="error-message ms1">This email already exists</span>
+                </div>
                 <div class="mb2">
-
                     <label for="nickname">{:lang("昵称")}</label>
-
                     <div class="form-field mb1 relative" aria-invalid="false">
                         <input type="text" name="nickname" id="nickname" class="col-12" required=""
-                               data-required-message="Please enter your first name" maxlength="30">
+                               data-required-message="Please enter your first name" value="{$param.nickname|default=''}" maxlength="30">
                     </div>
                 </div>
-
-
                 <div class="flex mb2">
 
                     <div class="col-7">
@@ -69,7 +66,7 @@
                         <div class="flex items-center" data-append-outside="true"
                              data-validate-requireone="Please select your gender.">
                             <label for="radio1" class="me2 flex" title="Male">
-                                <input type="radio" name="gender" value="253" id="radio1" data-validate="requireone">
+                                <input type="radio" name="sex" value="1" id="radio1" data-validate="requireone">
                                 <div class="icon icon-30 radio-theme circle relative inline-block align-middle">
                                     <svg class="icon-30 absolute white checked">
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -88,7 +85,7 @@
                                 </div>
                             </label>
                             <label for="radio2" class="flex" title="Female">
-                                <input type="radio" name="gender" value="254" id="radio2" data-validate="requireone">
+                                <input type="radio" name="sex" value="0" id="radio2" data-validate="requireone">
                                 <div class="icon icon-30 radio-theme circle relative inline-block align-middle">
                                     <svg class="icon-30 absolute white checked">
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -296,7 +293,6 @@
 
 
                 <div class="relative">
-
                     <div class="tooltip-text  h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">You
                         can use letters or numbers (8 - 20 characters). <br>
                         IMPORTANT: For extra security ensure that your new password is NOT the same as your email
@@ -304,11 +300,11 @@
                     </div>
 
                     <div class="mb2 tooltip">
-                        <label for="password">{:lang("密码")}</label>
+                        <label for="pwd">{:lang("密码")}</label>
                         <div class="form-field mb1 relative" aria-invalid="false">
-                            <input type="password" name="password" id="password" class="col-12" required=""
+                            <input type="password" name="pwd" id="pwd" class="col-12" required=""
                                    data-required-message="{:lang('请输入密码')}" minlength="8" maxlength="20"
-                                   placeholder="Your ChinaLoveCupid password">
+                                   placeholder="{:lang('登录网站的密码')}">
                         </div>
                     </div>
 
