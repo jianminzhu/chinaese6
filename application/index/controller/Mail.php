@@ -21,7 +21,6 @@ class Mail extends Controller
         }
     }
 
-
     public function favorite()
     {
         $params = request()->param();

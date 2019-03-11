@@ -57,7 +57,7 @@ class M extends Controller
             }
         }
         if (count($emsgs) == 0) {
-            return  view('/index/login', ["email" => $email, "pwd" => $pwd]);
+            return view('/index/login', ["email" => $email, "pwd" => $pwd]);
         } else {
             return $this->reg(["param" => $param, "emsgs" => $emsgs]);
         }
