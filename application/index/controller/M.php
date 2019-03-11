@@ -12,7 +12,7 @@ use think\Db;
 class M extends Controller
 {
 
-    public function reg($data=["param"=>[],"emsgs"=>[]])
+    public function reg($data = ["param" => [], "emsgs" => []])
     {
         return view('/index/reg', $data);
     }
@@ -24,13 +24,13 @@ class M extends Controller
         $emsgs = [];
         $email = request()->param("email");
         $pwd = request()->param("pwd");
-        if (!$email&&trim($email)==="") {
+        if (!$email && trim($email) === "") {
             $emsgs["email"] = lang("邮箱必须填写");
         }
         if (!$pwd) {
             $emsgs["pwd"] = lang("密码必须填写");
-        }else{
-            if (strlen($pwd)< 6) {
+        } else {
+            if (strlen($pwd) < 6) {
                 $emsgs["pwd"] = lang("密码必须大于等于6位");
             }
         }
@@ -57,7 +57,7 @@ class M extends Controller
             }
         }
         if (count($emsgs) == 0) {
-            return $this->redirect('index/a/login', ["email" => $email, "pwd" => $pwd]);
+            return  view('/index/login', ["email" => $email, "pwd" => $pwd]);
         } else {
             return $this->reg(["param" => $param, "emsgs" => $emsgs]);
         }
