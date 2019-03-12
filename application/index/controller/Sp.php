@@ -92,6 +92,7 @@ class Sp extends Controller
                 echo $picUrl . " finished<br>";
             }
         } catch (\Exception $e) {
+            echo $e->getMessage();
         }
         return "finished";
 
