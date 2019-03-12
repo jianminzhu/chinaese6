@@ -74,21 +74,24 @@ class Sp extends Controller
 
     public function downpics($mids=[])
     {
-        $memberTable = Db::table("member");
-        if ($mids) {
-            $memberTable->where("id", "in", $memberTable);
-        }
-        $pics = $memberTable->column("main_pic");
-        foreach ($pics as $pic) {
-            $picUrl = "http://www.bytrip.com/" . $pic;
-            ExtDownloadPic($picUrl);
-            echo $picUrl . " finished<br>";
-        }
-        $pics = Db::table("pics")->column("file_path");
-        foreach ($pics as $pic) {
-            $picUrl = "http://www.bytrip.com/" . $pic;
-            ExtDownloadPic($picUrl);
-            echo $picUrl . " finished<br>";
+        try {
+            $memberTable = Db::table("member");
+            if ($mids) {
+                $memberTable->where("id", "in", $memberTable);
+            }
+            $pics = $memberTable->column("main_pic");
+            foreach ($pics as $pic) {
+                $picUrl = "http://www.bytrip.com/" . $pic;
+                ExtDownloadPic($picUrl);
+                echo $picUrl . " finished<br>";
+            }
+            $pics = Db::table("pics")->column("file_path");
+            foreach ($pics as $pic) {
+                $picUrl = "http://www.bytrip.com/" . $pic;
+                ExtDownloadPic($picUrl);
+                echo $picUrl . " finished<br>";
+            }
+        } catch (\Exception $e) {
         }
         return "finished";
 
