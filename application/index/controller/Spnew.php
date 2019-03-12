@@ -14,7 +14,7 @@ class Spnew extends Controller
 
     function sp()
     {
-       return spiderBytrip(request()->param("cityid"));
+       return $this->spiderBytrip(request()->param("cityid"));
     }
     function spicerAll($startPno=1,$limit=0)
     {
