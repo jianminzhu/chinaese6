@@ -54,6 +54,13 @@ class Sp extends Controller
 
     public function doSpider()
     {
+        header("Content-type:text/html;charset=utf-8");
+        set_time_limit(0);
+        ob_end_clean();
+        ob_implicit_flush(1);
+        ob_flush();
+        Flush();
+        sleep(1);
         $urlsParamStr = request()->param("urls");
         $urls = explode("\r\n", $urlsParamStr);
         foreach ($urls as $url) {
