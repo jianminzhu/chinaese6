@@ -105,7 +105,7 @@ class M extends Base
 
             return view("/index/active");
         }
-        return redirect("/index/a/login");
+        return redirect("/index.php/index/a/login");
 
     }
 
