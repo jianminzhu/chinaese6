@@ -33,17 +33,17 @@
 
                 <div class="flex flex-auto items-end justify-between mx2 my3">
                     <div class="flex items-center">
-                        <div
-                                class="pointer me3 relative fill-action-unhighlight"
+                        <div   class="pointer me3 relative fill-action-unhighlight"
+                               data-opt-sendInterest
+                               data-d-mid="{$m.id}"
                         >
                             <svg class="icon-30">
                                 <use xlink:href="/assets/desktop/icons/icons.svg#icon-heart"></use>
                             </svg>
                         </div>
                         <div class="pointer me3 fill-action-unhighlight relative"
-                             data-button="true"
-                             data-animate-reset="single-heartbeat"
-                             data-chatMemberID="1786380"
+                             data-opt-sendmsg
+                             data-d-mid="{$m.id}"
                              title="{:lang('发送讯息给')}{$m.nickname}">
                             <svg class="icon-30">
                                 <use xlink:href="/assets/desktop/icons/icons.svg#icon-messages"></use>

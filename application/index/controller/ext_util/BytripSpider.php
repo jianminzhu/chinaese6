@@ -26,7 +26,9 @@ function spider($startUrl, $parseDataAndPageFunc, $makeNextUrlFunc, $dealDataFun
     $html = ExtGetHtml($startUrl);
     list($data, $totalPage) = $parseDataAndPageFunc($html);
     $perDeal($data, $dealDataFunc);
-
+    if (!$totalPage) {
+        $totalPage = $limit;
+    }
     $endPage = $totalPage;
     if ($limit > 0) {
         $endPage = $startPno + $limit;

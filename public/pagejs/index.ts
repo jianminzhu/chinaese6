@@ -1,5 +1,3 @@
-
-
 function search() {
 
     let $form = $('form[name="searchForm"]');
@@ -27,6 +25,7 @@ function search() {
         return false;
     })
 }
+
 
 $(function () {
     search();

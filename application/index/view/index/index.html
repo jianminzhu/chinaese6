@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="zh-Hans" data-device="desktop">
+<html dir="ltr" lang="zh-Hans" data-device="desktop" >
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,9 +9,9 @@
     <meta name="viewport"
           content="height=device-height, initial-scale=1, user-scalable=no, maximum-scale=1, shrink-to-fit=yes">
     {include file="../application/index/view/index/_commoncss.html" /}
-    <script src="/pagejs/index.js?v=1.1"></script>
+    <script src="/pagejs/index.js?v=1.2"></script>
 </head>
-<body>
+<body >
 {include file="../application/index/view/index/_head.html" /}
 {if condition="$Think.session.isLogin eq true"}
 <div class="header-strip height-auto px3 py2">
@@ -21,9 +21,9 @@
                 <div class="profile-image-header circle shadow border">
                     <div class="flex items-center justify-center height-12 circle overflow-hidden card-image-bg-color">
                         <a class="col-12 height-12" target="_blank"
-                           href="/index.php/index/m/profile?id={$loginUser.id}">
+                           href="/index.php/index/m/profile?id={$u.id}">
                             <div class="profile-bg"
-                                 style="background-image:url('{$loginUser.main_pic}')"></div>
+                                 style="background-image:url('{$u.main_pic}')"></div>
                         </a>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="me2 col-6">
-                <h1 class="m0 flex items-center">{$loginUser.nickname|default=""},{:lang("您好")}</h1>
+                <h1 class="m0 flex items-center">{$u.nickname|default=""},{:lang("您好")}</h1>
 
                 <a class="next-step block mt1 p1 header-strip-color relative white rounded bg-search button overflow-hidden shadow"
                    href="/zc/profilemanagement/editprofilephotos">
@@ -53,8 +53,7 @@
             </div>
         </div>
         <div class="header-info col-7 flex items-start justify-around">
-
-            <a href="/zc/mail/showinbox">
+            <a href="/index.php/index/mail/msglist">
                 <div class="m2">
                     <div class="relative">
                         <div class="header-circles circle border relative mx-auto header-circles-highlight">

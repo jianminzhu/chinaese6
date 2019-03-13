@@ -3,19 +3,18 @@
 namespace app\index\controller;
 
 use app\index\model\Member;
-use think\Controller;
 
 /**
  * Class Auth
  * @package app\controller
  * 权限相关
  */
-class A extends Controller
+class A extends Base
 {
 
-    public function login($data=[])
+    public function login($data = [])
     {
-        return view('/index/login',$data);
+        return view('/index/login', $data);
     }
 
 
@@ -25,7 +24,6 @@ class A extends Controller
     public function logout()
     {
         session('loginUser', null);
-
         session("isLogin", null);
         $this->redirect('/');
     }

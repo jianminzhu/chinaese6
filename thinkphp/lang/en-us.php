@@ -56,6 +56,7 @@ return [
 
     "下一步: 上传多张照片到相片区" => 'Next Step: Complete profile questions',
     /*  公用  */
+    "我的最爱" => "My Favorites",
     "邮箱" => "Email",
     "密码" => "password",
     "发送秋波给" => "sent intrest to ",

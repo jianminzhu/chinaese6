@@ -6,10 +6,11 @@ require('ext_util/BytripUtil.php');
 
 use app\index\model\Member;
 use app\index\model\Pics;
+use app\index\model\Pay;
 use think\Controller;
 use think\Db;
 
-class M extends Controller
+class M extends Base
 {
 
     public function reg($data = ["param" => [], "emsgs" => []])
@@ -61,6 +62,13 @@ class M extends Controller
         } else {
             return $this->reg(["param" => $param, "emsgs" => $emsgs]);
         }
+    }
+
+    public function isPay()
+    {
+        $loginUser = $this->loginUser();
+        Pay::query()
+        return $this->ajax();
     }
 
     public function profile()

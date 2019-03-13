@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" dir="ltr" data-device="desktop">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>{:lang("文档编辑")} {$loginUser.nickname}</title>
+    <title>{:lang("文档编辑")} {$u.nickname}</title>
     <meta id="defaultmessage" content="处理过程中发生问题">
     <meta name="viewport"
           content="width=device-width, height=device-height, initial-scale=1, user-scalable=no, maximum-scale=1, shrink-to-fit=no">
@@ -155,8 +155,8 @@
                             <span id="gender_validate">
                           <select name="sex">
                                 <option value="-1">{:lang("请选择")}</option>
-                                <option value="1" {$loginUser.sex=="0"?' selected=""':""}>{:lang("男性")}</option>
-                              <option value="0" {$loginUser.sex=="0"?' selected=""':""}>{:lang("女性")}</option>
+                                <option value="1" {$u.sex=="0"?' selected=""':""}>{:lang("男性")}</option>
+                              <option value="0" {$u.sex=="0"?' selected=""':""}>{:lang("女性")}</option>
 
                             </select>
                     	<span class="selectRequiredMsg"></span>
