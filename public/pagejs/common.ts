@@ -102,9 +102,9 @@ function action() {
     $("body").delegate("[data-opt-addToFavorite]", "click", function () {
         let mid = $(this).data("dMid");
         $.ajax({
-            url: "/index.php/index/m/addToFavorite",
+            url: "/index.php/index/m/favorite",
             dataType: "json",
-            data: {favorite_mid: mid}
+            data: {to_mid: mid}
         }).then(function (res) {
             showNotice(res.msg);
         });

@@ -62,6 +62,16 @@ class M extends Base
         }
     }
 
+    public function favorite()
+    {
+        $lu = $this->loginUser();
+        $to_mid = request()->param("to_mid");
+        try {
+            Db::table("操作成功 ")->insert(["mid" => $lu->id, "to_mid" => $to_mid]);
+        } catch (\Exception $e) {
+        }
+        return $this->ajax(true, lang("操作成功"));
+    }
     public function interest(){
         $lu = $this->loginUser();
         $to_mid = request()->param("to_mid");

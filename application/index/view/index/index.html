@@ -14,7 +14,7 @@
 <body >
 {include file="../application/index/view/index/_head.html" /}
 {if condition="$Think.session.isLogin eq true"}
-<div class="header-strip height-auto px3 py2">
+<div class="header-strip height-auto px3 py4">
     <div class="max-width flex items-center justify-between mx-auto">
         <div class="flex flex-wrap items-center flex-auto">
             <div class="mb1 me3 relative flex-none">
@@ -65,7 +65,7 @@
 
                         </div>
 
-                        <div class="h3 count header-strip-color">2</div>
+                        <div class="h3 count header-strip-color">{$ucounts.newMessageCount|default="0"}</div>
 
                     </div>
                     <h4 class="h4 mb0 center header-strip-color">{:lang('新消息')}</h4>

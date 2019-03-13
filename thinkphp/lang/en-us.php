@@ -53,6 +53,8 @@ return [
     "邮箱必须填写" => "Email must be not empty",
     "密码必须大于等于6位" => "Password min length is 6",
     "发送成功" => "Sent Successful.",
+    "操作成功" => "Opt Successful",
+
 
     "下一步: 上传多张照片到相片区" => 'Next Step: Complete profile questions',
     /*  公用  */

@@ -9,12 +9,13 @@ use think\Db;
 class Base extends Controller
 {
 
-    public function ajax($isSuccess, $data=[])
+    public function ajax($isSuccess, $data = [])
     {
         return json(["isSuccess" => $isSuccess, "data" => $data]);
     }
 
-    public function ajaxIsLogin(){
+    public function ajaxIsLogin()
+    {
         return $this->ajax($this->isLogin());
     }
 
@@ -57,6 +58,7 @@ class Base extends Controller
         $loginUser = $this->loginUser();
         $this->assign([
                 'u' => $loginUser,
+                'ucounts' => $this->loginUserCounts(),
                 "lang" => $toLang,
             ]
         );
@@ -181,6 +183,31 @@ class Base extends Controller
     {
         $this->headData();
         return $this->fetch('msglist');
+    }
+
+    /**
+     * @param $loginUser
+     */
+    public function loginUserCounts()
+    {
+        $ucounts = [];
+        if ($this->isLogin()) {
+            $loginUser = $this->loginUser();
+            $ucounts = [
+                "newMessageCount" => Db::table("message")
+                    ->where("to_m_id", $loginUser->id)
+                    ->where("type", 2)
+                    ->where("read_status", 0)->count("*"),
+                "newInterestsCount" => Db::table("interest")
+                    ->where("to_mid", $loginUser->id)
+                    ->where("is_view", 0)->count("*"),
+                "newFavoritesCount" => Db::table("favorite")
+                    ->where("to_mid", $loginUser->id)
+                    ->where("is_view", 0)->count("*")
+            ];
+        }
+        echo json_encode($ucounts);
+        return $ucounts;
     }
 
 }
