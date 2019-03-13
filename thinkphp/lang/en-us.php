@@ -23,18 +23,18 @@ return [
     "男性" => "Male",
     "女性" => "Female",
     "搜索" => "Search",
-    "请选择"=>"",
+    "请选择" => "",
 
     //profiledit
     "名字" => "name",
-    "文档编辑"=>"Edit profile",
+    "文档编辑" => "Edit profile",
     "基本资料" => "Base Info",
     "我是" => "I'm ",
-    "自我介绍"=>"A little about yourself",
+    "自我介绍" => "A little about yourself",
     "外表" => "Your Lifestyle",
     "管理照片" => "Manage Photos",
     "保存" => "save",
-    "上传照片"=>"Upload Photo",
+    "上传照片" => "Upload Photo",
     "删除照片" => "Delete Photo",
     "头像" => "Primary Photo",
     "修改头像" => "Edit Photo",
@@ -52,9 +52,7 @@ return [
     "密码必须填写" => "Password must be not empty",
     "邮箱必须填写" => "Email must be not empty",
     "密码必须大于等于6位" => "Password min length is 6",
-    "消息已经发送" => "Message has been sent",
-
-
+    "发送成功" => "Sent Successful.",
 
     "下一步: 上传多张照片到相片区" => 'Next Step: Complete profile questions',
     /*  公用  */

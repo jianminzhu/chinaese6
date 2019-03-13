@@ -18,7 +18,7 @@ class Mail extends Base
 
         try {
             $msg->allowField(['from_m_id', 'to_m_id', "msg", "send_status", "type"])->save();
-            return $this->ajax(true,lang("消息已经发送"));
+            return $this->ajax(true,lang("发送成功"));
         } catch (\Exception $e) {
             return json_encode($e->getMessage());
         }

@@ -62,7 +62,15 @@ class M extends Base
         }
     }
 
-
+    public function interest(){
+        $lu = $this->loginUser();
+        $to_mid = request()->param("to_mid");
+        try {
+            Db::table("interest")->insert(["mid" => $lu->id, "to_mid" => $to_mid]);
+        } catch (\Exception $e) {
+        }
+        return $this->ajax(true, lang("发送成功"));
+    }
     public function isPay()
     {
         try {

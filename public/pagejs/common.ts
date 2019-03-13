@@ -63,19 +63,24 @@ function action() {
         $(this).closest(`div#${$id}`).hide();
     });
 
-
-
-
+    $("body").delegate("[data-opt-sendInterest]", "click", function () {
+        var mid = $(this).data("dMid");
+        loginDo(function () {
+            mdata("/index/m/interest", {to_mid: mid}).then(function (res) {
+                showNotice(res.data);
+            });
+        });
+    })
     //发送消息相关
     $("body").delegate("[data-opt-doSendMsg]", "click", function () {
-        var jit=$(this)
+        var jit = $(this)
         loginDo(function () {
             mdata("/index/m/isPay").then(function (res) {
                 var $id = jit.attr("data-opt-doSendMsg");
                 if (res.isSuccess) {
                     let msg = jit.parent().find("textarea[name=message]").val();
                     if (msg != "") {
-                        mdata("/index/mail/send",{to_m_id:$id,msg: msg,"type":2}).then(function (res) {
+                        mdata("/index/mail/send", {to_m_id: $id, msg: msg, "type": 2}).then(function (res) {
                             showNotice(res.data);
                             showDialogSentMsg($id)
                         });
@@ -92,9 +97,7 @@ function action() {
         });
     })
 
-    $("body").delegate("[data-opt-sendInterest]", "click", function () {
 
-    })
 
     $("body").delegate("[data-opt-addToFavorite]", "click", function () {
         let mid = $(this).data("dMid");
