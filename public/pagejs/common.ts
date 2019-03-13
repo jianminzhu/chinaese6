@@ -74,6 +74,7 @@ function action() {
     })
     $("body").delegate("[data-opt-interest]", "click", function () {
         var mid = $(this).data("dMid");
+        alert(mid)
         loginDo(function () {
             mdata("/index/m/interest", {to_mid: mid}).then(function (res) {
                 showNotice(res.data);
