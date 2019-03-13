@@ -110,7 +110,7 @@
                 </div>
             </a>
 
-            <a href="/zc/results/favoritedme?searchtype=1">
+            <a href="javascript:void(0)">
                 <div class="m2">
                     <div class="relative">
                         <div class="header-circles circle border relative mx-auto">
@@ -132,7 +132,7 @@
     </div>
 </div>
 {/if}
-<div class="max-width mx-auto mt0 px2">
+<div class="max-width mx-auto mt0 px2 {$Think.session.isLogin?'':'py4'}">
     <form name="searchForm" id="searchForm">
         <div class="search mt2 p2  mx-auto shadow rounded flex flex-wrap items-center justify-between max-width">
             <div class="border-bottom m1 col-2">

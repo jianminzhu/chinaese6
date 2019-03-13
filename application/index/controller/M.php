@@ -90,7 +90,23 @@ class M extends Base
                 }
             }
         }
-        return $this->ajax($isSucc, ["emsg"=>$emsg,"addClass"=>$addClass,"removeClass"=>$removeCss]);
+        return $this->ajax($isSucc, ["emsg" => $emsg, "addClass" => $addClass, "removeClass" => $removeCss]);
+    }
+
+    public function active()
+    {
+        if ($this->isLogin()) {
+            $this->headData();
+            $lu = $this->loginUser();
+            $myMid = $lu->id;
+
+            $activeData = $this->activeData($myMid);
+            $this->assign($activeData);
+
+            return view("/index/active");
+        }
+        return redirect("/index/a/login");
+
     }
 
     public function interest()
@@ -235,6 +251,34 @@ class M extends Base
     {
         $fileUrl = str_replace('\\', '/', realpath(dirname($file) . '/')) . "/";
         return $fileUrl;
+    }
+
+    function activeDataAjax()
+    {
+        return $this->ajax(true, $this->activeData("72543"));
+    }
+
+    /**
+     * @param $myMid
+     * @return array
+     */
+    public function activeData($myMid)
+    {
+        $vMeIds = db("vistor")->where("to_mid", $myMid)->group("mid")->order("create_time desc")->column("mid");
+        $fMeIds = db("favorite")->where("to_mid", $myMid)->group("mid")->order("create_time desc")->column("mid");
+        $iMeIds = db("interest")->where("to_mid", $myMid)->group("mid")->order("create_time desc")->column("mid");
+        $myVIds = db("vistor")->where("mid", $myMid)->group("to_mid")->order("create_time desc")->column("to_mid");
+        $myFIds = db("favorite")->where("mid", $myMid)->group("to_mid")->order("create_time desc")->column("to_mid");
+        $myIIds = db("interest")->where("mid", $myMid)->group("to_mid")->order("create_time desc")->column("to_mid");
+        $activeData = [
+            "vMeLst" => count($vMeIds) > 0 ? db("member")->where("id", "in", $vMeIds)->select() : [],
+            "fMeLst" => count($fMeIds) > 0 ? db("member")->where("id", "in", $fMeIds)->select() : [],
+            "iMeLst" => count($iMeIds) > 0 ? db("member")->where("id", "in", $iMeIds)->select() : [],
+            "myVLst" => count($myVIds) > 0 ? db("member")->where("id", "in", $myVIds)->select() : [],
+            "myFLst" => count($myFIds) > 0 ? db("member")->where("id", "in", $myFIds)->select() : [],
+            "myILst" => count($myIIds) > 0 ? db("member")->where("id", "in", $myIIds)->select() : [],
+        ];
+        return $activeData;
     }
 }
 

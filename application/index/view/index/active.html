@@ -1,0 +1,712 @@
+<html dir="ltr" lang="zh-Hans" data-device="desktop">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    <title></title>
+
+
+    <meta id="defaultmessage" content="处理过程中发生问题">
+
+    <meta name="viewport"
+          content="height=device-height, initial-scale=1, user-scalable=no, maximum-scale=1, shrink-to-fit=yes">
+
+
+    <meta name="stm-result" content="ok">
+
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+    <link rel="stylesheet" href="/assets/desktop/css/chinalovecupid-base.css?v=24">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700&amp;subset=cyrillic,cyrillic-ext,devanagari,greek,greek-ext,latin-ext,vietnamese"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700&amp;subset=korean" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/earlyaccess/notosanstc.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/earlyaccess/notosansscsliced.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/pagejs/common.js?v=1.1"></script>
+    <script src="/js/tolang.js?v=1.1"></script>
+</head>
+<body>
+
+{include file="../application/index/view/index/_head.html" /}
+<div class="header-strip height-auto px3 py4">
+    <div class="flex max-width mx-auto justify-between items-center">
+        <h1 class="m0 mb2 header-strip-color">
+            {:lang("会员动态")}
+        </h1>
+
+    </div>
+
+    <div class="max-width mx-auto">
+        <div class="tabs flex">
+            <h4 data-opt-tabs="tabs" class="h4 m0 me4 pb1 count">
+                <span class="pointer header-strip-color ">
+                    {:lang("谁在找我")}
+                </span>
+            </h4>
+
+            <h4 data-opt-tabs="tabs" class="h4 m0 me4 pb1 count">
+                <span class="pointer header-strip-color ">
+                    {:lang("加我为最爱")}
+                </span>
+            </h4>
+
+
+            <h4 data-opt-tabs="tabs" class="h4 m0 me4 pb1 count">
+                <span class="pointer header-strip-color ">
+                    {:lang("谁看过我")}
+                </span>
+            </h4>
+            <h4 data-opt-tabs="tabs" class="h4 m0 me4 pb1 count">
+                <span class="pointer header-strip-color ">
+                    {:lang("我看过谁")}
+                </span>
+            </h4>
+
+            <h4 data-opt-tabs="tabs" class="h4 m0 me4 pb1 count header-strip-color border-bottom">
+                <span class="pointer header-strip-color ">
+                    {:lang("我的最爱")}
+                </span>
+            </h4>
+            <h4 data-opt-tabs="tabs" class="h4 m0 me4 pb1 count">
+                <span class="pointer header-strip-color ">
+                    {:lang("我关注的")}
+                </span>
+            </h4>
+        </div>
+    </div>
+</div>
+
+<div id="tabs">
+    <div hidden class="flex flex-wrap justify-center mx-auto max-width" data-reflow="true" data-list-format="true">
+        {volist name="vMeLst" id="m"}
+        <div class="activity-card-width col-6 p1 relative">
+            <a id="4069256" class="absolute top-minus-100"></a>
+            <div class="activity-card p2 flex items-center overflow-hidden bg-white shadow relative">
+
+
+                <div class="activity-profile-image circle border relative flex-none m2" data-effect="grayscale">
+                    <div class="flex items-center height-12 circle overflow-hidden card-image-bg-color">
+                        <a class="flex items-center col-12 height-12"
+                           href="/index.php/index/m/profile?id={$m.id}">
+                            <div class="profile-bg overflow-hidden circle" data-cm-modal-url=""
+                                 style="background-image:url('{$m.main_pic}')"></div>
+                        </a>
+                    </div>
+                </div>
+                <!--member details-->
+                <div class="p2 flex flex-column col-6" data-effect="grayscale">
+                    <div class="flex justify-between">
+                        <!--name and grade-->
+                        <div class="flex max-width-85">
+                            <a class="flex items-center col-12 height-12" href="/index.php/index/m/profile?id={$m.id}">
+                                <h1 class="h2 color-dark-grey inline-block align-middle m0 truncate" title="Ashley ">
+                                    {$m.nickname} </h1>
+                            </a>
+                            <div class="icon-membership fill-standard inline-block align-middle mx2 relative">
+                                <svg class="tooltip">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-profile"></use>
+                                </svg>
+
+                                <div class="tooltip-text tooltip-text-width-auto truncate tooltip-text-center h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
+                                    {:lang("普通会员")}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--age / address-->
+                    <div class="h5">{$m.age} <span>•</span> {$m.address}, {$m.stateid}, {$m.countryid}</div>
+
+
+                    <!--<div class="h5 my1"><span class="bold">浏览时间:</span> 1 星期前</div>-->
+                    <!--like / favourite / photos icon-->
+
+
+                    <div class="flex flex-auto items-end justify-between ">
+                        <div class="flex items-center">
+                            <div class="pointer me3 relative fill-action-unhighlight"
+                                 data-opt-sendInterest=""
+                                 data-d-mid="{$m.id}"
+                                 title="{:lang('发送秋波给')}{$m.nickname} ">
+
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-heart"></use>
+                                </svg>
+                            </div>
+                            <div class="pointer me3 fill-action-unhighlight relative"
+                                 data-opt-sendmsg=""
+                                 data-d-mid="{$m.id}"
+                                 title="{:lang('发送消息给')}{$m.nickname} ">
+
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-messages"></use>
+                                </svg>
+                            </div>
+
+
+                            <div class="pointer circle relative fill-action-unhighlight"
+                                 data-opt-addToFavorite=""
+                                 data-d-mid="{$m.id}"
+                                 title="将Ashley 加入最爱"
+                            >
+
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-star"></use>
+                                </svg>
+                            </div>
+
+                        </div>
+                        <div class="fill-action-unhighlight relative" data-button="true" data-animate-reset="heartbeat">
+                            <div class="pointer no-highlight flex items-center" title="照片">
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-camera"></use>
+                                </svg>
+                                <div class="ms2 h5"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        {/volist}
+    </div>
+    <div hidden class="flex flex-wrap justify-center mx-auto max-width" data-reflow="true" data-list-format="true">
+        {volist name="fMeLst" id="m"}
+        <div class="activity-card-width col-6 p1 relative">
+            <a id="4069256" class="absolute top-minus-100"></a>
+            <div class="activity-card p2 flex items-center overflow-hidden bg-white shadow relative">
+
+
+                <div class="activity-profile-image circle border relative flex-none m2" data-effect="grayscale">
+                    <div class="flex items-center height-12 circle overflow-hidden card-image-bg-color">
+                        <a class="flex items-center col-12 height-12"
+                           href="/index.php/index/m/profile?id={$m.id}">
+                            <div class="profile-bg overflow-hidden circle" data-cm-modal-url=""
+                                 style="background-image:url('{$m.main_pic}')"></div>
+                        </a>
+                    </div>
+                </div>
+                <!--member details-->
+                <div class="p2 flex flex-column col-6" data-effect="grayscale">
+                    <div class="flex justify-between">
+                        <!--name and grade-->
+                        <div class="flex max-width-85">
+                            <a class="flex items-center col-12 height-12" href="/index.php/index/m/profile?id={$m.id}">
+                                <h1 class="h2 color-dark-grey inline-block align-middle m0 truncate" title="Ashley ">
+                                    {$m.nickname} </h1>
+                            </a>
+                            <div class="icon-membership fill-standard inline-block align-middle mx2 relative">
+                                <svg class="tooltip">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-profile"></use>
+                                </svg>
+
+                                <div class="tooltip-text tooltip-text-width-auto truncate tooltip-text-center h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
+                                    {:lang("普通会员")}
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!--age / address-->
+                    <div class="h5">{$m.age} <span>•</span> {$m.address}, {$m.stateid}, {$m.countryid}</div>
+
+
+                    <!--<div class="h5 my1"><span class="bold">浏览时间:</span> 1 星期前</div>-->
+                    <!--like / favourite / photos icon-->
+
+
+                    <div class="flex flex-auto items-end justify-between ">
+                        <div class="flex items-center">
+                            <div class="pointer me3 relative fill-action-unhighlight"
+                                 data-opt-sendInterest=""
+                                 data-d-mid="{$m.id}"
+                                 title="{:lang('发送秋波给')}{$m.nickname} ">
+
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-heart"></use>
+                                </svg>
+                            </div>
+                            <div class="pointer me3 fill-action-unhighlight relative"
+                                 data-opt-sendmsg=""
+                                 data-d-mid="{$m.id}"
+                                 title="{:lang('发送消息给')}{$m.nickname} ">
+
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-messages"></use>
+                                </svg>
+                            </div>
+
+
+                            <div class="pointer circle relative fill-action-unhighlight"
+                                 data-opt-addToFavorite=""
+                                 data-d-mid="{$m.id}"
+                                 title="将Ashley 加入最爱"
+                            >
+
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-star"></use>
+                                </svg>
+                            </div>
+
+                        </div>
+                        <div class="fill-action-unhighlight relative" data-button="true" data-animate-reset="heartbeat">
+                            <div class="pointer no-highlight flex items-center" title="照片">
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-camera"></use>
+                                </svg>
+                                <div class="ms2 h5"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        {/volist}
+    </div>
+    <div hidden class="flex flex-wrap justify-center mx-auto max-width" data-reflow="true" data-list-format="true">
+        {volist name="iMeLst" id="m"}
+        <div class="activity-card-width col-6 p1 relative">
+            <a id="4069256" class="absolute top-minus-100"></a>
+            <div class="activity-card p2 flex items-center overflow-hidden bg-white shadow relative">
+
+
+                <div class="activity-profile-image circle border relative flex-none m2" data-effect="grayscale">
+                    <div class="flex items-center height-12 circle overflow-hidden card-image-bg-color">
+                        <a class="flex items-center col-12 height-12"
+                           href="/index.php/index/m/profile?id={$m.id}">
+                            <div class="profile-bg overflow-hidden circle" data-cm-modal-url=""
+                                 style="background-image:url('{$m.main_pic}')"></div>
+                        </a>
+                    </div>
+                </div>
+                <!--member details-->
+                <div class="p2 flex flex-column col-6" data-effect="grayscale">
+                    <div class="flex justify-between">
+                        <!--name and grade-->
+                        <div class="flex max-width-85">
+                            <a class="flex items-center col-12 height-12" href="/index.php/index/m/profile?id={$m.id}">
+                                <h1 class="h2 color-dark-grey inline-block align-middle m0 truncate" title="Ashley ">
+                                    {$m.nickname} </h1>
+                            </a>
+                            <div class="icon-membership fill-standard inline-block align-middle mx2 relative">
+                                <svg class="tooltip">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-profile"></use>
+                                </svg>
+
+                                <div class="tooltip-text tooltip-text-width-auto truncate tooltip-text-center h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
+                                    {:lang("普通会员")}
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!--age / address-->
+                    <div class="h5">{$m.age} <span>•</span> {$m.address}, {$m.stateid}, {$m.countryid}</div>
+
+
+                    <!--<div class="h5 my1"><span class="bold">浏览时间:</span> 1 星期前</div>-->
+                    <!--like / favourite / photos icon-->
+
+
+                    <div class="flex flex-auto items-end justify-between ">
+                        <div class="flex items-center">
+                            <div class="pointer me3 relative fill-action-unhighlight"
+                                 data-opt-sendInterest=""
+                                 data-d-mid="{$m.id}"
+                                 title="{:lang('发送秋波给')}{$m.nickname} ">
+
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-heart"></use>
+                                </svg>
+                            </div>
+                            <div class="pointer me3 fill-action-unhighlight relative"
+                                 data-opt-sendmsg=""
+                                 data-d-mid="{$m.id}"
+                                 title="{:lang('发送消息给')}{$m.nickname} ">
+
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-messages"></use>
+                                </svg>
+                            </div>
+
+
+                            <div class="pointer circle relative fill-action-unhighlight"
+                                 data-opt-addToFavorite=""
+                                 data-d-mid="{$m.id}"
+                                 title="将Ashley 加入最爱"
+                            >
+
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-star"></use>
+                                </svg>
+                            </div>
+
+                        </div>
+                        <div class="fill-action-unhighlight relative" data-button="true" data-animate-reset="heartbeat">
+                            <div class="pointer no-highlight flex items-center" title="照片">
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-camera"></use>
+                                </svg>
+                                <div class="ms2 h5"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        {/volist}
+    </div>
+    <div hidden class="flex flex-wrap justify-center mx-auto max-width" data-reflow="true" data-list-format="true">
+        {volist name="myVLst" id="m"}
+        <div class="activity-card-width col-6 p1 relative">
+            <a id="4069256" class="absolute top-minus-100"></a>
+            <div class="activity-card p2 flex items-center overflow-hidden bg-white shadow relative">
+
+
+                <div class="activity-profile-image circle border relative flex-none m2" data-effect="grayscale">
+                    <div class="flex items-center height-12 circle overflow-hidden card-image-bg-color">
+                        <a class="flex items-center col-12 height-12"
+                           href="/index.php/index/m/profile?id={$m.id}">
+                            <div class="profile-bg overflow-hidden circle" data-cm-modal-url=""
+                                 style="background-image:url('{$m.main_pic}')"></div>
+                        </a>
+                    </div>
+                </div>
+                <!--member details-->
+                <div class="p2 flex flex-column col-6" data-effect="grayscale">
+                    <div class="flex justify-between">
+                        <!--name and grade-->
+                        <div class="flex max-width-85">
+                            <a class="flex items-center col-12 height-12" href="/index.php/index/m/profile?id={$m.id}">
+                                <h1 class="h2 color-dark-grey inline-block align-middle m0 truncate" title="Ashley ">
+                                    {$m.nickname} </h1>
+                            </a>
+                            <div class="icon-membership fill-standard inline-block align-middle mx2 relative">
+                                <svg class="tooltip">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-profile"></use>
+                                </svg>
+
+                                <div class="tooltip-text tooltip-text-width-auto truncate tooltip-text-center h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
+                                    {:lang("普通会员")}
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!--age / address-->
+                    <div class="h5">{$m.age} <span>•</span> {$m.address}, {$m.stateid}, {$m.countryid}</div>
+
+
+                    <!--<div class="h5 my1"><span class="bold">浏览时间:</span> 1 星期前</div>-->
+                    <!--like / favourite / photos icon-->
+
+
+                    <div class="flex flex-auto items-end justify-between ">
+                        <div class="flex items-center">
+                            <div class="pointer me3 relative fill-action-unhighlight"
+                                 data-opt-sendInterest=""
+                                 data-d-mid="{$m.id}"
+                                 title="{:lang('发送秋波给')}{$m.nickname} ">
+
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-heart"></use>
+                                </svg>
+                            </div>
+                            <div class="pointer me3 fill-action-unhighlight relative"
+                                 data-opt-sendmsg=""
+                                 data-d-mid="{$m.id}"
+                                 title="{:lang('发送消息给')}{$m.nickname} ">
+
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-messages"></use>
+                                </svg>
+                            </div>
+
+
+                            <div class="pointer circle relative fill-action-unhighlight"
+                                 data-opt-addToFavorite=""
+                                 data-d-mid="{$m.id}"
+                                 title="将Ashley 加入最爱"
+                            >
+
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-star"></use>
+                                </svg>
+                            </div>
+
+                        </div>
+                        <div class="fill-action-unhighlight relative" data-button="true" data-animate-reset="heartbeat">
+                            <div class="pointer no-highlight flex items-center" title="照片">
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-camera"></use>
+                                </svg>
+                                <div class="ms2 h5"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        {/volist}
+    </div>
+    <div class="flex flex-wrap justify-center mx-auto max-width" data-reflow="true" data-list-format="true">
+        {volist name="myFLst" id="m"}
+        <div class="activity-card-width col-6 p1 relative">
+            <a id="4069256" class="absolute top-minus-100"></a>
+            <div class="activity-card p2 flex items-center overflow-hidden bg-white shadow relative">
+
+
+                <div class="activity-profile-image circle border relative flex-none m2" data-effect="grayscale">
+                    <div class="flex items-center height-12 circle overflow-hidden card-image-bg-color">
+                        <a class="flex items-center col-12 height-12"
+                           href="/index.php/index/m/profile?id={$m.id}">
+                            <div class="profile-bg overflow-hidden circle" data-cm-modal-url=""
+                                 style="background-image:url('{$m.main_pic}')"></div>
+                        </a>
+                    </div>
+                </div>
+                <!--member details-->
+                <div class="p2 flex flex-column col-6" data-effect="grayscale">
+                    <div class="flex justify-between">
+                        <!--name and grade-->
+                        <div class="flex max-width-85">
+                            <a class="flex items-center col-12 height-12" href="/index.php/index/m/profile?id={$m.id}">
+                                <h1 class="h2 color-dark-grey inline-block align-middle m0 truncate" title="Ashley ">
+                                    {$m.nickname} </h1>
+                            </a>
+                            <div class="icon-membership fill-standard inline-block align-middle mx2 relative">
+                                <svg class="tooltip">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-profile"></use>
+                                </svg>
+
+                                <div class="tooltip-text tooltip-text-width-auto truncate tooltip-text-center h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
+                                    {:lang("普通会员")}
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!--age / address-->
+                    <div class="h5">{$m.age} <span>•</span> {$m.address}, {$m.stateid}, {$m.countryid}</div>
+
+
+                    <!--<div class="h5 my1"><span class="bold">浏览时间:</span> 1 星期前</div>-->
+                    <!--like / favourite / photos icon-->
+
+
+                    <div class="flex flex-auto items-end justify-between ">
+                        <div class="flex items-center">
+                            <div class="pointer me3 relative fill-action-unhighlight"
+                                 data-opt-sendInterest=""
+                                 data-d-mid="{$m.id}"
+                                 title="{:lang('发送秋波给')}{$m.nickname} ">
+
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-heart"></use>
+                                </svg>
+                            </div>
+                            <div class="pointer me3 fill-action-unhighlight relative"
+                                 data-opt-sendmsg=""
+                                 data-d-mid="{$m.id}"
+                                 title="{:lang('发送消息给')}{$m.nickname} ">
+
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-messages"></use>
+                                </svg>
+                            </div>
+
+
+                            <div class="pointer circle relative fill-action-unhighlight"
+                                 data-opt-addToFavorite=""
+                                 data-d-mid="{$m.id}"
+                                 title="将Ashley 加入最爱"
+                            >
+
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-star"></use>
+                                </svg>
+                            </div>
+
+                        </div>
+                        <div class="fill-action-unhighlight relative" data-button="true" data-animate-reset="heartbeat">
+                            <div class="pointer no-highlight flex items-center" title="照片">
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-camera"></use>
+                                </svg>
+                                <div class="ms2 h5"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        {/volist}
+    </div>
+    <div hidden class="flex flex-wrap justify-center mx-auto max-width" data-reflow="true" data-list-format="true">
+        {volist name="myILst" id="m"}
+        <div class="activity-card-width col-6 p1 relative">
+            <a id="4069256" class="absolute top-minus-100"></a>
+            <div class="activity-card p2 flex items-center overflow-hidden bg-white shadow relative">
+
+
+                <div class="activity-profile-image circle border relative flex-none m2" data-effect="grayscale">
+                    <div class="flex items-center height-12 circle overflow-hidden card-image-bg-color">
+                        <a class="flex items-center col-12 height-12"
+                           href="/index.php/index/m/profile?id={$m.id}">
+                            <div class="profile-bg overflow-hidden circle" data-cm-modal-url=""
+                                 style="background-image:url('{$m.main_pic}')"></div>
+                        </a>
+                    </div>
+                </div>
+                <!--member details-->
+                <div class="p2 flex flex-column col-6" data-effect="grayscale">
+                    <div class="flex justify-between">
+                        <!--name and grade-->
+                        <div class="flex max-width-85">
+                            <a class="flex items-center col-12 height-12" href="/index.php/index/m/profile?id={$m.id}">
+                                <h1 class="h2 color-dark-grey inline-block align-middle m0 truncate" title="Ashley ">
+                                    {$m.nickname} </h1>
+                            </a>
+                            <div class="icon-membership fill-standard inline-block align-middle mx2 relative">
+                                <svg class="tooltip">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-profile"></use>
+                                </svg>
+
+                                <div class="tooltip-text tooltip-text-width-auto truncate tooltip-text-center h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
+                                    {:lang("普通会员")}
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!--age / address-->
+                    <div class="h5">{$m.age} <span>•</span> {$m.address}, {$m.stateid}, {$m.countryid}</div>
+
+                    <!--<div class="h5 my1"><span class="bold">浏览时间:</span> 1 星期前</div>-->
+                    <!--like / favourite / photos icon-->
+
+
+                    <div class="flex flex-auto items-end justify-between ">
+                        <div class="flex items-center">
+                            <div class="pointer me3 relative fill-action-unhighlight"
+                                 data-opt-sendInterest=""
+                                 data-d-mid="{$m.id}"
+                                 title="{:lang('发送秋波给')}{$m.nickname} ">
+
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-heart"></use>
+                                </svg>
+                            </div>
+                            <div class="pointer me3 fill-action-unhighlight relative"
+                                 data-opt-sendmsg=""
+                                 data-d-mid="{$m.id}"
+                                 title="{:lang('发送消息给')}{$m.nickname} ">
+
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-messages"></use>
+                                </svg>
+                            </div>
+
+
+                            <div class="pointer circle relative fill-action-unhighlight"
+                                 data-opt-addToFavorite=""
+                                 data-d-mid="{$m.id}"
+                                 title="将Ashley 加入最爱"
+                            >
+
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-star"></use>
+                                </svg>
+                            </div>
+
+                        </div>
+                        <div class="fill-action-unhighlight relative" data-button="true" data-animate-reset="heartbeat">
+                            <div class="pointer no-highlight flex items-center" title="照片">
+                                <svg class="icon-30">
+                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-camera"></use>
+                                </svg>
+                                <div class="ms2 h5"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        {/volist}
+    </div>
+</div>
+
+
+<!--Body end-->
+
+
+<div id="notifications" class="fixed bottom-0 z3"></div>
+
+
+<!-- Modal -->
+<div id="modal" class="flex items-center justify-center fixed">
+
+</div>
+
+<!-- Bottom JS Loader start -->
+
+
+<!-- Google Tag Manager include -->
+
+
+<!-- End Google Tag Manager include -->
+
+
+<!-- Bottom JS Loader end -->
+
+<!--templates-->
+
+
+<div class="cml fixed bottom-0 p2 z3">
+    <div class="cml-table overflow-auto">
+        <div class="cl cml-wrap hide">
+            <div class="cl-wrap">
+                <ul class="cl-ul list-reset m0"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cmc fixed bottom-0 z4">
+    <div class="cmc-table">
+        <div class="cmc-wrap-ch flex items-end"></div>
+    </div>
+</div>
+</body>
+</html>

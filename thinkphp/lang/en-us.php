@@ -23,7 +23,16 @@ return [
     "男性" => "Male",
     "女性" => "Female",
     "搜索" => "Search",
-    "请选择" => "",
+    "请选择" => "Please select",
+
+
+    "会员动态" => "Activity Towards",
+    "谁在找我" => "Interested In Me",
+    "加我为最爱" => "I'm Their Favorite",
+    "谁看过我" => "Viewed My Profile",
+    "我的最爱" => "My Favorite",
+    "我关注的" => "My Interested ",
+    "我看过谁" => "My Viewed",
 
     //profiledit
     "名字" => "name",

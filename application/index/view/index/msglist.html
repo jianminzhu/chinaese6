@@ -8,27 +8,27 @@
 {include file="../application/index/view/index/_head.html" /}
 
 <!--Header end-->
-<!--Body start-->
-<div class="header-strip height-auto px3 py4">
+<div class="header-strip height-auto px3 py2">
+
+    <div class="flex max-width mx-auto justify-between items-center">
+        <h1 class="m0 mb2 header-strip-color">
+            会员动态
+        </h1>
+
+    </div>
+
     <div class="max-width mx-auto">
-        <div class="tabs flex items-center justify-between">
-
-
-            <h4 class="h4 m0 me3 pb2 border-bottom count count-active" data-badge="4">
-                {:lang('收到消息')}
+        <div class="tabs flex">
+            <h4 class="h4 m0 me4 pb1 count">
+                <a href="/zc/results/interestedme?searchtype=1" class="header-strip-color " >
+                    {:lang('收到消息')}
+                </a>
+            </h4>
+            <h4 class="h4 m0 me4 pb1 header-strip-color border-bottom">
+                {:lang('已发送消息')}
             </h4>
 
-            <h4 class="h4 m0 me3 pb2">
-                <a href="/zc/mail/showsent" class="count header-strip-color" id="sent-icon"> {:lang('已发送消息')}Sent</a>
-            </h4>
-            <h4 class="h4 m0 me3 pb2">
-            </h4>
-            <h4 class="h4 m0 me3 pb2">
-            </h4><h4 class="h4 m0 me3 pb2">
-        </h4><h4 class="h4 m0 me3 pb2">
-        </h4>
         </div>
-
     </div>
 
 </div>

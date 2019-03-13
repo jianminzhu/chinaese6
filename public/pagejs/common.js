@@ -58,6 +58,15 @@ function action() {
         var $id = $(this).attr("data-opt-closeDialog");
         $(this).closest("div#" + $id).hide();
     });
+    $("body").delegate("[data-opt-tabs]", "click", function () {
+        $(this).parent().find(".border-bottom").removeClass("header-strip-color").removeClass("border-bottom");
+        $(this).addClass("border-bottom").addClass("header-strip-color");
+        var jroot = $("#" + $(this).attr("data-opt-tabs"));
+        var index = $(this).index();
+        jroot.find(">div").hide();
+        var jit = jroot.find(">div:eq(" + index + ")");
+        jit.show();
+    });
     $("body").delegate("[data-opt-interest]", "click", function () {
         var mid = $(this).data("dMid");
         loginDo(function () {

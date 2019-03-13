@@ -48,15 +48,7 @@ class A extends Base
             return json_encode(["isSucc" => $isSucc, 'emsg' => $emsg]);//,"phpMd5pwd"=>$phpMd5pwd,"mmd5"=>$mysqlMd5pwd
         } else {
             if ($isSucc === 1) {
-                $lastUrl = session("lastUrl");
-                if ($lastUrl) {
-                    session("lastUrl", null);
-                    redirect($lastUrl);
-                } else {
-
-                    return redirect("/");
-                }
-
+                return redirect("/");
             } else {
                 return $this->error("邮箱密码不匹配", url("login"));
             }
