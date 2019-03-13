@@ -206,7 +206,6 @@ class Base extends Controller
                     ->where("is_view", 0)->count("*")
             ];
         }
-        echo json_encode($ucounts);
         return $ucounts;
     }
 
