@@ -1,7 +1,7 @@
 function mhtml(url, data) {
     if (data === void 0) { data = {}; }
     return $.ajax({ url: "/index.php" + url, data: data });
-}
+}    
 function mdata(url, data) {
     if (data === void 0) { data = {}; }
     return $.ajax({ url: "/index.php" + url, dataType: "json", data: data }).then(function (res) {
