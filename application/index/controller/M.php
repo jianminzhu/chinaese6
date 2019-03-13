@@ -6,8 +6,6 @@ require('ext_util/BytripUtil.php');
 
 use app\index\model\Member;
 use app\index\model\Pics;
-use app\index\model\Pay;
-use think\Controller;
 use think\Db;
 
 class M extends Base
@@ -64,11 +62,17 @@ class M extends Base
         }
     }
 
+
     public function isPay()
     {
-        $loginUser = $this->loginUser();
-        Pay::query()
-        return $this->ajax();
+        try {
+            $loginUser = $this->loginUser();
+            $query = Db::table("pay")->where("m_id", $loginUser->id);
+            $count = $query-> count("id");
+            return $this->ajax($count > 0);
+        } catch (\Exception $e) {
+            return $this->ajax(false,["mid"=>$loginUser->id,"emsg"=>$e->getMessage()]);
+        }
     }
 
     public function profile()
