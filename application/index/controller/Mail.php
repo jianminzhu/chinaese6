@@ -6,16 +6,19 @@ use app\index\model\Message;
 use think\Controller;
 use think\Db;
 
-class Mail extends Controller
+class Mail extends Base
 {
     public function send()
     {
         $params = request()->param();
         $msg = new Message($params);
+        $loginUser = $this->loginUser();
+        $msg["from_m_id"]=$loginUser->id;
         $msg["send_status"] = 1;
+
         try {
             $msg->allowField(['from_m_id', 'to_m_id', "msg", "send_status", "type"])->save();
-            return json_encode($msg->id);
+            return $this->ajax(true,lang("消息已经发送"));
         } catch (\Exception $e) {
             return json_encode($e->getMessage());
         }

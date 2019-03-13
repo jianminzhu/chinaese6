@@ -73,9 +73,13 @@ function action() {
             mdata("/index/m/isPay").then(function (res) {
                 var $id = jit.attr("data-opt-doSendMsg");
                 if (res.isSuccess) {
-                  mdata("/index/mail/send",{toId:$id,"msg": jit.parent("textarea[name=message]").val()}).then(function (res) {
-                      showNotice(res.msg);
-                  })
+                    let msg = jit.parent().find("textarea[name=message]").val();
+                    if (msg != "") {
+                        mdata("/index/mail/send",{to_m_id:$id,msg: msg,"type":2}).then(function (res) {
+                            showNotice(res.data);
+                            showDialogSentMsg($id)
+                        });
+                    }
                 }
             })
         });

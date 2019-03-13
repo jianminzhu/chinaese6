@@ -52,6 +52,8 @@ return [
     "密码必须填写" => "Password must be not empty",
     "邮箱必须填写" => "Email must be not empty",
     "密码必须大于等于6位" => "Password min length is 6",
+    "消息已经发送" => "Message has been sent",
+
 
 
     "下一步: 上传多张照片到相片区" => 'Next Step: Complete profile questions',
