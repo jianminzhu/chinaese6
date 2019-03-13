@@ -59,6 +59,7 @@ class Base extends Controller
         $this->assign([
                 'u' => $loginUser,
                 'ucounts' => $this->loginUserCounts(),
+                "uFavoriteMids" => Db::table("favorite")->where("mid", $loginUser->id)->column("to_mid"),
                 "lang" => $toLang,
             ]
         );
@@ -197,16 +198,28 @@ class Base extends Controller
                 "newMessageCount" => Db::table("message")
                     ->where("to_m_id", $loginUser->id)
                     ->where("type", 2)
-                    ->where("read_status", 0)->count("*"),
+                    ->where("read_status", 0)->count(),
                 "newInterestsCount" => Db::table("interest")
                     ->where("to_mid", $loginUser->id)
-                    ->where("is_view", 0)->count("*"),
+                    ->where("is_view", 0)->count(),
+                "newVvistorCount" => Db::table("vistor")->group('mid')
+                    ->where("to_mid", $loginUser->id)
+                    ->where("is_view", 0)->count(),
                 "newFavoritesCount" => Db::table("favorite")
                     ->where("to_mid", $loginUser->id)
-                    ->where("is_view", 0)->count("*")
+                    ->where("is_view", 0)->count(),
+                "newFavoritesCountSql" => Db::table("favorite")->fetchSql(true)
+                    ->where("to_mid", $loginUser->id)
+                    ->where("is_view", 0)->count(),
             ];
+
         }
         return $ucounts;
     }
 
 }
+
+
+
+
+

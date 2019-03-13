@@ -69,7 +69,8 @@
             </h2>
         </div>
 
-        <p class="m0">{$m.age==0?lang("保密"):""} <span>&nbsp </span> {$m.address!=""?$m.address.",":""}{$m.country|default=""} </p>
+        <p class="m0">{$m.age==0?lang("保密"):""} <span>&nbsp </span>
+            {$m.address!=""?$m.address.",":""}{$m.country|default=""} </p>
         <p class="mt1 mb0">
             {$m.sex=="0" ?lang("女性"):lang("男性")}
         </p>
@@ -81,17 +82,14 @@
             <div class="flex flex-auto items-center justify-between">
 
                 <div class="flex items-center mxn1 fill-white">
-                    <div class="pointer circle icon-padding shadow relative bg-dark-grey"
-                         data-profile="true" data-button="true"
-                         data-animation="pop-fade-out"
-                         data-showInterest="/zc/memberRelationship/showInterest/0D0585E6C0C047B4459D0A"
-                    >
+                    <div class="pointer circle icon-padding shadow relative bg-dark-grey" data-opt-interest
+                         data-d-mid="{$m.id}">
 
                         <svg class="icon-30 tooltip">
                             <use xlink:href="/assets/desktop/icons/icons.svg#icon-heart"></use>
                         </svg>
 
-                        <div class="tooltip-text truncate tooltip-text-width-auto h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
+                        <div class="tooltip-text truncate tooltip-text-width-auto h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select" >
                             {:lang("发送秋波给")}{$m.nickname}
                         </div>
 
@@ -103,28 +101,24 @@
                             <use xlink:href="/assets/desktop/icons/icons.svg#icon-messages"></use>
                         </svg>
 
-                        <div class="tooltip-text truncate tooltip-text-width-auto h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
+                        <div class="tooltip-text truncate tooltip-text-width-auto h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select"
+                             data-opt-sendmsg="" data-d-mid="{$m.id}">
                             {:lang("发送消息给")}{$m.nickname}
                         </div>
 
                     </div>
-                    <div class="pointer circle relative me1 fill-action-highlight" data-opt-addToFavorite data-d-mid="{$m.id}">
 
+                    <div class="pointer circle relative me1 fill-action-<?php echo in_array($m->id,$uFavoriteMids)?'highlight':'unhighlight' ?>"
+                         data-opt-addToFavorite="" data-d-mid="{$m.id}">
                         <svg class="icon-50 tooltip">
                             <use xlink:href="/assets/desktop/icons/icons.svg#icon-star"></use>
                         </svg>
-
                         <div class="tooltip-text truncate tooltip-text-center tooltip-text-width-auto h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
                             {:lang("加入最爱")}
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
-
         </div>
     </div>
 </div>

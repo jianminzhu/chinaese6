@@ -63,7 +63,7 @@ function action() {
         $(this).closest(`div#${$id}`).hide();
     });
 
-    $("body").delegate("[data-opt-sendInterest]", "click", function () {
+    $("body").delegate("[data-opt-interest]", "click", function () {
         var mid = $(this).data("dMid");
         loginDo(function () {
             mdata("/index/m/interest", {to_mid: mid}).then(function (res) {
@@ -100,13 +100,17 @@ function action() {
 
 
     $("body").delegate("[data-opt-addToFavorite]", "click", function () {
-        let mid = $(this).data("dMid");
+        var jit = $(this);
+        let mid = jit.data("dMid");
         $.ajax({
             url: "/index.php/index/m/favorite",
             dataType: "json",
             data: {to_mid: mid}
         }).then(function (res) {
-            showNotice(res.msg);
+            let data = res.data;
+            showNotice(data.emsg);
+            jit.addClass(data.addClass );
+            jit.removeClass(data.removeClass);
         });
     })
 }

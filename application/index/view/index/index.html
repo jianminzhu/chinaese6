@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="zh-Hans" data-device="desktop" >
+<html dir="ltr" lang="zh-Hans" data-device="desktop">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +11,7 @@
     {include file="../application/index/view/index/_commoncss.html" /}
     <script src="/pagejs/index.js?v=1.2"></script>
 </head>
-<body >
+<body>
 {include file="../application/index/view/index/_head.html" /}
 {if condition="$Think.session.isLogin eq true"}
 <div class="header-strip height-auto px3 py4">
@@ -84,7 +84,8 @@
 
                         </div>
 
-                        <div class="h3 count header-strip-color">0</div>
+
+                        <div class="h3 count header-strip-color">{$ucounts.newInterestsCount|default="0"}</div>
 
                     </div>
                     <h4 class="h4 mb0 center header-strip-color">{:lang("新秋波")}</h4>
@@ -102,8 +103,7 @@
                             </svg>
 
                         </div>
-
-                        <div class="h3 count header-strip-color">1</div>
+                        <div class="h3 count header-strip-color"> {$ucounts.newVvistorCount|default="0"}</div>
 
                     </div>
                     <h4 class="h4 mb0 center header-strip-color">{:lang("新浏览")}</h4>
@@ -122,7 +122,7 @@
 
                         </div>
 
-                        <div class="h3 count header-strip-color">0</div>
+                        <div class="h3 count header-strip-color">{$ucounts.newFavoritesCount|default="0"}</div>
 
                     </div>
                     <h4 class="h4 mb0 center header-strip-color">{:lang("新的最爱")}</h4>

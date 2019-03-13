@@ -7,6 +7,7 @@ require('ext_util/BytripUtil.php');
 use app\index\model\Member;
 use app\index\model\Pics;
 use think\Db;
+use think\Exception;
 
 class M extends Base
 {
@@ -64,15 +65,36 @@ class M extends Base
 
     public function favorite()
     {
-        $lu = $this->loginUser();
+        $emsg = lang("操作成功");
         $to_mid = request()->param("to_mid");
-        try {
-            Db::table("操作成功 ")->insert(["mid" => $lu->id, "to_mid" => $to_mid]);
-        } catch (\Exception $e) {
+        $isSucc = false;
+        $addClass = "";
+        $removeCss = "";
+        if ($this->isLogin() && $to_mid) {
+            $lu = $this->loginUser();
+            $mid = $lu->id;
+            if ($mid != $to_mid) {
+                try {
+                    Db::table("favorite")->insert(["mid" => $mid, "to_mid" => $to_mid]);
+                    $isSucc = true;
+                    $addClass = "fill-action-highlight";
+                    $removeCss = "fill-action-unhighlight";
+                } catch (\Exception $e) {
+                    try {
+                        Db::execute('DELETE FROM `favorite` WHERE  `mid` = :mid  AND `to_mid` = :to_mid ', [$mid, $to_mid]);
+                        $isSucc = true;
+                        $addClass = "fill-action-unhighlight";
+                        $removeCss = "fill-action-highlight";
+                    } catch (Exception $e2) {
+                    }
+                }
+            }
         }
-        return $this->ajax(true, lang("操作成功"));
+        return $this->ajax($isSucc, ["emsg"=>$emsg,"addClass"=>$addClass,"removeClass"=>$removeCss]);
     }
-    public function interest(){
+
+    public function interest()
+    {
         $lu = $this->loginUser();
         $to_mid = request()->param("to_mid");
         try {
@@ -81,15 +103,16 @@ class M extends Base
         }
         return $this->ajax(true, lang("发送成功"));
     }
+
     public function isPay()
     {
         try {
             $loginUser = $this->loginUser();
             $query = Db::table("pay")->where("m_id", $loginUser->id);
-            $count = $query-> count("id");
+            $count = $query->count("id");
             return $this->ajax($count > 0);
         } catch (\Exception $e) {
-            return $this->ajax(false,["mid"=>$loginUser->id,"emsg"=>$e->getMessage()]);
+            return $this->ajax(false, ["mid" => $loginUser->id, "emsg" => $e->getMessage()]);
         }
     }
 
