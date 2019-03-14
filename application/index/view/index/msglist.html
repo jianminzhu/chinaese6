@@ -12,15 +12,14 @@
 
     <div class="flex max-width mx-auto justify-between items-center">
         <h1 class="m0 mb2 header-strip-color">
-            会员动态
+            {:lang("会员动态")}
         </h1>
-
     </div>
 
     <div class="max-width mx-auto">
         <div class="tabs flex">
             <h4 class="h4 m0 me4 pb1 count">
-                <a href="/zc/results/interestedme?searchtype=1" class="header-strip-color " >
+                <a href="/zc/results/interestedme?searchtype=1" class="header-strip-color ">
                     {:lang('收到消息')}
                 </a>
             </h4>
@@ -30,28 +29,25 @@
 
         </div>
     </div>
-
 </div>
 
 <div class="max-width mx-auto p2 flex relative">
     <div class="col-12">
-
-
         <div class="flex items-start list-message-filter">
             <div class="list-message-filter col-12">
-                <div class="flex items-center">
-                </div>
+              <div>
                 <div class="list-message-border col col-12 border-bottom border-color"></div>
-                {volist name="msgs" id="msg"  }
+                {volist name="receiveMsgs" id="msg" }
                 <a href="/index.php/index/mail/msgDetail?id={$msg.msgid}">
-                <div class="list-message col col-12 px1 my1">
-                    <div class="flex items-center relative height-12">
-                        <div class="flex-none unread me2 height-10"  ></div>
+                    <div class="list-message col col-12 px1 my1">
+                        <div class="flex items-center relative height-12">
+                            <div class="flex-none unread me2 height-10"></div>
                             <div class="flex flex-auto items-center">
                                 <div class="me3 relative flex-none">
                                     <div class="profile-image circle border overflow-hidden">
                                         <div class="fit col-12 height-12 circle card-image-bg-color">
-                                            <div class="profile-bg"  style="background-image:url('{$msg.main_pic}')"></div> 
+                                            <div class="profile-bg"
+                                                 style="background-image:url('{$msg.main_pic}')"></div>
                                         </div>
                                     </div>
 
@@ -61,11 +57,13 @@
 
                                         <div class="flex items-center">
                                             <h1 class="h2 m0 me2 color-dark-grey unread-message">{$msg.nickname}</h1>
-                                            <div class="h5 ml2">{:lang("年龄")}: {$msg.age==0?lang("保密"):""}  {$msg.address!=""?$msg.address." , ":""}{$msg.countryid}</div>
+                                            <div class="h5 ml2">{:lang("年龄")}: {$msg.age==0?lang("保密"):""}
+                                                {$msg.address!=""?$msg.address." , ":""}{$msg.countryid}
+                                            </div>
                                         </div>
 
                                         <div class="flex items-center">
-                                            <div class="h5 unread-message">{$msg.send_date } </div>
+                                            <div class="h5 unread-message">{$msg.send_date }</div>
 
                                         </div>
 
@@ -73,12 +71,12 @@
 
                                 </div>
                             </div>
+                        </div>
                     </div>
-                </div>
                 </a>
                 <div class="list-message-border col col-12 border-bottom border-color"></div>
                 {/volist}
-
+            </div>
                 <div class="list-message-border col col-12 border-bottom border-color"></div>
                 <div class="flex justify-center fixed bottom-0 right-0 left-0 bg-black-alpha-85 p2 center z2 hide"
                      data-submit>
@@ -87,12 +85,6 @@
             </div>
         </div>
     </div>
-
 </div>
-
-
-<!--Body end-->
-
-
 </body>
 </html>
