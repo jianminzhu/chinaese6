@@ -66,7 +66,7 @@ function ExtDownloadTxt($url, $path = 'downloads/', $withHost = false, $isCover 
     $realFileFullPath = $fullPath . DIRECTORY_SEPARATOR . $filename;
     if (!file_exists($realFileFullPath) || $isCover) {
         ExtDirectory($fullPath);
-        $fileContent = getHtml($url);
+        $fileContent = ExtGetHtml($url);
         $resource = fopen($realFileFullPath, 'a');
         fwrite($resource, $fileContent);
         fclose($resource);
