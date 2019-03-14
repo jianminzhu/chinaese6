@@ -3,7 +3,6 @@
 namespace app\index\controller;
 
 use app\index\model\Message;
-use think\Controller;
 use think\Db;
 
 class Mail extends Base
@@ -13,12 +12,12 @@ class Mail extends Base
         $params = request()->param();
         $msg = new Message($params);
         $loginUser = $this->loginUser();
-        $msg["from_m_id"]=$loginUser->id;
+        $msg["from_m_id"] = $loginUser->id;
         $msg["send_status"] = 1;
 
         try {
             $msg->allowField(['from_m_id', 'to_m_id', "msg", "send_status", "type"])->save();
-            return $this->ajax(true,lang("发送成功"));
+            return $this->ajax(true, lang("发送成功"));
         } catch (\Exception $e) {
             return json_encode($e->getMessage());
         }
@@ -63,7 +62,7 @@ class Mail extends Base
                     LEFT JOIN member AS f ON f.id = msg.`from_m_id` 
                     where  from_m_id=$to_m_id and msg.type=2 order by msg.send_date desc
             ");
-            return view('/index/msglist', ["receiveMsgs" => $receiveMsgs,"sentMsgs"=>$sentMsgs]);
+            return view('/index/msglist', ["receiveMsgs" => $receiveMsgs, "sentMsgs" => $sentMsgs]);
         } else {
             session("lastUrl", "/index/mail/msglist");
             return redirect('/index.php/index/a/login');
