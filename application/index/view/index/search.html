@@ -33,7 +33,7 @@
 
                 <div class="flex flex-auto items-end justify-between mx2 my3">
                     <div class="flex items-center">
-                        <div   class="pointer me3 relative fill-action-unhighlight"
+                        <div class="pointer me3 relative {:in_array($m.id,$uIntrestMids)?'fill-action-highlight':'fill-action-unhighlight' }"
                                data-opt-interest
                                data-d-mid="{$m.id}"
                                title="{:lang('发送秋波给')}{$m.nickname}">
