@@ -75,20 +75,16 @@
                                     <div class="ch-msg-reply-messagebg rounded py1 px2 mx1 break-word">
                                         <div class="ch-msg-reply-message"><p
                                                 class="ch-messages-messagelist-div-upgrade-chat-reply-blurredMessage">
-                                            nsequat l</p>
-                                            <div class="ch-msg-upgrade-chat-toread p1 rounded bg-white"><span>Sweet</span>
-                                                has sent you a message. Upgrade your membership to read their message.<br><a
-                                                        class="ch-msg-upgrade-chat-btn py1 px2 rounded bg-green white mt1 block center"
-                                                        href="/en/payment/upgrade?useraction=readmail&amp;memberid=4064911">Upgrade
-                                                    Now</a></div>
+                                           {$msg.msg}</p>
+                                            <div class="ch-msg-upgrade-chat-toread p1 rounded bg-white">{:lang("升级会员资格来读取信息。")}<br><a
+                                                    class="ch-msg-upgrade-chat-btn py1 px2 rounded bg-green white mt1 block center"
+                                                    href="javascript:void(0)">{:lang("升级成会员")}</a></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="ch-msg upgrade-chat flex justify-end py1 px2"><span
                                         class="my-message rounded py1 px2 col-8 header-color">
-                                    <div
-                                        class="ch-msg-my-message"><p class="break-word">{$msg.msg}</p>
-
+                                    <div class="ch-msg-my-message"><p class="break-word">{$msg.msg}</p>
                                          <div class="ch-msg-upgrade-chat-toread p1 rounded bg-white">{:lang("升级会员资格来读取信息。")}<br><a
                                                  class="ch-msg-upgrade-chat-btn py1 px2 rounded bg-green white mt1 block center"
                                                  href="javascript:void(0)">{:lang("升级成会员")}</a></div>
