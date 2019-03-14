@@ -59,8 +59,8 @@ function action() {
         $(this).closest("div#" + $id).hide();
     });
     $("body").delegate("[data-opt-tabs]", "click", function () {
-        $(this).parent().find(".border-bottom").removeClass("header-strip-color").removeClass("border-bottom");
-        $(this).addClass("border-bottom").addClass("header-strip-color");
+        $(this).parent().find(".border-bottom").removeClass("border-bottom");
+        $(this).addClass("border-bottom");
         var jroot = $("#" + $(this).attr("data-opt-tabs"));
         var index = $(this).index();
         jroot.find(">div").hide();

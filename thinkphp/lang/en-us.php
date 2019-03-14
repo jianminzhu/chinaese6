@@ -82,6 +82,7 @@ return [
     "国籍" => "country",
     "返回搜索结果" => "to search ",
 
+
     "请输入电子邮箱地址" => "please input email",
     "请输入密码" => "please input password",
     "忘记密码" => "forget password",
@@ -100,9 +101,12 @@ return [
     "性别男" => "male",
     "性别女" => "female",
     "您好" => " Hi",
-    "收到消息" => "Received",
+
+    "消息列表" => "Message List",
+    "收到的消息" => "Received",
     "显示" => "show",
-    "已发送消息" => "Sent",
+    "发送的消息" => "Sent",
+
     /* 登录页面相关 */
     '会员登录' => "member login ",
     '电邮或密码不正确' => "Invalid login details",
