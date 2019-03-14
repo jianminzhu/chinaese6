@@ -78,9 +78,11 @@ function action() {
         jit.show();
     });
     $("body").delegate("[data-opt-interest]", "click", function () {
-        var mid = $(this).data("dMid");
+        var jit = $(this);
+        var mid = jit.data("dMid");
         loginDo(function () {
             mdata("/index/m/interest", { to_mid: mid }).then(function (res) {
+                jit.removeClass("fill-action-unhighlight").addClass("fill-action-highlight");
                 showNotice(res.data);
             });
         });

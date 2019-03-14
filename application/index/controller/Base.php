@@ -65,6 +65,8 @@ class Base extends Controller
         }else{
             session("isPay", false);
         }
+        //{:in_array($m.id,$uIntrestMids)?'fill-action-highlight':'fill-action-unhighlight' }
+        //{:in_array($m.id,uFavoriteMids)?'fill-action-highlight':'fill-action-unhighlight' }
         $this->assign([
                 'u' => $loginUser,
                 'ucounts' => $this->loginUserCounts(),
