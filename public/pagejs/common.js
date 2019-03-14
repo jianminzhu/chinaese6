@@ -93,15 +93,13 @@ function action() {
         loginDo(function () {
             payDo(function () {
                 var $id = jit.attr("data-opt-doSendMsg");
-                if (res.isSuccess) {
-                    var msg = jit.parent().find("textarea[name=message]").val();
-                    if (msg != "") {
-                        mdata("/index/mail/send", { to_m_id: $id, msg: msg, "type": 2 }).then(function (res) {
-                            showNotice(res.data);
-                            showDialogSentMsg($id);
-                            window.location.reload();
-                        });
-                    }
+                var msg = jit.parent().find("textarea[name=message]").val();
+                if (msg != "") {
+                    mdata("/index/mail/send", { to_m_id: $id, msg: msg, "type": 2 }).then(function (res) {
+                        showNotice(res.data);
+                        showDialogSentMsg($id);
+                        window.location.reload();
+                    });
                 }
             });
             // })
