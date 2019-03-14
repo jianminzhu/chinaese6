@@ -80,6 +80,7 @@ function action() {
     $("body").delegate("[data-opt-interest]", "click", function () {
         var jit = $(this);
         var mid = jit.data("dMid");
+        alert(mid);
         loginDo(function () {
             mdata("/index/m/interest", { to_mid: mid }).then(function (res) {
                 jit.removeClass("fill-action-unhighlight").addClass("fill-action-highlight");
@@ -102,46 +103,46 @@ function action() {
                     });
                 }
             });
-            // })
         });
-        $("body").delegate("[data-opt-ajaxSendMsg]", "click", function () {
-            var jit = $(this);
-            loginDo(function () {
-                payDo(function () {
-                    var $mid = jit.attr("data-opt-ajaxSendMsg");
-                    var msg = jit.parent().find("textarea[name=message]").val();
-                    if (msg != "") {
-                        mdata("/index/mail/send", { to_m_id: $mid, msg: msg, "type": 2 }).then(function (res) {
-                            showNotice(res.data);
-                            showDialogSentMsg($mid);
-                        });
-                    }
-                });
+    });
+    $("body").delegate("[data-opt-ajaxSendMsg]", "click", function () {
+        var jit = $(this);
+        loginDo(function () {
+            payDo(function () {
+                var $mid = jit.attr("data-opt-ajaxSendMsg");
+                var msg = jit.parent().find("textarea[name=message]").val();
+                if (msg != "") {
+                    mdata("/index/mail/send", { to_m_id: $mid, msg: msg, "type": 2 }).then(function (res) {
+                        showNotice(res.data);
+                        showDialogSentMsg($mid);
+                    });
+                }
             });
         });
-        $("body").delegate("[data-opt-sendmsg]", "click", function () {
-            var mid = $(this).data("dMid");
-            loginDo(function () {
-                payDo(function () {
-                    showDialogSentMsg(mid);
-                });
+    });
+    $("body").delegate("[data-opt-sendmsg]", "click", function () {
+        var mid = $(this).data("dMid");
+        loginDo(function () {
+            payDo(function () {
+                showDialogSentMsg(mid);
             });
         });
-        $("body").delegate("[data-opt-addfavorite]", "click", function () {
-            var jit = $(this);
-            var mid = jit.data("dMid");
-            $.ajax({
-                url: "/index.php/index/m/favorite",
-                dataType: "json",
-                data: { to_mid: mid }
-            }).then(function (res) {
-                var data = res.data;
-                showNotice(data.emsg);
-                jit.addClass(data.addClass);
-                jit.removeClass(data.removeClass);
-            });
+    });
+    $("body").delegate("[data-opt-addfavorite]", "click", function () {
+        var jit = $(this);
+        var mid = jit.data("dMid");
+        $.ajax({
+            url: "/index.php/index/m/favorite",
+            dataType: "json",
+            data: { to_mid: mid }
+        }).then(function (res) {
+            var data = res.data;
+            showNotice(data.emsg);
+            jit.addClass(data.addClass);
+            jit.removeClass(data.removeClass);
         });
-    }, $(function () {
-        action();
-    }));
+    });
 }
+$(function () {
+    action();
+});
