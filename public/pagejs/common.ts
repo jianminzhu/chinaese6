@@ -102,11 +102,12 @@ function action() {
                         mdata("/index/mail/send", {to_m_id: $id, msg: msg, "type": 2}).then(function (res) {
                             showNotice(res.data);
                             showDialogSentMsg($id)
+                            window.location.reload();
                         });
                     }
                 }
             });
-        })
+        // })
     })
     $("body").delegate("[data-opt-ajaxSendMsg]", "click", function () {
         var jit = $(this)
