@@ -90,27 +90,31 @@ function action() {
     //发送消息相关
     $("body").delegate("[data-opt-doSendMsg]", "click", function () {
         var jit = $(this)
-        payDo(function () {
-            mdata("/index/m/isPay").then(function (res) {
-                var $id = jit.attr("data-opt-doSendMsg");
-                if (res.isSuccess) {
-                    let msg = jit.parent().find("textarea[name=message]").val();
-                    if (msg != "") {
-                        mdata("/index/mail/send", {to_m_id: $id, msg: msg, "type": 2}).then(function (res) {
-                            showNotice(res.data);
-                            showDialogSentMsg($id)
-                        });
+        loginDo(function () {
+            payDo(function () {
+                mdata("/index/m/isPay").then(function (res) {
+                    var $id = jit.attr("data-opt-doSendMsg");
+                    if (res.isSuccess) {
+                        let msg = jit.parent().find("textarea[name=message]").val();
+                        if (msg != "") {
+                            mdata("/index/mail/send", {to_m_id: $id, msg: msg, "type": 2}).then(function (res) {
+                                showNotice(res.data);
+                                showDialogSentMsg($id)
+                            });
+                        }
                     }
-                }
-            })
-        });
+                })
+            });
+        })
     })
 
     $("body").delegate("[data-opt-sendmsg]", "click", function () {
         var mid = $(this).data("dMid");
-        payDo(function () {
-            showDialogSentMsg(mid);
-        });
+       loginDo(function () {
+           payDo(function () {
+               showDialogSentMsg(mid);
+           });
+       })
     })
 
 
