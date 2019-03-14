@@ -55,7 +55,13 @@ class Base extends Controller
             $toLang = "en-us";
         }
         cookie("think_var", $toLang);
-        $loginUser = $this->loginUser();
+        $loginUser =[];
+        if ($this->isLogin()) {
+            $loginUser = $this->loginUser();
+            session("isPay", db("pay")->where("m_id", $loginUser->id)->count()>0);
+        }else{
+            session("isPay", false);
+        }
         $this->assign([
                 'u' => $loginUser,
                 'ucounts' => $this->loginUserCounts(),

@@ -25,6 +25,7 @@ class A extends Base
     {
         session('loginUser', null);
         session("isLogin", null);
+        session("isPay", null);
         $this->redirect('/');
     }
 
