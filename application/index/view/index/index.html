@@ -13,25 +13,7 @@
 </head>
 <body>
 {include file="../application/index/view/index/_head.html" /}
-========================================$Think.session.isPay||||||||||||||||||||
 {if condition="$Think.session.isPay eq true"}{else}
-<div id="dialog_upgrade" class="flex   fixed px2 py4" style="z-index:100;top:10%;left: 35%;width:160% ; ">
-
-
-    <div class="max-width-1 p1 rounded bg-white fade-in">
-
-        <div class="p1">
-            <div class="center mx-auto mb3">
-                <a href="/index.php/index/m/upgrade"><img src="{:lang('upgrade_pic')}" style="width: 80%" alt=""></a>
-            </div>
-            <div class="flex justify-end">
-                <a class="link" style="width:30%" data-opt-closeDialog="dialog_upgrade">{:lang("关闭")}</a>
-            </div>
-        </div>
-    </div>
-
-
-</div>
 {/if}
 {if condition="$Think.session.isLogin eq true"}
 <div class="header-strip height-auto px3 py4">
@@ -73,7 +55,7 @@
             </div>
         </div>
         <div class="header-info col-7 flex items-start justify-around">
-            <a href="/index.php/index/m/active#d=0">
+            <a href="/index.php/index/mail/msglist">
                 <div class="m2">
                     <div class="relative">
                         <div class="header-circles circle border relative mx-auto header-circles-highlight">

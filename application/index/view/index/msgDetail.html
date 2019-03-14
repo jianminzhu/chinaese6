@@ -7,7 +7,6 @@
 <body>
 {include file="../application/index/view/index/_head.html" /}
 
-
 <div class="height-auto px3 py4">
     <div class="col-12">
         <div class="max-width mx-auto py2 flex flex-wrap">
@@ -94,7 +93,7 @@
                                     <div class="fill-action-unhighlight relative" data-button="true"
                                          data-animate-reset="heartbeat">
                                         <div class="pointer no-highlight flex items-center"
-                                             data-cm-modal-URL="/en/profile/showphotodisplaywidget?memberid=2260491">
+                                             >
 
                                             <svg class="icon-30 tooltip">
                                                 <use xlink:href="/assets/desktop/icons/icons.svg#icon-camera"></use>
@@ -159,11 +158,11 @@
                                     </div>
 
                                     <a class="block message-upgrade m1 py1 px2 bg-green white rounded flex items-center justify-center"
-                                       href="/en/payment/upgrade?useraction=readmail&memberid=2260491">
+                                       href="/index.php/index/m/upgrade"  >
                                         <svg class="flex-none fill-white pointer">
                                             <use xlink:href="/assets/desktop/icons/icons.svg#icon-paperairplane"></use>
                                         </svg>
-                                        <div class="ms1">Upgrade Now To Read</div>
+                                        <div class="ms1">{:lang("升级成会员")}</div>
                                     </a>
 
                                 </div>
@@ -185,9 +184,7 @@
 
                     <form id="emailreplyform" class="col-12" method="post" action="/en/mail/sendemail/"
                           autocomplete="off">
-                        <input type="hidden" id="memberID" name="memberID" value="2260491">
-                        <input name="mailsInThread" id="mailsInThread" type="hidden" value="1">
-
+                        <input type="hidden" id="to_m_id" name="to_m_id" value="2260491">
 
                         <div class="flex items-end">
                             <div class="col sm-col-12 lg-col-11 border-bottom me1">
@@ -196,7 +193,7 @@
                                           placeholder="Write a message to Jessica here"></textarea>
                             </div>
                             <button class="send-btn bg-theme p2 circle flex items-center border-none relative"
-                                    type="submit" data-error="Please provide a message">
+                                    type="submit" data-opt-ajaxSendMsg="" >
                                 <svg class="icon-30 header-strip-fill">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
                                          xlink:href="/assets/desktop/icons/icons.svg#icon-paperairplane"></use>
@@ -231,293 +228,8 @@
     </div>
 </div>
 
-<template id="customFolderDropdown">
-    <li>
-        <a href="/en/mail/showfolder/" class="block body-font-color py2 px1"></a>
-    </li>
-</template>
-
-<!--Body end-->
 
 
-<div id="notifications" class="fixed bottom-0 z3"></div>
 
-<!--Footer start-->
-
-<footer class="col-11 p2 mx-auto relative mt4">
-    <div class="flex justify-center mb1">
-
-        <a class="me2" href="/en/general/about" rel="nofollow">About Us</a>
-        <a class="me2" href="/en/general/contact">Contact Us</a>
-
-        <a class="me2" href="http://www.cupidmedia.com/services.cfm" target="_blank">Other Sites</a>
-        <a class="me2" href="/en/general/termsofuse">Terms of Use</a>
-        <a class="me2" href="/en/general/privacystatement">Privacy Statement</a>
-        <a class="me2" href="/en/general/privacystatement#cookiepolicy">Cookie Policy</a>
-        <a class="me2" href="/en/general/datingsafety">Dating Safety</a>
-
-        <a class="me2" href="http://www.cupidmedia.com" target="_blank">Corporate</a>
-        <a class="me2" href="http://www.cupidmedia.com/affiliates/affiliates.cfm" target="_blank">Affiliates</a>
-
-        <a class="me2"
-           href="http://www.uscis.gov/USCIS/Humanitarian/Battered%20Spouse,%20Children%20&%20Parents/IMBRA%20Pamphlet%20Final%2001-07-2011%20for%20Web%20Posting.pdf"
-           target="_blank">IMBRA pamphlet</a>
-
-    </div>
-
-
-    <div class="center trademark">
-        <p>Cupid Media, the Cupid Media Logo
-            <svg class="corp-cupid-logo icon-16 inline">
-                <use xlink:href="#icon-logoheart"></use>
-            </svg>
-            and ChinaLoveCupid.com are registered trademarks of Ecom Holdings Pty Ltd and used with permission by Cupid
-            Media Pty Ltd.
-        </p>
-    </div>
-</footer>
-
-<!--Footer end-->
-
-<!-- Modal -->
-<div id="modal" class="flex items-center justify-center fixed">
-
-</div>
-
-<!-- Bottom JS Loader start -->
-
-<script defer src="/assets/desktop/js/polyfill.js?v=23"></script>
-<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default%2CArray.prototype.includes%2Cfetch"></script>
-
-<script defer src="/assets/desktop/js/base.js?v=23"></script>
-
-<script defer src="/assets/desktop/js/chat.js?v=23"></script>
-
-
-<script type="text/javascript">
-    window.cupidMedia = window.cupidMedia || {}
-    window.cupidMedia.chatData = {
-        "currentChat": 0,
-        "debugmode": false,
-        "memberID": 4027139,
-        "currentChatMinimized": false,
-        "memberTimeOffset": 8.0,
-        "hasFreeEmails": true,
-        "pusherid": "639118031c5d58e716cb",
-        "chatList": [],
-        "currentChatProfile": {},
-        "totalDefaultSubjectCount": 10,
-        "memberTimeOffsetServer": 13.0,
-        "formatLocale": "zh_CN",
-        "channel": "DB905F5DB0B377A7F6F3E141DF98E5ECBD2BE2C0071A7217CDA9A36B36640B72255DF67ECC8B9151BBEB16B2673F143C115A58676170D7C0F7EBA6DF1E62D305",
-        "translationsAvaliable": [{
-            "label": "الإنجليزية &rarr; العربية",
-            "value": "English/Arabic"
-        }, {"label": "英语 &rarr; 简体中文", "value": "English/Chinese"}, {
-            "label": "英語 &rarr; 繁體中文",
-            "value": "English/Traditional"
-        }, {"label": "Engelsk &rarr; Dansk", "value": "English/Danish"}, {
-            "label": "Engels &rarr; Nederlands",
-            "value": "English/Dutch"
-        }, {"label": "Englanti &rarr; Suomi", "value": "English/Finnish"}, {
-            "label": "Anglais &rarr; Français",
-            "value": "English/French"
-        }, {"label": "Englisch &rarr; Deutsch", "value": "English/German"}, {
-            "label": "Inggris &rarr; Indonesia",
-            "value": "English/Indonesian"
-        }, {"label": "Inglese &rarr; Italiano", "value": "English/Italian"}, {
-            "label": "英語 &rarr; 日本語",
-            "value": "English/Japanese"
-        }, {"label": "영어 &rarr; 한국어", "value": "English/Korean"}, {
-            "label": "Bahasa Inggeris &rarr; Bahasa Malay",
-            "value": "English/Malay"
-        }, {"label": "Engelsk &rarr; Norsk", "value": "English/Norwegian"}, {
-            "label": "Angielski &rarr; Polski",
-            "value": "English/Polish"
-        }, {"label": "Inglês &rarr; Português", "value": "English/Portuguese"}, {
-            "label": "Английский &rarr; Русский",
-            "value": "English/Russian"
-        }, {"label": "Inglés &rarr; Español", "value": "English/Spanish"}, {
-            "label": "Engelska &rarr; Svenska",
-            "value": "English/Swedish"
-        }, {"label": "ภาษาอังกฤษ &rarr; ภาษาไทย", "value": "English/Thai"}, {
-            "label": "Ingilizce &rarr; Türk",
-            "value": "English/Turkish"
-        }, {
-            "label": "Англійська &rarr; Українська",
-            "value": "English/Ukrainian"
-        }, {"label": "Tiếng Anh &rarr; Tiếng Việt", "value": "English/Vietnamese"}, {
-            "label": "Arabic &rarr; English",
-            "value": "Arabic/English"
-        }, {"label": "Arabe &rarr; Français", "value": "Arabic/French"}, {
-            "label": "Arábica &rarr; Español",
-            "value": "Arabic/Spanish"
-        }, {
-            "label": "Chinese (Simplified) &rarr; English",
-            "value": "Chinese/English"
-        }, {
-            "label": "Chinese (Traditional) &rarr; English",
-            "value": "Traditional/English"
-        }, {"label": "Danish &rarr; English", "value": "Danish/English"}, {
-            "label": "Dutch &rarr; English",
-            "value": "Dutch/English"
-        }, {"label": "Finnish &rarr; English", "value": "Finnish/English"}, {
-            "label": "الفرنسية &rarr; عربى",
-            "value": "French/Arabic"
-        }, {"label": "French &rarr; English", "value": "French/English"}, {
-            "label": "Französisch &rarr; Deutsche",
-            "value": "French/German"
-        }, {"label": "Francés &rarr; Español", "value": "French/Spanish"}, {
-            "label": "German &rarr; English",
-            "value": "German/English"
-        }, {"label": "Allemand &rarr; Français", "value": "German/French"}, {
-            "label": "Alemán &rarr; Español",
-            "value": "German/Spanish"
-        }, {"label": "Indonesian &rarr; English", "value": "Indonesian/English"}, {
-            "label": "Italian &rarr; English",
-            "value": "Italian/English"
-        }, {"label": "Italiano &rarr; Español", "value": "Italian/Spanish"}, {
-            "label": "Japanese &rarr; English",
-            "value": "Japanese/English"
-        }, {"label": "Korean &rarr; English", "value": "Korean/English"}, {
-            "label": "Malay &rarr; English",
-            "value": "Malay/English"
-        }, {"label": "Norwegian &rarr; English", "value": "Norwegian/English"}, {
-            "label": "Polish &rarr; English",
-            "value": "Polish/English"
-        }, {"label": "Portuguese &rarr; English", "value": "Portuguese/English"}, {
-            "label": "Russian &rarr; English",
-            "value": "Russian/English"
-        }, {"label": "الأسبانية &rarr; عربى", "value": "Spanish/Arabic"}, {
-            "label": "Spanish &rarr; English",
-            "value": "Spanish/English"
-        }, {"label": "Espanol &rarr; Français", "value": "Spanish/French"}, {
-            "label": "Spanisch &rarr; Deutsche",
-            "value": "Spanish/German"
-        }, {"label": "Spagnolo &rarr; Italiano", "value": "Spanish/Italian"}, {
-            "label": "Swedish &rarr; English",
-            "value": "Swedish/English"
-        }, {"label": "Thai &rarr; English", "value": "Thai/English"}, {
-            "label": "Turkish &rarr; English",
-            "value": "Turkish/English"
-        }, {"label": "Ukrainian &rarr; English", "value": "Ukrainian/English"}, {
-            "label": "Vietnamese &rarr; English",
-            "value": "Vietnamese/English"
-        }],
-        "chatListMinimized": false,
-        "currentChatMessages": {},
-        "translationPath": " en",
-        "contentLabelList": {
-            "memberHasBlockedYou": "Sorry, this member has blocked all contact from you.",
-            "removeFavourite": "Remove Favorite",
-            "wrongGender": "Sorry, you cannot send a message to this member. Unfortunately this member has selected not to be contacted by members of your gender.",
-            "fullscreen": "Fullscreen",
-            "sendAMessageToMember": "Send a message to {1}",
-            "sentYouAMessage": "<span>{1}</span> has sent you a message. Upgrade your membership to read their message.",
-            "cannotReadThisMessage": "<span>{1}</span> cannot read this message as you are both FREE standard members.",
-            "addFavourites": "Add Favorites",
-            "reportAbuse": "Report Abuse",
-            "unblockUser": "Remove Block",
-            "hideTranslation": "Hide Translation",
-            "send": "Send",
-            "youHaveBlockedThisMember": "You have blocked contact from this member.",
-            "pleaseSelect": "Please Select...",
-            "connectionErrorText": "Connection error",
-            "connectionErrorTitle": "Oops, something went wrong!",
-            "translate": "Translate",
-            "interestSent": "Interest Sent",
-            "upgradeNow": "Upgrade Now",
-            "showInterest": "Show Interest",
-            "showTranslation": "Show Translation",
-            "blockUser": "Block User"
-        },
-        "memberGrade": "Standard",
-        "outstandingMandatoryQuestions": true
-    };
-    window.cupidMedia.olarkEnabled = false;
-    window.cupidMedia.olarkExpand = false;
-    window.cupidMedia.olarkShrink = false;
-</script>
-
-
-<script type="text/javascript">
-    var googletag = googletag || {};
-    googletag.cmd = googletag.cmd || [];
-</script>
-
-
-<script type='text/javascript'>
-    var pubAdConfig = {"re": "", "oc": "", "la": "en", "in": "", "ag": 37, "ge": "male", "ed": ""}
-</script>
-
-<script type="text/javascript">
-    var _user_id = '108288408'; // Set to the user's ID, username, or email address, or '' if not yet known.
-    var _session_id = 'F62F8537-5056-BD7E-DD5977DCD557FE9D' // Set to a unique session ID for the visitor's current browsing session.
-
-    var _sift = window._sift = window._sift || [];
-    _sift.push(['_setAccount', '7067d209cd']);
-    _sift.push(['_setUserId', _user_id]);
-    _sift.push(['_setSessionId', _session_id]);
-    _sift.push(['_trackPageview']);
-
-    (function () {
-        function ls() {
-            var e = document.createElement('script');
-            e.src = 'https://cdn.siftscience.com/s.js';
-            document.body.appendChild(e);
-        }
-
-        if (window.attachEvent) {
-            window.attachEvent('onload', ls);
-        } else {
-            window.addEventListener('load', ls, false);
-        }
-    })();
-</script>
-
-<script>dataLayer = [JSON.parse('{"ovraw":"unknown","ovchn":"unknown","memberCountry":"42","memberID":"4027139","memberConversion":"FALSE","memberLanguage":"en","memberGender":"Male","siteID":"10","memberInDays":"39","ptp":"1","ovtac":"unknown","ovmtc":"unknown","ovcrn":"unknown","ovcpn":"unknown","memberEthnicity":"","memberAge":"37","memberGrade":"Standard"}')];</script>
-
-
-<!-- Google Tag Manager include -->
-<noscript>
-    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-J77WV" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe>
-</noscript>
-<script>(function (w, d, s, l, i) {
-    w[l] = w[l] || [];
-    w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-    var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-    j.async = true;
-    j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl;
-    f.parentNode.insertBefore(j, f);
-})(window, document, 'script', 'dataLayer', 'GTM-J77WV');</script>
-<!-- End Google Tag Manager include -->
-
-<!-- Bottom JS Loader end -->
-
-<!--templates-->
-
-<div id="deleteMessagesModal" hidden>
-    <div class="modalcontent">
-        <div class="modal max-width-2 bg-white shadow p2 rounded fade-in">
-            <h3 class="h3 m0 mb2">All messages in this thread will be deleted. You can recover them from the trash. Are
-                you sure?</h3>
-
-            <div class="right-align mt2">
-                <a class="h4 link" aria-controls="modal">No</a>
-                <button class="h4 btn-color btn-bg rounded ms3 py1 px2 button overflow-hidden relative"
-                        form="deleteMessages" type="submit">Yes
-                </button>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<script type="text/javascript">var _cf = _cf || [];
-_cf.push(['_setFsp', true]);
-_cf.push(['_setBm', true]);
-_cf.push(['_setAu', '/resources/6e876db7241512d5e4cd183f9cba3f']);</script>
-<script type="text/javascript" src="/resources/6e876db7241512d5e4cd183f9cba3f"></script>
 </body>
 </html>

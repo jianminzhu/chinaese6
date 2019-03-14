@@ -13,7 +13,10 @@ class Base extends Controller
     {
         return json(["isSuccess" => $isSuccess, "data" => $data]);
     }
-
+    public function ajaxIsPay()
+{
+    return $this->ajax(session("isPay")==true);
+}
     public function ajaxIsLogin()
     {
         return $this->ajax($this->isLogin());

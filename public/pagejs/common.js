@@ -33,6 +33,16 @@ function showNotice(msg) {
         $b.removeClass("notices-open");
     }, 2000);
 }
+function payDo(fun) {
+    mdata("/index/a/ajaxIsPay").then(function (res) {
+        if (res.isSuccess) {
+            fun();
+        }
+        else {
+            window.location.href = "/index.php/index/m/upgrade";
+        }
+    });
+}
 function loginDo(fun) {
     mdata("/index/a/ajaxIsLogin").then(function (res) {
         if (res.isSuccess) {
@@ -78,7 +88,7 @@ function action() {
     //发送消息相关
     $("body").delegate("[data-opt-doSendMsg]", "click", function () {
         var jit = $(this);
-        loginDo(function () {
+        payDo(function () {
             mdata("/index/m/isPay").then(function (res) {
                 var $id = jit.attr("data-opt-doSendMsg");
                 if (res.isSuccess) {
@@ -95,7 +105,7 @@ function action() {
     });
     $("body").delegate("[data-opt-sendmsg]", "click", function () {
         var mid = $(this).data("dMid");
-        loginDo(function () {
+        payDo(function () {
             showDialogSentMsg(mid);
         });
     });
