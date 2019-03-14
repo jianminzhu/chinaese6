@@ -56,7 +56,7 @@
                             <div class="flex flex-auto items-end justify-between ">
                                 <div class="flex items-center">
                                     <div data-button="true"
-                                         class="pointer me2 relative fill-action-unhighlight"
+                                         class="pointer me2 relative  {:in_array($msg.id,$uIntrestMids)?'fill-action-highlight':'fill-action-unhighlight' }"
                                          data-opt-interest=""
                                          data-d-mid="{$msg.id}"
                                     >
@@ -71,7 +71,7 @@
 
                                     </div>
 
-                                    <div  class="pointer me2 relative fill-action-unhighlight <?php echo in_array($msg->id,uIntrestMids)?'fill-action-highlight':'fill-action-unhighlight' ?>"
+                                    <div  class="pointer me2 relative  {:in_array($msg.id,$uFavoriteMids)?'fill-action-highlight':'fill-action-unhighlight' }"
                                             data-opt-addToFavorite=""
                                             data-d-mid="{$msg.id}"
                                     >
