@@ -3,7 +3,6 @@
 namespace app\index\controller;
 
 use app\index\model\Member;
-use think\Controller;
 use think\Db;
 
 include_once "ext_util/pinyin.php";
@@ -30,7 +29,7 @@ class Dialog extends Base
                 "other"=>$other,
                 "msg"=>$msgs
             ]);
-            return view("/index/sentMsgDialog",["other"=>$other, "msgs" => $msgs,
+            return view("/index/sentMsgDialog",["other"=>$other,"u"=>$loginUser, "msgs" => $msgs,
             ]);
         }else{
             return $this->showDialogLogin();

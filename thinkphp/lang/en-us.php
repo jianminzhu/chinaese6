@@ -106,6 +106,8 @@ return [
     "收到的消息" => "Received",
     "显示" => "show",
     "发送的消息" => "Sent",
+    "升级会员资格来读取信息。" => " Upgrade your membership to read their message.",
+    "升级成会员" => "Upgrade Now",
 
     /* 登录页面相关 */
     '会员登录' => "member login ",

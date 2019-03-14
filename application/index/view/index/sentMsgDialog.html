@@ -10,7 +10,8 @@
                     </div>
                     <div class="flex items-center flex-auto mx2">
                         <div class="ch-title-picture me1">
-                            <a href="/index.php/index/m/profile?id={$other.id}" target="_blank" class="block h4 relative">
+                            <a href="/index.php/index/m/profile?id={$other.id}" target="_blank"
+                               class="block h4 relative">
                                 <div class="ch-title-picture-image profile-image-46 circle relative"
                                      style="background-image:url({$other.main_pic})">
                                     <div class="ch-title-picture-image-notification-bullet hide" data-badge=""></div>
@@ -45,58 +46,60 @@
                             class="slider round tooltip"><input id="onOffFilterOff" name="onOffFilter" type="hidden"
                                                                 value="0" disabled=""></span></label></form>
                 </div>
+
                 <div class="ch-messages">
                     <div class="ch-messages-div">
                         <div class="ch-messages-messagelist overflow-auto mb2">
-                            <div class="p2 center h5">2019年3月13日星期三</div>
+                            {volist name="msgs" id="msg" }
+                            {if condition="$u.id==$msg.to_m_id"}
+                            <div class="p2 center h5">${msg.send_date}</div>
                             <div class="ch-msg upgrade-chat-reply py1">
                                 <div class="ch-msg-reply-pic-chat"
                                      style="background-image: url(https://cdn.chinalovecupid.com/memphoto/photo1/small/4064911.jpg)"></div>
                                 <div class="ch-msg-reply-messagebg rounded py1 px2 mx1 break-word">
-                                    <div class="ch-msg-reply-message"><p
-                                            class="ch-messages-messagelist-div-upgrade-chat-reply-blurredMessage">
-                                        Duis </p>
-                                        <div class="ch-msg-upgrade-chat-toread p1 rounded bg-white"><span>Sweet</span>
-                                            has sent you a message. Upgrade your membership to read their message.<br><a
-                                                    class="ch-msg-upgrade-chat-btn py1 px2 rounded bg-green white mt1 block center"
-                                                    href="/en/payment/upgrade?useraction=readmail&amp;memberid=4064911">Upgrade
-                                                Now</a></div>
+                                    <div class="ch-msg-reply-message">
+                                        <p class="ch-messages-messagelist-div-upgrade-chat-reply-blurredMessage">
+                                            {$msg.msg} </p>
+                                        <div class="ch-msg-upgrade-chat-toread p1 rounded bg-white">{:lang("升级会员资格来读取信息。")}<br><a
+                                                class="ch-msg-upgrade-chat-btn py1 px2 rounded bg-green white mt1 block center"
+                                                href="javascript:void(0)">{:lang("升级成会员")}</a></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="p2 center h5">2019年3月13日星期三</div>
-                            <div class="ch-msg upgrade-chat flex justify-end py1 px2"><span
-                                    class="my-message rounded py1 px2 col-8 header-color"><div
-                                    class="ch-msg-my-message"><p class="break-word">hello</p><div
-                                    class="ch-msg-upgrade-chat-toread p1 rounded bg-white"><p
-                                    class="p0 mt1 body-font-color"><span>Sweet</span> cannot read this message as you are both FREE standard members.</p><a
-                                    class="ch-msg-upgrade-chat-btn py1 px2 rounded bg-green white mt1 block center"
-                                    href="/en/payment/upgrade?useraction=standardtostandard&amp;memberid=4064911">Upgrade Now</a></div></div></span>
-                            </div>
-                            <div class="p2 center h5">2019年3月13日星期三</div>
-                            <div class="ch-msg upgrade-chat-reply py1">
-                                <div class="ch-msg-reply-pic-chat"
-                                     style="background-image: url(https://cdn.chinalovecupid.com/memphoto/photo1/small/4064911.jpg)"></div>
-                                <div class="ch-msg-reply-messagebg rounded py1 px2 mx1 break-word">
-                                    <div class="ch-msg-reply-message"><p
-                                            class="ch-messages-messagelist-div-upgrade-chat-reply-blurredMessage">
-                                        nsequat l</p>
-                                        <div class="ch-msg-upgrade-chat-toread p1 rounded bg-white"><span>Sweet</span>
-                                            has sent you a message. Upgrade your membership to read their message.<br><a
-                                                    class="ch-msg-upgrade-chat-btn py1 px2 rounded bg-green white mt1 block center"
-                                                    href="/en/payment/upgrade?useraction=readmail&amp;memberid=4064911">Upgrade
-                                                Now</a></div>
+                            {/if}
+                            {if condition="$u.id==$msg.to_m_id"}
+                                <div class="p2 center h5">{$msg.send_date}</div>
+                                <div class="ch-msg upgrade-chat-reply py1">
+                                    <div class="ch-msg-reply-pic-chat"
+                                         style="background-image: url(https://cdn.chinalovecupid.com/memphoto/photo1/small/4064911.jpg)"></div>
+                                    <div class="ch-msg-reply-messagebg rounded py1 px2 mx1 break-word">
+                                        <div class="ch-msg-reply-message"><p
+                                                class="ch-messages-messagelist-div-upgrade-chat-reply-blurredMessage">
+                                            nsequat l</p>
+                                            <div class="ch-msg-upgrade-chat-toread p1 rounded bg-white"><span>Sweet</span>
+                                                has sent you a message. Upgrade your membership to read their message.<br><a
+                                                        class="ch-msg-upgrade-chat-btn py1 px2 rounded bg-green white mt1 block center"
+                                                        href="/en/payment/upgrade?useraction=readmail&amp;memberid=4064911">Upgrade
+                                                    Now</a></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="ch-msg upgrade-chat flex justify-end py1 px2"><span
-                                    class="my-message rounded py1 px2 col-8 header-color"><div
-                                    class="ch-msg-my-message"><p class="break-word">不用，最近1个月才用的</p><div
-                                    class="ch-msg-upgrade-chat-toread p1 rounded bg-white"><p
-                                    class="p0 mt1 body-font-color"><span>Sweet</span> cannot read this message as you are both FREE standard members.</p><a
-                                    class="ch-msg-upgrade-chat-btn py1 px2 rounded bg-green white mt1 block center"
-                                    href="/en/payment/upgrade?useraction=standardtostandard&amp;memberid=4064911">Upgrade Now</a></div></div></span>
-                            </div>
+                                <div class="ch-msg upgrade-chat flex justify-end py1 px2"><span
+                                        class="my-message rounded py1 px2 col-8 header-color">
+                                    <div
+                                        class="ch-msg-my-message"><p class="break-word">{$msg.msg}</p>
+
+                                         <div class="ch-msg-upgrade-chat-toread p1 rounded bg-white">{:lang("升级会员资格来读取信息。")}<br><a
+                                                 class="ch-msg-upgrade-chat-btn py1 px2 rounded bg-green white mt1 block center"
+                                                 href="javascript:void(0)">{:lang("升级成会员")}</a></div>
+                                </div>
+
+                                </span>
+                                </div>
+                            {/if}
+                            {/volist}
+
+
                         </div>
                     </div>
                 </div>
@@ -110,7 +113,8 @@
                 <div class="p2 border-top border-color">
                     <div class="flex items-center ch-input">
                         <div class="ch-input-div flex-auto border-bottom">
-                            <textarea name="message" class="border-none p0 col-12 h5" placeholder="Send a message to Sweet" ></textarea>
+                            <textarea name="message" class="border-none p0 col-12 h5"
+                                      placeholder="Send a message to Sweet"></textarea>
                         </div>
                         <button data-opt-doSendMsg="{$other.id}" type="button"
                                 class="border-none flex items-center justify-center circle p2 ms1 ch-input-button btn-bg btn-color relative">
