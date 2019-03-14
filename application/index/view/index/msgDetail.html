@@ -84,7 +84,7 @@
 
 
                                     <div class="pointer me2 relative {:in_array($m.id,$uFavoriteMids)?'fill-action-highlight':'fill-action-unhighlight' }"
-                                         data-opt-addToFavorite=""
+                                         data-opt-addfavorite=""
                                          data-d-mid=""
                                          title="{:lang('加入最爱')}">
 
@@ -203,7 +203,7 @@
                                 <textarea name="message" rows="1" class="col-12 bg-transparent message-input border-none" placeholder="{:lang('消息内容')}"></textarea>
                             </div>
                             <button class="send-btn bg-theme p2 circle flex items-center border-none relative"
-                                    type="submit" data-opt-doSendMsg="{$m.id}">
+                                 data-opt-dosendmsg="{$m.id}">
                                 <svg class="icon-30 header-strip-fill">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
                                          xlink:href="/assets/desktop/icons/icons.svg#icon-paperairplane"></use>

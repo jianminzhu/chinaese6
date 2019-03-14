@@ -91,11 +91,11 @@ function action() {
         });
     })
     //发送消息相关
-    $("body").delegate("[data-opt-doSendMsg]", "click", function () {
+    $("body").delegate("[data-opt-dosendmsg]", "click", function () {
         var jit = $(this)
         loginDo(function () {
             payDo(function () {
-                var $id = jit.attr("data-opt-doSendMsg");
+                var $id = jit.attr("data-opt-dosendmsg");
                 let msg = jit.parent().find("textarea[name=message]").val();
                 if (msg != "") {
                     mdata("/index/mail/send", {to_m_id: $id, msg: msg, "type": 2}).then(function (res) {
@@ -133,7 +133,7 @@ function action() {
     })
 
 
-    $("body").delegate("[data-opt-addToFavorite]", "click", function () {
+    $("body").delegate("[data-opt-addfavorite]", "click", function () {
         var jit = $(this);
         let mid = jit.data("dMid");
         $.ajax({
