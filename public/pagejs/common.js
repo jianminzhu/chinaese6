@@ -80,7 +80,6 @@ function action() {
     $("body").delegate("[data-opt-interest]", "click", function () {
         var jit = $(this);
         var mid = jit.data("dMid");
-        alert(mid);
         loginDo(function () {
             mdata("/index/m/interest", { to_mid: mid }).then(function (res) {
                 jit.removeClass("fill-action-unhighlight").addClass("fill-action-highlight");
