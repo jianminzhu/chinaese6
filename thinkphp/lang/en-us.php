@@ -109,6 +109,7 @@ return [
     "升级会员资格来读取信息。" => " Upgrade your membership to read their message.",
     "升级成会员" => "Upgrade Now",
     "upgrade_pic" => "/upgrade_en.jpg",
+    "关闭" => "Cancle",
 
 
     /* 登录页面相关 */
