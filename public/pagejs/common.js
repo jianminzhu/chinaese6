@@ -92,18 +92,31 @@ function action() {
         var jit = $(this);
         loginDo(function () {
             payDo(function () {
-                mdata("/index/m/isPay").then(function (res) {
-                    var $id = jit.attr("data-opt-doSendMsg");
-                    if (res.isSuccess) {
-                        var msg = jit.parent().find("textarea[name=message]").val();
-                        if (msg != "") {
-                            mdata("/index/mail/send", { to_m_id: $id, msg: msg, "type": 2 }).then(function (res) {
-                                showNotice(res.data);
-                                showDialogSentMsg($id);
-                            });
-                        }
+                var $id = jit.attr("data-opt-doSendMsg");
+                if (res.isSuccess) {
+                    var msg = jit.parent().find("textarea[name=message]").val();
+                    if (msg != "") {
+                        mdata("/index/mail/send", { to_m_id: $id, msg: msg, "type": 2 }).then(function (res) {
+                            showNotice(res.data);
+                            showDialogSentMsg($id);
+                        });
                     }
-                });
+                }
+            });
+        });
+    });
+    $("body").delegate("[data-opt-ajaxSendMsg]", "click", function () {
+        var jit = $(this);
+        loginDo(function () {
+            payDo(function () {
+                var $mid = jit.attr("data-opt-ajaxSendMsg");
+                var msg = jit.parent().find("textarea[name=message]").val();
+                if (msg != "") {
+                    mdata("/index/mail/send", { to_m_id: $mid, msg: msg, "type": 2 }).then(function (res) {
+                        showNotice(res.data);
+                        showDialogSentMsg($mid);
+                    });
+                }
             });
         });
     });

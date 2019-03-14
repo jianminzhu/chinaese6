@@ -31,9 +31,6 @@
     <link href="https://fonts.googleapis.com/earlyaccess/notosansscsliced.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
-    <script src="/js/jquery-3.3.1.min.js"></script>
-    <script src="/pagejs/common.js?v=1.11"></script>
-    <script src="/js/tolang.js?v=1.11"></script>
 </head>
 <body>
 
@@ -142,8 +139,8 @@
 
                             <div class="pointer circle relative {:in_array($m.id,$uFavoriteMids)?'fill-action-highlight':'fill-action-unhighlight' }"
                                  data-opt-addToFavorite=""
-                                 data-d-mid="{$m.id}"
-                                 title="将Ashley 加入最爱"
+                                 data-d-mid=""
+                                 title="{:lang('加入最爱')}"
                             >
 
                                 <svg class="icon-30">

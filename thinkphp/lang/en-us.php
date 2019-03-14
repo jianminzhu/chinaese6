@@ -62,14 +62,14 @@ return [
     "邮箱必须填写" => "Email must be not empty",
     "密码必须大于等于6位" => "Password min length is 6",
     "发送成功" => "Sent Successful.",
+    "发送失败"=>"Sent Error.",
     "操作成功" => "Opt Successful",
     "1年 VIP 会员"=>"1 Year VIP Membership",
     "终身VIP会员" => "Lifetime VIP Membership",
     "每年" => "per year",
     "终身" => "Lifetime",
-
-
-
+    "消息内容" => "Write a message to Jessica here",
+    "照片" => "Photo",
 
 
 

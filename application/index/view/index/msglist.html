@@ -37,7 +37,7 @@
             <div class="list-message-filter col-12" id="messages">
                 <div>
                     {volist name="receiveMsgs" id="msg" }
-                    <a href="/index.php/index/mail/msgDetail?id={$msg.msgid}">
+                    <a href="/index.php/index/mail/msgDetail?mid={$msg.f_mid}">
                         <div class="list-message col col-12 px1 my1">
                             <div class="flex items-center relative height-12">
                                 <div class="flex-none unread me2 height-10"></div>
@@ -46,7 +46,7 @@
                                         <div class="profile-image circle border overflow-hidden">
                                             <div class="fit col-12 height-12 circle card-image-bg-color">
                                                 <div class="profile-bg"
-                                                     style="background-image:url('{$msg.main_pic}')"></div>
+                                                     style="background-image:url('{$msg.f_main_pic}')"></div>
                                             </div>
                                         </div>
 
@@ -56,9 +56,9 @@
 
                                             <div class="flex items-center">
                                                 <h1 class="h2 m0 me2 color-dark-grey unread-message">
-                                                    {$msg.nickname}</h1>
-                                                <div class="h5 ml2">{:lang("年龄")}: {$msg.age==0?lang("保密"):""}
-                                                    {$msg.address!=""?$msg.address." , ":""}{$msg.countryid}
+                                                    {$msg.f_nickname}</h1>
+                                                <div class="h5 ml2">{:lang("年龄")}: {$msg.f_age==0?lang("保密"):""}
+                                                    {$msg.f_address!=""?$msg.f_address." , ":""}
                                                 </div>
                                             </div>
 
@@ -79,7 +79,7 @@
                 </div>
                 <div>
                     {volist name="sentMsgs" id="msg" }
-                    <a href="/index.php/index/mail/msgDetail?id={$msg.msgid}">
+                    <a href="/index.php/index/mail/msgDetail?mid={$msg.t_mid}">
                         <div class="list-message col col-12 px1 my1">
                             <div class="flex items-center relative height-12">
                                 <div class="flex-none unread me2 height-10"></div>
@@ -88,7 +88,7 @@
                                         <div class="profile-image circle border overflow-hidden">
                                             <div class="fit col-12 height-12 circle card-image-bg-color">
                                                 <div class="profile-bg"
-                                                     style="background-image:url('{$msg.main_pic}')"></div>
+                                                     style="background-image:url('{$msg.t_main_pic}')"></div>
                                             </div>
                                         </div>
 
@@ -98,9 +98,9 @@
 
                                             <div class="flex items-center">
                                                 <h1 class="h2 m0 me2 color-dark-grey unread-message">
-                                                    {$msg.nickname}</h1>
-                                                <div class="h5 ml2">{:lang("年龄")}: {$msg.age==0?lang("保密"):""}
-                                                    {$msg.address!=""?$msg.address." , ":""}{$msg.countryid}
+                                                    {$msg.t_nickname}</h1>
+                                                <div class="h5 ml2">{:lang("年龄")}: {$msg.t_age==0?lang("保密"):""}
+                                                    {$msg.t_address!=""?$msg.t_address." , ":""}
                                                 </div>
                                             </div>
 
