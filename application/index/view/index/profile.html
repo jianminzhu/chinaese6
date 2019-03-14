@@ -108,7 +108,7 @@
 
                     </div>
 
-                    <div class="pointer circle relative me1 fill-action-<?php echo in_array($m->id,$uFavoriteMids)?'highlight':'unhighlight' ?>"
+                    <div class="pointer circle relative me1 <?php echo in_array($m->id,$uFavoriteMids)?'fill-action-highlight':'fill-action-unhighlight' ?>"
                          data-opt-addToFavorite="" data-d-mid="{$m.id}">
                         <svg class="icon-50 tooltip">
                             <use xlink:href="/assets/desktop/icons/icons.svg#icon-star"></use>

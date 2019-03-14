@@ -17,7 +17,7 @@
 
                         <div class="flex items-center justify-center height-12 circle overflow-hidden card-image-bg-color">
                             <a class="col-12 height-12" href="/index.php/index/m/profile?id={$msg.id}">
-                                <div class="profile-bg"  style="background-image:url('{$msg.main_pic}')"></div>
+                                <div class="profile-bg" style="background-image:url('{$msg.main_pic}')"></div>
                             </a>
                         </div>
                         <div class="icon-holder absolute">
@@ -26,7 +26,6 @@
                             <svg class="col-12 height-12 tooltip" data-tooltip="ttOn">
                                 <use xlink:href="/assets/desktop/icons/icons.svg#icon-online"></use>
                             </svg>
-
                             <div class="tooltip-text tooltip-text-width-auto truncate tooltip-text-center h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
                                 {$msg.send_date}
                             </div>
@@ -43,7 +42,7 @@
                         </svg>
 
                         <div class="tooltip-text tooltip-text-width-auto truncate tooltip-text-center h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
-                            Standard Member
+                            {:lang("普通会员")}
                         </div>
                     </div>
                 </div>
@@ -57,11 +56,9 @@
                             <div class="flex flex-auto items-end justify-between ">
                                 <div class="flex items-center">
                                     <div data-button="true"
-
                                          class="pointer me2 relative fill-action-unhighlight"
-                                         data-animation="pop-fade-out"
-                                         data-showInterest="/en/memberrelationship/showinterest/0C008BE2C4C847B4459D0A"
-
+                                         data-opt-interest=""
+                                         data-d-mid="{$msg.id}"
                                     >
 
                                         <svg class="icon-30 tooltip">
@@ -69,31 +66,25 @@
                                         </svg>
 
                                         <div class="tooltip-text truncate tooltip-text-width-auto h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
-                                            Show interest in Jessica
+                                            {:lang('发送秋波给')}{$msg.nickname}
                                         </div>
 
                                     </div>
 
-
-                                    <div
-
-                                            class="pointer me2 relative fill-action-unhighlight fill-action-highlight"
-
-                                            data-button="true"
-                                            data-animation="pop-fade-out"
-                                            data-favourite-add="/en/memberrelationship/addfavorite/0C008BE2C4C847B4459D0A"
-                                            data-favourite-delete="/en/memberrelationship/deletefavorite/0C008BE2C4C847B4459D0A">
+                                    <div  class="pointer me2 relative fill-action-unhighlight <?php echo in_array($msg->id,uIntrestMids)?'fill-action-highlight':'fill-action-unhighlight' ?>"
+                                            data-opt-addToFavorite=""
+                                            data-d-mid="{$msg.id}"
+                                    >
 
                                         <svg class="icon-30 tooltip">
                                             <use xlink:href="/assets/desktop/icons/icons.svg#icon-star"></use>
                                         </svg>
-
                                     </div>
 
                                     <div class="fill-action-unhighlight relative" data-button="true"
                                          data-animate-reset="heartbeat">
                                         <div class="pointer no-highlight flex items-center"
-                                             >
+                                        >
 
                                             <svg class="icon-30 tooltip">
                                                 <use xlink:href="/assets/desktop/icons/icons.svg#icon-camera"></use>
@@ -117,7 +108,7 @@
             <div class="col-8 border-left items-stretch px2 relative">
 
 
-                <div class="message-holder"  >
+                <div class="message-holder">
 
 
                     <div class="flex relative" data-message-id="110877916">
@@ -158,7 +149,7 @@
                                     </div>
 
                                     <a class="block message-upgrade m1 py1 px2 bg-green white rounded flex items-center justify-center"
-                                       href="/index.php/index/m/upgrade"  >
+                                       href="/index.php/index/m/upgrade">
                                         <svg class="flex-none fill-white pointer">
                                             <use xlink:href="/assets/desktop/icons/icons.svg#icon-paperairplane"></use>
                                         </svg>
@@ -193,7 +184,7 @@
                                           placeholder="Write a message to Jessica here"></textarea>
                             </div>
                             <button class="send-btn bg-theme p2 circle flex items-center border-none relative"
-                                    type="submit" data-opt-ajaxSendMsg="" >
+                                    type="submit" data-opt-ajaxSendMsg="">
                                 <svg class="icon-30 header-strip-fill">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
                                          xlink:href="/assets/desktop/icons/icons.svg#icon-paperairplane"></use>
@@ -227,8 +218,6 @@
 
     </div>
 </div>
-
-
 
 
 </body>

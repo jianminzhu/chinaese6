@@ -69,6 +69,7 @@ class Base extends Controller
                 'u' => $loginUser,
                 'ucounts' => $this->loginUserCounts(),
                 "uFavoriteMids" =>$loginUser? Db::table("favorite")->where("mid", $loginUser->id)->column("to_mid"):[],
+                "uIntrestMids" =>$loginUser? Db::table("interest")->where("mid", $loginUser->id)->column("to_mid"):[],
                 "lang" => $toLang,
             ]
         );

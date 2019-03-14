@@ -33,6 +33,7 @@ function showNotice(msg) {
         $b.removeClass("notices-open");
     }, 2000);
 }
+
 function payDo(fun) {
     mdata("/index/a/ajaxIsPay").then(function (res) {
         if (res.isSuccess) {
@@ -71,13 +72,13 @@ function action() {
         $(this).closest(`div#${$id}`).hide();
     });
     $("body").delegate("[data-opt-tabs]", "click", function () {
-        $(this).parent().find(".border-bottom"). removeClass("border-bottom");
-        $(this).addClass("border-bottom") ;
-        var jroot=$("#"+$(this).attr("data-opt-tabs"));
-        var index=$(this).index()
+        $(this).parent().find(".border-bottom").removeClass("border-bottom");
+        $(this).addClass("border-bottom");
+        var jroot = $("#" + $(this).attr("data-opt-tabs"));
+        var index = $(this).index()
         jroot.find(">div").hide();
         var jit = jroot.find(`>div:eq(${index})`);
-        jit .show();
+        jit.show();
     })
     $("body").delegate("[data-opt-interest]", "click", function () {
         var mid = $(this).data("dMid");
@@ -110,13 +111,12 @@ function action() {
 
     $("body").delegate("[data-opt-sendmsg]", "click", function () {
         var mid = $(this).data("dMid");
-       loginDo(function () {
-           payDo(function () {
-               showDialogSentMsg(mid);
-           });
-       })
+        loginDo(function () {
+            payDo(function () {
+                showDialogSentMsg(mid);
+            });
+        })
     })
-
 
 
     $("body").delegate("[data-opt-addToFavorite]", "click", function () {
@@ -129,7 +129,7 @@ function action() {
         }).then(function (res) {
             let data = res.data;
             showNotice(data.emsg);
-            jit.addClass(data.addClass );
+            jit.addClass(data.addClass);
             jit.removeClass(data.removeClass);
         });
     })
