@@ -133,7 +133,7 @@ return [
     '免费加入' => "It' Free for join",
     "注册页面性别选择" => "I'm a",
     "年龄" => "Age",
-    "注册" => "View Singles Now",
+    "注册" => "Register",
 
 
     /*  登录页面  */
