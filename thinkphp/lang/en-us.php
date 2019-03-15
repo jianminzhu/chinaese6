@@ -26,7 +26,7 @@ return [
     "请选择" => "Please select",
 
 
-    "会员动态" => "Activity Towards",
+    "会员动态" => "Activity",
     "谁在找我" => "Interested In Me",
     "加我为最爱" => "I'm Their Favorite",
     "谁看过我" => "Viewed My Profile",
