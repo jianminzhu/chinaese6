@@ -6,7 +6,6 @@ use think\db\exception\DataNotFoundException;
 use think\db\exception\ModelNotFoundException;
 use think\exception\DbException;
 
-include_once "ext_util/pinyin.php";
 
 class Index extends Base
 {

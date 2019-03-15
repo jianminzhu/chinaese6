@@ -63,6 +63,34 @@ function showDialogSentMsg(toMid) {
         $sentMsgDialog.html(html).show();
     });
 }
+/*
+* 搜索相关事件*/
+function search() {
+    var $form = $('form[name="searchForm"]');
+    var $bsearch = $form.find("[name=b_search]");
+    $("body").delegate("[data-page]", "click", function () {
+        var clickPage = $(this).data("page");
+        alert(clickPage);
+        if (clickPage != $form.find("[name=pno]").val()) {
+            $form.find("[name=pno]").val(clickPage);
+            $bsearch.trigger("click");
+        }
+    });
+    $("select").on("change", function () {
+        $("input[name=pno]").val(1);
+    });
+    $bsearch.on("click", function () {
+        $form.trigger("click");
+    });
+    $form.on("submit", function () {
+        alert("111");
+        var $searchResults = $("[name=searchResults]");
+        $.ajax({ url: "/index.php/index/index/search?" + $form.serialize(), dataType: "html" }).then(function (html) {
+            $searchResults.html(html);
+        });
+        return false;
+    });
+}
 function action() {
     $("body").delegate("[data-opt-closeDialog]", "click", function () {
         var $id = $(this).attr("data-opt-closeDialog");
@@ -144,4 +172,5 @@ function action() {
 }
 $(function () {
     action();
+    search();
 });

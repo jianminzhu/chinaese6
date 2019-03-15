@@ -5,6 +5,7 @@ namespace app\index\controller;
 use think\Controller;
 use think\Db;
 
+include_once "ext_util/pinyin.php";
 
 class Base extends Controller
 {
@@ -65,16 +66,14 @@ class Base extends Controller
         }else{
             session("isPay", false);
         }
-        //{:in_array($m.id,$uIntrestMids)?'fill-action-highlight':'fill-action-unhighlight' }
-        //{:in_array($m.id,$uFavoriteMids)?'fill-action-highlight':'fill-action-unhighlight' }
-        $this->assign([
-                'u' => $loginUser,
-                'ucounts' => $this->loginUserCounts(),
-                "uFavoriteMids" =>$loginUser? Db::table("favorite")->where("mid", $loginUser->id)->column("to_mid"):[],
-                "uIntrestMids" =>$loginUser? Db::table("interest")->where("mid", $loginUser->id)->column("to_mid"):[],
-                "lang" => $toLang,
-            ]
-        );
+        $arr = [
+            'u' => $loginUser,
+            'ucounts' => $this->loginUserCounts(),
+            "uFavoriteMids" => $loginUser ? Db::table("favorite")->where("mid", $loginUser->id)->column("to_mid") : [],
+            "uIntrestMids" => $loginUser ? Db::table("interest")->where("mid", $loginUser->id)->column("to_mid") : [],
+            "lang" => $toLang,
+        ];
+        $this->assign($arr);
         return json_encode(['u' => $loginUser,]);
     }
 
@@ -167,6 +166,13 @@ class Base extends Controller
         $this->assign("prevPno", $pno > 1 ? $pno - 1 : $pno);
         $this->assign("nextPno", $nextPno);
         $this->assign("lastPno", $lastPno);
+        $this->assign([
+
+            "uFavoriteMids" => $loginUser ? Db::table("favorite")->where("mid", $loginUser->id)->column("to_mid") : [],
+            "uIntrestMids" => $loginUser ? Db::table("interest")->where("mid", $loginUser->id)->column("to_mid") : [],
+
+        ]);
+
     }
 
     /**
