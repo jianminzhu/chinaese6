@@ -25,14 +25,14 @@ return [
     "搜索" => "Search",
     "请选择" => "Please select",
 
-
     "会员动态" => "Activity",
     "谁在找我" => "Interested In Me",
     "加我为最爱" => "I'm Their Favorite",
     "谁看过我" => "Viewed My Profile",
     "我的最爱" => "My Favorite",
     "我关注的" => "My Interests",
-    "我看过谁" => "My Viewed",
+    "我看过谁" => "Profiles Viewed",
+
 
     //profiledit
     "名字" => "name",
