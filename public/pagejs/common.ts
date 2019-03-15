@@ -65,6 +65,7 @@ function showDialogSentMsg(toMid) {
     });
 
 }
+
 /*
 * 搜索相关事件*/
 function search() {
@@ -91,6 +92,7 @@ function search() {
         return false;
     })
 }
+
 function action() {
     $("body").delegate("[data-opt-closeDialog]", "click", function () {
         var $id = $(this).attr("data-opt-closeDialog");
@@ -162,16 +164,18 @@ function action() {
     $("body").delegate("[data-opt-addfavorite]", "click", function () {
         var jit = $(this);
         let mid = jit.data("dMid");
-        $.ajax({
-            url: "/index.php/index/m/favorite",
-            dataType: "json",
-            data: {to_mid: mid}
-        }).then(function (res) {
-            let data = res.data;
-            showNotice(data.emsg);
-            jit.addClass(data.addClass);
-            jit.removeClass(data.removeClass);
-        });
+        loginDo(function () {
+            $.ajax({
+                url: "/index.php/index/m/favorite",
+                dataType: "json",
+                data: {to_mid: mid}
+            }).then(function (res) {
+                let data = res.data;
+                showNotice(data.emsg);
+                jit.addClass(data.addClass);
+                jit.removeClass(data.removeClass);
+            });
+        })
     })
 
 }

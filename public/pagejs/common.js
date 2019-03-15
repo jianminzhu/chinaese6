@@ -156,15 +156,17 @@ function action() {
     $("body").delegate("[data-opt-addfavorite]", "click", function () {
         var jit = $(this);
         var mid = jit.data("dMid");
-        $.ajax({
-            url: "/index.php/index/m/favorite",
-            dataType: "json",
-            data: { to_mid: mid }
-        }).then(function (res) {
-            var data = res.data;
-            showNotice(data.emsg);
-            jit.addClass(data.addClass);
-            jit.removeClass(data.removeClass);
+        loginDo(function () {
+            $.ajax({
+                url: "/index.php/index/m/favorite",
+                dataType: "json",
+                data: { to_mid: mid }
+            }).then(function (res) {
+                var data = res.data;
+                showNotice(data.emsg);
+                jit.addClass(data.addClass);
+                jit.removeClass(data.removeClass);
+            });
         });
     });
 }
