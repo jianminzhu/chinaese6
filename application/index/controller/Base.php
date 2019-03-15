@@ -14,6 +14,9 @@ class Base extends Controller
     {
         return json(["isSuccess" => $isSuccess, "data" => $data]);
     }
+    public function memberIsPay($mid){
+        return Db::table("pay")->where("m_id", $mid)->count() > 0;
+    }
     public function ajaxIsPay()
 {
     return $this->ajax(session("isPay")==true);

@@ -24,13 +24,19 @@ class Dialog extends Base
             $loginUser  = $this->loginUser();
             $other=Member::get($otherId);
             $mid = $loginUser->id;
-            $msgs= Db::query("select * from message where type=2 and ( (to_m_id=? and from_m_id =?) or (to_m_id=? and from_m_id =?))",[$otherId,$mid,$mid,$other]);
-            $arr = [
-                "other" => $other,
-                "msg" => $msgs
-            ];
-            $this->assign($arr);
-            return view("/index/sentMsgDialog",["other"=>$other,"u"=>$loginUser, "msgs" => $msgs,
+            if ($otherId != $mid) {
+                $msgs= Db::query("select * from message where type=2 and ( (to_m_id=? and from_m_id =?) or (to_m_id=? and from_m_id =?))",[$otherId,$mid,$mid,$otherId]);
+                $arr = [
+                    "other" => $other,
+                    "msg" => $msgs
+                ];
+                $this->assign($arr);
+                $other["isPay"]= $this->memberIsPay($other->id);
+                $loginUser["isPay"]= $this->memberIsPay($loginUser->id);
+                return view("/index/sentMsgDialog",["other"=>$other,"u"=>$loginUser, "msgs" => $msgs, "isSelf" => false,
+                ]);
+            }
+            return view("/index/sentMsgDialog",["other"=>$other,"u"=>$loginUser, "isSelf" => true,
             ]);
         }else{
             return $this->showDialogLogin();

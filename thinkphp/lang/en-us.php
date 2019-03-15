@@ -32,7 +32,7 @@ return [
     "我的最爱" => "My Favorite",
     "我关注的" => "My Interests",
     "我看过谁" => "Profiles Viewed",
-
+    "不能给自己发消息" => "Can't sent message to youself",
 
     //profiledit
     "名字" => "name",

@@ -1,17 +1,11 @@
-<div class="cmc fixed bottom-1 z4">
+<div class="cmc fixed bottom-0 z4">
     <div class="cmc-table">
         <div class="cmc-wrap-ch flex items-end">
-            <div class="ch shadow overflow-hidden rounded m1 relative" data-memberid="4064911">
+            <div class="ch shadow overflow-hidden rounded m1 relative">
                 <div class="ch-title rounded-top py1 px2 flex items-center">
-                    <div class="ch-title-buttons ch-title-buttons-minimise pointer col-1 flex items-center justify-center">
-                        <svg class="icon-16">
-                            <use xlink:href="/assets/desktop/icons/icons.svg#icon-arrow-down"></use>
-                        </svg>
-                    </div>
                     <div class="flex items-center flex-auto mx2">
                         <div class="ch-title-picture me1">
-                            <a href="/index.php/index/m/profile?id={$other.id}" target="_blank"
-                               class="block h4 relative">
+                            <a href="/index.php/index/m/profile?id={$other.id}" class="block h4 relative">
                                 <div class="ch-title-picture-image profile-image-46 circle relative"
                                      style="background-image:url({$other.main_pic})">
                                     <div class="ch-title-picture-image-notification-bullet hide" data-badge=""></div>
@@ -24,84 +18,79 @@
                             </a></div>
                         <div class="ch-title-mname flex flex-column col-8">
                             <a href="/index.php/index/m/profile?id={$other.id}" class="block h4">{$other.nickname}</a>
-                            <div class="block h5 truncate">{$other.age} • {$other.address}
-                            </div>
-                        </div>
-                        <div class="ch-title-buttons flex items-center col-3">
-                            <div class="ch-title-close-popup absolute top-0 right-0 bottom-0 left-0 z2 hide"></div>
-
-                            <div class="ch-title-buttons-close pointer ms2" data-opt-closeDialog="sentMsgDialog">
-                                <svg class="icon-20">
-                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-close"></use>
-                                </svg>
+                            <div class="block h5 truncate" title="32 Nanping, Fujian, China">{$other.age}
+                                {$other.address}
                             </div>
                         </div>
                     </div>
+                    <div class="ch-title-buttons flex items-center col-3">
+                        <div class="ch-title-close-popup absolute top-0 right-0 bottom-0 left-0 z2 hide"></div>
+                        <div class="ch-title-buttons-close pointer ms2" data-opt-closeDialog="sentMsgDialog">
+                            <svg class="icon-20">
+                                <use xlink:href="/assets/desktop/icons/icons.svg#icon-close"></use>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
-                <div class="ch-translate hide py1 px2 bg-theme">
-                    <form class="flex items-center justify-center">
-                        <p class="h5 mx2">Translate</p><label for="onOffFilter"
-                                                              class="flex-none ch-translate-button switch tooltip tooltip-wrap-text"><input
-                            id="onOffFilter" class="ms1" name="onOffFilter" type="checkbox" value="1"><span
-                            class="slider round tooltip"><input id="onOffFilterOff" name="onOffFilter" type="hidden"
-                                                                value="0" disabled=""></span></label></form>
-                </div>
-
+                {if condition="$isSelf eq true"}
+                <div class="ch-msg upgrade-chat-reply py1">
+                    <div class="ch-msg-reply-messagebg rounded py1 px2 mx1 break-word">
+                        <div class="ch-msg-reply-message"><p
+                                class=" ">
+                            {:lang("不能给自己发消息")}</p>
+                        </div>
+                    </div>
+                </div>{/if}
                 <div class="ch-messages">
                     <div class="ch-messages-div">
                         <div class="ch-messages-messagelist overflow-auto mb2">
+                            {if condition="$isSelf neq true"}
                             {volist name="msgs" id="msg" }
                             {if condition="$u.id==$msg.to_m_id"}
-                            <div class="p2 center h5">${msg.send_date}</div>
+                            <div class="p2 center h5">{$msg.send_date}</div>
                             <div class="ch-msg upgrade-chat-reply py1">
                                 <div class="ch-msg-reply-pic-chat"
                                      style="background-image: url({$other.main_pic})"></div>
                                 <div class="ch-msg-reply-messagebg rounded py1 px2 mx1 break-word">
                                     <div class="ch-msg-reply-message"><p
-                                            class="ch-messages-messagelist-div-upgrade-chat-reply-blurredMessage">
-                                        {$msg.msg}</p>
+                                            class="">
+                                        {$msg.msg} </p>
+
                                     </div>
                                 </div>
                             </div>
                             {/if}
+
                             {if condition="$u.id==$msg.from_m_id"}
                             <div class="p2 center h5">{$msg.send_date}</div>
-
                             <div class="ch-msg upgrade-chat flex justify-end py1 px2"><span
-                                    class="my-message rounded py1 px2 col-8 header-color">
-                                    <div class="ch-msg-my-message"><p class="break-word">{$msg.msg}</p>
-                                </div>
-                                </span>
+                                    class="my-message rounded py1 px2 col-8 header-color"><div
+                                    class="ch-msg-my-message"><p class="break-word">{$msg.msg}</p>
+                            </div>
+                            </span>
                             </div>
                             {/if}
                             {/volist}
-
+                            {/if}
 
                         </div>
                     </div>
                 </div>
-                <div class="inline-block animate-typing bg-light-grey pill m1 ms2 p1 relative" hidden="">
-                    <div class="bubble-large circle bg-light-grey absolute"></div>
-                    <div class="bubble-small circle bg-light-grey absolute"></div>
-                    <div class="inline-block dot circle"></div>
-                    <div class="inline-block dot circle"></div>
-                    <div class="inline-block dot circle"></div>
-                </div>
+                {if condition="$isSelf neq true"}
                 <div class="p2 border-top border-color">
                     <div class="flex items-center ch-input">
                         <div class="ch-input-div flex-auto border-bottom">
-                            <textarea name="message" class="border-none p0 col-12 h5"
-                                      placeholder="Send a message to Sweet"></textarea>
+                            <textarea name="message" class="border-none p0 col-12 h5" placeholder="{:lang('消息内容')}" ></textarea>
                         </div>
-                        <button data-opt-ajaxsendmsg="{$other.id}" type="button"
+                        <button type="button" data-opt-ajaxsendmsg="{$other.id}"
                                 class="border-none flex items-center justify-center circle p2 ms1 ch-input-button btn-bg btn-color relative">
                             <svg class="icon-24"><title>Send</title>
                                 <use xlink:href="/assets/desktop/icons/icons.svg#icon-send"></use>
                             </svg>
                         </button>
                     </div>
-                    <span></span>
-                </div>
+                    <span></span></div>
+                {/if}
             </div>
         </div>
     </div>
