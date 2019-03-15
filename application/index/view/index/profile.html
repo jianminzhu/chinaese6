@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 
-    <title>{$m.nickname} / {$m.age} / {$m.address},{$m.country|default=""}| www.chinesecompanion.com</title>
+    <title>{$lang=="en-us"?pinyinName($m.nickname):$m.nickname} / {$m.age} / {$lang=="en-us"?pinyinAddress($m.address):$m.address},{$m.country|default=""}| www.chinesecompanion.com</title>
 
 
     <meta id="defaultmessage" content="处理过程中发生问题"/>
@@ -65,12 +65,12 @@
     <div class="profile-details mt3 col-12">
         <div class="profile-details-name flex justify-between">
             <h2 class="m0 mt2 flex items-center color-dark-grey">
-                {$m.nickname}
+                {$lang=="en-us"?pinyinName($m.nickname):$m.nickname}
             </h2>
         </div>
 
         <p class="m0">{$m.age==0?lang("保密"):""} <span>&nbsp </span>
-            {$m.address!=""?$m.address.",":""}{$m.country|default=""} </p>
+            {$lang=="en-us"?pinyinAddress($m.address):$m.address}{$m.country|default=""} </p>
         <p class="mt1 mb0">
             {$m.sex=="0" ?lang("女性"):lang("男性")}
         </p>
@@ -90,7 +90,7 @@
                         </svg>
 
                         <div class="tooltip-text truncate tooltip-text-width-auto h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
-                            {:lang("发送秋波给")}{$m.nickname}
+                            {:lang("发送秋波给")}{$lang=="en-us"?pinyinName($m.nickname):$m.nickname}
                         </div>
 
                     </div>
@@ -103,7 +103,7 @@
 
                         <div class="tooltip-text truncate tooltip-text-width-auto h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select"
                              data-opt-sendmsg="" data-d-mid="{$m.id}">
-                            {:lang("发送消息给")}{$m.nickname}
+                            {:lang("发送消息给")}{$lang=="en-us"?pinyinName($m.nickname):$m.nickname}
                         </div>
 
                     </div>

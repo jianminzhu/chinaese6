@@ -71,8 +71,6 @@ return [
     "消息内容" => "Write a message to Jessica here",
     "照片" => "Photo",
 
-
-
     "下一步: 上传多张照片到相片区" => 'Next Step: Complete profile questions',
     /*  公用  */
     "我的最爱" => "My Favorites",
