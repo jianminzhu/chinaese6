@@ -127,6 +127,7 @@
                     </div>
                 </a>
                 {/if}
+                {if condition="$pno neq $lastPno"}
 
                 <a href="#searchForm" data-page="{$lastPno}">
                     <div class="flex items-center ms2">
@@ -138,6 +139,8 @@
                         </div>
                     </div>
                 </a>
+
+                {/if}
             </div>
         </div>
     </div>
