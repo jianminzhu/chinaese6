@@ -116,7 +116,7 @@ return [
     "升级成会员" => "Upgrade Now",
     "upgrade_pic" => "/upgrade_en.jpg",
     "关闭" => "Cancle",
-    "活到动态" => "Action",
+    "活动动态" => "Action",
 
 
     /* 登录页面相关 */
