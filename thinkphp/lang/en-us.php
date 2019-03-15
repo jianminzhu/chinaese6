@@ -97,7 +97,7 @@ return [
     "保持我的登入状态" => "keeping my login",
     "若您是使用共用电脑,请不要勾选这个选项" => "if use other compute ,please don't  ",
     "登录" => "login",
-    "首页" => "Index",
+    "首页" => "Home",
     "退出" => "logout",
     "新秋波" => 'New Interests',
     "消息" => "Message",
