@@ -72,7 +72,6 @@ function search() {
     let $bsearch = $form.find("[name=b_search]");
     $("body").delegate("[data-page]", "click", function () {
         let clickPage = $(this).data("page");
-        alert(clickPage)
         if (clickPage != $form.find("[name=pno]").val()) {
             $form.find("[name=pno]").val(clickPage);
             $bsearch.trigger("click");
@@ -85,7 +84,6 @@ function search() {
         $form.trigger("click");
     })
     $form.on("submit", function () {
-        alert("111")
         let $searchResults = $("[name=searchResults]");
         $.ajax({url: "/index.php/index/index/search?" + $form.serialize(), dataType: "html"}).then(function (html) {
             $searchResults.html(html)
