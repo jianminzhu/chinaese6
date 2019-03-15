@@ -31,7 +31,7 @@ return [
     "加我为最爱" => "I'm Their Favorite",
     "谁看过我" => "Viewed My Profile",
     "我的最爱" => "My Favorite",
-    "我关注的" => "My Interested ",
+    "我关注的" => "My Interests",
     "我看过谁" => "My Viewed",
 
     //profiledit
