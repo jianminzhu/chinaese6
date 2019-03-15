@@ -103,3 +103,12 @@ function pinyinName($name)
     }
     return $name;
 }
+function pinyinAddress($name)
+{
+    if (preg_match('/^[\x{4e00}-\x{9fa5}]+$/u', $name) > 0) {
+        $words = explode(" ", pinyin("$name"));
+        $words[0] = ucfirst($words[0]);
+        return implode("", $words);
+    }
+    return $name;
+}

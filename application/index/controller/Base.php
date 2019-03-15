@@ -185,7 +185,7 @@ class Base extends Controller
         if ($cookieLang == "en-us" && $user) {
             $user["nickname"] = pinyinName($user["nickname"]);
             try {
-                $user["address"] = pinyinName($user["address"]);
+                $user["address"] = pinyinAddress($user["address"]);
             } catch (\Exception $e) {
             }
         }
