@@ -55,43 +55,24 @@
                             <div class="p2 center h5">${msg.send_date}</div>
                             <div class="ch-msg upgrade-chat-reply py1">
                                 <div class="ch-msg-reply-pic-chat"
-                                     style="background-image: url(https://cdn.chinalovecupid.com/memphoto/photo1/small/4064911.jpg)"></div>
+                                     style="background-image: url({$other.main_pic})"></div>
                                 <div class="ch-msg-reply-messagebg rounded py1 px2 mx1 break-word">
-                                    <div class="ch-msg-reply-message">
-                                        <p class="ch-messages-messagelist-div-upgrade-chat-reply-blurredMessage">
-                                            {$msg.msg} </p>
-                                        <div class="ch-msg-upgrade-chat-toread p1 rounded bg-white">{:lang("升级会员资格来读取信息。")}<br><a
-                                                class="ch-msg-upgrade-chat-btn py1 px2 rounded bg-green white mt1 block center"
-                                                href="javascript:void(0)">{:lang("升级成会员")}</a></div>
+                                    <div class="ch-msg-reply-message"><p
+                                            class="ch-messages-messagelist-div-upgrade-chat-reply-blurredMessage">
+                                        {$msg.msg}</p>
                                     </div>
                                 </div>
                             </div>
                             {/if}
-                            {if condition="$u.id==$msg.to_m_id"}
-                                <div class="p2 center h5">{$msg.send_date}</div>
-                                <div class="ch-msg upgrade-chat-reply py1">
-                                    <div class="ch-msg-reply-pic-chat"
-                                         style="background-image: url(https://cdn.chinalovecupid.com/memphoto/photo1/small/4064911.jpg)"></div>
-                                    <div class="ch-msg-reply-messagebg rounded py1 px2 mx1 break-word">
-                                        <div class="ch-msg-reply-message"><p
-                                                class="ch-messages-messagelist-div-upgrade-chat-reply-blurredMessage">
-                                           {$msg.msg}</p>
-                                            <div class="ch-msg-upgrade-chat-toread p1 rounded bg-white">{:lang("升级会员资格来读取信息。")}<br><a
-                                                    class="ch-msg-upgrade-chat-btn py1 px2 rounded bg-green white mt1 block center"
-                                                    href="javascript:void(0)">{:lang("升级成会员")}</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="ch-msg upgrade-chat flex justify-end py1 px2"><span
-                                        class="my-message rounded py1 px2 col-8 header-color">
-                                    <div class="ch-msg-my-message"><p class="break-word">{$msg.msg}</p>
-                                         <div class="ch-msg-upgrade-chat-toread p1 rounded bg-white">{:lang("升级会员资格来读取信息。")}<br><a
-                                                 class="ch-msg-upgrade-chat-btn py1 px2 rounded bg-green white mt1 block center"
-                                                 href="javascript:void(0)">{:lang("升级成会员")}</a></div>
-                                </div>
+                            {if condition="$u.id==$msg.from_m_id"}
+                            <div class="p2 center h5">{$msg.send_date}</div>
 
-                                </span>
+                            <div class="ch-msg upgrade-chat flex justify-end py1 px2"><span
+                                    class="my-message rounded py1 px2 col-8 header-color">
+                                    <div class="ch-msg-my-message"><p class="break-word">{$msg.msg}</p>
                                 </div>
+                                </span>
+                            </div>
                             {/if}
                             {/volist}
 
@@ -112,7 +93,7 @@
                             <textarea name="message" class="border-none p0 col-12 h5"
                                       placeholder="Send a message to Sweet"></textarea>
                         </div>
-                        <button data-opt-dosendmsg="{$other.id}" type="button"
+                        <button data-opt-ajaxsendmsg="{$other.id}" type="button"
                                 class="border-none flex items-center justify-center circle p2 ms1 ch-input-button btn-bg btn-color relative">
                             <svg class="icon-24"><title>Send</title>
                                 <use xlink:href="/assets/desktop/icons/icons.svg#icon-send"></use>

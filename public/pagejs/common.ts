@@ -133,11 +133,11 @@ function action() {
         })
     })
 
-    $("body").delegate("[data-opt-ajaxSendMsg]", "click", function () {
+    $("body").delegate("[data-opt-ajaxsendmsg]", "click", function () {
         var jit = $(this)
         loginDo(function () {
             payDo(function () {
-                var $mid = jit.attr("data-opt-ajaxSendMsg");
+                var $mid = jit.attr("data-opt-ajaxsendmsg");
                 let msg = jit.parent().find("textarea[name=message]").val();
                 if (msg != "") {
                     mdata("/index/mail/send", {to_m_id: $mid, msg: msg, "type": 2}).then(function (res) {
