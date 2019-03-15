@@ -119,7 +119,7 @@ return [
 
 
     /* 登录页面相关 */
-    '会员登录' => "member login ",
+    '会员登录' => "Member login ",
     '电邮或密码不正确' => "Invalid login details",
     "文档编辑" => "Edit doc ",
 
