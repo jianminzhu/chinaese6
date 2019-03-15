@@ -107,7 +107,7 @@
             </div>
 
             <div class="flex">
-
+                {if condition="$pno neq $nextPno"}
                 <a href="#searchForm" data-page="{$nextPno}">
                     <div class="flex items-center">
                         {:lang("下一页")}
@@ -118,6 +118,7 @@
                         </div>
                     </div>
                 </a>
+                {/if}
 
                 <a href="#searchForm" data-page="{$lastPno}">
                     <div class="flex items-center ms2">
