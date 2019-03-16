@@ -5,7 +5,6 @@ require('ext_util/fileUtil.php');
 require('ext_util/BytripUtil.php');
 
 use app\index\model\Address;
-use app\index\model\Member;
 use think\Controller;
 use think\Db;
 
@@ -39,7 +38,14 @@ class Sp extends Controller
 
     public function pics()
     {
-        $ids = Db::table('member')->where("isUpdateHW", 0)->column("id");
+        $id = request()->param("id");
+        $ids = [];
+        if ($id) {
+            $ids[] = array_merge($ids,explode(",",$id));
+        }else{
+            $ids = Db::table('member')->where("isUpdateHW", 0)->column("id");
+
+        }
         $all = [];
         foreach ($ids as $id) {
             $all[] = $this->updateMember($id);
