@@ -55,6 +55,24 @@ function ExtGetHtml($szUrl, $encoding = "", $timeout = "60", $UserAgent = 'Mozil
     curl_close($curl);
     return $data;
 }
+function ExtGetJson($szUrl, $header=[],$timeout=60)
+{
+    $curl = curl_init();  //初始化
+    curl_setopt($curl,CURLOPT_URL,$szUrl);  //设置url
+    curl_setopt($curl,CURLOPT_HTTPHEADER,$header);
+    curl_setopt($curl, CURLOPT_URL, $szUrl);
+    curl_setopt($curl, CURLOPT_HEADER, 0);  //0表示不输出Header，1表示输出
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curl, CURLOPT_TIMEOUT, $timeout);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
+    $data = curl_exec($curl);
+    curl_close($curl);
+    return $data;
+}
+
+
 
 
 function ExtDownloadTxt($url, $path = 'downloads/', $withHost = false, $isCover = false)

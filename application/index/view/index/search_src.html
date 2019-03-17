@@ -1,0 +1,148 @@
+<div>
+    <div class="max-width mx-auto mt0 px2">
+        <div class="flex items-center justify-between mt4 max-width mx-auto"></div>
+    </div>
+    <div class="flex flex-wrap justify-center max-width mx-auto" href="#results" data-reflow="true">
+        {volist name="members" id="m"}
+        <div class="card-s card m1 flex flex-wrap overflow-hidden bg-white shadow relative">
+            <a id="{$m.id}" class="absolute top-minus-100"></a>
+
+            <a class="flex items-center col-12 justify-center std relative"
+               target="_blank" href="/index.php/index/m/profile?id={$m.id}">
+                <div class="profile-bg"
+                     style="background-image:url('http://www.bytrip.com/{$m.main_pic}')"></div>
+                <div class="border-box z2 flex items-center justify-center standard-online online circle border-white">
+                    <svg class="col-12 height-12" data-tooltip="ttOn">
+                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-online"></use>
+                    </svg>
+                    <div hidden>{:lang("我在线")}</div>
+                </div>
+            </a>
+
+            <div class="sdh col-12 relative flex flex-column">
+
+                <div class="flex items-center mx2 mt2">
+                    <a target="_blank" href="/index.php/index/m/profile?id={$m.id}"
+                       class="h3 color-dark-grey m0 truncate max-width-85">{$m.nickname}</a>
+                </div>
+
+                <div class="mx2 my2 h5">
+                    {$m.age} <span>&#8226;</span> {$m.address}, {$m.country|default=""}
+                </div>
+
+                <div class="flex flex-auto items-end justify-between mx2 my3">
+                    <div class="flex items-center">
+                        <div class="pointer me3 relative {:in_array($m.id,$uIntrestMids)?'fill-action-highlight':'fill-action-unhighlight' }"
+                               data-opt-interest
+                               data-d-mid="{$m.id}"
+                               title="{:lang('发送秋波给')}{$m.nickname}">
+                            <svg class="icon-30">
+                                <use xlink:href="/assets/desktop/icons/icons.svg#icon-heart"></use>
+                            </svg>
+                        </div>
+                        <div class="pointer me3 fill-action-unhighlight relative"
+                             data-opt-sendmsg
+                             data-d-mid="{$m.id}"
+                             title="{:lang('发送讯息给')}{$m.nickname}">
+                            <svg class="icon-30">
+                                <use xlink:href="/assets/desktop/icons/icons.svg#icon-messages"></use>
+                            </svg>
+                        </div>
+                        <div class="pointer me3 {:in_array($m.id,$uFavoriteMids)?'fill-action-highlight':'fill-action-unhighlight' } relative"
+                                   data-opt-addfavorite=""
+                                   data-d-mid="{$m.id}"
+                                   title="{:lang('加为最爱')}">
+                        <svg class="icon-30">
+                            <use xlink:href="/assets/desktop/icons/icons.svg#icon-star"></use>
+                        </svg>
+                    </div>
+
+                    </div>
+                    <div class="fill-action-unhighlight relative" data-button="true" data-animate-reset="heartbeat">
+                        <div class="pointer no-highlight flex items-center">
+                            <svg class="icon-30">
+                                <use xlink:href="/assets/desktop/icons/icons.svg#icon-camera"></use>
+                            </svg>
+                            <div class="ms2 h5"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {/volist}
+        {if condition="$pno!=$lastPno"}
+        <a href="#searchForm" data-page="{$nextPno}" class="block col m1 card-s">
+            <div class="col-12 height-12">
+                <div class="card height-12 flex items-center justify-center next-button rounded border">
+                    <div class="flex items-center">
+                        <div class="center">
+                            <h2 class="h2 m0 caps">{:lang("下一页")}</h2>
+                        </div>
+                        <div class="fill-standard">
+                            <svg class="icon-next-button">
+                                <use xlink:href="/assets/desktop/icons/icons.svg#icon-menuright"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {/if}
+    </div>
+    {if condition='count($members)>0'}
+    <div class="max-width mt2 px2 mx-auto">
+        <div class="flex justify-between items-center caps">
+            <div class="flex">
+                <div class="flex items-center me2 opacity-6">
+                    <div class="fill-standard me1">
+                        <svg class="icon-first">
+                            <use xlink:href="/assets/desktop/icons/icons.svg#icon-first"></use>
+                        </svg>
+                    </div>
+                    <a href="#searchForm" data-page="1">{:lang("第一页")}</a>
+                </div>
+
+                <div class="flex items-center opacity-6">
+                    <div class="fill-standard me1">
+                        <svg class="icon-prev">
+                            <use xlink:href="/assets/desktop/icons/icons.svg#icon-menuleft"></use>
+                        </svg>
+                    </div>
+                    <a href="#searchForm" data-page="{$prevPno}"> {:lang("上一页")}</a>
+                </div>
+
+            </div>
+
+            <div class="flex">
+                {if condition="$pno neq $nextPno"}
+                <a href="#searchForm" data-page="{$nextPno}">
+                    <div class="flex items-center">
+                        {:lang("下一页")}
+                        <div class="fill-standard mx1">
+                            <svg class="icon-next">
+                                <use xlink:href="/assets/desktop/icons/icons.svg#icon-menuright"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+                {/if}
+                {if condition="$pno neq $lastPno"}
+
+                <a href="#searchForm" data-page="{$lastPno}">
+                    <div class="flex items-center ms2">
+                        {:lang("最末页")}
+                        <div class="fill-standard ms1">
+                            <svg class="icon-last">
+                                <use xlink:href="/assets/desktop/icons/icons.svg#icon-last"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                {/if}
+            </div>
+        </div>
+    </div>
+    {/if}
+</div>

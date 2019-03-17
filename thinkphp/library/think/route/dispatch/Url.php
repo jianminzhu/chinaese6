@@ -61,8 +61,7 @@ class Url extends Dispatch
         }
 
         if ($controller && !preg_match('/^[A-Za-z][\w|\.]*$/', $controller)) {
-            redirect("/");
-            //zhu     throw new HttpException(404, 'controller not exists:' . $controller);
+            throw new HttpException(404, 'controller not exists:' . $controller);
         }
 
         // 解析操作

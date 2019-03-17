@@ -3,6 +3,7 @@
 namespace app\index\controller;
 
 use app\index\model\Member;
+use QL\QueryList;
 
 /**
  * Class Auth
@@ -11,6 +12,14 @@ use app\index\model\Member;
  */
 class A extends Base
 {
+
+    public function index()
+    {
+        //采集某页面所有的图片
+        $data = QueryList::get('http://cms.querylist.cc/bizhi/453.html')->find('img')->attrs('src');
+        //打印结果
+        print_r($data->all());
+    }
 
     public function login($data = [])
     {

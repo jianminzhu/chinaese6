@@ -80,8 +80,7 @@
 <head>
     <meta charset="UTF-8">
     <title>系统发生错误</title>
-    <meta name="robots" content="noindex,nofollow"  />
-
+    <meta name="robots" content="noindex,nofollow" />
     <style>
         /* Base */
         body {
@@ -411,7 +410,9 @@
     <?php } ?>
 
     <div class="copyright">
-
+        <a title="官方网站" href="http://www.thinkphp.cn">ThinkPHP</a> 
+        <span>V<?php echo \think\facade\App::version(); ?></span> 
+        <span>{ 十年磨一剑-为API开发设计的高性能框架 }</span>
     </div>
     <?php if(\think\facade\App::isDebug()) { ?>
     <script>
