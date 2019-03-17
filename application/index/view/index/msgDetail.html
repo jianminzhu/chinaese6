@@ -15,7 +15,6 @@
     <link rel="shortcut icon" href="/favicon.ico">
 
 
-
     <link rel="stylesheet" href="/assets/desktop/css/chinalovecupid-base.css?v=24">
 
 
@@ -146,13 +145,6 @@
                                             </svg>
                                         </div>
                                     </div>
-                                    <a class="block message-upgrade m1 py1 px2 bg-green white rounded flex items-center justify-center"
-                                       href="/en/payment/upgrade?useraction=readmail&amp;memberid=4064911">
-                                        <svg class="flex-none fill-white pointer">
-                                            <use xlink:href="/assets/desktop/icons/icons.svg#icon-paperairplane"></use>
-                                        </svg>
-                                        <div class="ms1">{:lang("升级为会员")}</div>
-                                    </a>
 
                                 </div>
                             </div>
@@ -165,21 +157,7 @@
                                 <div class="h5 px2 pt2 pb1 right-align">{$msg.send_date}</div>
                                 <div class="my-message p2 rounded flex items-center relative">
                                     <div class="mr2 white break-word" title="{$msg.send_date}">
-                                       {$msg.msg}
-                                        <!--<div class="max-width-1 bg-white body-font-color mt1 p1 rounded col-12">
-                                            <p class="p0 mt0 mb1"><span>{:lang("对方")}</span> </p>
-                                            <div class="my1">
-                                                <a class="block message-upgrade m1 py1 px2 bg-green white rounded flex items-center justify-center"
-                                                   href="/en/payment/upgrade?useraction=readmail&amp;memberid=4064911">
-                                                    <svg class="flex-none fill-white pointer">
-                                                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-paperairplane"></use>
-                                                    </svg>
-                                                    <div class="ms1">{:lang("升级为会员")}</div>
-                                                </a>
-
-                                            </div>
-                                        </div>-->
-
+                                        {$msg.msg}
                                     </div>
                                 </div>
 
@@ -198,18 +176,19 @@
                         <div class="inline-block dot circle"></div>
                         <div class="inline-block dot circle"></div>
                     </div>
-                        <div class="flex items-end">
-                            <div class="col sm-col-12 lg-col-11 border-bottom me1">
-                                <textarea name="message" rows="1" class="col-12 bg-transparent message-input border-none" placeholder="{:lang('消息内容')}"></textarea>
-                            </div>
-                            <button class="send-btn bg-theme p2 circle flex items-center border-none relative"
-                                 data-opt-dosendmsg="{$m.id}">
-                                <svg class="icon-30 header-strip-fill">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                         xlink:href="/assets/desktop/icons/icons.svg#icon-paperairplane"></use>
-                                </svg>
-                            </button>
+                    <div class="flex items-end">
+                        <div class="col sm-col-12 lg-col-11 border-bottom me1">
+                            <textarea name="message" rows="1" class="col-12 bg-transparent message-input border-none"
+                                      placeholder="{:lang('消息内容')}"></textarea>
                         </div>
+                        <button class="send-btn bg-theme p2 circle flex items-center border-none relative"
+                                data-opt-dosendmsg="{$m.id}">
+                            <svg class="icon-30 header-strip-fill">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     xlink:href="/assets/desktop/icons/icons.svg#icon-paperairplane"></use>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
 
             </div>
@@ -225,12 +204,14 @@
     <div class="ms1 relative flex-none hide-on-iPad overflow-hidden ad-300-600-holder mb4">
 
         <div class="ad-300-600-wrapper">
-            <div class="mt1 center h4"> </div>
-            <div id="div-gpt-ad-160_600" class="ad-300-600 flex-none flex flex-wrap items-top justify-center mx-auto" data-ad-type="half-page" data-ad-unit="/291063315/chinalovecupid_desktop/mail_vrec_1" data-ad-width="300" data-ad-height="600" data-google-query-id="CN6TrPS0geECFRS0lgodmL4BwQ">
+            <div class="mt1 center h4"></div>
+            <div id="div-gpt-ad-160_600" class="ad-300-600 flex-none flex flex-wrap items-top justify-center mx-auto"
+                 data-ad-type="half-page" data-ad-unit="/291063315/chinalovecupid_desktop/mail_vrec_1"
+                 data-ad-width="300" data-ad-height="600" data-google-query-id="CN6TrPS0geECFRS0lgodmL4BwQ">
+
+            </div>
 
         </div>
-
     </div>
-</div>
 </body>
 </html>
