@@ -133,8 +133,7 @@ function search() {
     });
 }
 function action() {
-    $("body").delegate("[name=upgradeForm]", "submit", function () {
-        alert(3333);
+    $("body").delegate("[name=dialogUpgradeForm]", "submit", function () {
         return false;
     });
     $("body").delegate("[data-opt-closeDialog]", "click", function () {
