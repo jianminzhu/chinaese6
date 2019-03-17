@@ -1,0 +1,33 @@
+<div style="">
+    <div data-opt-closeDialog="dialogMsg" style="float:right;padding-top: 10px; padding-right: 13px">
+        <svg class="icon-20">
+            <use xlink:href="/assets/desktop/icons/icons.svg#icon-close"></use>
+        </svg>
+    </div>
+    <div class="clear"></div>
+    <div class="card-s card m1 flex flex-wrap overflow-hidden bg-white shadow relative">
+        <a id="273" class="absolute top-minus-100"></a>
+        <a class="flex items-center col-12 justify-center std relative" target="_blank"
+           href="/index.php/index/m/profile?id=273">
+            <div class="profile-bg" style="background-image:url('http://www.bytrip.com/{$m.main_pic}')"></div>
+            <div class="border-box z2 flex items-center justify-center standard-online online circle border-white">
+                <svg class="col-12 height-12" data-tooltip="ttOn">
+                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-online"></use>
+                </svg>
+            </div>
+        </a>
+
+        <div class="sdh col-12 relative flex flex-column">
+
+            <div class="flex items-center mx2 mt2">
+                <a target="_blank" href="/index.php/index/m/profile?id=273"
+                   class="h3 color-dark-grey m0 truncate max-width-85">{$lang=="en-us"?pinyinName($m.nickname):$m.nickname} / {$m.age} / {$lang=="en-us"?pinyinAddress($m.address):$m.address}</a>
+            </div>
+            <div class="mx2 my2 h5">
+            {volist name="concats" id="c"}
+                 {:lang($c.type)}：{$c.number}<br>
+            {/volist}
+            </div>
+        </div>
+    </div>
+</div>

@@ -195,8 +195,8 @@ function action() {
                 var $id = jit.attr("data-opt-showconcat");
                 let msg = jit.parent().find("textarea[name=message]").val();
                 if (msg != "") {
-                    mdata("/index/m/concat", {mid: $id}).then(function (res) {
-                        alert(res)
+                    mhtml("/index/m/concat", {mid: $id}).then(function (res) {
+                        $("#dialogMsg").html(res).show()
                     });
                 }
             });

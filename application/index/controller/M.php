@@ -92,19 +92,37 @@ class M extends Base
         }
         return $this->ajax($isSucc, ["emsg" => $emsg, "addClass" => $addClass, "removeClass" => $removeCss]);
     }
-    public function upgradeDialog(){
+
+    public function upgradeDialog()
+    {
         if ($this->isLogin()) {
             return view("/index/upgradeDialog");
         }
         return redirect("/index.php/index/a/login");
     }
-    public function upgrade(){
+
+    public function concat()
+    {
+        if ($this->isLogin()) {
+            $this->headData();
+            $mid = request()->param("mid");
+            $this->assign(["m" => Member::get(["id" => $mid]),
+                "concats" => Db::table("membercontacts")->where("uid", $mid)->select()
+            ]);
+            return view("/index/concatsDialog");
+        }
+        return redirect("/index.php/index/a/login");
+    }
+
+    public function upgrade()
+    {
         if ($this->isLogin()) {
             $this->headData();
             return view("/index/upgrade");
         }
         return redirect("/index.php/index/a/login");
     }
+
     public function active()
     {
         if ($this->isLogin()) {

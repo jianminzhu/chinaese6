@@ -27,6 +27,9 @@ return [
     "提交" => "Upgrade Now",
     "第一步，选择你要升级的会员类型"=>"Step 1 - Choose a subscription",
     "第二步，选择支付方式" => "Step 2 - Choose a payment method",
+    "手机" => "Mobile",
+    "邮箱" => "email",
+    "微信" => "WeiXin",
 
 
     "会员动态" => "Activity",
