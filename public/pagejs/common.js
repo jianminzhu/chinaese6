@@ -67,21 +67,28 @@ function showNotice(msg) {
         $b.removeClass("notices-open");
     }, 2000);
 }
-function payDo(fun) {
+function payDo(fun, type) {
+    if (type === void 0) { type = "ajax"; }
     mdata("/index/a/ajaxIsPay").then(function (res) {
         if (res.isSuccess) {
             fun();
         }
         else {
-            var jpayDialog = $("#dialogUpgrade");
-            if (jpayDialog.length == 0) {
-                mhtml("/index/m/upgradeDialog").then(function (res) {
-                    jpayDialog = $(res);
-                    $("body").prepend(jpayDialog);
-                });
+            if (type == "ajax") {
+                var jpayDialog = $("#dialogUpgrade");
+                if (jpayDialog.length == 0) {
+                    mhtml("/index/m/upgradeDialog").then(function (res) {
+                        jpayDialog = $(res);
+                        $("body").prepend(jpayDialog);
+                    });
+                }
+                else {
+                    jpayDialog.show();
+                }
             }
             else {
-                jpayDialog.show();
+                window.location.href = "/index/m/upgrade";
+                window.location.reload();
             }
         }
     });
@@ -159,7 +166,7 @@ function action() {
             });
         });
     });
-    //发送消息相关
+    //表单发送消息
     $("body").delegate("[data-opt-dosendmsg]", "click", function () {
         var jit = $(this);
         loginDo(function () {
@@ -169,13 +176,13 @@ function action() {
                 if (msg != "") {
                     mdata("/index/mail/send", { to_m_id: $id, msg: msg, "type": 2 }).then(function (res) {
                         showNotice(res.data);
-                        showDialogSentMsg($id);
                         window.location.reload();
                     });
                 }
-            });
+            }, "form");
         });
     });
+    //对话框发送消息
     $("body").delegate("[data-opt-ajaxsendmsg]", "click", function () {
         var jit = $(this);
         loginDo(function () {
@@ -191,6 +198,7 @@ function action() {
             });
         });
     });
+    //显示发送消息窗口
     $("body").delegate("[data-opt-sendmsg]", "click", function () {
         var mid = $(this).data("dMid");
         loginDo(function () {

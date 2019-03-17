@@ -33,177 +33,155 @@
 {include file="../application/index/view/index/_head.html" /}
 <div class="max-width mx-auto p2 flex relative py4">
     <div class="col-12">
+        <div class="me2 col-3 max-width-2">
+            <div class="mb3 relative">
+                <div class="profile-image-header circle shadow border mx-auto relative">
 
-        <div class="max-width mx-auto py2 flex flex-wrap">
-
-            <div class="me2 col-3 max-width-2">
-                <div class="mb3 relative">
-                    <div class="profile-image-header circle shadow border mx-auto relative">
-
-                        <div class="flex items-center justify-center height-12 circle overflow-hidden card-image-bg-color">
-                            <a class="col-12 height-12" href="/index.php/index/m/profile?id={$m.id}">
-                                <div class="profile-bg overflow-hidden circle" data-cm-modal-url=""
-                                     style="background-image:url('{$m.main_pic}')"></div>
-                            </a>
-                        </div>
-                        <div class="icon-holder absolute">
-                        </div>
-
+                    <div class="flex items-center justify-center height-12 circle overflow-hidden card-image-bg-color">
+                        <a class="col-12 height-12" href="/index.php/index/m/profile?id={$m.id}">
+                            <div class="profile-bg overflow-hidden circle" data-cm-modal-url=""
+                                 style="background-image:url('{$m.main_pic}')"></div>
+                        </a>
                     </div>
-                </div>
-
-                <div class="flex items-center justify-center">
-                    <h2 class="h2 m0 color-dark-grey center truncate">{$m.nickname}</h2>
-                    <div class="icon-membership ms1 fill-standard relative">
-                        <svg class="ms1 fill-standard relative tooltip">
-                            <use xlink:href="/assets/desktop/icons/icons.svg#icon-profile"></use>
-                        </svg>
-
-                        <div class="tooltip-text tooltip-text-width-auto truncate tooltip-text-center h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
-                            {:lang("普通会员")}
-                        </div>
-
+                    <div class="icon-holder absolute">
                     </div>
+
                 </div>
-
-                <div class="h4 mt1 center">{$m.age} <span>•</span> {$m.address}</div>
-                <div class="border-top mt2 p2 flex items-center">
-                    <div class="flex flex-wrap items-end justify-between col-12">
-                        <div class="flex items-center mb2 me2">
-
-
-                            <div class="flex flex-auto items-end justify-between ">
-                                <div class="flex items-center">
-                                    <div class="pointer me2 relative  {:in_array($m.id,$uIntrestMids)?'fill-action-highlight':'fill-action-unhighlight' }"
-                                         data-opt-interest="" data-d-mid="{$m.id}"
-                                         title="{:lang('发送秋波给')}{$m.nickname} ">
-                                        <svg class="icon-30 tooltip">
-                                            <use xlink:href="/assets/desktop/icons/icons.svg#icon-heart"></use>
-                                        </svg>
-                                    </div>
-
-
-                                    <div class="pointer me2 relative {:in_array($m.id,$uFavoriteMids)?'fill-action-highlight':'fill-action-unhighlight' }"
-                                         data-opt-addfavorite=""
-                                         data-d-mid=""
-                                         title="{:lang('加入最爱')}">
-
-                                        <svg class="icon-30 tooltip">
-                                            <use xlink:href="/assets/desktop/icons/icons.svg#icon-star"></use>
-                                        </svg>
-
-                                    </div>
-                                    <a href="/index.php/index/m/profile?id={$m.id}" target="_blank">
-                                        <div class="fill-action-unhighlight relative">
-                                            <div class="pointer no-highlight flex items-center" title=" {:lang('照片')}">
-                                                <svg class="icon-30 tooltip">
-                                                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-camera"></use>
-                                                </svg>
-                                                <div class="ms2 h5"></div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
             </div>
-            <div class="col-8 border-left items-stretch px2 relative">
-                <div class="message-holder" style="height: 614px;">
-                    {volist name="msgs" id="msg"}
-                    {if condition="$msg.to_m_id eq $u.id"}
-                    <div class="flex relative">
-                        <div class="flex flex-auto items-center">
-                            <div class="me3 mt3 relative flex-none">
-                                <div class="sender-image circle border card-image-bg-color">
-                                    <div class="fit col-12 height-12 circle overflow-hidden">
-                                        <div class="profile-bg overflow-hidden circle" data-cm-modal-url=""
-                                             style="background-image:url('{$m.main_pic}')"></div>
-                                    </div>
+
+            <div class="flex items-center justify-center">
+                <h2 class="h2 m0 color-dark-grey center truncate">{$m.nickname}</h2>
+                <div class="icon-membership ms1 fill-standard relative">
+                    <svg class="ms1 fill-standard relative tooltip">
+                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-profile"></use>
+                    </svg>
+
+                    <div class="tooltip-text tooltip-text-width-auto truncate tooltip-text-center h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
+                        {:lang("普通会员")}
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="h4 mt1 center">{$m.age} <span>•</span> {$m.address}</div>
+            <div class="border-top mt2 p2 flex items-center">
+                <div class="flex flex-wrap items-end justify-between col-12">
+                    <div class="flex items-center mb2 me2">
+
+
+                        <div class="flex flex-auto items-end justify-between ">
+                            <div class="flex items-center">
+                                <div class="pointer me2 relative  {:in_array($m.id,$uIntrestMids)?'fill-action-highlight':'fill-action-unhighlight' }"
+                                     data-opt-interest="" data-d-mid="{$m.id}"
+                                     title="{:lang('发送秋波给')}{$m.nickname} ">
+                                    <svg class="icon-30 tooltip">
+                                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-heart"></use>
+                                    </svg>
                                 </div>
-                            </div>
-                            <div class="max-width-2 m0 flex flex-column col-6">
-                                <div class="h5 px2 pt2 pb1">{$msg.send_date}</div>
-                                <div class="message bg-white p2 rounded relative">
-                                    <div class="flex items-center justify-between">
-                                        <div class="col-11 mr2 break-word   p1 no-select clamp clamp4"
-                                             title="{$msg.send_date}">
-                                            <div>
-                                                {$msg.msg}
-                                            </div>
+
+
+                                <div class="pointer me2 relative {:in_array($m.id,$uFavoriteMids)?'fill-action-highlight':'fill-action-unhighlight' }"
+                                     data-opt-addfavorite=""
+                                     data-d-mid=""
+                                     title="{:lang('加入最爱')}">
+
+                                    <svg class="icon-30 tooltip">
+                                        <use xlink:href="/assets/desktop/icons/icons.svg#icon-star"></use>
+                                    </svg>
+
+                                </div>
+                                <a href="/index.php/index/m/profile?id={$m.id}" target="_blank">
+                                    <div class="fill-action-unhighlight relative">
+                                        <div class="pointer no-highlight flex items-center" title=" {:lang('照片')}">
+                                            <svg class="icon-30 tooltip">
+                                                <use xlink:href="/assets/desktop/icons/icons.svg#icon-camera"></use>
+                                            </svg>
+                                            <div class="ms2 h5"></div>
                                         </div>
                                     </div>
+                                </a>
+                            </div>
+                        </div>
 
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-8 border-left items-stretch px2 relative">
+            <div class="message-holder" style="height: 614px;">
+                {volist name="msgs" id="msg"}
+                {if condition="$msg.to_m_id eq $u.id"}
+                <div class="flex relative">
+                    <div class="flex flex-auto items-center">
+                        <div class="me3 mt3 relative flex-none">
+                            <div class="sender-image circle border card-image-bg-color">
+                                <div class="fit col-12 height-12 circle overflow-hidden">
+                                    <div class="profile-bg overflow-hidden circle" data-cm-modal-url=""
+                                         style="background-image:url('{$m.main_pic}')"></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {else}
-                    <div class="flex relative">
-                        <div class="flex flex-auto items-center justify-end">
-                            <div class="max-width-2 m0 flex flex-column">
-                                <div class="h5 px2 pt2 pb1 right-align">{$msg.send_date}</div>
-                                <div class="my-message p2 rounded flex items-center relative">
-                                    <div class="mr2 white break-word" title="{$msg.send_date}">
-                                        {$msg.msg}
+                        <div class="max-width-2 m0 flex flex-column col-6">
+                            <div class="h5 px2 pt2 pb1">{$msg.send_date}</div>
+                            <div class="message bg-white p2 rounded relative">
+                                <div class="flex items-center justify-between">
+                                    <div class="col-11 mr2 break-word   p1 no-select clamp clamp4"
+                                         title="{$msg.send_date}">
+                                        <div>
+                                            {$msg.msg}
+                                        </div>
                                     </div>
                                 </div>
 
                             </div>
                         </div>
                     </div>
-                    {/if}
-                    {/volist}
                 </div>
+                {else}
+                <div class="flex relative">
+                    <div class="flex flex-auto items-center justify-end">
+                        <div class="max-width-2 m0 flex flex-column">
+                            <div class="h5 px2 pt2 pb1 right-align">{$msg.send_date}</div>
+                            <div class="my-message p2 rounded flex items-center relative">
+                                <div class="mr2 white break-word" title="{$msg.send_date}">
+                                    {$msg.msg}
+                                </div>
+                            </div>
 
-                <div class="message-input-holder mt3 max-width-3">
-                    <div class="inline-block animate-typing bg-light-grey pill ms2 p1 relative" hidden="">
-                        <div class="bubble-large circle bg-light-grey absolute"></div>
-                        <div class="bubble-small circle bg-light-grey absolute"></div>
-                        <div class="inline-block dot circle"></div>
-                        <div class="inline-block dot circle"></div>
-                        <div class="inline-block dot circle"></div>
+                        </div>
                     </div>
-                    <div class="flex items-end">
-                        <div class="col sm-col-12 lg-col-11 border-bottom me1">
+                </div>
+                {/if}
+                {/volist}
+            </div>
+
+            <div class="message-input-holder mt3 max-width-3">
+                <div class="inline-block animate-typing bg-light-grey pill ms2 p1 relative" hidden="">
+                    <div class="bubble-large circle bg-light-grey absolute"></div>
+                    <div class="bubble-small circle bg-light-grey absolute"></div>
+                    <div class="inline-block dot circle"></div>
+                    <div class="inline-block dot circle"></div>
+                    <div class="inline-block dot circle"></div>
+                </div>
+                <div class="flex items-end">
+                    <div class="col sm-col-12 lg-col-11 border-bottom me1">
                             <textarea name="message" rows="1" class="col-12 bg-transparent message-input border-none"
                                       placeholder="{:lang('消息内容')}"></textarea>
-                        </div>
-                        <button class="send-btn bg-theme p2 circle flex items-center border-none relative"
-                                data-opt-dosendmsg="{$m.id}">
-                            <svg class="icon-30 header-strip-fill">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                     xlink:href="/assets/desktop/icons/icons.svg#icon-paperairplane"></use>
-                            </svg>
-                        </button>
                     </div>
+                    <button class="send-btn bg-theme p2 circle flex items-center border-none relative"
+                            data-opt-dosendmsg="{$m.id}">
+                        <svg class="icon-30 header-strip-fill">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                 xlink:href="/assets/desktop/icons/icons.svg#icon-paperairplane"></use>
+                        </svg>
+                    </button>
                 </div>
-
             </div>
-
-
-        </div>
-
-
-        <div class="my2 list-message-filter">
-
         </div>
     </div>
-    <div class="ms1 relative flex-none hide-on-iPad overflow-hidden ad-300-600-holder mb4">
-
-        <div class="ad-300-600-wrapper">
-            <div class="mt1 center h4"></div>
-            <div id="div-gpt-ad-160_600" class="ad-300-600 flex-none flex flex-wrap items-top justify-center mx-auto"
-                 data-ad-type="half-page" data-ad-unit="/291063315/chinalovecupid_desktop/mail_vrec_1"
-                 data-ad-width="300" data-ad-height="600" data-google-query-id="CN6TrPS0geECFRS0lgodmL4BwQ">
-
-            </div>
-
-        </div>
-    </div>
+</div>
+</div>
 </body>
 </html>
