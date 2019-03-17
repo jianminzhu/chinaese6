@@ -111,15 +111,7 @@ div{display:inline}
             <button name="b_search" class="h4 py1 px2 rounded shadow border-none upper-case pointer">{:lang("搜索")}
             </button>
         </div>
-    </form></h4>
-<h4><input type="checkbox" name="selectAll">全选 <input type="text" name="sort" value=""> <button name="b_update_sort">更新排序</button></h4>
-{volist name="members" id="p"}
-<a href="/index.php/index/m/profile?id={$p.id}" target="_blank">
-    <dl>
-        <dd><img src="http://www.bytrip.com/{$p.main_pic}" alt="" height="80px"></dd>
-        <dd>{$p.nickname}</dd>
-        <dd>{$p.age} {$p.address}</dd>
-        <dd><input type="checkbox" name="ids" value="{$p.id}"></dd>
-    </dl>
-</a>
-{/volist}
+    </form>
+</h4>
+
+{include file="../application/admin/view/page/memberSearchTable.html" /}

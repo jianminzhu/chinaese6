@@ -229,7 +229,7 @@ class Base extends Controller
         $nextPno = $pno;
 
         try {
-            $pageSize = 15;
+            $pageSize = intval(request()->param("__psize", 15));
             $count = $this->getMemberWithWhere($mid)->count();
             $lastPno = ceil($count / $pageSize);
             if ($pno >= $lastPno) {
@@ -238,9 +238,7 @@ class Base extends Controller
             } else {
                 $nextPno = $pno + 1;
             }
-            $dbMembers = $this->getMemberWithWhere($mid)->page("$pno,15")->select();
-
-
+            $dbMembers = $this->getMemberWithWhere($mid)->page("$pno,$pageSize")->select();
         } catch (Exception $e) {
 
         }

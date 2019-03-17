@@ -1,0 +1,15 @@
+<div name="searchResults">
+    <h4><input type="checkbox" name="selectAll">全选 <input type="text" name="sort" value="">
+        <button name="b_update_sort">更新排序</button>
+    </h4>
+    {volist name="members" id="p"}
+    <a href="/index.php/index/m/profile?id={$p.id}" target="_blank">
+        <dl>
+            <dd><img src="{$p.main_pic}" alt="" height="80px"></dd>
+            <dd>{$p.nickname}</dd>
+            <dd>{$p.age} {$p.address}</dd>
+            <dd><input type="checkbox" name="ids" value="{$p.id}"></dd>
+        </dl>
+    </a>
+    {/volist}
+</div>
