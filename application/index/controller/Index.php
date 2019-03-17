@@ -14,9 +14,8 @@ class Index extends Base
         $this->headData();
         try {
             $this->searchData();
-        } catch (DataNotFoundException $e) {
-        } catch (ModelNotFoundException $e) {
-        } catch (DbException $e) {
+        } catch ( Exception $e) {
+            echo $e->getMessage();
         }
         return $this->fetch('index');
     }

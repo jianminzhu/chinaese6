@@ -1,0 +1,125 @@
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/pagejs/common.js?v=1.18"></script>
+<script src="/js/tolang.js?v=1.11"></script>
+<style>dl{float:left; padding: 3px}
+div{display:inline}
+</style>
+<h4>
+    <form name="searchForm" id="searchForm">
+        <div class="search mt2 p2  mx-auto shadow rounded flex flex-wrap items-center justify-between max-width">
+            <div class="border-bottom m1 col-2">
+                <label for="form-quick-search-seeking">{:lang('寻找')}</label>
+                <input type="hidden" name="pno" value="1"/>
+                <select name="sex" id="form-quick-search-seeking" class="col-12">
+
+                    <option value="-1">{:lang("不限")}</option>
+
+                    <option value="1">{:lang("男性")}</option>
+
+                    <option value="0" selected="">{:lang("女性")}</option>
+
+                </select>
+
+            </div>
+
+            <div class="border-bottom search-age m1">
+                <label for="form-quick-search-age-min">{:lang("年龄")}</label>
+                <div class="flex items-center">
+
+
+                    <select name="age_min" id="form-quick-search-age-min" class="col-12">
+                        <option value="-1">-</option>
+                        <option value="18" selected="">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                        <option value="32">32</option>
+                        <option value="33">33</option>
+                        <option value="34">34</option>
+                        <option value="35">35</option>
+                        <option value="36">36</option>
+                        <option value="37">37</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+
+                    </select>
+
+
+                    <select name="age_max" id="form-quick-search-age-max" class="col-12">
+                        <option value="-1">-</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                        <option value="32">32</option>
+                        <option value="33">33</option>
+                        <option value="34">34</option>
+                        <option value="35">35</option>
+                        <option value="36">36</option>
+                        <option value="37">37</option>
+                        <option value="38" selected="">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="border-bottom m1 col-2">
+                <label for="form-quick-search-country">{:lang("国家")}</label>
+                {include file="../application/index/view/index/_select_country.html" /}
+            </div>
+
+            <div class="border-bottom m1 col-2">
+                <label for="form-quick-search-state">{:lang('省/县')}</label>
+                <select name="stateid" id="form-quick-search-state" class="col-12" data-dependentselect="cityLive"
+                        formaction="/zc/widget/loadstates?countryid="
+                        data-datamap="{&quot;group&quot;:&quot;STATEVALUE&quot;,&quot;text&quot;:&quot;TRANSLATION&quot;,&quot;value&quot;:&quot;ATTRIBUTEID&quot;}">
+                    <option value="-1">{:lang("任何")}</option>
+                </select>
+            </div>
+
+            <div class="border-bottom m1 col-2">
+                <label for="form-quick-search-city">{:lang('市')}</label>
+                <select name="cityid" id="form-quick-search-city" class="col-12"
+                        formaction="/zc/widget/loadcities?stateid="
+                        data-datamap="{&quot;group&quot;:&quot;STATEVALUE&quot;,&quot;text&quot;:&quot;TRANSLATION&quot;,&quot;value&quot;:&quot;ATTRIBUTEID&quot;}">
+                    <option value="-1">{:lang("任何")}</option>
+                </select>
+            </div>
+            <button name="b_search" class="h4 py1 px2 rounded shadow border-none upper-case pointer">{:lang("搜索")}
+            </button>
+        </div>
+    </form></h4>
+<h4><input type="checkbox" name="selectAll">全选 <input type="text" name="sort" value=""> <button name="b_update_sort">更新排序</button></h4>
+{volist name="members" id="p"}
+<a href="/index.php/index/m/profile?id={$p.id}" target="_blank">
+    <dl>
+        <dd><img src="http://www.bytrip.com/{$p.main_pic}" alt="" height="80px"></dd>
+        <dd>{$p.nickname}</dd>
+        <dd>{$p.age} {$p.address}</dd>
+        <dd><input type="checkbox" name="ids" value="{$p.id}"></dd>
+    </dl>
+</a>
+{/volist}
