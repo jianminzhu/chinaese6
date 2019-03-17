@@ -92,7 +92,12 @@ class M extends Base
         }
         return $this->ajax($isSucc, ["emsg" => $emsg, "addClass" => $addClass, "removeClass" => $removeCss]);
     }
-
+    public function upgradeDialog(){
+        if ($this->isLogin()) {
+            return view("/index/upgradeDialog");
+        }
+        return redirect("/index.php/index/a/login");
+    }
     public function upgrade(){
         if ($this->isLogin()) {
             $this->headData();

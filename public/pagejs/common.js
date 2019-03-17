@@ -1,6 +1,6 @@
 function mhtml(url, data) {
     if (data === void 0) { data = {}; }
-    return $.ajax({ url: "/index.php" + url, data: data });
+    return $.ajax({ url: "/index.php" + url, type: 'get', data: data, dataType: "html" });
 }
 function mdata(url, data) {
     if (data === void 0) { data = {}; }
@@ -73,7 +73,16 @@ function payDo(fun) {
             fun();
         }
         else {
-            window.location.href = "/index.php/index/m/upgrade";
+            var jpayDialog = $("#dialogUpgrade");
+            if (jpayDialog.length == 0) {
+                mhtml("/index/m/upgradeDialog").then(function (res) {
+                    jpayDialog = $(res);
+                    $("body").prepend(jpayDialog);
+                });
+            }
+            else {
+                jpayDialog.show();
+            }
         }
     });
 }
@@ -124,6 +133,10 @@ function search() {
     });
 }
 function action() {
+    $("body").delegate("[name=upgradeForm]", "submit", function () {
+        alert(3333);
+        return false;
+    });
     $("body").delegate("[data-opt-closeDialog]", "click", function () {
         var $id = $(this).attr("data-opt-closeDialog");
         $(this).closest("div#" + $id).hide();

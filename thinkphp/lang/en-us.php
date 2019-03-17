@@ -24,6 +24,10 @@ return [
     "女性" => "Female",
     "搜索" => "Search",
     "请选择" => "Please select",
+    "提交" => "Upgrade Now",
+    "第一步，选择你要升级的会员类型"=>"Step 1 - Choose a subscription",
+    "第二步，选择支付方式" => "Step 2 - Choose a payment method",
+
 
     "会员动态" => "Activity",
     "谁在找我" => "Interested In Me",

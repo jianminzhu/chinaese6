@@ -1,5 +1,5 @@
 function mhtml(url, data = {}) {
-    return $.ajax({url: "/index.php" + url, data: data});
+    return $.ajax({url: "/index.php" + url, type: 'get', data: data, dataType: "html"});
 }
 
 function mdata(url, data = {}) {
@@ -7,37 +7,42 @@ function mdata(url, data = {}) {
         return eval(res);
     });
 }
+
 function parseURL(url) {
     var a = document.createElement('a');
     a.href = url;
     return {
         source: url,
-        protocol: a.protocol.replace(':',''),
+        protocol: a.protocol.replace(':', ''),
         host: a.hostname,
         port: a.port,
         query: a.search,
-        params: (function(){
+        params: (function () {
             var ret = {},
-                seg = a.search.replace(/^\?/,'').split('&'),
+                seg = a.search.replace(/^\?/, '').split('&'),
                 len = seg.length, i = 0, s;
-            for (;i<len;i++) {
-                if (!seg[i]) { continue; }
+            for (; i < len; i++) {
+                if (!seg[i]) {
+                    continue;
+                }
                 s = seg[i].split('=');
                 ret[s[0]] = s[1];
             }
             return ret;
         })(),
-        file: (a.pathname.match(/\/([^\/?#]+)$/i) || [,''])[1],
-        hash: a.hash.replace('#',''),
-        path: a.pathname.replace(/^([^\/])/,'/$1'),
-        relative: (a.href.match(/tps?:\/\/[^\/]+(.+)/) || [,''])[1],
-        segments: a.pathname.replace(/^\//,'').split('/')
+        file: (a.pathname.match(/\/([^\/?#]+)$/i) || [, ''])[1],
+        hash: a.hash.replace('#', ''),
+        path: a.pathname.replace(/^([^\/])/, '/$1'),
+        relative: (a.href.match(/tps?:\/\/[^\/]+(.+)/) || [, ''])[1],
+        segments: a.pathname.replace(/^\//, '').split('/')
     };
 }
-function getQueryString(name,url) {
+
+function getQueryString(name, url) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
     var r = url.substr(1).match(reg);
-    if (r != null) return unescape(r[2]); return null;
+    if (r != null) return unescape(r[2]);
+    return null;
 }
 
 function showLoginDialog(data = {}) {
@@ -71,11 +76,18 @@ function payDo(fun) {
         if (res.isSuccess) {
             fun();
         } else {
-            window.location.href = "/index.php/index/m/upgrade"
+            var jpayDialog = $("#dialogUpgrade");
+            if (jpayDialog.length == 0) {
+                mhtml("/index/m/upgradeDialog").then(function (res) {
+                    jpayDialog = $(res);
+                    $("body").prepend(jpayDialog);
+                })
+            } else {
+                jpayDialog.show();
+            }
         }
     });
 }
-
 function loginDo(fun) {
     mdata("/index/a/ajaxIsLogin").then(function (res) {
         if (res.isSuccess) {
@@ -126,6 +138,12 @@ function search() {
 }
 
 function action() {
+    $("body").delegate("[name=upgradeForm]", "submit", function () {
+        alert(3333)
+        return false;
+
+
+    });
     $("body").delegate("[data-opt-closeDialog]", "click", function () {
         var $id = $(this).attr("data-opt-closeDialog");
         $(this).closest(`div#${$id}`).hide();

@@ -1,24 +1,8 @@
-
 <script src="/js/jquery-3.3.1.min.js"></script>
-<script src="/pagejs/common.js?v=1.18"></script>
+<script src="/pagejs/common.js?v=1.19"></script>
 <script src="/js/tolang.js?v=1.11"></script>
-<div id="dialog_upgrade" class="flex   fixed px2 py4" hidden  style="z-index:100;top:10%;left: 35%;width:160% ; ">
+<link type="text/css" rel="stylesheet" href="/assets/css/global/global.css?v=165">
 
-
-    <div class="max-width-1 p1 rounded bg-white fade-in">
-
-        <div class="p1">
-            <div class="center mx-auto mb3">
-                <a href="/index.php/index/m/upgrade"><img src="{:lang('upgrade_pic')}" style="width: 80%" alt=""></a>
-            </div>
-            <div class="flex justify-end">
-                <a class="link" style="width:30%" data-opt-closeDialog="dialog_upgrade">{:lang("关闭")}</a>
-            </div>
-        </div>
-    </div>
-
-
-</div>
 <div class="header flex items-center justify-between fixed top-0 left-0 right-0 z3">
     <div class="col-6 header-nav-min-width header-nav-max-width z0 mx2">
         <div class="flex items-center justify-between p0 m0 h3">
@@ -26,8 +10,8 @@
                 <div class="z2 center col-12">www.chinesecompanion.com</div>
             </a>
             <a href="/" class="count">{:lang('首页')}</a>
-            <a href="/index.php/index/mail/msglist" class="count" {if condition="$Think.session.isLogin eq true " }    {/if}>{:lang("消息")}</a>
-            <a href="/index.php/index/m/active"  > {:lang("活动动态")}</a>
+            <a href="/index.php/index/mail/msglist" class="count" {if condition="$Think.session.isLogin eq true " } {/if}>{:lang("消息")}</a>
+            <a href="/index.php/index/m/active"> {:lang("活动动态")}</a>
             <div class="header-sub-menu relative pointer" data-animation="menu-pop">
                 <div class="block text-decoration-none h3 header-color count"></div>
             </div>

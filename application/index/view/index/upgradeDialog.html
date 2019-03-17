@@ -1,41 +1,3 @@
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr" data-device="desktop">
-<head>
-
-
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
-
-    <title>Upgrade</title>
-
-
-    <meta id="defaultmessage" content="Oops, something went wrong!">
-
-
-    <meta name="viewport"
-          content="width=device-width, height=device-height, initial-scale=1, user-scalable=no, maximum-scale=1, shrink-to-fit=no">
-
-
-    <meta name="stm-result" content="ok">
-
-
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="/assets/css/basscss/basscss.min.css?v=165">
-    <link type="text/css" rel="stylesheet" href="/assets/css/site/modal/modal.css?v=165">
-
-
-    <link type="text/css" rel="stylesheet" href="/assets/css/global/global.css?v=165">
-
-    <link rel="stylesheet" href="/assets/desktop/css/chinalovecupid-hybrid.css?v=24">
-
-    <link type="text/css" rel="stylesheet" href="/assets/css/site/generic/membercolor.css?v=165">
-    <link type="text/css" rel="stylesheet" href="/assets/css/site/generic/membercolor_chinalovecupid.css?v=165">
-    <link type="text/css" rel="stylesheet" href="/assets/css/site/generic/memberheader.css?v=165">
-    <link type="text/css" rel="stylesheet" href="/assets/css/site/generic/memberlayout.css?v=165">
-    <link type="text/css" rel="stylesheet" href="/assets/css/site/payment/upgradeMembership.css?v=165">
-</head>
-<body>
-{include file="../application/index/view/index/_head.html" /}
 <div id="dialogUpgrade">
     <div id="bannerwrapper" class="clearfix flex bannerwrapper-payment py4"
          style="position: fixed ;z-index:1000;left:10%">
@@ -46,7 +8,7 @@
                       method="post">
                     <div id="subscription" class="ab">
                         <div id="sub-hdr"><h2>{:lang("第一步，选择你要升级的会员类型")}</h2>
-                            <div data-opt-closeDialog="bannerwrapper" style="float:right;padding: 3px">
+                            <div data-opt-closeDialog="dialogUpgrade" style="float:right;padding: 3px">
                                 <svg class="icon-20">
                                     <use xlink:href="/assets/desktop/icons/icons.svg#icon-close"></use>
                                 </svg>
@@ -211,6 +173,3 @@
         </div>
     </div>
 </div>
-
-</body>
-</html>
