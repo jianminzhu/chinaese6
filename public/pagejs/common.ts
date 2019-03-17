@@ -187,6 +187,23 @@ function action() {
         })
     })
 
+    //表单发送消息
+    $("body").delegate("[data-opt-showconcat]", "click", function () {
+        var jit = $(this)
+        loginDo(function () {
+            payDo(function () {
+                var $id = jit.attr("data-opt-showconcat");
+                let msg = jit.parent().find("textarea[name=message]").val();
+                if (msg != "") {
+                    mdata("/index/m/concat", {mid: $id}).then(function (res) {
+                        alert(res)
+                    });
+                }
+            });
+        })
+    })
+
+
     //对话框发送消息
     $("body").delegate("[data-opt-ajaxsendmsg]", "click", function () {
         var jit = $(this)
