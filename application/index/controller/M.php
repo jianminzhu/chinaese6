@@ -106,8 +106,10 @@ class M extends Base
         if ($this->isLogin()) {
             $this->headData();
             $mid = request()->param("mid");
+            list($cc,$concats) = $this->concatData($mid, $this->isPay());
             $this->assign(["m" => Member::get(["id" => $mid]),
-                "concats" => Db::table("membercontacts")->where("uid", $mid)->select()
+                "cc" => $cc,
+                "concats"=>$concats
             ]);
             return view("/index/concatsDialog");
         }
@@ -204,21 +206,15 @@ class M extends Base
         ];
         $emsg = "";
         try {
-            $table = "membercontactsnologin";
+            $isPay = false;
             if ($this->isLogin()) {
-                if ($this->memberIsPay($this->loginUser()->id)) {
-                    $table = "membercontacts";
-                }
+                $isPay = $this->memberIsPay($this->loginUser()->id);
             }
-            $concats = Db::table($table)->where("uid", $id)->select();
-            foreach ($concats as $concat) {
-                $cc[$concat["type"]] = $concat["number"];
-            }
-
+            list($cc) = $this->concatData($id, $isPay);
         } catch (\Exception $e) {
             $emsg = $e->getMessage();
         }
-        return ['m' => $member, "pics" => $pics, "concats" => $concats, "cc" => $cc, "emsg" => $emsg];
+        return ['m' => $member, "pics" => $pics, "cc" => $cc, "emsg" => $emsg];
     }
 
 
@@ -332,6 +328,29 @@ class M extends Base
             "myILst" => count($myIIds) > 0 ? db("member")->where("id", "in", $myIIds)->select() : [],
         ];
         return $activeData;
+    }
+
+    /**
+     * @param $id
+     * @param $table
+     * @return array
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public function concatData($id, $isPay = false)
+    {
+        $cc = ["手机" => "",
+            "邮箱" => "",
+            "QQ" => "",
+            "微信" => ""
+        ];
+        $table = $isPay ? "membercontacts" : "membercontactsnologin";
+        $concats = Db::table($table)->where("uid", $id)->select();
+        foreach ($concats as $concat) {
+            $cc[$concat["type"]] = $concat["number"];
+        }
+        return array($cc,$concats);
     }
 }
 

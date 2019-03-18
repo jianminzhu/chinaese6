@@ -18,15 +18,19 @@
         </a>
 
         <div class="sdh col-12 relative flex flex-column">
-
             <div class="flex items-center mx2 mt2">
                 <a target="_blank" href="/index.php/index/m/profile?id=273"
-                   class="h3 color-dark-grey m0 truncate max-width-85">{$lang=="en-us"?pinyinName($m.nickname):$m.nickname} / {$m.age} / {$lang=="en-us"?pinyinAddress($m.address):$m.address}</a>
+                   class="h3 color-dark-grey m0 truncate max-width-85">{$lang=="en-us"?pinyinName($m.nickname):$m.nickname} </a>
             </div>
             <div class="mx2 my2 h5">
-            {volist name="concats" id="c"}
-                 {:lang($c.type)}：{$c.number}<br>
-            {/volist}
+                <table>
+                    <tr><td width="50px">{:lang("年龄")}:</td><td align="left">{$m.age}</td></tr>
+                    <tr><td>{:lang("城市")}:</td><td> {$lang=="en-us"?pinyinAddress($m.address):$m.address}</td></tr>
+                    <tr><td>{:lang("手机")}:</td><td>{$cc["手机"]}</td></tr>
+                    <tr><td>{:lang("邮箱")}:</td><td>{$cc["邮箱"]}　 </td></tr>
+                    <tr><td>{:lang("QQ")}:</td><td>{$cc["QQ"]}　 </td></tr>
+                    <tr><td>{:lang("微信")}:</td><td>{$cc["微信"]}</td></tr>
+                </table><br><br><br><br>
             </div>
         </div>
     </div>
