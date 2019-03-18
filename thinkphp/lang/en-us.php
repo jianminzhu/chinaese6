@@ -29,7 +29,7 @@ return [
     "第二步，选择支付方式" => "Step 2 - Choose a payment method",
     "手机" => "Mobile",
     "邮箱" => "email",
-    "微信" => "WeiXin",
+    "微信" => "WeChat",
     "城市" => "city",
     "会员动态" => "Activity",
     "谁在找我" => "Interested In Me",
