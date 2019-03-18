@@ -197,7 +197,11 @@ class M extends Base
     {
         $member = Member::get($id);
         $pics = Db::table("pics")->where("m_id", $id)->select();
-        $concats = [];
+        $cc = ["手机" => "",
+            "邮箱" => "",
+            "QQ" => "",
+            "微信" => ""
+        ];
         $emsg = "";
         try {
             $table = "membercontactsnologin";
@@ -207,10 +211,14 @@ class M extends Base
                 }
             }
             $concats = Db::table($table)->where("uid", $id)->select();
+            foreach ($concats as $concat) {
+                $cc[$concat["type"]] = $concat["number"];
+            }
+
         } catch (\Exception $e) {
             $emsg = $e->getMessage();
         }
-        return ['m' => $member, "pics" => $pics, "concats" => $concats, "emsg" => $emsg];
+        return ['m' => $member, "pics" => $pics, "concats" => $concats, "cc" => $cc, "emsg" => $emsg];
     }
 
 
@@ -325,8 +333,6 @@ class M extends Base
         ];
         return $activeData;
     }
-
-
 }
 
 

@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 
-    <title>{$lang=="en-us"?pinyinName($m.nickname):$m.nickname} / {$m.age} / {$lang=="en-us"?pinyinAddress($m.address):$m.address},{$m.country|default=""}| www.chinesecompanion.com</title>
+    <title>{$lang=="en-us"?pinyinName($m.nickname):$m.nickname} / {$m.age} /
+        {$lang=="en-us"?pinyinAddress($m.address):$m.address},{$m.country|default=""}| www.chinesecompanion.com</title>
 
 
     <meta id="defaultmessage" content="处理过程中发生问题"/>
@@ -167,19 +168,43 @@
                 {$m.country|default= "" }
             </div>
         </div>
-        {volist name="concats" id="c"}
+
         <div class="row flex items-stretch">
             <div class="col-3 flex items-center justify-between p1">
-                {:lang($c.type)}:
+                {:lang("手机")}:
             </div>
             <div class="col-5 me3 p1 relative overview-details-bg ">
                 <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
-                {$c.number}
+                {$cc["手机"]}
             </div>
         </div>
-        {/volist}
-
-
+        <div class="row flex items-stretch">
+            <div class="col-3 flex items-center justify-between p1">
+                {:lang("邮箱")}:
+            </div>
+            <div class="col-5 me3 p1 relative overview-details-bg ">
+                <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
+                {$cc["邮箱"]}
+            </div>
+        </div>
+        <div class="row flex items-stretch">
+            <div class="col-3 flex items-center justify-between p1">
+                {:lang("QQ")}:
+            </div>
+            <div class="col-5 me3 p1 relative overview-details-bg ">
+                <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
+                {$cc["QQ"]}
+            </div>
+        </div>
+        <div class="row flex items-stretch">
+            <div class="col-3 flex items-center justify-between p1">
+                {:lang("微信")}:
+            </div>
+            <div class="col-5 me3 p1 relative overview-details-bg ">
+                <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
+                {$cc["微信"]}
+            </div>
+        </div>
     </div>
 </div>
 </body>
