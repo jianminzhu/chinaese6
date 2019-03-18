@@ -118,8 +118,7 @@
                         </div>
                     </div> <div class="pointer circle relative me1 {:in_array($m.id,$uIntrestMids)?'fill-action-highlight':'fill-action-unhighlight' }"
                                 data-opt-addfavorite="" data-d-mid="{$m.id}">
-
-                    {$isPay?lang("会员可见"):""}
+                    {$isPay==false?lang("会员可见"):""}
                 </div>
                 </div>
             </div>
