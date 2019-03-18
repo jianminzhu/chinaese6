@@ -31,6 +31,8 @@ return [
     "邮箱" => "email",
     "微信" => "WeiXin",
 
+    "城市" => "city",
+
 
     "会员动态" => "Activity",
     "谁在找我" => "Interested In Me",
