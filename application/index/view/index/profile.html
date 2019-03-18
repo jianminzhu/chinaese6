@@ -116,7 +116,11 @@
                         <div class="tooltip-text truncate tooltip-text-center tooltip-text-width-auto h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
                             {:lang("加入最爱")}
                         </div>
-                    </div>
+                    </div> <div class="pointer circle relative me1 {:in_array($m.id,$uIntrestMids)?'fill-action-highlight':'fill-action-unhighlight' }"
+                                data-opt-addfavorite="" data-d-mid="{$m.id}">
+
+                    {$isPay?lang("会员可见"):""}
+                </div>
                 </div>
             </div>
         </div>

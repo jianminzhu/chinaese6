@@ -11,6 +11,9 @@
 
 // 核心中文语言包
 return [
+
+    "会员可见" => "<a href='/index.php/index/m/upgrade'><img  src=\"/vip.png\"  height='60px'/></a>",
+
     // 系统错误提示
     'Undefined variable'                                        => '未定义变量',
     'Undefined index'                                           => '未定义数组索引',

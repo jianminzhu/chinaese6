@@ -40,6 +40,7 @@ return [
     "我看过谁" => "Profiles Viewed",
     "不能给自己发消息" => "Can't sent message to youself",
     "联系方式" => "Concat",
+    "会员可见" => "<a href='/index.php/index/m/upgrade'><img  src=\"/vip.png\" height='60px'/></a>",
 
     //profiledit
     "名字" => "name",

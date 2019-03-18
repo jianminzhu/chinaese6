@@ -206,8 +206,8 @@ class M extends Base
             "微信" => ""
         ];
         $emsg = "";
+        $isPay = false;
         try {
-            $isPay = false;
             if ($this->isLogin()) {
                 $isPay = $this->memberIsPay($this->loginUser()->id);
             }
@@ -215,7 +215,7 @@ class M extends Base
         } catch (\Exception $e) {
             $emsg = $e->getMessage();
         }
-        return ['m' => $member, "pics" => $pics, "cc" => $cc, "emsg" => $emsg];
+        return ['m' => $member, "pics" => $pics, "cc" => $cc, "emsg" => $emsg,"isPay"=>$isPay];
     }
 
 
@@ -399,10 +399,10 @@ class M extends Base
             "QQ" => "",
             "微信" => ""
         ];
-        $table = $isPay ? "membercontacts" : "membercontactsnologin";
+        $table =  "membercontacts"  ;
         $concats = Db::table($table)->where("uid", $id)->select();
         foreach ($concats as $concat) {
-            $cc[$concat["type"]] = $concat["number"];
+            $cc[$concat["type"]] = isPay?$concat["number"]:substr_replace($concat["number"], '****',3, 4);;
         }
         return array($cc, $concats);
     }
