@@ -18,7 +18,15 @@ class Base extends Controller
 
     public function memberIsPay($mid)
     {
-        return Db::table("pay")->where("m_id", $mid)->count() > 0;
+        $isPay = false;
+        if ($mid != null) {
+            try {
+                $query = Db::table("pay")->where("m_id", $mid);
+                $isPay = $query->count("id") > 0;
+            } catch (\Exception $e) {
+            }
+        }
+        return $isPay;
     }
 
     public function ajaxIsPay()

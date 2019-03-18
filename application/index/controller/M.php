@@ -152,13 +152,14 @@ class M extends Base
 
     public function isPay()
     {
+        $mid = "";
         try {
             $loginUser = $this->loginUser();
-            $query = Db::table("pay")->where("m_id", $loginUser->id);
-            $count = $query->count("id");
-            return $this->ajax($count > 0);
+            $mid = $loginUser->id;
+            $isPay = $this->memberIsPay($mid);
+            return $this->ajax($isPay);
         } catch (\Exception $e) {
-            return $this->ajax(false, ["mid" => $loginUser->id, "emsg" => $e->getMessage()]);
+            return $this->ajax(false, ["mid" => $mid, "emsg" => $e->getMessage()]);
         }
     }
 
@@ -167,6 +168,7 @@ class M extends Base
         $index = new Index();
         $index->headData();
         $id = request()->param("id");
+
         return view('/index/profile', $this->getMember($id));
     }
 
@@ -195,7 +197,20 @@ class M extends Base
     {
         $member = Member::get($id);
         $pics = Db::table("pics")->where("m_id", $id)->select();
-        return ['m' => $member, "pics" => $pics];
+        $concats = [];
+        $emsg = "";
+        try {
+            $table = "membercontactsnologin";
+            if ($this->isLogin()) {
+                if ($this->memberIsPay($this->loginUser()->id)) {
+                    $table = "membercontacts";
+                }
+            }
+            $concats = Db::table($table)->where("uid", $id)->select();
+        } catch (\Exception $e) {
+            $emsg = $e->getMessage();
+        }
+        return ['m' => $member, "pics" => $pics, "concats" => $concats, "emsg" => $emsg];
     }
 
 
@@ -310,6 +325,8 @@ class M extends Base
         ];
         return $activeData;
     }
+
+
 }
 
 
