@@ -8,6 +8,7 @@ use app\index\model\Member;
 use app\index\model\Pics;
 use think\Db;
 use think\Exception;
+use think\exception\PDOException;
 
 class M extends Base
 {
@@ -106,10 +107,10 @@ class M extends Base
         if ($this->isLogin()) {
             $this->headData();
             $mid = request()->param("mid");
-            list($cc,$concats) = $this->concatData($mid, $this->isPay());
+            list($cc, $concats) = $this->concatData($mid, $this->isPay());
             $this->assign(["m" => Member::get(["id" => $mid]),
                 "cc" => $cc,
-                "concats"=>$concats
+                "concats" => $concats
             ]);
             return view("/index/concatsDialog");
         }
@@ -241,16 +242,69 @@ class M extends Base
         return redirect("/index.php/index/m/profiledit");
     }  //上传照片
 
+    function param($name, $default = "")
+    {
+        $value = request()->param($name);
+        if (!$value) {
+            $value = $default;
+        }
+        return $value;
+    }
+
     public function uploadInfo()
     {
-        if (session('?loginUser')) {
+        if ($this->isLogin()) {
             $loginUser = session("loginUser");
-            $mid = $loginUser->id;
+            $uid = $loginUser->id;
             $member = new Member();
             $this->unsetItem("cityid", -1);
             $this->unsetItem("stateid", -1);
             $this->unsetItem("countryid", -1);
-            $member->allowField(true)->save($_REQUEST, ['id' => $mid]);
+
+            $types = [
+                "手机" => [
+                    "fname" => "concat_mobile",
+                    "isInDb" => false
+                ], "邮箱" => [
+                    "fname" => "concat_email",
+                    "isInDb" => false
+                ], "QQ" => [
+                    "fname" => "concat_qq",
+                    "isInDb" => false
+                ], "微信" => [
+                    "fname" => "concat_wechat",
+                    "isInDb" => false
+                ]
+            ];
+
+            $concats = Db::table("membercontacts")->where("uid", $uid)->select();
+            foreach ($concats as $concat) {
+                $type = $types[$concat["type"]];
+                $types[$concat["type"]]["isInDb"] = true;
+                $updateItems = ['number' => $this->param($type["fname"], "")];
+                try {
+                    Db::table("membercontacts")
+                        ->where('uid', $uid)
+                        ->where("type", $concat["type"])
+                        ->update($updateItems);
+                } catch (PDOException $e) {
+                } catch (Exception $e) {
+                }
+            }
+            foreach ($types as $key => $type) {
+                if ($type["isInDb"] == false) {
+                    $data = [
+                        "type" => $key,
+                        "number" => $this->param($type["fname"], ""),
+                        "uid" => $uid
+                    ];
+                    try {
+                        Db::table("membercontacts")->insert($data);
+                    } catch (\Exception $e) {
+                    }
+                }
+            }
+            $member->allowField(true)->save($_REQUEST, ['id' => $uid]);
         }
         return redirect("/index.php/index/m/profiledit");
     }
@@ -350,7 +404,7 @@ class M extends Base
         foreach ($concats as $concat) {
             $cc[$concat["type"]] = $concat["number"];
         }
-        return array($cc,$concats);
+        return array($cc, $concats);
     }
 }
 

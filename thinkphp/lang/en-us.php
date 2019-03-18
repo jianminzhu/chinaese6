@@ -39,6 +39,7 @@ return [
     "我关注的" => "My Interests",
     "我看过谁" => "Profiles Viewed",
     "不能给自己发消息" => "Can't sent message to youself",
+    "联系方式" => "Concat",
 
     //profiledit
     "名字" => "name",

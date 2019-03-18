@@ -143,13 +143,10 @@
                     </div>
                     <ul class="formContainer">
                         <li class="sectionHeading clearfix"><h2>{:lang("基本资料")}</h2></li>
-                        <li class="clearfix">
-                            <label class="questionLabel">{:lang("名字")}:</label>
-                            <span id="firstName_validate">
-                        <input type="text" name="firstName" id="firstName" onchange="" onblur="" onfocus="" size="20"
-                               value="{$u.nickname|default=''}" style="" class="" autocomplete="off">
-                            <span class="textfieldRequiredMsg"> </span></span>
-                        </li>
+
+
+<li class="clearfix"><label class="questionLabel">{:lang("名字")}:</label><span ><input name="firstName"  value="{$u.nickname|default=''}" size="20"   autocomplete="off"><span class="textfieldRequiredMsg"> </span></span></li>
+
                         <li class="clearfix">
                             <label class="questionLabel">{:lang("我是")}:</label>
                             <span id="gender_validate">
@@ -183,6 +180,11 @@
                     	    <span class="selectRequiredMsg"></span>
                     </span>
                         </li>
+                        <li class="sectionHeading clearfix"><h2>{:lang("联系方式")}</h2></li>
+                        <li class="clearfix"><label class="questionLabel">{:lang("手机")}:</label><span ><input name="concat_mobile"  value='{$cc["手机"]}' />     </span></li>
+                        <li class="clearfix"><label class="questionLabel">{:lang("邮箱")}:</label><span ><input name="concat_email"  value='{$cc["邮箱"]}' type="email"/>     </span></li>
+                        <li class="clearfix"><label class="questionLabel">{:lang("QQ")}:</label><span ><input name="concat_qq"  value='{$cc["QQ"]}'  />     </span></li>
+                        <li class="clearfix"><label class="questionLabel">{:lang("微信")}:</label><span ><input name="concat_wechat"  value='{$cc["微信"]}'/>     </span></li>
                         <li class="sectionHeading clearfix"><h2>{:lang("外表")}</h2></li>
                         <li class="clearfix  ">
                             <label class="questionLabel">{:lang("身高")}:</label>
