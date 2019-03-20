@@ -91,7 +91,7 @@ function payDo(fun, type = "ajax") {
             //     window.location.href = "/index/m/upgrade";
             //     window.location.reload();
             // }
-            window.location.href = "/index/m/upgrade";
+            window.location.href = "/index.php/index/m/upgrade";
             window.location.reload();
         }
     });
