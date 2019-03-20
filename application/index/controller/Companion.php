@@ -110,7 +110,7 @@ class Companion extends Base
         $itemList = new ItemList();
         $items = array();
         $total = 0;
-        $product = lang("VIP会员费 ");
+        $product = lang("VIP会员费");
         $total = $total + $price;
 
         $payer = new Payer();
