@@ -14,6 +14,7 @@ return [
 
     "会员可见" => "<a href='/index.php/index/m/upgrade'><img  src=\"/vip.png\"  height='60px'/></a>",
     "c42"=>"中国",
+    "VIP可见" => "&nbsp;<a href='/index.php/index/m/upgrade'>VIP可见</a>",
 
     // 系统错误提示
     'Undefined variable'                                        => '未定义变量',
