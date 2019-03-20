@@ -88,6 +88,7 @@ class Companion extends Base
     public function test()
     {
         $isSucc = request()->param("isSucc");
+        $msg = "Paypal 没有收取您的付款";
         if ($isSucc == 1) {
             $data = ["paymentId" => request()->param("paymentId"),
                 "token" => request()->param("token"),
@@ -95,12 +96,12 @@ class Companion extends Base
             ];
             try {
                 Db::table("palpay_callback")->insert($data);
+                $this->headData();
             } catch (\Exception $e) {
             }
-            return json_encode(request()->param());
-        } else {
-            return "cancle ";
+            $msg = "等待Paypal 确认是否收取了您的付款";
         }
+        return view("/index/waitpalpayconfirm", ["msg" => lang($msg)]);
     }
 
     /**

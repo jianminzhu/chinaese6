@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="zh-Hans" data-device="desktop">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{$msg}</title>
+    <meta name="keywords" content="{$keywords|default=''}"/>
+
+    <meta name="viewport"
+          content="height=device-height, initial-scale=1, user-scalable=no, maximum-scale=1, shrink-to-fit=yes">
+    {include file="../application/index/view/index/_commoncss.html" /}
+</head>
+<body>
+{include file="../application/index/view/index/_head.html" /}
+<div class="max-width mx-auto mt0 px2 {$Think.session.isLogin?'':'py4'}">
+    <div class="search mt2 p2  mx-auto shadow rounded flex flex-wrap items-center justify-between max-width">
+        <div class="border-bottom m1 col-2">
+            <label>{$msg}</label>
+        </div>
+    </div>
+</div>
+</body>
+</html>

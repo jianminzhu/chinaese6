@@ -32,6 +32,7 @@ return [
     "微信" => "WeChat",
     "城市" => "city",
     "省" => "State/Province",
+    "Paypal 没有收取您的付款" => "Paypal has not charged your credit card",
 
     "会员动态" => "Activity",
     "谁在找我" => "Interested In Me",
@@ -44,6 +45,8 @@ return [
     "联系方式" => "Concat",
     "会员可见" => "<a href='/index.php/index/m/upgrade'><img  src=\"/vip.png\" height='60px'/></a>",
     "VIP会员费" => "VIP Member Fee",
+    "等待Paypal 确认收取了您的付款" =>"Waiting for the confirmation from paypal about charging your credit card ",
+
 
 
     //profiledit
