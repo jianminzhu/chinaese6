@@ -49,7 +49,7 @@ return [
     "文档编辑" => "Edit profile",
     "基本资料" => "Base Info",
     "我是" => "I'm ",
-    "自我介绍" => "Please Describe Yourself",
+    "自我介绍" => "Description",
     "VIP可见" => "&nbsp;<a href='/index.php/index/m/upgrade'>For VIP Only</a>",
 
     "外表" => "Your Lifestyle",
