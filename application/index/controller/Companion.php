@@ -71,7 +71,7 @@ class Companion extends Base
         if ($price > 0) {
             try {
                 $approvalUrl = $this->payItem($price, $type);
-                return $approvalUrl;
+                return $this->redirect($approvalUrl);
             } catch (\Exception $e) {
                 return  $e->getMessage();
             }
