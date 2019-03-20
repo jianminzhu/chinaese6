@@ -76,23 +76,10 @@ function payDo(fun, type = "ajax") {
         if (res.isSuccess) {
             fun();
         } else {
-            // if (type == "ajax") {
-            //
-            //     var jpayDialog = $("#dialogUpgrade");
-            //     if (jpayDialog.length == 0) {
-            //         mhtml("/index/m/upgradeDialog").then(function (res) {
-            //             jpayDialog = $(res);
-            //             $("body").prepend(jpayDialog);
-            //         })
-            //     } else {
-            //         jpayDialog.show();
-            //     }
-            // } else {
-            //     window.location.href = "/index/m/upgrade";
-            //     window.location.reload();
-            // }
-            window.location.href = "/index.php/index/m/upgrade";
-            window.location.reload();
+            let location = window.location;
+            let srcUrl=location.protocol+"//"+location.host;
+            let url = srcUrl+"/index.php/index/m/upgrade";
+            window.location.href = url;
         }
     });
 }
