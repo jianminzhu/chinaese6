@@ -70,8 +70,7 @@
             </h2>
         </div>
 
-        <p class="m0">{$m.age==0?lang("保密"):""} <span>&nbsp </span>
-            {$lang=="en-us"?pinyinAddress($m.address):$m.address}{$m.country|default=""} </p>
+        <p class="m0">{$m.age==0?lang("保密"):""} <span>&nbsp </span>  </p>
         <p class="mt1 mb0">
             {$m.sex=="0" ?lang("女性"):lang("男性")}
         </p>
@@ -170,12 +169,11 @@
         </div>
         <div class="row flex items-stretch">
             <div class="col-2 flex items-center justify-between p1">
-                {:lang("国籍")}:
+                {:lang("国家")}:
             </div>
             <div class="col-5 me3 p1 relative overview-details-bg ">
-
-                <div class="match absolute top-0 right-0 bottom-0 left-0"></div>
-                {$m.country|default= "" }
+                <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
+                {$m.countryid?lang("c".$m.countryid):""}
             </div>
         </div>
 
@@ -185,7 +183,7 @@
             </div>
             <div class="col-5 me3 p1 relative overview-details-bg ">
                 <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
-                {$cc["手机"]}
+                {$isPay?$cc["手机"]:"***********"}
             </div>
         </div>
         <div class="row flex items-stretch">
@@ -194,7 +192,7 @@
             </div>
             <div class="col-5 me3 p1 relative overview-details-bg ">
                 <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
-                {$cc["邮箱"]}
+                {$isPay?$cc["邮箱"]:"******"}
             </div>
         </div>
         <div class="row flex items-stretch">
@@ -203,7 +201,7 @@
             </div>
             <div class="col-5 me3 p1 relative overview-details-bg ">
                 <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
-                {$cc["QQ"]}
+                {$isPay?$cc["QQ"]:"******"}
             </div>
         </div>
         <div class="row flex items-stretch">
@@ -212,7 +210,7 @@
             </div>
             <div class="col-5 me3 p1 relative overview-details-bg ">
                 <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
-                {$cc["微信"]}
+                {$isPay?$cc["微信"]:"******"}
             </div>
         </div>
     </div>

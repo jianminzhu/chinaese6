@@ -49,7 +49,7 @@ return [
     "文档编辑" => "Edit profile",
     "基本资料" => "Base Info",
     "我是" => "I'm ",
-    "自我介绍" => "A little about yourself",
+    "自我介绍" => "Please Describe Yourself",
     "外表" => "Your Lifestyle",
     "管理照片" => "Manage Photos",
     "保存" => "save",
@@ -95,8 +95,9 @@ return [
     "会员号" => "member id",
     "身高" => "height",
     "体重" => "weight",
-    "国籍" => "country",
+    "国家" => "country",
     "返回搜索结果" => "to search ",
+    "c42"=>"China",
 
 
     "请输入电子邮箱地址" => "please input email",

@@ -402,7 +402,7 @@ class M extends Base
         $table =  "membercontacts"  ;
         $concats = Db::table($table)->where("uid", $id)->select();
         foreach ($concats as $concat) {
-            $cc[$concat["type"]] = isPay?$concat["number"]:substr_replace($concat["number"], '****',3, 4);;
+            $cc[$concat["type"]] = $isPay?$concat["number"]:substr_replace($concat["number"], '****',3, 4);;
         }
         return array($cc, $concats);
     }
