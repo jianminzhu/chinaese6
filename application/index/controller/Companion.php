@@ -33,6 +33,7 @@ class Companion extends Base
 //            $clientId   = "AVh0IsTx_d7J-tWDtv0yap9sEyEsoVJytKV2VRCcHxFKYYqZYkDEP9VBbiB-JriCKIURwzRt4-NIZtU6";
 //            $clientSecret= 'EPBbFWIhT7SL7WzVcpJ3jhvDlspnjVEu2b6lgmGv4xapay0xet-9gzKt7z21lBAZ3bFpXkwbyEXgnqVk';
 
+            $a = "";
             $apiContext = new ApiContext(
                 new OAuthTokenCredential(
                     $clientId,
