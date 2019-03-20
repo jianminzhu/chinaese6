@@ -70,7 +70,7 @@
             </h2>
         </div>
 
-        <p class="m0">{$m.age==0?lang("保密"):""} <span>&nbsp </span>  </p>
+        <p class="m0">{$m.age==0?lang("保密"):""} <span>&nbsp </span></p>
         <p class="mt1 mb0">
             {$m.sex=="0" ?lang("女性"):lang("男性")}
         </p>
@@ -115,10 +115,11 @@
                         <div class="tooltip-text truncate tooltip-text-center tooltip-text-width-auto h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
                             {:lang("加入最爱")}
                         </div>
-                    </div> <div class="pointer circle relative me1 {:in_array($m.id,$uIntrestMids)?'fill-action-highlight':'fill-action-unhighlight' }"
-                                data-opt-addfavorite="" data-d-mid="{$m.id}">
-                    {$isPay==false?lang("会员可见"):""}
-                </div>
+                    </div>
+                    <div class="pointer circle relative me1 {:in_array($m.id,$uIntrestMids)?'fill-action-highlight':'fill-action-unhighlight' }"
+                         data-opt-addfavorite="" data-d-mid="{$m.id}">
+                        {$isPay==false?lang("会员可见"):""}
+                    </div>
                 </div>
             </div>
         </div>
@@ -132,7 +133,7 @@
             <div class="col-2 flex items-center justify-between p1">
                 {:lang("身高")}:
             </div>
-            <div class="col-5 me3 p1 relative overview-details-bg ">
+            <div class="col-3 me3 p1 relative overview-details-bg ">
 
                 <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
                 {$m.height!=""?$m.height."cm":""}
@@ -143,7 +144,7 @@
             <div class="col-2 flex items-center justify-between p1">
                 {:lang("体重")}:
             </div>
-            <div class="col-5 me3 p1 relative overview-details-bg ">
+            <div class="col-3 me3 p1 relative overview-details-bg ">
                 <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
                 {$m.weight!=""?$m.weight."kg":""}
             </div>
@@ -153,7 +154,7 @@
             <div class="col-2 flex items-center justify-between p1">
                 {:lang("城市")}:
             </div>
-            <div class="col-5 me3 p1 relative overview-details-bg ">
+            <div class="col-3 me3 p1 relative overview-details-bg ">
                 <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
                 {$lang=="en-us"?pinyinAddress($m.address):$m.address}
             </div>
@@ -162,16 +163,16 @@
             <div class="col-2 flex items-center justify-between p1">
                 {:lang("省")}:
             </div>
-            <div class="col-5 me3 p1 relative overview-details-bg ">
+            <div class="col-3 me3 p1 relative overview-details-bg ">
                 <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
-               <!--{$m.stateid}-->
+                <!--{$m.stateid}-->
             </div>
         </div>
         <div class="row flex items-stretch">
             <div class="col-2 flex items-center justify-between p1">
                 {:lang("国家")}:
             </div>
-            <div class="col-5 me3 p1 relative overview-details-bg ">
+            <div class="col-3 me3 p1 relative overview-details-bg ">
                 <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
                 {$m.countryid?lang("c".$m.countryid):""}
             </div>
@@ -181,36 +182,45 @@
             <div class="col-2 flex items-center justify-between p1">
                 {:lang("手机")}:
             </div>
-            <div class="col-5 me3 p1 relative overview-details-bg ">
-                <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
-                {$isPay?$cc["手机"]:"**********".lang("VIP可见")}
+            <div class="col-3 me3 p1 relative overview-details-bg">
+                <div class=" absolute top-0 right-0 bottom-0 left-0">{$isPay==true?$cc["手机"]:"**********" }</div>
             </div>
+            {$isPay==false?lang("VIP可见"):""}
         </div>
         <div class="row flex items-stretch">
             <div class="col-2 flex items-center justify-between p1">
                 {:lang("邮箱")}:
             </div>
-            <div class="col-5 me3 p1 relative  overview-details-bg ">
-                <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
-                {$isPay?$cc["邮箱"]:"**********".lang("VIP可见")}
+            <div class="col-3 me3 p1 relative  overview-details-bg ">
+                <div class=" absolute top-0 right-0 bottom-0 left-0">
+                    {$isPay?$cc["邮箱"]:"**********"}
+                </div>
             </div>
+            {$isPay==false?lang("VIP可见"):""}
         </div>
         <div class="row flex items-stretch">
             <div class="col-2 flex items-center justify-between p1">
                 {:lang("QQ")}:
             </div>
-            <div class="col-5 me3 p1 relative  overview-details-bg ">
-                <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
-                {$isPay?$cc["QQ"]:"**********".lang("VIP可见")}
+            <div class="col-3 me3 p1 relative  overview-details-bg ">
+                <div class=" absolute top-0 right-0 bottom-0 left-0">{$isPay==true?$cc["QQ"]:"**********"}</div>
             </div>
+            {$isPay==false?lang("VIP可见"):""}
         </div>
         <div class="row flex items-stretch">
             <div class="col-2 flex items-center justify-between p1">
                 {:lang("微信")}:
             </div>
-            <div class="col-5 me3 p1 relative  overview-details-bg ">
-                <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
-                {$isPay?$cc["微信"]:"**********".lang("VIP可见")}
+            <div class="col-3 me3 p1 relative  overview-details-bg ">
+                <div class=" absolute top-0 right-0 bottom-0 left-0">{$isPay==true?$cc["微信"]:"**********"}</div>
+            </div>
+            {$isPay==false?lang("VIP可见"):""}
+        </div>
+        <div class="row flex items-stretch">
+            <div class="col-2 flex items-center justify-between p1">
+                {:lang("自我介绍")}:
+            </div>
+            <div class="col-9 me3 p1 relative  overview-details-bg "> {$m.profile|default=""}
             </div>
         </div>
     </div>
