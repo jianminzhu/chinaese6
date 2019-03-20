@@ -131,7 +131,7 @@ class Pay extends Base
         if ($isSucc == 1) {
             return json_encode(request()->param( ));
         }else{
-            return "cancle";
+            return "cancle ";
         }
     }
 }
