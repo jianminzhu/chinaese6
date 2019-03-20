@@ -43,6 +43,8 @@ return [
     "不能给自己发消息" => "Can't sent message to youself",
     "联系方式" => "Concat",
     "会员可见" => "<a href='/index.php/index/m/upgrade'><img  src=\"/vip.png\" height='60px'/></a>",
+    "会员" => "VIP Member",
+
 
     //profiledit
     "名字" => "Name",
