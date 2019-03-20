@@ -67,9 +67,9 @@ class Companion extends Base
         $type = request()->param("product");
         $price = 0;
         if ($type == "life") {
-            $price = 699;
+            $price = 0.8;
         } else if ($type == "year") {
-            $price = 199;
+            $price = 0.1;
         }
         if ($price > 0) {
             try {
