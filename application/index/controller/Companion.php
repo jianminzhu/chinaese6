@@ -26,8 +26,13 @@ class Companion extends Base
 //            $clientSecret= 'EPSIwrLoICniOXIQpZh450rUgdxOvcZdp0fWJnuK_F1hLTm3n4cuoH7UToB80Jwm2QhF2jSpUsUEXsTa';
 
 //            //r
-            $clientId   = "AZUj0NJWfvYjpL0WhBETlUK9N2UgSsKuZRAm_yU32AeTWfa9MJN-1ZApbe5bABzTIq7jSZHgXAoQFQDG";
-            $clientSecret= 'EFvYculgDdQylsstVJQLryDwcqMgngl9MgiP6VuTcBdMHDc63H4qXbOmg43p6m-wN2S1gySO-10p-Wow';
+//            $clientId = "AZUj0NJWfvYjpL0WhBETlUK9N2UgSsKuZRAm_yU32AeTWfa9MJN-1ZApbe5bABzTIq7jSZHgXAoQFQDG";
+//            $clientSecret = 'EFvYculgDdQylsstVJQLryDwcqMgngl9MgiP6VuTcBdMHDc63H4qXbOmg43p6m-wN2S1gySO-10p-Wow';
+
+
+            $clientId = "AVh0IsTx_d7J-tWDtv0yap9sEyEsoVJytKV2VRCcHxFKYYqZYkDEP9VBbiB-JriCKIURwzRt4-NIZtU6";
+            $clientSecret = 'EPBbFWIhT7SL7WzVcpJ3jhvDlspnjVEu2b6lgmGv4xapay0xet-9gzKt7z21lBAZ3bFpXkwbyEXgnqVk';
+
 
             $apiContext = new ApiContext(
                 new OAuthTokenCredential(
@@ -49,8 +54,10 @@ class Companion extends Base
         }
         return $apiContext;
     }
-    function aa(){
-          $baseUrl = 'http://'.$_SERVER["HTTP_HOST"];
+
+    function aa()
+    {
+        $baseUrl = 'http://' . $_SERVER["HTTP_HOST"];
         return $baseUrl;
     }
 
@@ -61,7 +68,7 @@ class Companion extends Base
         $price = 0;
         if ($type == "life") {
             $price = 699;
-        }else if ($type == "year") {
+        } else if ($type == "year") {
             $price = 199;
         }
         if ($price > 0) {
@@ -73,13 +80,14 @@ class Companion extends Base
             }
             return $this->redirect($approvalUrl);
 
-        }else{
-            return json_encode(request()->param()).$price;
+        } else {
+            return json_encode(request()->param()) . $price;
         }
     }
 
-    public function test(){
-        $isSucc=request()->param("isSucc");
+    public function test()
+    {
+        $isSucc = request()->param("isSucc");
         if ($isSucc == 1) {
             $data = ["paymentId" => request()->param("paymentId"),
                 "token" => request()->param("token"),
@@ -90,7 +98,7 @@ class Companion extends Base
             } catch (\Exception $e) {
             }
             return json_encode(request()->param());
-        }else{
+        } else {
             return "cancle ";
         }
     }
