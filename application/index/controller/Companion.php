@@ -26,12 +26,12 @@ class Companion extends Base
 //            $clientSecret= 'EPSIwrLoICniOXIQpZh450rUgdxOvcZdp0fWJnuK_F1hLTm3n4cuoH7UToB80Jwm2QhF2jSpUsUEXsTa';
 
             //companion
-//            $clientId   = "AZUj0NJWfvYjpL0WhBETlUK9N2UgSsKuZRAm_yU32AeTWfa9MJN-1ZApbe5bABzTIq7jSZHgXAoQFQDG";
-//            $clientSecret= 'EFvYculgDdQylsstVJQLryDwcqMgngl9MgiP6VuTcBdMHDc63H4qXbOmg43p6m-wN2S1gySO-10p-Wow';
+            $clientId   = "AZUj0NJWfvYjpL0WhBETlUK9N2UgSsKuZRAm_yU32AeTWfa9MJN-1ZApbe5bABzTIq7jSZHgXAoQFQDG";
+            $clientSecret= 'EFvYculgDdQylsstVJQLryDwcqMgngl9MgiP6VuTcBdMHDc63H4qXbOmg43p6m-wN2S1gySO-10p-Wow';
 
             //travel
-            $clientId   = "AVh0IsTx_d7J-tWDtv0yap9sEyEsoVJytKV2VRCcHxFKYYqZYkDEP9VBbiB-JriCKIURwzRt4-NIZtU6";
-            $clientSecret= 'EPBbFWIhT7SL7WzVcpJ3jhvDlspnjVEu2b6lgmGv4xapay0xet-9gzKt7z21lBAZ3bFpXkwbyEXgnqVk';
+//            $clientId   = "AVh0IsTx_d7J-tWDtv0yap9sEyEsoVJytKV2VRCcHxFKYYqZYkDEP9VBbiB-JriCKIURwzRt4-NIZtU6";
+//            $clientSecret= 'EPBbFWIhT7SL7WzVcpJ3jhvDlspnjVEu2b6lgmGv4xapay0xet-9gzKt7z21lBAZ3bFpXkwbyEXgnqVk';
 
             $apiContext = new ApiContext(
                 new OAuthTokenCredential(
@@ -71,12 +71,10 @@ class Companion extends Base
         if ($price > 0) {
             try {
                 $approvalUrl = $this->payItem($price, $type);
-
+                return $this->redirect($approvalUrl);
             } catch (\Exception $e) {
-                return $e->getMessage();
+                return  $e->getMessage();
             }
-            return $this->redirect($approvalUrl);
-
         }else{
             return json_encode(request()->param()).$price;
         }
@@ -135,8 +133,7 @@ class Companion extends Base
             ->setItemList($itemList)
             ->setDescription($product)
             ->setInvoiceNumber($uniqid);
-        $baseUrl = $_SERVER["HTTP_HOST"];
-        $baseUrl = "$baseUrl/index.php/index/companion/payresult";
+        $baseUrl = "http://travelling.chinesecompanion.com/index.php/index/companion/payresult";
         $redirectUrls = new RedirectUrls();
         $redirectUrls->setReturnUrl($baseUrl . '?isSucc=1')
             ->setCancelUrl($baseUrl . '?isSucc=2');
