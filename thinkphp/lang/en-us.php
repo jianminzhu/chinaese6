@@ -129,7 +129,7 @@ return [
     "升级成会员" => "Upgrade Now",
     "upgrade_pic" => "/upgrade_en.jpg",
     "关闭" => "Cancle",
-    "活动动态" => "Action",
+    "活动动态" => "Activity",
 
 
     /* 登录页面相关 */
