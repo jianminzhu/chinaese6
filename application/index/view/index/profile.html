@@ -138,8 +138,6 @@
                 <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
                 {$m.height!=""?$m.height."cm":""}
             </div>
-
-
         </div>
 
         <div class="row flex items-stretch">
@@ -155,6 +153,15 @@
         <div class="row flex items-stretch">
             <div class="col-1 flex items-center justify-between p1">
                 {:lang("城市")}:
+            </div>
+            <div class="col-5 me3 p1 relative overview-details-bg ">
+                <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
+                {$lang=="en-us"?pinyinAddress($m.address):$m.address}
+            </div>
+        </div>
+        <div class="row flex items-stretch">
+            <div class="col-1 flex items-center justify-between p1">
+                {:lang("省")}:
             </div>
             <div class="col-5 me3 p1 relative overview-details-bg ">
                 <div class=" absolute top-0 right-0 bottom-0 left-0"></div>

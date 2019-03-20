@@ -31,6 +31,8 @@ return [
     "邮箱" => "email",
     "微信" => "WeChat",
     "城市" => "city",
+    "省" => "State/Province",
+
     "会员动态" => "Activity",
     "谁在找我" => "Interested In Me",
     "加我为最爱" => "I'm Their Favorite",
