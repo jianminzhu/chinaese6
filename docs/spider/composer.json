@@ -1,0 +1,6 @@
+{
+    "require": {
+        "topthink/think-orm": "^2.0",
+        "jaeger/querylist": "^4.1"
+    }
+}
