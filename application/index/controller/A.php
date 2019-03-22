@@ -49,6 +49,7 @@ class A extends Base
         $emsg = "";
         $mysqlMd5pwd = $dbMember['pwd'];
         if ($phpMd5pwd == $mysqlMd5pwd) {
+            $dbMember->isPay = $this->memberIsPay($dbMember->id);
             session("loginUser", $dbMember);
             session("isLogin", true);
             $isSucc = 1;

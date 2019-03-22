@@ -199,17 +199,16 @@ class M extends Base
     public function getMember($id)
     {
         $member = Member::get($id);
+        if ($member) {
+            $member->isPay = $this->memberIsPay($id);
+        }
         $pics = Db::table("pics")->where("m_id", $id)->select();
-        $cc = ["手机" => "",
-            "邮箱" => "",
-            "QQ" => "",
-            "微信" => ""
-        ];
+
         $emsg = "";
-        $isPay = false;
         try {
+            $isPay = false;
             if ($this->isLogin()) {
-                $isPay = $this->memberIsPay($this->loginUser()->id);
+                $isPay = $this->loginUser()->isPay;
             }
             list($cc) = $this->concatData($id, $isPay);
         } catch (\Exception $e) {
@@ -402,7 +401,10 @@ class M extends Base
         $table =  "membercontacts"  ;
         $concats = Db::table($table)->where("uid", $id)->select();
         foreach ($concats as $concat) {
-            $cc[$concat["type"]] = $isPay?$concat["number"]:substr_replace($concat["number"], '****',3, 4);;
+            try {
+                $cc[$concat["type"]] = $isPay ? $concat["number"] : substr_replace($concat["number"], '****', 3, 4);
+            } catch (\Exception $e) {
+            }
         }
         return array($cc, $concats);
     }
