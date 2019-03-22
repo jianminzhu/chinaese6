@@ -2,6 +2,7 @@
 
 namespace app\index\controller;
 
+require_once '../extend/QueryListV4/autoload.php';
 require_once 'ext_util/rb.php';
 require_once "ext_util/fileUtil.php";
 
