@@ -21,8 +21,9 @@ class Base extends Controller
         $isPay = false;
         if ($mid != null) {
             try {
-                $query = Db::table("pay")->where("m_id", $mid);
-                $isPay = $query->count("id") > 0;
+                $query = Db::table("pay");
+                $count = $query->where("m_id", $mid)->count("m_id");
+                $isPay = $count > 0;
             } catch (\Exception $e) {
             }
         }
