@@ -52,7 +52,7 @@ return [
     //profiledit
     "名字" => "Name",
     "文档编辑" => "Edit profile",
-    "基本资料" => "Basic Info",
+    "基本资料" => "Your Basics",
     "我是" => "I'm ",
     "自我介绍" => "Description",
     "VIP可见" => "&nbsp;<a href='/index.php/index/m/upgrade'>For VIP Only</a>",
