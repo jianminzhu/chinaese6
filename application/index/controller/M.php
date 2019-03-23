@@ -214,6 +214,7 @@ class M extends Base
         } catch (\Exception $e) {
             $emsg = $e->getMessage();
         }
+                echo "---------------------------".$isPay."===============";
         return ['m' => $member, "pics" => $pics, "cc" => $cc, "emsg" => $emsg,"isPay"=>$isPay];
     }
 
