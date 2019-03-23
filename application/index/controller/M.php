@@ -209,7 +209,6 @@ class M extends Base
             $isPay = false;
             if ($this->isLogin()) {
                 $isPay = $this->loginUser()->isPay;
-                echo "------------22222---------------".$isPay."===============";
             }
             list($cc) = $this->concatData($id, $isPay);
         } catch (\Exception $e) {
