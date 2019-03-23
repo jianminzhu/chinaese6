@@ -85,9 +85,10 @@ class Companion extends Base
         }
     }
 
-    public function test()
+    public function payResult()
     {
         $isSucc = request()->param("isSucc");
+        $this->headData();
         $msg = "Paypal 没有收取您的付款";
         if ($isSucc == 1) {
             $data = ["paymentId" => request()->param("paymentId"),
@@ -96,7 +97,7 @@ class Companion extends Base
             ];
             try {
                 Db::table("palpay_callback")->insert($data);
-                $this->headData();
+
             } catch (\Exception $e) {
             }
             $msg = "等待Paypal 确认是否收取了您的付款";
@@ -141,7 +142,7 @@ class Companion extends Base
             ->setDescription($product)
             ->setInvoiceNumber($uniqid);
 
-        $baseUrl = "http://travelling.chinesecompanion.com/index.php/index/companion/test";
+        $baseUrl = "http://travelling.chinesecompanion.com/index.php/index/companion/payResult";
         $redirectUrls = new RedirectUrls();
         $redirectUrls->setReturnUrl($baseUrl . '?isSucc=1')
             ->setCancelUrl($baseUrl . '?isSucc=2');
