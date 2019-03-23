@@ -42,7 +42,7 @@ return [
     "我关注的" => "My Interests",
     "我看过谁" => "Profiles Viewed",
     "不能给自己发消息" => "Can't sent message to youself",
-    "联系方式" => "Concat",
+    "联系方式" => "Contact",
     "会员可见" => "<a href='/index.php/index/m/upgrade'><img  src=\"/vip.png\" height='60px'/></a>",
     "VIP会员费" => "VIP Member Fee",
     "等待Paypal 确认收取了您的付款" =>"Waiting for the confirmation from paypal about charging your credit card ",
