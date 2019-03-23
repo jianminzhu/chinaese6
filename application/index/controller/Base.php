@@ -26,7 +26,7 @@ class Base extends Controller
             } catch (\Exception $e) {
             }
         }
-        return json_encode($isPay);
+        return $isPay;
     }
 
     public function ajaxIsPay()
