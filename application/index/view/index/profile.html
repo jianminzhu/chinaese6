@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="zh-Hans" data-device="desktop">
 <head>
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 
-    <title>{$lang=="en-us"?pinyinName($m.nickname):$m.nickname} / {$m.age} /
+    <title>{$lang=="en-us"?pinyinName($m.nickname):$m.nickname} . {$m.age} .
         {$lang=="en-us"?pinyinAddress($m.address):$m.address},{$m.country|default=""}| www.chinesecompanion.com</title>
-
-
     <meta id="defaultmessage" content="处理过程中发生问题"/>
 
     <meta name="viewport"
@@ -191,7 +187,8 @@
                 {:lang("手机")}:
             </div>
             <div class="col-3 me3 p1 relative overview-details-bg">
-                <div class=" absolute top-0 right-0 bottom-0 left-0">{$isPay==true?$cc["手机"]:"**********" }===={$isPay}\\\\\</div>
+                <div class=" absolute top-0 right-0 bottom-0 left-0">{$isPay==true?$cc["手机"]:"**********"}===={$isPay}\\\\\
+                </div>
             </div>
             {$isPay==true?"":lang("VIP可见")}
         </div>
