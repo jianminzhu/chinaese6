@@ -57,7 +57,7 @@ return [
     "自我介绍" => "Description",
     "VIP可见" => "&nbsp;<a href='/index.php/index/m/upgrade'>For VIP Only</a>",
 
-    "外表" => "Your Lifestyle",
+    "外表" => "Your Appearance",
     "管理照片" => "Manage Photos",
     "保存" => "Save",
     "上传照片" => "Upload Photo",
