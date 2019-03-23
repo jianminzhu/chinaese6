@@ -1,2 +1,0 @@
-<?php
- return  array(310100,3) ;
