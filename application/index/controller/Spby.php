@@ -72,11 +72,11 @@ class Spby extends Controller
             $uids = $m->limit($limit)->column("uid");
         }
         $noShowArr = [];
-        $picsHtml = [];
         $picsHtmlAll = [];
         foreach ($uids as $uid) {
             try {
                 $pics = "";
+                $picsHtml = [];
                 $item = $this->updateMember($uid);
                 $main_pic = $item["member"]["main_pic"];
                 $picsHtml[] = $this->imgHtml($main_pic, $uid) ;
