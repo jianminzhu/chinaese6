@@ -63,7 +63,6 @@ class Spby extends Controller
     {
 
         $uids = [];
-        $picArr = [];
         if ($uid) {
             $uids[] = $uid;
             $isShowPic = True;
@@ -72,22 +71,33 @@ class Spby extends Controller
             $m->where("isDownPics", 0);
             $uids = $m->limit($limit)->column("uid");
         }
+        $noShowArr = [];
+        $picsHtml = [];
+        $picsHtmlAll = [];
         foreach ($uids as $uid) {
             try {
                 $item = $this->updateMember($uid);
                 $main_pic = $item["member"]["main_pic"];
-                $arr = [$uid, $main_pic];
-                echo $isShowPic == True ? "<br> <img title='$uid' height='60px' src='" . $main_pic . "'/>" : "";
+                $picsHtml[] = $this->imgHtml($main_pic, $uid) ;
+                $pics = $uid." ".$main_pic;
+                echo $isShowPic == True ? "<br> " : "";
                 Db::table('bmember')->where(["uid" => $uid])->update(["isDownPics" => "1"]);
                 foreach ($item["pics"] as $pic) {
-                    $arr[] = $pic["file_path"];
-                    echo $isShowPic == True ? "<img title='$uid' height='60px'  src='" . $pic . "'/>" : "";
+                    $pics =$pics." ". $pic["file_path"];
+                    $picsHtml[] = $this->imgHtml($pic["file_path"], $uid) ;
                 }
-                $picArr[] = "<a href='/index.php/index/m/profile.php?id=$uid'>".json_encode($arr)."</a>";
+                $noShowArr[] = $pics;
+                $picsHtmlAll[] = join("", $picsHtml);
             } catch (\Exception $e) {
             }
         }
-        return "<br>" . join("<br>", $picArr);
+        echo $isShowPic == True?"<br>" . join("<br>", $picsHtmlAll):join("<br>", $noShowArr);
+        return  "finished";
+    }
+
+    function imgHtml($pic, $uid, $height = "60px")
+    {
+        return "<a href='/index.php/index/m/profile?id=$uid'><img title='$uid' height='$height' src='" . $pic . "'/></a>";
     }
 
 }
