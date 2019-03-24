@@ -81,9 +81,9 @@ class Spby extends Controller
                 Db::table('bmember')->where(["uid" => $uid])->update(["isDownPics" => "1"]);
                 foreach ($item["pics"] as $pic) {
                     $arr[] = $pic["file_path"];
-                    echo $isShowPic == True ? " <img title='$uid' height='60px' src='" . $pic . "'/>" : "";
+                    echo $isShowPic == True ? "<img title='$uid' height='60px' src='" . $pic . "'/>" : "";
                 }
-                $picArr[] = json_encode($arr);
+                $picArr[] = "<a href='/index.php/index/m/profile.php?id=$uid'>".json_encode($arr)."</a>";
             } catch (\Exception $e) {
             }
         }
