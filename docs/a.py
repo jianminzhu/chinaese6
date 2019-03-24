@@ -24,9 +24,7 @@ def spider():
     while True:
         html = getHtml("http://travelling.chinesecompanion.com/index.php/index/spby/pics?isShowPic=no&limit=1")
         print(html)
-        print ("Start : %s" % time.ctime())
         time.sleep(1)
-        print ("End : %s" % time.ctime())
 
 
 if __name__ == '__main__':
