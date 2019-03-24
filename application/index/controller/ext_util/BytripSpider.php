@@ -69,6 +69,11 @@ function BytripSearchMembers($html)
     }
     return [$toDbMembers, $page];
 }
+function get_numerics($str)
+{
+    preg_match_all('/\d+/', $str, $matches);
+    return $matches[0];
+}
 
 function BytripMember($id)
 {

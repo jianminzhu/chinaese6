@@ -129,7 +129,7 @@ class Sp extends Controller
                 $member["isUpdateHW"] = 1;
                 Db::table('member')->where(["isUpdateHW" => "0", "id" => $member["id"]])->update($member);
             }
-            ExtDownloadPic($member["main_pic"], ".");
+            ExtDownloadPic("http://www.bytrip.com/".$member["main_pic"], ".");
             echo "down pic succ";
         }
         if ($item["pics"]) {
