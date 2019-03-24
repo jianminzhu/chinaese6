@@ -273,13 +273,13 @@ class M extends Base
                 ]
             ];
 
-            $concats = Db::table("membercontacts")->where("uid", $uid)->select();
+            $concats = Db::table("membercontact")->where("uid", $uid)->select();
             foreach ($concats as $concat) {
                 $type = $types[$concat["type"]];
                 $types[$concat["type"]]["isInDb"] = true;
                 $updateItems = ['number' => $this->param($type["fname"], "")];
                 try {
-                    Db::table("membercontacts")
+                    Db::table("membercontact")
                         ->where('uid', $uid)
                         ->where("type", $concat["type"])
                         ->update($updateItems);
@@ -295,7 +295,7 @@ class M extends Base
                         "uid" => $uid
                     ];
                     try {
-                        Db::table("membercontacts")->insert($data);
+                        Db::table("membercontact")->insert($data);
                     } catch (\Exception $e) {
                     }
                 }
@@ -398,7 +398,7 @@ class M extends Base
             "QQ" => "",
             "微信" => ""
         ];
-        $table =  "membercontacts"  ;
+        $table =  "membercontact"  ;
         $concats = Db::table($table)->where("uid", $id)->select();
         foreach ($concats as $concat) {
             try {
