@@ -305,8 +305,10 @@ class M extends Base
             }
             $member->allowField(true)->save($_REQUEST, ['id' => $uid]);
         }
-        return redirect("/index.php/index/m/profiledit");
+//        return redirect("/index.php/index/m/profiledit");
+        return json_encode($_REQUEST);
     }
+
 
     public function unsetItem($key, $compare)
     {
