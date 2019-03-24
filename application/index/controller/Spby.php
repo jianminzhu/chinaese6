@@ -73,7 +73,7 @@ class Spby extends Controller
             } catch (\Exception $e) {
             }
         }
-        echo  join("<bt>", $picArr);
+        echo  join("<br>", $picArr);
         return "finished";
     }
 
