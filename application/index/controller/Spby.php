@@ -62,10 +62,10 @@ class Spby extends Controller
                 $uid = $mc->uid;
                 $item = $this->updateMember($uid);
                 $picArr[] = [];
-                echo "<br><br>" . $uid . " <img alt='$uid' height='60px' src='" . $item["member"]["main_pic"] . "'/>";
+                echo "<br>" . $uid . " <img alt='$uid' height='60px' src='" . $item["member"]["main_pic"] . "'/>";
                 Db::table('bmember')->where(["uid" => $uid])->update(["isDownPics" => "1"]);
                 foreach ($item["pics"] as $pic) {
-                    echo "<br> pic <img alt='$uid' height='60px' src='" . $pic . "'/>";
+                    echo " <img alt='$uid' height='60px' src='" . $pic . "'/>";
                 }
             } catch (\Exception $e) {
             }
