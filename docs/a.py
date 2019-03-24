@@ -1,10 +1,8 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
-import queue
-import threading
+import time
 import urllib.request
 
-import time
 
 def spider(url):
 
