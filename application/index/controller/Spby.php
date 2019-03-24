@@ -15,7 +15,7 @@ class Spby extends Controller
         $isShowPic = request()->param("isShowPic", "") != "no";
         $uid = request()->param("uid", "");
         $limit = intval(request()->param("limit", "100"));
-        spiderPics($isShowPic, $uid, $limit);
+        $this->spiderPics($isShowPic, $uid, $limit);
     }
 
     public function updateMember($id)
