@@ -54,7 +54,7 @@ class Spby extends Controller
     {
         $m = new Bmember();
         $m->where("isDownPics", 0);
-        $mcs = $m->limit(100)->select();
+        $mcs = $m->limit(30)->select();
         $picArr = [];
         $isShowPic = request()->param("isShowPic","")!="no";
         foreach ($mcs as $mc) {
