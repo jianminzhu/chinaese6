@@ -76,6 +76,7 @@ class Spby extends Controller
         $picsHtmlAll = [];
         foreach ($uids as $uid) {
             try {
+                $pics = "";
                 $item = $this->updateMember($uid);
                 $main_pic = $item["member"]["main_pic"];
                 $picsHtml[] = $this->imgHtml($main_pic, $uid) ;
@@ -91,7 +92,7 @@ class Spby extends Controller
             } catch (\Exception $e) {
             }
         }
-        echo $isShowPic == True?"<br>" . join("<br>", $picsHtmlAll):join("<br>", $noShowArr);
+        echo $isShowPic == True?"<br>" . join("<br><br>", $picsHtmlAll):join("<br><br>", $noShowArr);
         return  "finished";
     }
 
