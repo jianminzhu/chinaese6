@@ -24,7 +24,6 @@ class Spby extends Controller
             }
             $main_pic = "http://www.bytrip.com/" . $member["main_pic"];
             ExtDownloadPic($main_pic, ".");
-            echo "down main_pic succ  url：".$main_pic;
         }
         if ($item["pics"]) {
             $imgs = [];
@@ -33,7 +32,6 @@ class Spby extends Controller
                 $imgs[] = $file_path;
                 $imgUrl = "http://www.bytrip.com/" . $file_path;
                 ExtDownloadPic($imgUrl, ".");
-                echo "down pic succ. url：".$imgUrl;
             }
             $inDbImgs = Db::table('pics')->whereIn("file_path", $imgs)->column("file_path");
             $needInsertImgs = array_diff($imgs, $inDbImgs);
@@ -56,11 +54,22 @@ class Spby extends Controller
     {
         $m = new Bmember();
         $m->where("isDownPics", 0);
-        $mcs = $m->limit(50)->select();
+        $mcs = $m->limit(1)->select();
         $picArr = [];
+
         foreach ($mcs as $mc)
-            echo json_encode($this->updateMember($mc->uid));
-        return json_encode($picArr);
+            try {
+                $uid = $mc->uid;
+                $item = $this->updateMember($uid);
+                $picArr[] =[];
+                echo "<br><br>" . $uid . " " . $item["member"]["main_pic"];
+                Db::table('bmember')->where([ "uid" =>$uid])->update(["isDownPics" => "1"]);
+                foreach ($item["pics"] as $pic) {
+                    echo "<br> pic " ,$pic ;
+                }
+            } catch (\Exception $e) {
+            }
+        return "finished";
     }
 
 }
