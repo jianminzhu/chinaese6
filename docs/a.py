@@ -22,7 +22,7 @@ def getHtml(url):
 
 def spider():
     while True:
-        html = getHtml("http://travelling.chinesecompanion.com/index.php/index/spby/pics?isShowPic=no&limit=100")
+        html = getHtml("http://travelling.chinesecompanion.com/index.php/index/spby/pics?isShowPic=no&limit=1")
         print(html)
         print ("Start : %s" % time.ctime())
         time.sleep(1)
