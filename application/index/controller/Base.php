@@ -29,6 +29,10 @@ class Base extends Controller
         }
         return $isPay;
     }
+    public function changeSessionLoginUser($member)
+    {
+        session("loginUser", $member);
+    }
 
     public function ajaxIsPay()
     {

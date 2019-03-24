@@ -198,10 +198,7 @@ class M extends Base
      */
     public function getMember($id)
     {
-        $member = Member::get($id);
-        if ($member) {
-            $member->isPay = $this->memberIsPay($id);
-        }
+        $member = $this->getMemberWithPay($id);
         $pics = Db::table("pics")->where("m_id", $id)->select();
 
         $emsg = "";
@@ -304,9 +301,10 @@ class M extends Base
                 }
             }
             $member->allowField(true)->save($_REQUEST, ['id' => $uid]);
+            $this->changeSessionLoginUser($this->getMemberWithPay($uid));
+
         }
-//        return redirect("/index.php/index/m/profiledit");
-        return json_encode($_REQUEST);
+        return redirect("/index.php/index/m/profiledit");
     }
 
 
@@ -410,6 +408,22 @@ class M extends Base
         }
         return array($cc, $concats);
     }
+
+    /**
+     * @param $id
+     * @return null|static
+     * @throws \think\exception\DbException
+     */
+    public function getMemberWithPay($id)
+    {
+        $member = Member::get($id);
+        if ($member) {
+            $member->isPay = $this->memberIsPay($id);
+        }
+        return $member;
+    }
+
+
 }
 
 
