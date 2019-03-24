@@ -180,13 +180,7 @@
                     	    <span class="selectRequiredMsg"></span>
                     </span>
                             <script>$(function () {
-                                $("[name=countryid]").val({$u.countryid}).trigger("change");
-                                setTimeout(function () {
-                                    $("[name=stateid]").val({$u.stateid}).trigger("change");
-                                    setTimeout(function () {
-                                        $("[name=cityid]").val({$u.cityid});
-                                    },5)
-                                },5)
+                                SelectCountryStateCity("{$u.countryid}","{$u.stateid}","{$u.cityid}")
                             })</script>
                         </li>
                         <li class="sectionHeading clearfix"><h2>{:lang("联系方式")}</h2></li>
