@@ -87,7 +87,7 @@ class Spby extends Controller
                     $picsHtml[] = $this->imgHtml($pic["file_path"], $uid) ;
                 }
                 $noShowArr[] = $pics;
-                $picsHtmlAll[] = join("", $picsHtml);
+                $picsHtmlAll[] = join("&nbsp;", $picsHtml);
             } catch (\Exception $e) {
             }
         }
