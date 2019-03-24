@@ -74,7 +74,7 @@ function spiderPics($limit = 10, $isShowPic, $uid)
             }
             $uids =$query->column("uid");
         } catch (Exception $e) {
-            echo "ddddddddddddddddddddddddddddddd" . $e->getMessage();
+            echo "ddd" . $e->getMessage();
         }
     }
     foreach ($uids as $uid) {
@@ -103,9 +103,3 @@ $dbconf = include("../../../../application/database.php");
 // 数据库配置信息设置（全局有效）
 Db::setConfig($dbconf);
 spiderPics(0, False, False);
-
-
-
-
-
-
