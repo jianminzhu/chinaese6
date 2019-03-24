@@ -105,9 +105,10 @@ class M extends Base
     public function concat()
     {
         if ($this->isLogin()) {
+            $isPay = $this->loginUser()->isPay;
             $this->headData();
             $mid = request()->param("mid");
-            list($cc, $concats) = $this->concatData($mid, $this->isPay());
+            list($cc, $concats) = $this->concatData($mid, $isPay);
             $this->assign(["m" => Member::get(["id" => $mid]),
                 "cc" => $cc,
                 "concats" => $concats
@@ -402,7 +403,7 @@ class M extends Base
         $concats = Db::table($table)->where("uid", $id)->select();
         foreach ($concats as $concat) {
             try {
-                $cc[$concat["type"]] = $isPay ? $concat["number"] : substr_replace($concat["number"], '****', 3, 4);
+                $cc[$concat["type"]] = $isPay ? $concat["real_number"] : substr_replace($concat["number"], '****', 3, 4);
             } catch (\Exception $e) {
             }
         }
