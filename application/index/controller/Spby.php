@@ -54,7 +54,7 @@ class Spby extends Controller
     {
         $isShowPic = request()->param("isShowPic","")!="no";
         $uid= request()->param("uid","") ;
-        $limit= intval(request()->param("limit","10")) ;
+        $limit= intval(request()->param("limit","100")) ;
         $uids = [];
         $picArr = [];
         if ($uid) {
