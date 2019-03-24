@@ -1,3 +1,6 @@
+function SelectCountryStateCity(countryid, stateid, cityid) {
+
+}
 $(function () {
     function json(url, data) {
         return $.ajax({url: url, data: data, dataType: "json"}).then(function (data) {

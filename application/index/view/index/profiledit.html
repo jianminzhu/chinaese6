@@ -152,7 +152,7 @@
                             <span id="gender_validate">
                           <select name="sex">
                                 <option value="-1">{:lang("请选择")}</option>
-                                <option value="1" {$u.sex=="0"?' selected=""':""}>{:lang("男性")}</option>
+                                <option value="1" {$u.sex=="1"?' selected=""':""}>{:lang("男性")}</option>
                               <option value="0" {$u.sex=="0"?' selected=""':""}>{:lang("女性")}</option>
 
                             </select>
@@ -179,6 +179,15 @@
                             <select name="cityid"></select>
                     	    <span class="selectRequiredMsg"></span>
                     </span>
+                            <script>$(function () {
+                                $("[name=countryid]").val({$u.countryid}).trigger("change");
+                                setTimeout(function () {
+                                    $("[name=stateid]").val({$u.stateid}).trigger("change");
+                                    setTimeout(function () {
+                                        $("[name=cityid]").val({$u.cityid});
+                                    },5)
+                                },5)
+                            })</script>
                         </li>
                         <li class="sectionHeading clearfix"><h2>{:lang("联系方式")}</h2></li>
                         <li class="clearfix"><label class="questionLabel">{:lang("手机")}:</label><span ><input name="concat_mobile"  value='{$cc["手机"]}' />     </span></li>
