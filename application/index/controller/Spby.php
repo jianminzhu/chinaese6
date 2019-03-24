@@ -54,21 +54,26 @@ class Spby extends Controller
     {
         $m = new Bmember();
         $m->where("isDownPics", 0);
-        $mcs = $m->limit(50)->select();
+        $mcs = $m->limit(100)->select();
         $picArr = [];
-
-        foreach ($mcs as $mc)
+        $isShowPic = request()->param("isShowPic","")!="no";
+        foreach ($mcs as $mc) {
             try {
                 $uid = $mc->uid;
                 $item = $this->updateMember($uid);
-                $picArr[] = [];
-                echo "<br>" . $uid . " <img alt='$uid' height='60px' src='" . $item["member"]["main_pic"] . "'/>";
+                $main_pic = $item["member"]["main_pic"];
+                $arr=[$uid,$main_pic];
+                echo $isShowPic==True? "<br>" . $uid . " <img alt='$uid' height='60px' src='" . $main_pic . "'/>":"";
                 Db::table('bmember')->where(["uid" => $uid])->update(["isDownPics" => "1"]);
                 foreach ($item["pics"] as $pic) {
-                    echo " <img alt='$uid' height='60px' src='" . $pic . "'/>";
+                    $arr[] = [$pic];
+                    echo $isShowPic==True?  " <img alt='$uid' height='60px' src='" . $pic . "'/>":"";
                 }
+                $picArr[] = json_encode($arr);
             } catch (\Exception $e) {
             }
+        }
+        echo  join("<bt>", $picArr);
         return "finished";
     }
 
