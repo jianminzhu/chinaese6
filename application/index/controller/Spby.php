@@ -102,6 +102,7 @@ class Spby extends Controller
         foreach ($m as $pic=>$uid) {
             $size = getPicSize($pic);
             $tr[]=" <tr><td>$size</td><td>$pic</td><td>$uid</td></tr>";
+            Db::table("bmember")->where("uid", $uid)->update(["pic_size" => $size]);
         }
         $trStr = implode("\n", $tr);
         $html="<table>
