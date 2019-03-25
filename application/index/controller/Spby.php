@@ -65,15 +65,6 @@ function spiderPicByUid($uid)
 }
 
 
-function flushLocalPicRealSize($limit=100)
-{
-    $m = Db::table("bmember")->limit($limit)->column("main_pic,uid");
-
-    foreach ($m as $item) {
-        echo "<br>" . $item;
-    }
-}
-
 /**
  * @param $main_pic
  * @param $m
@@ -96,7 +87,7 @@ class Spby extends Controller
     {
         $pno = intval(request()->param("pno", "1"));
         $psize = intval(request()->param("psize", "20"));
-        $m = Db::table("bmember")->limit(($pno - 1) * $psize, $psize)->column("main_pic,uid");
+        $m = Db::table("bmember")->where("pic_size","0")->limit(($pno - 1) * $psize, $psize)->column("main_pic,uid");
         $tr=[];
         foreach ($m as $pic=>$uid) {
             $size = getPicSize($pic);
