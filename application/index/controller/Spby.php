@@ -47,7 +47,6 @@ function spiderPicByUid($uid)
     $m = Db::table("bmember")->where("uid", $uid)->find();
     $pics = Db::table("pics")->where("m_id", $uid)->select();
     $main_pic = $m["main_pic"];
-    echo json_encode($m);
     list($size, $isCover) = downPic($main_pic);
     if ($size <= 0) {
         echo "<img height=60px src='$main_pic' /><img height=60px  src='http://www.bytrip.com$main_pic'>";
