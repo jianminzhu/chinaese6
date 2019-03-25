@@ -45,7 +45,7 @@ function backupMysql()
     $rootpasswd ="xAGfF&WzdLP$";
     @fputs($fp,$rootpasswd);
     @pclose($fp);
-    return "<a href ='http://travelling.chinesecompanion.com/$fileName'>$fileName</a>";
+    return "<a href ='http://travelling.chinesecompanion.com/$fileName' target='_blank'>$fileName</a>";
 }
 
 echo backupMysql();
