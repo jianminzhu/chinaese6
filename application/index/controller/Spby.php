@@ -103,6 +103,7 @@ class Spby extends Controller
             $size = getPicSize($pic);
             $tr[]=" <tr><td>$size</td><td>http://www.bytrip.com$pic</td><td>$uid</td></tr>";
             if ($size==0) {
+                echo "<br> is zero " . $pic;
                 spiderPicByUid($uid);
             }
             Db::table("bmember")->where("uid", $uid)->update(["pic_size" => $size]);
