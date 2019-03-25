@@ -42,7 +42,7 @@ function getPicSize($picPath, $root = ".")
 
 }
 
-function getPicsByUid($uid)
+function spiderPicByUid($uid)
 {
     $m = Db::table("bmember")->where("uid", $uid)->find();
     $pics = Db::table("pics")->where("m_id", $uid)->select();
@@ -102,6 +102,9 @@ class Spby extends Controller
         foreach ($m as $pic=>$uid) {
             $size = getPicSize($pic);
             $tr[]=" <tr><td>$size</td><td>$pic</td><td>$uid</td></tr>";
+            if ($size==0) {
+                spiderPicByUid($uid);
+            }
             Db::table("bmember")->where("uid", $uid)->update(["pic_size" => $size]);
         }
         $trStr = implode("\n", $tr);
@@ -228,7 +231,7 @@ class Spby extends Controller
     function userPics()
     {
         $uid = request()->param("uid");
-        return json_encode(getPicsByUid($uid));
+        return json_encode(spiderPicByUid($uid));
     }
 
 }

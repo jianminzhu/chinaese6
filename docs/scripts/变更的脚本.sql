@@ -11,6 +11,12 @@ ALTER TABLE  `memberby`
   ADD  UNIQUE INDEX `email` (`email`);
 
 
+
+
+ALTER TABLE  `memberby`
+  ADD COLUMN `pic_size` INT DEFAULT 0 NULL ;
+
+
 ALTER TABLE  `bmember`
   ADD COLUMN `pic_size` INT DEFAULT 0 NULL ;
 
@@ -18,6 +24,9 @@ ALTER TABLE  `bmember`
 
 ALTER TABLE  `pics`
 ADD COLUMN `pic_size` INT DEFAULT 0 NULL ;
+
+
+
 
 
 
