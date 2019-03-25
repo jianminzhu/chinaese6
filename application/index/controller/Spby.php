@@ -101,7 +101,7 @@ class Spby extends Controller
         $tr=[];
         foreach ($m as $pic=>$uid) {
             $size = getPicSize($pic);
-            $tr[]=" <tr><td>$size</td><td>$pic</td><td>$uid</td></tr>";
+            $tr[]=" <tr><td>$size</td><td>http://www.bytrip.com$pic</td><td>$uid</td></tr>";
             if ($size==0) {
                 spiderPicByUid($uid);
             }
