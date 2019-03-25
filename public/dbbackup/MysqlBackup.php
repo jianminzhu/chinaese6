@@ -39,13 +39,15 @@ function backupMysql()
 {
     $fileName = "dbbackup/chinese6_companion_" . date("Ymd__h_i_s", time());
     $backupmysql = "mysqldump -h az1-ls7.a2hosting.com -u  chinese6_test2 -p  chinese6_companion | gzip > ~//travelling.chinesecompanion.com/public/$fileName.sql.gz";
-
+    echo $fileName;
+    echo $backupmysql;
     $fp = @popen($backupmysql,"w");
     $rootpasswd ="xAGfF&WzdLP$";
     @fputs($fp,$rootpasswd);
     @pclose($fp);
     return "<a href ='http://travelling.chinesecompanion.com/$fileName'>$fileName</a>";
 }
+
 echo backupMysql();
 
 
