@@ -41,7 +41,7 @@ function backupMysql()
     $backupmysql = "mysqldump -h az1-ls7.a2hosting.com -u  chinese6_test2 -p  chinese6_companion | gzip > ~//travelling.chinesecompanion.com/public/chinese6_companion_`date '+%m-%d-%Y'`.sql.gz";
 
     $fp = @popen($backupmysql,"w");
-    $rootpasswd ="xAGfF&WzdLP$'";
+    $rootpasswd ="xAGfF&WzdLP$";
     @fputs($fp,$rootpasswd);
     @pclose($fp);
     return "<a href ='http://travelling.chinesecompanion.com/$fileName'>$fileName</a>";
