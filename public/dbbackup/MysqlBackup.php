@@ -37,8 +37,8 @@ function getFilesFromFolder($dir,$exceptFolders,$exceptFiles){
 
 function backupMysql()
 {
-    $fileName = "dbbackup/chinese6_companion_" . date("Ymd__h_i_s", time());
-    $backupmysql = "mysqldump -h az1-ls7.a2hosting.com -u  chinese6_test2 -p  chinese6_companion | gzip > ~//travelling.chinesecompanion.com/public/$fileName.sql.gz";
+    $fileName = "dbbackup/chinese6_companion_" . date("Ymd__h_i_s", time()).".sql.gz";
+    $backupmysql = "mysqldump -h az1-ls7.a2hosting.com -u  chinese6_test2 -p  chinese6_companion | gzip > ~//travelling.chinesecompanion.com/public/$fileName";
     echo $fileName;
     echo $backupmysql;
     $fp = @popen($backupmysql,"w");
