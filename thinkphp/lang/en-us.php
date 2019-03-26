@@ -46,8 +46,8 @@ return [
     "会员可见" => "<a href='/index.php/index/m/upgrade'><img  src=\"/vip.png\" height='60px'/></a>",
     "VIP会员费" => "VIP Member Fee",
     "等待Paypal 确认收取了您的付款" =>"Waiting for the confirmation from paypal about charging your credit card ",
-
-
+    "VIP有效期"=>" VIP Valid Period",
+    "VIP 状态"=>"VIP Status",
 
     //profiledit
     "名字" => "Name",

@@ -139,14 +139,12 @@
             </div>
             {if condition="$isPay "}
             <div class="roundedContainer">
-                <div class="mainHeading clearfix"><h1>{:lang("VIP ")}</h1>
+                <div class="mainHeading clearfix"><h1>{:lang("VIP 状态")}</h1>
                 </div>
+
                 <ul class="formContainer">
-                    <li class="clearfix"><label class="questionLabel">{:lang("有效期")}:</label>
+                    <li class="clearfix"><label class="questionLabel">{:lang("VIP有效期")}:</label>
                         <span> {$vip.renge}</span>
-                    </li>
-                    <li class="clearfix"><label class="questionLabel">{:lang("距离过期天数")}:</label>
-                        <span> {$vip.remainingDays}</span><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;<a href="index.php/index/m/upgrade">{$vip.remaining<90?"upgrade":"sss"}</a></span>
                     </li>
                 </ul>
             </div>
