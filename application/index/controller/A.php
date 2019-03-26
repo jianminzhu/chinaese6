@@ -83,9 +83,14 @@ class A extends Base
         }
     }
 
-    public function showforgotpassword()
+    public function forgotpassword()
     {
         return view('/index/forgotpassword');
+    }
+
+    function resetpassword()
+    {
+        return view("/index/resetpassword");
     }
 
 }

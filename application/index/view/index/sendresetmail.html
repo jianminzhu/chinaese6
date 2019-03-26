@@ -1,0 +1,44 @@
+<html>
+<head>
+    {include file="../application/index/view/index/_commoncss.html" /}
+</head>
+
+<div id="headerouter" class="" style="margin-top: 10%">
+    <div class="overlay-7 fixed top-0 left-0 right-0 bottom-0"></div>
+    <div class="absolute top-0 left-0 col-12 z2 flex items-center justify-between">
+    </div>
+</div>
+
+<div class="flex items-center justify-center relative min-height-12">
+    <div class="max-width-2 p3 m1 relative rounded bg-white fade-in">
+        <h1 class="color-dark-grey mt0">{:lang("重设密码")}</h1>
+        <form action="/zc/auth/showforgotpassword" method="POST" name="forgotPasswordForm" id="form-forgot-password" class="form" novalidate="">
+            <div class="form-item flex flex-column">
+                <label>{:lang("邮箱")}</label>
+
+                <div class="mb2">
+
+                    <div class="form-field mb1 relative" aria-invalid="false">
+                        <input type="email" name="email" id="form-forgot-password-email" class="col-12 nls_protected" placeholder="email@example.com" tabindex="" required="" data-required-message="请输入电子邮箱地址">
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <div class="actions">
+                <button type="submit" name="submit" class="h3 relative rounded overflow-hidden py2 px3 bg-theme header-strip-color col-12 center">{:lang("重设密码")}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="flex items-center justify-center relative min-height-12">
+    <div class="max-width-2 p3 m1 relative rounded bg-white fade-in">
+        <h1 class="color-dark-grey mt0">{:lang("密码重设邮件已成功发送")}</h1>
+        <p class="m0 mb1">请依邮件中的提示来重新设定您的密码。 若您需要进一步协助,请来信<strong><a href="/zc/help/helpdesk">客服部门</a></strong></p>
+    </div>
+</div>
+
+</html>

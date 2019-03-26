@@ -203,6 +203,7 @@ class M extends Base
         $pics = Db::table("pics")->where("m_id", $id)->select();
 
         $emsg = "";
+        $vip = [];
         try {
             $isPay = false;
             if ($this->isLogin()) {
@@ -212,7 +213,13 @@ class M extends Base
         } catch (\Exception $e) {
             $emsg = $e->getMessage();
         }
-        return ['m' => $member, "pics" => $pics, "cc" => $cc, "emsg" => $emsg,"isPay"=>$isPay];
+        if ($isPay) {
+            $vip = Db::query(" SELECT *, TIMESTAMPDIFF(DAY,startdate,enddate)AS remaining FROM pay where m_id=$id")[0];
+            $vip["renge"] = $vip["cost"]>199?lang("终身"):$vip["startdate"] . " ~ " . $vip["enddate"];
+            $vip["remainingDays"] = $vip["cost"]>199?lang("终身"): $vip['remaining'] ." 天";
+        }
+
+        return ['m' => $member, "pics" => $pics, "cc" => $cc, "emsg" => $emsg,"isPay"=>$isPay,"vip"=> $vip];
     }
 
 

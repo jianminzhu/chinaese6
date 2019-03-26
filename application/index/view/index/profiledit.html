@@ -137,15 +137,31 @@
 
                 </div>
             </div>
+            {if condition="$isPay "}
             <div class="roundedContainer">
-                <form action="/index.php/index/m/uploadInfo" method="post">
-                    <div class="mainHeading clearfix"><h1>{:lang("文档编辑")}</h1>
-                    </div>
-                    <ul class="formContainer">
+                <div class="mainHeading clearfix"><h1>{:lang("VIP ")}</h1>
+                </div>
+                <ul class="formContainer">
+                    <li class="clearfix"><label class="questionLabel">{:lang("有效期")}:</label>
+                        <span> {$vip.renge}</span>
+                    </li>
+                    <li class="clearfix"><label class="questionLabel">{:lang("距离过期天数")}:</label>
+                        <span> {$vip.remainingDays}</span><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;<a href="index.php/index/m/upgrade">{$vip.remaining<90?"upgrade":"sss"}</a></span>
+                    </li>
+                </ul>
+            </div>
+            {/if}
+            <div class="roundedContainer">
+                <div class="mainHeading clearfix"><h1>{:lang("文档编辑")}</h1>
+                </div>
+                <ul class="formContainer">
+                    <form action="/index.php/index/m/uploadInfo" method="post">
                         <li class="sectionHeading clearfix"><h2>{:lang("基本资料")}</h2></li>
 
 
-<li class="clearfix"><label class="questionLabel">{:lang("名字")}:</label><span ><input name="nickname"  value="{$u.nickname|default=''}" size="20"   autocomplete="off"><span class="textfieldRequiredMsg"> </span></span></li>
+                        <li class="clearfix"><label class="questionLabel">{:lang("名字")}:</label><span><input
+                                name="nickname" value="{$u.nickname|default=''}" size="20" autocomplete="off"><span
+                                class="textfieldRequiredMsg"> </span></span></li>
 
                         <li class="clearfix">
                             <label class="questionLabel">{:lang("我是")}:</label>
@@ -180,14 +196,18 @@
                     	    <span class="selectRequiredMsg"></span>
                     </span>
                             <script>$(function () {
-                                SelectCountryStateCity("{$u.countryid}","{$u.stateid}","{$u.cityid}")
+                                SelectCountryStateCity("{$u.countryid}", "{$u.stateid}", "{$u.cityid}")
                             })</script>
                         </li>
                         <li class="sectionHeading clearfix"><h2>{:lang("联系方式")}</h2></li>
-                        <li class="clearfix"><label class="questionLabel">{:lang("手机")}:</label><span ><input name="concat_mobile"  value='{$cc["手机"]}' />     </span></li>
-                        <li class="clearfix"><label class="questionLabel">{:lang("邮箱")}:</label><span ><input name="concat_email"  value='{$cc["邮箱"]}' type="email"/>     </span></li>
-                        <li class="clearfix"><label class="questionLabel">{:lang("QQ")}:</label><span ><input name="concat_qq"  value='{$cc["QQ"]}'  />     </span></li>
-                        <li class="clearfix"><label class="questionLabel">{:lang("微信")}:</label><span ><input name="concat_wechat"  value='{$cc["微信"]}'/>     </span></li>
+                        <li class="clearfix"><label class="questionLabel">{:lang("手机")}:</label><span><input
+                                name="concat_mobile" value='{$cc["手机"]}'/>     </span></li>
+                        <li class="clearfix"><label class="questionLabel">{:lang("邮箱")}:</label><span><input
+                                name="concat_email" value='{$cc["邮箱"]}' type="email"/>     </span></li>
+                        <li class="clearfix"><label class="questionLabel">{:lang("QQ")}:</label><span><input
+                                name="concat_qq" value='{$cc["QQ"]}'/>     </span></li>
+                        <li class="clearfix"><label class="questionLabel">{:lang("微信")}:</label><span><input
+                                name="concat_wechat" value='{$cc["微信"]}'/>     </span></li>
                         <li class="sectionHeading clearfix"><h2>{:lang("外表")}</h2></li>
                         <li class="clearfix  ">
                             <label class="questionLabel">{:lang("身高")}:</label>
@@ -365,11 +385,9 @@
                         <li style="text-align:center;border:0">
                             <button type="submit" name="updateProfileBtn" class="greyShinyButton">{:lang("保存")}</button>
                         </li>
-                    </ul>
-                </form>
+                    </form>
+                </ul>
             </div>
-
-
         </div>
 
     </div>

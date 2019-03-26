@@ -12,7 +12,6 @@ ALTER TABLE  `memberby`
 
 
 
-
 ALTER TABLE  `memberby`
   ADD COLUMN `pic_size` INT DEFAULT 0 NULL ;
 
