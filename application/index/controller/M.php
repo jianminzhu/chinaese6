@@ -208,20 +208,19 @@ class M extends Base
             $isPay = false;
             if ($this->isLogin()) {
                 $isPay = $this->loginUser()->isPay;
+                if ($isPay) {
+                    try {
+                        $vip = Db::query(" SELECT *, TIMESTAMPDIFF(DAY,startdate,enddate)AS remaining FROM pay where m_id=$id")[0];
+                        $vip["renge"] = $vip["cost"] > 199 ? lang("终身") : $vip["startdate"] . " ~ " . $vip["enddate"];
+                        $vip["remainingDays"] = $vip["cost"] > 199 ? lang("终身") : $vip['remaining'] . " 天";
+                    } catch (\Exception $e) {
+                    }
+                }
             }
             list($cc) = $this->concatData($id, $isPay);
         } catch (\Exception $e) {
             $emsg = $e->getMessage();
         }
-        if ($isPay) {
-            try {
-                $vip = Db::query(" SELECT *, TIMESTAMPDIFF(DAY,startdate,enddate)AS remaining FROM pay where m_id=$id")[0];
-                $vip["renge"] = $vip["cost"] > 199 ? lang("终身") : $vip["startdate"] . " ~ " . $vip["enddate"];
-                $vip["remainingDays"] = $vip["cost"] > 199 ? lang("终身") : $vip['remaining'] . " 天";
-            } catch (\Exception $e) {
-            }
-        }
-
         return ['m' => $member, "pics" => $pics, "cc" => $cc, "emsg" => $emsg,"isPay"=>$isPay,"vip"=> $vip];
     }
 
