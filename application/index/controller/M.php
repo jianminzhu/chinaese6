@@ -494,7 +494,7 @@ class M extends Base
             $email = $member["email"];
             $token = md5($member["pwd"] . $email);
             $lang=$this->getLang();
-            $url = input("http://travelling.chinesecompanion.com/index.php/index/m/resetPassword?token=$token&lang=$lang";
+            $url =  "http://travelling.chinesecompanion.com/index.php/index/m/resetPassword?token=$token&lang=$lang";
             $content = $this->render('/index/_resetpassword', ["name" => $member["nickname"], "email" => $email, "url" => $url]);
         } catch (\Exception $e) {
             $isSucc = false;
