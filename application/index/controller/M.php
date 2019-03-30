@@ -499,7 +499,7 @@ class M extends Base
         } catch (\Exception $e) {
             $isSucc = false;
         }
-        return array($isSucc, input('server.SERVER_NAME') . " " . lang("重置密码"), $content, $token);
+        return array($isSucc,   "chinesecompanion.com" . lang("重置密码"), $content, $token);
     }
 
 
