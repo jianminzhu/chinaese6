@@ -80,7 +80,7 @@ th ,td{ text-align: center;}
             <a data-opt-delpics   data-mid={$p.id} data-opt-bigimg="{$p.main_pic}" style="color: red" > 删除</a>
         </td>
         <td style="text-align: left">{volist name="$p['pics']" id="pic"}
-            <dl>
+            <dl style="display:inherit;">
                 <dd>
                 <div class="profile-bg" style="background-image: url('{$pic.file_path}');width:50px;height: 50px;display: inlie"  data-opt-bigimg="{$pic.file_path}" data-picid="{$pic.id}"></div>
                  <a data-opt-delpics data-picid={$pic.id} data-opt-bigimg="{$pic.file_path}"  title="删除此照片"  style="color: red" >删除</a>
