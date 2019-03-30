@@ -568,7 +568,7 @@ class M extends Base
         if ($isUpdateSucc) {
             return view("/index/login", ["email" => $email]);
         } else {
-            return view("/index/passwordreset", $data);
+            return view("/index/passwordReset", $data);
         }
     }
 
