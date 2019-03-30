@@ -213,8 +213,7 @@ class M extends Base
                 if ($isPay) {
                     try {
                         $vip = Db::query(" SELECT *, TIMESTAMPDIFF(DAY,startdate,enddate)AS remaining FROM pay where m_id=$id")[0];
-                        $vip["renge"] = $vip["cost"] > 199 ? lang("终身") : $vip["startdate"] . " ~ " . $vip["enddate"];
-                        $vip["remainingDays"] = $vip["cost"] > 199 ? lang("终身") : $vip['remaining'] . " 天";
+                        $vip["renge"] = $vip["cost"] > 199 ? lang("终身VIP会员") : lang("1年 VIP 会员");
                     } catch (\Exception $e) {
                     }
                 }
@@ -454,12 +453,9 @@ class M extends Base
             'email' => $email
         ];
         $msg = ["email.email" => "请输入正确的邮箱"];
-
-
         $v = new Validate($rule, $msg);
-        $isPassCheck = $v->batch()->check($data);
-        $error = $v->getError();
-        $emsg = "";
+        $isPassCheck = $v->check($data);
+        $emsg = $v->getError();
         if ($isPassCheck) {
             $member = Db::table("member")->where("email", $email)->find();
             if (!$member) {
@@ -478,11 +474,12 @@ class M extends Base
                 }
             }
         }
-        $error["sys"] = $emsg;
 
         $this->headData();
         if ($isSucc) {
             return view("/index/passwordMailSentSucc");
+        } else {
+            return view("/index/passwordForget",["emsg"=>$emsg]);
         }
     }
 
