@@ -24,13 +24,13 @@
             let picid = $(this).data("picid");
             let mid = $(this).data("mid");
             let imgsrc = $(this).attr("src")
-            let html = `
-<table  style="background-color: #FFF; display: flex;position: fixed;left:5%;top:5%;width: 300px;height: 300px;"><thead style="background-color: #7a869d">
+            let html = `<div style="display: flex;position: fixed;left:5%;top:5%;width: 300px;height: 300px;">
+<table  style="background-color: #FFF; "><thead style="background-color: #7a869d">
 <th align="left"><button data-opt-delpics data-mid=${mid} data-picid=${picid} style="color: red"> 删除图片</button></th>
 <th style="text-align: right"><button href="javascript:void(0)"  onclick="$('#bigimg').hide()">X</button></th>
 </thead>
 <tr><td  colspan="2"><div class="profile-bg" style="background-image:url('${imgsrc}'); width: 400px;height: 400px;"></div>  </td></tr>
-</table>`;
+</table></div>`;
 
             $("#bigimg").html(html)
             $("#bigimg").css({"display": "flex"}).show();
