@@ -28,6 +28,7 @@ div {
             })
             $form.on("submit", function () {
                 let $searchResults = $("[name=searchResults]");
+                $searchResults.html("加载中...")
                 $.ajax({
                     url: "/index.php/index/base/searchAdmin?" + $form.serialize(),
                     dataType: "html"
