@@ -7,8 +7,8 @@ function sendMail($to, $title, $content)
 {
 
     //引入PHPMailer的核心文件 使用require_once包含避免出现PHPMailer类重复定义的警告  
-    require_once("phpmailer/phpmailer.php");
-    require_once("phpmailer/smtp.php");
+    require_once("PHPMailer/PHPMailer.php");
+    require_once("PHPMailer/SMTP.php");
     //实例化PHPMailer核心类
     $mail = new PHPMailer();
 
