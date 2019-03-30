@@ -12,6 +12,9 @@
                 $bsearch.trigger("click");
             }
         });
+        $("select").change(function () {
+            $form.trigger("submit");
+        })
         $("body").delegate("[data-opt-delpics]", "click", function () {
             if (confirm("确认删除")) {
                 let mid = $(this).data("mid") || "";
