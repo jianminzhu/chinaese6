@@ -13,11 +13,12 @@ class Base extends Controller
 
     public function render($tpl, $data)
     {
-        return view($tpl,$data)->getContent();
+        return view($tpl, $data)->getContent();
     }
-    public function ajax($isSuccess, $data = [],$msg="")
+
+    public function ajax($isSuccess, $data = [], $msg = "")
     {
-        return json(["isSuccess" => $isSuccess,"msg"=>$msg, "data" => $data]);
+        return json(["isSuccess" => $isSuccess, "msg" => $msg, "data" => $data]);
     }
 
     public function memberIsPay($mid)
@@ -33,6 +34,7 @@ class Base extends Controller
         }
         return $isPay;
     }
+
     public function changeSessionLoginUser($member)
     {
         session("loginUser", $member);
@@ -105,42 +107,44 @@ class Base extends Controller
      * @param $user
      * @return mixed
      */
-    public function predeal($cookieLang, $user,$getPics=false)
+    public function predeal($cookieLang, $user, $getPics = false)
     {
-        $pics=[];
-        if ($cookieLang == "en-us" && $user) {
-            $user["nickname"] = pinyinName($user["nickname"]);
-            try {
-                $user["address"] = pinyinAddress($user["address"]);
-            } catch (\Exception $e) {
+        if ($user) {
+            if ($cookieLang == "en-us") {
+                try {
+                    $user["nickname"] = pinyinName($user["nickname"]);
+                    $user["address"] = pinyinAddress($user["address"]);
+                } catch (\Exception $e) {
+                }
             }
             if ($getPics) {
                 try {
-                    $pics = Db::table("pics")->where("m_id", $user["id"])->select();
+                    $user["pics"] = Db::table("pics")->where("m_id", $user["id"])->select();
                 } catch (\Exception $e) {
-                    echo "ddddddddddddddddddddddd".$e->getMessage();
                 }
             }
         }
-        return ["id"=>$user["id"],"address"=>$user["address"],"main_pic"=>$user["main_pic"],"nickname" => $user["nickname"], "age" => $user["age"], "pics" => $pics];;
+        return $user;
     }
 
 
-    public function search()
+    public
+    function search()
     {
         $this->searchData();
         return view("/index/search");
     }
 
 
-
-    public function searchAdmin()
+    public
+    function searchAdmin()
     {
         $this->searchData();
         return view("../../admin/view/page/memberSearchTable");
     }
 
-    public function msgs()
+    public
+    function msgs()
     {
         $this->headData();
         return $this->fetch('msglist');
@@ -149,7 +153,8 @@ class Base extends Controller
     /**
      * @param $loginUser
      */
-    public function loginUserCounts()
+    public
+    function loginUserCounts()
     {
         $ucounts = [];
         if ($this->isLogin()) {
@@ -181,7 +186,8 @@ class Base extends Controller
      * @param $mid
      * @return Member
      */
-    public function getMemberWithWhere($mid)
+    public
+    function getMemberWithWhere($mid)
     {
         $table = Db::table("member");
         $table->where('id', "<>", $mid);
@@ -223,7 +229,8 @@ class Base extends Controller
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public function searchWithRequestParam()
+    public
+    function searchWithRequestParam()
     {
         $cookieLang = cookie("think_var");
         if ($cookieLang) {
@@ -265,7 +272,7 @@ class Base extends Controller
         $members = [];
 
         foreach ($dbMembers as $member) {
-            $members[] = $this->predeal($cookieLang, $member,request()->param("pics")=="y");
+            $members[] = $this->predeal($cookieLang, $member, request()->param("pics") == "y");
         }
         $data = [
             "members" => $members,
@@ -280,11 +287,11 @@ class Base extends Controller
     }
 
 
-
     /**
      * @return mixed|string
      */
-    public function getLang()
+    public
+    function getLang()
     {
         $lang = request()->param("lang");
         $toLang = "";
