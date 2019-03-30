@@ -77,6 +77,7 @@
     </div>
 </div>
 {/if}
+<div class="clear-fix clearfix clear"><h1></h1></div>
 {if condition='$piconly eq true'}
 {volist name="members" id="p"}
 <div  style="display: inline;float: left">
@@ -138,6 +139,8 @@
     {/volist}
 </table>
 {/if}
+
+<div class="clear-fix clearfix clear"><h1></h1></div>
 {if condition='count($members)>0'}
 <div class="max-width  mx-auto">
     <div class="flex justify-between items-center caps">
