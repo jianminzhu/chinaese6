@@ -203,25 +203,9 @@ class M extends Base
     {
         $member = $this->getMemberWithPay($id);
         $pics = Db::table("pics")->where("m_id", $id)->select();
-
         $emsg = "";
-        $vip = [];
-        try {
-            $isPay = false;
-            if ($this->isLogin()) {
-                $isPay = $this->loginUser()->isPay;
-                if ($isPay) {
-                    try {
-                        $vip = Db::query(" SELECT *, TIMESTAMPDIFF(DAY,startdate,enddate)AS remaining FROM pay where m_id=$id")[0];
-                        $vip["renge"] = $vip["cost"] > 199 ? lang("终身VIP会员") : lang("1年 VIP 会员");
-                    } catch (\Exception $e) {
-                    }
-                }
-            }
-            list($cc) = $this->concatData($id, $isPay);
-        } catch (\Exception $e) {
-            $emsg = $e->getMessage();
-        }
+        list($vip, $isPay) = $this->vipInfo($id);
+        list($cc) = $this->concatData($id, $isPay);
         return ['m' => $member, "pics" => $pics, "cc" => $cc, "emsg" => $emsg, "isPay" => $isPay, "vip" => $vip];
     }
 
@@ -334,13 +318,17 @@ class M extends Base
 
     public function deletePhoto()
     {
-        $id = request()->param("id");
-        if ($id && session('?loginUser')) {
-            $loginUser = session("loginUser");
-            $table_pics = Db::table('pics');
-            $table_pics->where('id', $id);
-            $table_pics->where('m_id', $loginUser->id);
-            $table_pics->delete();
+        $picid = request()->param("id");
+        if($picid && $picid != "undefined") {
+            try {
+                $pic = Db::table("pics")->where("id", $picid)->find();
+                if ($pic) {
+                    Db::table("del_pics")->insert(["file_path" => $pic["file_path"],"picid"=>$picid, "type" => "pics", "mid" => $pic["m_id"]]);
+                    Db::table("pics")->where("id", $picid)->delete();
+                }
+            } catch (\Exception $e) {
+                echo $e->getMessage();
+            }
         }
         return redirect("/index.php/index/m/profiledit");
     }
@@ -573,6 +561,8 @@ class M extends Base
         $this->headData();
         return view("/index/passwordReset", ["token" => request()->param("token")]);
     }
+
+
 
 }
 

@@ -32,6 +32,8 @@ return [
     "微信" => "WeChat",
     "城市" => "city",
     "省" => "State/Province",
+    "请检查邮箱和密码"=>"Please check email and password ",
+
     "Paypal 没有收取您的付款" => "Paypal has not charged your credit card",
     "您好" => " Hi",
     "重置密码" => "Reset password",
@@ -142,6 +144,8 @@ return [
     "显示" => "Show",
     "发送的消息" => "Sent",
     "升级会员资格来读取信息。" => " Upgrade your membership to read their message.",
+    "升级会员级别" => "Upgrade Level",
+
     "升级成会员" => "Upgrade Now",
     "upgrade_pic" => "/upgrade_en.jpg",
     "关闭" => "Cancle",

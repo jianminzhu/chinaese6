@@ -46,12 +46,13 @@ class A extends Base
         $email = $p["email"];
         $pwd = $p["pwd"];
         $phpMd5pwd = md5(trim($pwd));
-        $dbMember = Member::get(['email' => $email]);
+        $dbMember = Member::get ( ['email' => $email]) ;
         $isSucc = 0;
         $emsg = "";
         $mysqlMd5pwd = $dbMember['pwd'];
         if ($phpMd5pwd == $mysqlMd5pwd) {
             $dbMember->isPay = $this->memberIsPay($dbMember->id);
+            $this->refreshVipInfo($dbMember);
             session("loginUser", $dbMember);
             session("isLogin", true);
             $isSucc = 1;
@@ -61,12 +62,13 @@ class A extends Base
             return json_encode(["isSucc" => $isSucc, 'emsg' => $emsg]);//,"phpMd5pwd"=>$phpMd5pwd,"mmd5"=>$mysqlMd5pwd
         } else {
             if ($isSucc === 1) {
-                return redirect("/");
+                return $this->redirect("/");
             } else {
-                return $this->error("邮箱密码不匹配", url("login"));
+                return $this->error(lang("请检查邮箱和密码"), url("login"));
             }
         }
     }
+
 
     public function tolang()
     {
@@ -83,6 +85,7 @@ class A extends Base
                 break;
         }
     }
+
 
 
 

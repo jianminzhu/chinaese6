@@ -20,7 +20,26 @@
         </div>
     </div>
     <div class="flex-auto flex items-center justify-end z3 me2">
+
         {if condition="$Think.session.isLogin eq true"}
+        {if condition="$u.vip.type == '1year' or $u.vip.type == 'no'" }
+        <a id="evtGUpgradeMemberHeader" href="/index.php/index/m/upgrade"
+           class="ad-295-46 flex items-center bg-green rounded text-decoration-none">
+            <div class="long-text p1">
+                <svg class="icon-30 fill-white inline-block">
+                    <use xlink:href="/assets/desktop/icons/icons.svg#icon-upgradearrow-nofill"></use>
+                </svg>
+                <div class="upgrade-text inline-block px1">
+                    <strong>{:lang("升级会员级别")} </strong>
+                </div>
+            </div>
+            <div class="short-text">
+                <div class="upgrade-text p1 center">
+                    Upgrade Now!
+                </div>
+            </div>
+        </a>
+        {/if}
         <a href="/index.php/index/m/profiledit">
             <div class="header-sub-menu relative profile-icon" data-animation="menu-pop">
                 <div class="profile-header-image circle shadow border relative mx2 flex items-center justify-center circle overflow-hidden card-image-bg-color">
@@ -47,5 +66,5 @@
         </div>
     </div>
 </div>
-<div id="dialogMsg" style="position: fixed;top:10%;left:35%;z-index:10001;background-color: #FFFFFF" >
+<div id="dialogMsg" style="position: fixed;top:10%;left:35%;z-index:10001;background-color: #FFFFFF">
 </div>

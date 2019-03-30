@@ -10,7 +10,34 @@ include_once "ext_util/pinyin.php";
 
 class Base extends Controller
 {
+    public function refreshVipInfo($dbMember)
+    {
+        if ($dbMember) {
+            list($vip, $isPay) =  $this->vipInfo($dbMember["id"]);
+            $dbMember->vip = $vip;
+        }
+        return $dbMember;
+    }
+    /**
+     * @param $id
+     * @return array
+     */
+    public function vipInfo($id)
+    {
+        $isPay = false;
 
+        $vip = Db::query(" SELECT *, TIMESTAMPDIFF(DAY,startdate,enddate)AS remaining FROM pay where m_id=$id")[0];
+        if ($vip) {
+            $vip["renge"] = $vip["cost"] > 199 ? lang("终身VIP会员") : lang("1年 VIP 会员");
+            $vip["type"] = $vip["cost"] > 199 ? "lifetime" : "1year";
+            $isPay = true;
+        }else{
+            $vip["type"] = "no";
+            $vip["renge"] = "";
+        }
+
+        return array($vip, $isPay);
+    }
     public function render($tpl, $data)
     {
         return view($tpl, $data)->getContent();
@@ -75,6 +102,7 @@ class Base extends Controller
         $loginUser = [];
         if ($this->isLogin()) {
             $loginUser = $this->loginUser();
+            $this->refreshVipInfo($loginUser);
             session("isPay", db("pay")->where("m_id", $loginUser->id)->count() > 0);
         } else {
             session("isPay", false);
@@ -84,7 +112,7 @@ class Base extends Controller
             'ucounts' => $this->loginUserCounts(),
             "uFavoriteMids" => $loginUser ? Db::table("favorite")->where("mid", $loginUser->id)->column("to_mid") : [],
             "uIntrestMids" => $loginUser ? Db::table("interest")->where("mid", $loginUser->id)->column("to_mid") : [],
-            "lang" => $toLang,
+            "lang" => $toLang
         ];
         $this->assign($arr);
         return json_encode(['u' => $loginUser,]);

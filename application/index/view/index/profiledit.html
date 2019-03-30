@@ -105,14 +105,14 @@
                                          style="background-image: url('{$u.main_pic}');"></div>
                             </span>
                             <div class="replace">
-                                <span data-opt-uploadPhoto>{:lang("修改头像")}</span>
+                                <a data-opt-uploadPhoto>{:lang("修改头像")}</a>
                             </div>
                             <input name="photoOrder" type="hidden" value="2">
                         </div>
                         {volist name="pics" id="pic" key="k"}
                         <div class="photobg ">
                             <div class="photoHeading"><span class="primaryTitle"></span></div>
-                            <div class="photooverlay" data-view="deletePhoto" style="display:none;">
+                            <div class="photooverlay" data-view="deletePhoto" style="display:;">
                                 <ul>
                                     <li>
                                         <a href="/index.php/index/m/deletePhoto?id={$pic.id}"
