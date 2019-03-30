@@ -73,20 +73,28 @@
 {/if}
 {if condition='$piconly eq true'}
 
-    {volist name="members" id="p"}
-    <div class="profile-bg bigimg col-2" style="background-image: url('{$p.main_pic}');"
-         data-mid="{$p.id}">
-            <a data-opt-delpics data-mid={$p.id} style="color: red"> 删除</a>
-            </div>
-    {volist name='$p["pics"]' id="pic"}
-   <div class="profile-bg bigimg"
-        style="background-image: url('{$pic.file_path}');"
-         data-picid="{$pic.id}">
-       <a data-opt-delpics data-picid={$pic.id}  title="删除此照片"  style="color: red">删除</a>
-   </div>
+{volist name="members" id="p"}
+<dl>
+    <dd>
+        <div class="profile-bg bigimg col-2" style="background-image: url('{$p.main_pic}');"
+             data-mid="{$p.id}">
+        </div>
+        <a data-opt-delpics data-mid={$p.id} style="color: red"> 删除</a>
+    </dd>
+</dl>
+{volist name='$p["pics"]' id="pic"}
+<dl>
+    <dd>
+        <div class="profile-bg bigimg"
+             style="background-image: url('{$pic.file_path}');"
+             data-picid="{$pic.id}">
+        </div>
+        <a data-opt-delpics data-picid={$pic.id} title="删除此照片" style="color: red">删除</a>
+    </dd>
+</dl>
 
-    {/volist}
-    {/volist}
+{/volist}
+{/volist}
 
 {else}
 <table>
