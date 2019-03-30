@@ -83,14 +83,14 @@
 <div  style="display: inline;float: left">
      <div class="profile-bg bigimg" style='background-image: url("{$p.main_pic}")'   >
 
-         <button class="adel" data-opt-delpics data-mid={$p.id} style="color: red"> 删除</button>
+         <button class="adel" data-opt-delpics data-mid={$p.id} style="color: red" title="{$p.nickname},{$p.age},{$p.address}"> 删除</button>
      </div>
 </div>
 {volist name='$p["pics"]' id="pic"}
 <div style="display: inline;float: left">
     <div class="profile-bg bigimg" style='background-image: url("{$pic.file_path}")'   >
 
-        <button class="adel"  data-opt-delpics data-picid={$pic.id} title="删除此照片" style="color: red">删除</>
+        <button class="adel"  data-opt-delpics data-picid={$pic.id}  style="color: red" title="{$p.nickname},{$p.age},{$p.address}">删除</button>
     </div>
 
 </div>
