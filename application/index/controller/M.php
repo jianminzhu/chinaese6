@@ -3,7 +3,7 @@
 namespace app\index\controller;
 require('ext_util/fileUtil.php');
 require('ext_util/BytripUtil.php');
-include_once "ext_util\mail\Mail163.php";
+include_once "ext_util/mail/Mail163.php";
 
 use app\index\model\Member;
 use app\index\model\Pics;
