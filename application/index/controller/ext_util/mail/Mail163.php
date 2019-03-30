@@ -9,7 +9,7 @@ function sendMail($to, $title, $content)
     //引入PHPMailer的核心文件 使用require_once包含避免出现PHPMailer类重复定义的警告  
     require_once("phpmailer/phpmailer.php");
     require_once("phpmailer/smtp.php");
-    //实例化PHPMailer核心类  
+    //实例化PHPMailer核心类
     $mail = new PHPMailer();
 
     //是否启用smtp的debug进行调试 开发环境建议开启 生产环境注释掉即可 默认关闭debug调试模式  
