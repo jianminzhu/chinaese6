@@ -13,6 +13,7 @@
             }
         });
         $("select").change(function () {
+            $("#bigimg").hide()
             $form.trigger("submit");
         })
         $("body").delegate("[data-opt-delpics]", "click", function () {
