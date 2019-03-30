@@ -23,7 +23,7 @@
         $("body").delegate("[data-opt-bigimg]", "mouseover", function () {
             let picid = $(this).data("picid");
             let mid = $(this).data("mid");
-            let imgsrc = $(this).attr("src")
+            let imgsrc = $(this).attr("data-opt-bigimg")
             let html = `<div style="display: flex;position: fixed;left:5%;top:5%;width: 300px;height: 300px;">
 <table  style="background-color: #FFF; "><thead style="background-color: #7a869d">
 <th align="left"><button data-opt-delpics data-mid=${mid} data-picid=${picid} style="color: red"> 删除图片</button></th>
