@@ -465,7 +465,7 @@ class M extends Base
                 list($isSucc, $title, $content, $token) = $this->genResetPassWordContext($member);
                 if ($isSucc) {
                     Db::table("member")->where("email", $email)->update(["token" => $token, "getpasstime" => date("Y-m-d H:i:s", time())]);
-                   $isSucc = $this->sendMail($email, $title, $content);
+                    $isSucc = $this->sendMail($email, $title, $content);
                     if (!$isSucc) {
                         $emsg = lang("邮件发送失败，请联系管理员");
                     }
@@ -479,7 +479,7 @@ class M extends Base
         if ($isSucc) {
             return view("/index/passwordMailSentSucc");
         } else {
-            return view("/index/passwordForget",["emsg"=>$emsg]);
+            return view("/index/passwordForget", ["emsg" => $emsg]);
         }
     }
 
@@ -490,15 +490,14 @@ class M extends Base
         try {
             $email = $member["email"];
             $token = md5($member["pwd"] . $email);
-            $lang=$this->getLang();
-            $url =  "http://travelling.chinesecompanion.com/index.php/index/m/resetPassword?token=$token&lang=$lang";
+            $lang = $this->getLang();
+            $url = "http://travelling.chinesecompanion.com/index.php/index/m/resetPassword?token=$token&lang=$lang";
             $content = $this->render('/index/_resetpassword', ["name" => $member["nickname"], "email" => $email, "url" => $url]);
         } catch (\Exception $e) {
             $isSucc = false;
         }
-        return array($isSucc,   "chinesecompanion.com " . lang("重置密码"), $content, $token);
+        return array($isSucc, "chinesecompanion.com " . lang("重置密码"), $content, $token);
     }
-
 
 
     public function passwordForget()
