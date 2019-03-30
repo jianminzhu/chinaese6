@@ -74,18 +74,18 @@
 {if condition='$piconly eq true'}
 
 {volist name="members" id="p"}
-<dl>
+<dl class=" col-2 bigimg">
     <dd>
-        <div class="profile-bg bigimg col-2" style="background-image: url('{$p.main_pic}');"
+        <div class="profile-bg " style="background-image: url('{$p.main_pic}');"
              data-mid="{$p.id}">
         </div>
         <a data-opt-delpics data-mid={$p.id} style="color: red"> 删除</a>
     </dd>
 </dl>
 {volist name='$p["pics"]' id="pic"}
-<dl>
+<dl class=" col-2 bigimg">
     <dd>
-        <div class="profile-bg bigimg"
+        <div class="profile-bg"
              style="background-image: url('{$pic.file_path}');"
              data-picid="{$pic.id}">
         </div>
