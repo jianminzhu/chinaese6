@@ -1,21 +1,57 @@
 <script src="/js/jquery-3.3.1.min.js"></script>
-<script src="/pagejs/common.js?v=1.18"></script>
 <script src="/js/tolang.js?v=1.11"></script>
-<style>dl{float:left; padding: 3px}
-div{display:inline}
+<style>dl {
+    float: left;
+    padding: 3px
+}
+
+div {
+    display: inline
+}
 </style>
 <h4>
+    <script>
+
+        function search() {
+            let $form = $('form[name="searchForm"]');
+            let $bsearch = $form.find("[name=b_search]");
+            $("body").delegate("[data-page]", "click", function () {
+                let clickPage = $(this).data("page");
+                if (clickPage != $form.find("[name=pno]").val()) {
+                    $form.find("[name=pno]").val(clickPage);
+                    $bsearch.trigger("click");
+                }
+            })
+            $("select").on("change", function () {
+                $("input[name=pno]").val(1)
+            })
+            $bsearch.on("click", function () {
+                $form.trigger("click");
+            })
+            $form.on("submit", function () {
+                let $searchResults = $("[name=searchResults]");
+                $.ajax({
+                    url: "/index.php/index/base/searchAdmin?" + $form.serialize(),
+                    dataType: "html"
+                }).then(function (html) {
+                    $searchResults.html(html)
+                });
+                return false;
+            })
+        }
+
+        $(function () {
+            search();
+        })
+    </script>
     <form name="searchForm" id="searchForm">
         <div class="search mt2 p2  mx-auto shadow rounded flex flex-wrap items-center justify-between max-width">
             <div class="border-bottom m1 col-2">
                 <label for="form-quick-search-seeking">{:lang('寻找')}</label>
-                <input type="hidden" name="pno" value="1"/>
+                <input name="pno" value="1"/>
                 <select name="sex" id="form-quick-search-seeking" class="col-12">
-
                     <option value="-1">{:lang("不限")}</option>
-
                     <option value="1">{:lang("男性")}</option>
-
                     <option value="0" selected="">{:lang("女性")}</option>
 
                 </select>
@@ -113,5 +149,8 @@ div{display:inline}
         </div>
     </form>
 </h4>
+<div name="searchResults">
+    {include file="../application/admin/view/page/memberSearchTable.html" /}
+</div>
 
-{include file="../application/admin/view/page/memberSearchTable.html" /}
+</div>

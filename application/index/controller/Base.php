@@ -123,6 +123,14 @@ class Base extends Controller
         return view("/index/search");
     }
 
+
+
+    public function searchAdmin()
+    {
+        $this->searchData();
+        return view("../../admin/view/page/memberSearchTable");
+    }
+
     public function msgs()
     {
         $this->headData();
@@ -261,6 +269,8 @@ class Base extends Controller
         ];
         return $data;
     }
+
+
 
     /**
      * @return mixed|string

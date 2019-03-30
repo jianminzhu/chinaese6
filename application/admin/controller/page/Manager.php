@@ -4,8 +4,6 @@ namespace app\admin\controller\page;
 
 use app\common\controller\Backend;
 use app\index\controller\Index;
-use think\Controller;
-use think\Request;
 use think\Db;
 
 class Manager extends Backend
@@ -24,15 +22,15 @@ class Manager extends Backend
 
     public function members()
     {
-       $index=  new Index();
-       $index->searchData();
+        $index = new Index();
+        $index->searchData();
         return view("page/memberList");
     }
 
-    public function memberSearchTable()
-    {
-        $index=  new Index();
-        $data= $index->searchData();
-        return view("page/memberSearchTable");
-    }
+
+//查看vip会员
+//查询 会员间对话
+//删除不合理照片
+
+
 }

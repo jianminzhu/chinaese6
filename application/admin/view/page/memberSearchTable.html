@@ -1,15 +1,45 @@
+
+<style>.td{width:25%;height:50px;}</style>
 <div name="searchResults">
     <h4><input type="checkbox" name="selectAll">全选 <input type="text" name="sort" value="">
         <button name="b_update_sort">更新排序</button>
     </h4>
+    {if condition='count($members)>0'}
+    <table>
+        <tr>
+            <td class="td">&nbsp;&nbsp;<a href="#searchForm" data-page="1">{:lang("第一页")}</a></td>
+            <td class="td">&nbsp;&nbsp;<a href="#searchForm" data-page="{$prevPno}">{:lang("上一页")}</a></td>
+            <td class="td">&nbsp;&nbsp;{if condition="$pno neq $nextPno"}<a href="#searchForm" data-page="{$nextPno}"> {:lang("下一页")}</a>{/if}</td>
+            <td class="td">&nbsp;&nbsp;{if condition="$pno neq $lastPno"}<a href="#searchForm" data-page="{$lastPno}">{:lang("最末页")}</a>{/if}</td>
+        </tr>
+    </table>
+    {/if}
+    <table>
+        <tr>
+            <td><input type="checkbox" name="all" ></td>
+            <td>&nbsp;头像</td>
+            <td>&nbsp;昵称</td>
+            <td>&nbsp;年龄</td>
+            <td>&nbsp;地址</td>
+        </tr>
     {volist name="members" id="p"}
-    <a href="/index.php/index/m/profile?id={$p.id}" target="_blank">
-        <dl>
-            <dd><img src="{$p.main_pic}" alt="" height="80px"></dd>
-            <dd>{$p.nickname}</dd>
-            <dd>{$p.age} {$p.address}</dd>
-            <dd><input type="checkbox" name="ids" value="{$p.id}"></dd>
-        </dl>
-    </a>
+    <tr>
+        <td><input type="checkbox" name="uids" value="{$p.id}" ></td>
+        <td class="td"><img src="{$p.main_pic}" height="50px" alt=""></td>
+        <td> <a href="/index.php/index/m/profile?id={$p.id}" target="_blank">{$p.nickname}</a></td>
+        <td>{$p.age}</td>
+        <td>{$p.address}</td>
+    </tr>
     {/volist}
+    </table>
+    {if condition='count($members)>0'}
+    <table>
+        <tr>
+            <td class="td">&nbsp;&nbsp;<a href="#searchForm" data-page="1">{:lang("第一页")}</a></td>
+            <td class="td">&nbsp;&nbsp;<a href="#searchForm" data-page="{$prevPno}">{:lang("上一页")}</a></td>
+            <td class="td">&nbsp;&nbsp;{if condition="$pno neq $nextPno"}<a href="#searchForm" data-page="{$nextPno}"> {:lang("下一页")}</a>{/if}</td>
+            <td class="td">&nbsp;&nbsp;{if condition="$pno neq $lastPno"}<a href="#searchForm" data-page="{$lastPno}">{:lang("最末页")}</a>{/if}</td>
+        </tr>
+    </table>
+    {/if}
 </div>
