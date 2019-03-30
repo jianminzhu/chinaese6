@@ -107,6 +107,7 @@ class Base extends Controller
      */
     public function predeal($cookieLang, $user,$getPics=false)
     {
+        $pics=[];
         if ($cookieLang == "en-us" && $user) {
             $user["nickname"] = pinyinName($user["nickname"]);
             try {
@@ -114,11 +115,15 @@ class Base extends Controller
             } catch (\Exception $e) {
             }
             if ($getPics) {
-                $user["pics"]=Db::table("pics")->where("m_id",$user["id"])->select();
+                try {
+                    $pics = Db::table("pics")->where("m_id", $user["id"])->select();
+                } catch (\Exception $e) {
+                }
             }
         }
-        return $user;
+        return ["id"=>$user["id"],"address"=>$user["address"],"main_pic"=>$user["main_pic"],"nickname" => $user["nickname"], "age" => $user["age"], "pics" => $pics];;
     }
+
 
     public function search()
     {
@@ -177,7 +182,7 @@ class Base extends Controller
      */
     public function getMemberWithWhere($mid)
     {
-        $table = new Member();
+        $table = Db::table("member");
         $table->where('id', "<>", $mid);
 
         try {
