@@ -40,26 +40,22 @@ function sendMail($to, $title, $content)
     //设置发送的邮件的编码 可选GB2312 我喜欢utf-8 据说utf8在某些客户端收信下会乱码  
     $mail->CharSet = 'UTF-8';
 
-    //设置发件人姓名（昵称） 任意内容，显示在收件人邮件的发件人邮箱地址前的发件人姓名  
-//    $mail->FromName = 'zhujianmin2009@163.com';
+    //设置发件人姓名（昵称） 任意内容，显示在收件人邮件的发件人邮箱地址前的发件人姓名
     $mail->FromName = 'help@chinesecompanion.com';
 
-    //smtp登录的账号 这里填入字符串格式的qq号即可  
-//    $mail->Username = 'zhujianmin2009@163.com';
+    //smtp登录的账号 这里填入字符串格式的qq号即可
     $mail->Username = 'help@chinesecompanion.com';
 
-    //smtp登录的密码 使用生成的授权码（就刚才叫你保存的最新的授权码）  
-//    $mail->Password = 'test163';//163邮箱也有授权码 进入163邮箱帐号获取
+    //smtp登录的密码 使用生成的授权码（就刚才叫你保存的最新的授权码）
     $mail->Password = 'mar6ket4';
     //设置发件人邮箱地址 这里填入上述提到的“发件人邮箱”
-//    $mail->From = 'zhujianmin2009@163.com';
     $mail->From = 'help@chinesecompanion.com';
 
     //邮件正文是否为html编码 注意此处是一个方法 不再是属性 true或false  
     $mail->isHTML(true);
 
     //设置收件人邮箱地址 该方法有两个参数 第一个参数为收件人邮箱地址 第二参数为给该地址设置的昵称 不同的邮箱系统会自动进行处理变动 这里第二个参数的意义不大  
-    $mail->addAddress($to, 'chinesecompanion');
+    $mail->addAddress($to, 'help@chinesecompanion.com');
 
     //添加该邮件的主题  
     $mail->Subject = $title;
