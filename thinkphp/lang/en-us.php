@@ -35,7 +35,7 @@ return [
     "Paypal 没有收取您的付款" => "Paypal has not charged your credit card",
     "您好" => " Hi",
     "重置密码" => "Reset password",
-    "我们收到了您的重新设置密码的请求。" => "We're recive you requst for reset password",
+    "我们收到了您的重新设置密码的请求。" => "We have received your request to Reset password ",
     "您的登录邮箱" => "You email for login",
     "请点击下列按钮以重置密码：" => "Please click the button to rest password",
     "会员动态" => "Activity",

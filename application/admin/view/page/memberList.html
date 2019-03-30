@@ -1,5 +1,6 @@
 <script src="/js/jquery-3.3.1.min.js"></script>
 <script src="/js/tolang.js?v=1.11"></script>
+{include file="../application/index/view/index/_commoncss.html" /}
 <script>
     function search() {
         let $form = $('form[name="searchForm"]');
@@ -12,10 +13,10 @@
             }
         });
         $("body").delegate("[data-opt-delpics]", "click", function () {
-            let mid= $(this).data("mid")||""
-            let picid= $(this).data("picid")||""
-            let url=`/index.php/admin/page/manager/delpics?mid=${mid}&picid=${picid}`
-            $.ajax(url).then(function(){
+            let mid = $(this).data("mid") || ""
+            let picid = $(this).data("picid") || ""
+            let url = `/index.php/admin/page/manager/delpics?mid=${mid}&picid=${picid}`
+            $.ajax(url).then(function () {
                 $("#bigimg").hide();
             })
         })
@@ -24,7 +25,7 @@
             let mid = $(this).data("mid");
             let imgsrc = $(this).attr("src")
             let html = `
-<table><thead style="background-color: #7a869d">
+<table style="background-color: #FFF"><thead style="background-color: #7a869d">
 <th align="left"><button data-opt-delpics data-mid=${mid} data-picid=${picid} style="color: red"> 删除图片</button></th>
 <th style="text-align: right"><button href="javascript:void(0)"  onclick="$('#bigimg').hide()">X</button></th>
 </thead>
@@ -59,14 +60,14 @@
         search().trigger("submit");
     })
 </script>
-<div id=bigimg style=" display: flex;position: fixed;left:20%;top:10%;width: 300px;height: 300px;"></div>
 
+<div class="max-width mx-auto mt0 ">
 <form name="searchForm" id="searchForm">
     <div class="search mt2 p2  mx-auto shadow rounded flex flex-wrap items-center justify-between max-width">
         <div class="border-bottom m1 col-2">
             <label for="form-quick-search-seeking">{:lang('寻找')}</label>
-            <input name="pno" hidden value="1"/>
-            <input name="pics" value="y" hidden>
+            <input style="display: none;" name="pno"   value="1"/>
+            <input style="display: none;" name="pics" value="y" >
             <input type="text" style="width:10px  " value="30" name="__psize">
             <select name="sex" id="form-quick-search-seeking" class="col-12">
                 <option value="-1">{:lang("不限")}</option>
@@ -165,5 +166,7 @@
         </button>
     </div>
 </form>
+</div>
+<div id=bigimg style=" display: flex;position: fixed;left:20%;top:10%;width: 300px;height: 300px;"></div>
 <div name="searchResults">
 </div>
