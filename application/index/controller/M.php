@@ -3,12 +3,14 @@
 namespace app\index\controller;
 require('ext_util/fileUtil.php');
 require('ext_util/BytripUtil.php');
+include_once "ext_util\mail\Mail163.php";
 
 use app\index\model\Member;
 use app\index\model\Pics;
 use think\Db;
 use think\Exception;
 use think\exception\PDOException;
+use think\Validate;
 
 class M extends Base
 {
@@ -221,7 +223,7 @@ class M extends Base
         } catch (\Exception $e) {
             $emsg = $e->getMessage();
         }
-        return ['m' => $member, "pics" => $pics, "cc" => $cc, "emsg" => $emsg,"isPay"=>$isPay,"vip"=> $vip];
+        return ['m' => $member, "pics" => $pics, "cc" => $cc, "emsg" => $emsg, "isPay" => $isPay, "vip" => $vip];
     }
 
 
@@ -248,6 +250,7 @@ class M extends Base
         return redirect("/index.php/index/m/profiledit");
     }  //上传照片
 
+
     function param($name, $default = "")
     {
         $value = request()->param($name);
@@ -256,6 +259,7 @@ class M extends Base
         }
         return $value;
     }
+
 
     public function uploadInfo()
     {
@@ -342,7 +346,6 @@ class M extends Base
         return redirect("/index.php/index/m/profiledit");
     }
 
-
     /**
      * @return mixed
      */
@@ -408,7 +411,7 @@ class M extends Base
             "QQ" => "",
             "微信" => ""
         ];
-        $table =  "membercontact"  ;
+        $table = "membercontact";
         $concats = Db::table($table)->where("uid", $id)->select();
         foreach ($concats as $concat) {
             try {
@@ -418,6 +421,7 @@ class M extends Base
         }
         return array($cc, $concats);
     }
+
 
     /**
      * @param $id
@@ -433,6 +437,146 @@ class M extends Base
         return $member;
     }
 
+    public function sendMail($to, $title, $content)
+    {
+        return sendMail($to, $title, $content);
+    }
+
+    public function sendResetPasswordMail()
+    {
+        $isSucc = false;
+        $email = request()->param("email");
+        $rule = [
+            'email' => 'email'
+        ];
+
+        $data = [
+            'email' => $email
+        ];
+        $msg = ["email.email" => "请输入正确的邮箱"];
+
+
+        $v = new Validate($rule, $msg);
+        $isPassCheck = $v->batch()->check($data);
+        $error = $v->getError();
+        $emsg = "";
+        if ($isPassCheck) {
+            $member = Db::table("member")->where("email", $email)->find();
+            if (!$member) {
+                $emsg = lang("此邮箱不存在");
+            } else {
+                $member = Db::table("member")->where("email", $email)->find();
+                list($isSucc, $title, $content, $token) = $this->genResetPassWordContext($member);
+                if ($isSucc) {
+                    Db::table("member")->where("email", $email)->update(["token" => $token, "getpasstime" => date("Y-m-d H:i:s", time())]);
+                   $isSucc = $this->sendMail($email, $title, $content);
+                    if (!$isSucc) {
+                        $emsg = lang("邮件发送失败，请联系管理员");
+                    }
+                } else {
+                    $emsg = lang("系统出现故障，请联系管理员");
+                }
+            }
+        }
+        $error["sys"] = $emsg;
+
+        $this->headData();
+        if ($isSucc) {
+            return view("/index/passwordMailSentSucc");
+        }
+    }
+
+    private function genResetPassWordContext($member)
+    {
+        $isSucc = true;
+        $content = "";
+        try {
+            $email = $member["email"];
+            $token = md5($member["pwd"] . $email);
+            $lang=$this->getLang();
+            $url = input('server.REQUEST_SCHEME') . '://' . input('server.SERVER_NAME') . "/index.php/index/m/resetPassword?token=$token&lang=$lang";
+            $content = $this->render('/index/_resetpassword', ["name" => $member["nickname"], "email" => $email, "url" => $url]);
+        } catch (\Exception $e) {
+            $isSucc = false;
+        }
+        return array($isSucc, input('server.SERVER_NAME') . " " . lang("重置密码"), $content, $token);
+    }
+
+
+
+    public function passwordForget()
+    {
+        return view('/index/passwordForget');
+    }
+
+    function updatePassword()
+    {
+        $rule = [
+            'pwd' => 'require|min:6|max:8',
+            'pwd_confirm' => 'require|confirm:pwd',
+            'token' => 'require'
+        ];
+
+        $msg = [
+            'pwd.require' => '密码不能为空',
+            'pwd_confirm.require' => '确认密码不能为空',
+            'pwd.max' => '密码最长8位',
+            'pwd.min' => '密码最少5位',
+            'pwd_confirm.confirm' => '两次密码不一致'
+        ];
+        $token = request()->param("token");
+        $pwd = request()->param("pwd");
+        $data = [
+            'pwd' => $pwd,
+            'pwd_confirm' => request()->param("pwd_confirm"),
+            'token' => $token,
+            'ischeck' => 1
+        ];
+        $v = new Validate($rule, $msg);
+
+        $isPassCheck = $v->batch()->check($data);
+        $error = $v->getError();
+        function def($arr, $key, $def = "")
+        {
+            try {
+                return $arr[$key] ? $arr[$key] : $def;
+            } catch (\Exception $e) {
+                return $def;
+            }
+        }
+
+        $data["error"] = [
+            "pwd" => def($error, "pwd"),
+            "pwd_confirm" => def($error, "pwd_confirm"),
+            "token" => def($error, "token")
+        ];
+        $email = "";
+        $isUpdateSucc = false;
+        if ($isPassCheck) {
+            $m = Db::table("member")->where("token", $token)->find();
+            if ($m) {
+                Db::table("member")->where("token", $token)->update(["pwd" => md5($pwd)]);
+                $isUpdateSucc = true;
+                $email = $m["email"];
+
+            } else {
+                $data["error"]["token"] = "请从邮箱打开些链接";
+            }
+        }
+
+        $this->headData();
+        if ($isUpdateSucc) {
+            return view("/index/login", ["email" => $email]);
+        } else {
+            return view("/index/passwordreset", $data);
+        }
+    }
+
+    function resetPassword()
+    {
+        $this->headData();
+        return view("/index/passwordReset", ["token" => request()->param("token")]);
+    }
 
 }
 

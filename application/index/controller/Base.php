@@ -11,9 +11,13 @@ include_once "ext_util/pinyin.php";
 class Base extends Controller
 {
 
-    public function ajax($isSuccess, $data = [])
+    public function render($tpl, $data)
     {
-        return json(["isSuccess" => $isSuccess, "data" => $data]);
+        return view($tpl,$data)->getContent();
+    }
+    public function ajax($isSuccess, $data = [],$msg="")
+    {
+        return json(["isSuccess" => $isSuccess,"msg"=>$msg, "data" => $data]);
     }
 
     public function memberIsPay($mid)
@@ -65,21 +69,7 @@ class Base extends Controller
 
     public function headData()
     {
-        $lang = request()->param("lang");
-        $toLang = "";
-        if ($lang) {
-            $toLang = $lang;
-        } else {
-            $cookieLang = cookie("think_var");
-            if ($cookieLang) {
-                $toLang = $cookieLang;
-            }
-        }
-        if ($toLang == "zh-cn" || $toLang = "en-us") {
-        } else {
-            $toLang = "en-us";
-        }
-        cookie("think_var", $toLang);
+        $toLang = $this->getLang();
         $loginUser = [];
         if ($this->isLogin()) {
             $loginUser = $this->loginUser();
@@ -270,6 +260,29 @@ class Base extends Controller
             "uIntrestMids" => $loginUser ? Db::table("interest")->where("mid", $loginUser->id)->column("to_mid") : [],
         ];
         return $data;
+    }
+
+    /**
+     * @return mixed|string
+     */
+    public function getLang()
+    {
+        $lang = request()->param("lang");
+        $toLang = "";
+        if ($lang) {
+            $toLang = $lang;
+        } else {
+            $cookieLang = cookie("think_var");
+            if ($cookieLang) {
+                $toLang = $cookieLang;
+            }
+        }
+        if ($toLang == "zh-cn" || $toLang = "en-us") {
+        } else {
+            $toLang = "en-us";
+        }
+        cookie("think_var", $toLang);
+        return $toLang;
     }
 }
 

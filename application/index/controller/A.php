@@ -10,9 +10,10 @@ use QL\QueryList;
  * @package app\controller
  * 权限相关
  */
+
+
 class A extends Base
 {
-
     public function index()
     {
         //采集某页面所有的图片
@@ -21,11 +22,11 @@ class A extends Base
         print_r($data->all());
     }
 
+
     public function login($data = [])
     {
         return view('/index/login', $data);
     }
-
 
     /**
      * 安全退出
@@ -37,6 +38,7 @@ class A extends Base
         session("isPay", null);
         $this->redirect('/');
     }
+
 
     public function doLogin()
     {
@@ -66,7 +68,6 @@ class A extends Base
         }
     }
 
-
     public function tolang()
     {
         $lang = input('lang');
@@ -83,14 +84,6 @@ class A extends Base
         }
     }
 
-    public function forgotpassword()
-    {
-        return view('/index/forgotpassword');
-    }
 
-    function resetpassword()
-    {
-        return view("/index/resetpassword");
-    }
 
 }

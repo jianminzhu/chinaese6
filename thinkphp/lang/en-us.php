@@ -33,7 +33,11 @@ return [
     "城市" => "city",
     "省" => "State/Province",
     "Paypal 没有收取您的付款" => "Paypal has not charged your credit card",
-
+    "您好" => " Hi",
+    "重置密码" => "Reset password",
+    "我们收到了您的重新设置密码的请求。" => "We're recive you requst for reset password",
+    "您的登录邮箱" => "You email for login",
+    "请点击下列按钮以重置密码：" => "Please click the button to rest password",
     "会员动态" => "Activity",
     "谁在找我" => "Interested In Me",
     "加我为最爱" => "I'm Their Favorite",
@@ -48,7 +52,6 @@ return [
     "等待Paypal 确认收取了您的付款" =>"Waiting for the confirmation from paypal about charging your credit card ",
     "VIP有效期"=>" VIP Valid Period",
     "VIP 状态"=>"VIP Status",
-
     //profiledit
     "名字" => "Name",
     "文档编辑" => "Edit profile",
@@ -109,7 +112,7 @@ return [
     "请输入邮箱验证码"=>"Please input verification Code by mail",
     "密码确认"=>"Confirm password",
     "重设密码" => "Reset password",
-    "密码重设邮件已成功发送" => "Password reset email sent successfully",
+    "密码重设邮件已成功发送" => "Mail sent successfully",
     "请注意:为了您个人资料安全,请勿使用您的电子邮箱地址密码作为您的新密码"=>"Important: For extra security ensure that your new password is NOT the same as your email password.",
     "请输入新密码" => "Enter your new password",
     "新密码" => "New password",

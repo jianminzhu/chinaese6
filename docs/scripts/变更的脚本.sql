@@ -27,6 +27,15 @@ ADD COLUMN `pic_size` INT DEFAULT 0 NULL ;
 
 
 
+ALTER TABLE member
+  ADD COLUMN `getpasstime` TIMESTAMP NULL  ;
+
+
+
+
+
+
+
 
 
 

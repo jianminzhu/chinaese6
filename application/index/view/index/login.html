@@ -34,9 +34,7 @@
                     </div>
                     <div class="flex flex-column">
                         <label class="white">{:lang("密码")}</label>
-
                         <div class="mb2">
-
                             <div class="form-field mb1 relative" aria-invalid="false">
                                 <input type="password" name="pwd" value="{$pwd|default=''}" id="form-login-password"
                                        class="col-12"
@@ -45,10 +43,12 @@
                         </div>
 
                         <div class="flex justify-end">
-                            <a class="white" href="/index.php/index/a/forgotpassword"
+                            <a class="white" href="/index.php/index/m/passwordForget"
                                tabindex="4">{:lang('忘记密码')}</a>
+
                         </div>
                     </div>
+                    <h1></h1>
                     <button type="submit"
                             class="h3 rounded py1 px2 btn-color btn-bg border-none col-12 relative overflow-hidden shadow"
                             tabindex="3" data-disable-on-click="true">{:lang('登录')}

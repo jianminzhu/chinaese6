@@ -8,6 +8,8 @@ use think\Db;
 
 class Mail extends Base
 {
+
+
     public function send()
     {
         if ($this->isLogin()) {
@@ -38,12 +40,12 @@ class Mail extends Base
                     $myMid = $u->id;
                     session("lastUrl", "/index/mail/fromfavorite");
                     $sql = "
-SELECT *
-FROM
-  message AS msg 
- where  (from_m_id=$mid and  to_m_id=$myMid) or (from_m_id=$myMid and to_m_id=$mid) 
-ORDER BY send_date asc  
-";
+                        SELECT *
+                        FROM
+                          message AS msg 
+                         where  (from_m_id=$mid and  to_m_id=$myMid) or (from_m_id=$myMid and to_m_id=$mid) 
+                        ORDER BY send_date asc  
+                        ";
                     $msgs = Db::query($sql);
                     $arr = ["m" => $other, "my" => $u, "msgs" => count($msgs) > 0 ? $msgs : []];
                     return view('/index/msgDetail', $arr);
