@@ -77,7 +77,7 @@
 <div class="max-width mx-auto mt0 ">
 <form name="searchForm" id="searchForm">
     <div class="search mt2 p2  mx-auto shadow rounded flex flex-wrap items-center justify-between max-width">
-        <div class="border-bottom m1 col-2">
+        <div class="border-bottom m1 col-1">
             <label for="form-quick-search-seeking">{:lang('寻找')}</label>
             <input style="display: none;" name="pno"   value="1"/>
             <input style="display: none;" name="pics" value="y" >
@@ -153,12 +153,12 @@
         </div>
 
 
-        <div class="border-bottom m1 col-2">
+        <div class="border-bottom m1 col-1">
             <label for="form-quick-search-country">{:lang("国家")}</label>
             {include file="../application/index/view/index/_select_country.html" /}
         </div>
 
-        <div class="border-bottom m1 col-2">
+        <div class="border-bottom m1 col-1">
             <label for="form-quick-search-state">{:lang('省/县')}</label>
             <select name="stateid" id="form-quick-search-state" class="col-12" data-dependentselect="cityLive"
                     formaction="/zc/widget/loadstates?countryid="
@@ -167,7 +167,7 @@
             </select>
         </div>
 
-        <div class="border-bottom m1 col-2">
+        <div class="border-bottom m1 col-1">
             <label for="form-quick-search-city">{:lang('市')}</label>
             <select name="cityid" id="form-quick-search-city" class="col-12"
                     formaction="/zc/widget/loadcities?stateid="
@@ -175,9 +175,17 @@
                 <option value="-1">{:lang("任何")}</option>
             </select>
         </div>
+        <div class="border-bottom m1 col-1">
+            <label for="piconly">展示方式</label>
+            <select name="piconly" id="piconly">
+                <option value="n">会员列表</option>
+                <option value="y">图片模式</option>
+            </select>
+        </div>
         <button name="b_search" class="h4 py1 px2 rounded shadow border-none upper-case pointer">{:lang("搜索")}
         </button>
     </div>
+
 </form>
 </div>
 <div id=bigimg ></div>

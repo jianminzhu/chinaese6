@@ -310,6 +310,8 @@ class Base extends Controller
             "lastPno" => $lastPno,
             "uFavoriteMids" => $loginUser ? Db::table("favorite")->where("mid", $loginUser->id)->column("to_mid") : [],
             "uIntrestMids" => $loginUser ? Db::table("interest")->where("mid", $loginUser->id)->column("to_mid") : [],
+            "piconly" => request()->param("piconly") == "y",
+
         ];
         return $data;
     }

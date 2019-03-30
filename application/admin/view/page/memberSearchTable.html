@@ -3,6 +3,18 @@
     th, td {
         text-align: center;
     }
+
+    .bigimg {
+        display: inline;
+        width: 300px;
+        height: 300px
+    }
+
+    .smallimg {
+        width: 50px;
+        height: 50px
+    }
+
 </style>
 <h1>&nbsp;</h1>
 <h1>&nbsp;</h1>
@@ -60,6 +72,26 @@
     </div>
 </div>
 {/if}
+{if condition='$piconly eq true'}
+
+<span style="display: inline">
+    {volist name="members" id="p"}
+    <div class="profile-bg bigimg" style="background-image: url('{$p.main_pic}');"
+         data-mid="{$p.id}">
+            <a data-opt-delpics data-mid={$p.id} style="color: red"> 删除</a>
+            </div>
+    {volist name='$p["pics"]' id="pic"}
+   <div class="profile-bg bigimg"
+        style="background-image: url('{$pic.file_path}');"
+         data-picid="{$pic.id}">
+       <a data-opt-delpics data-picid={$pic.id}  title="删除此照片"  style="color: red">删除</a>
+   </div>
+
+    {/volist}
+    {/volist}
+</span>
+
+{else}
 <table>
     <thead>
     <th style="width:150px">&nbsp;昵称</th>
@@ -78,7 +110,7 @@
         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a data-opt-delmember="{$p.id}" style="color: red">删除些会员</a>&nbsp;&nbsp;&nbsp;
         </td>
         <td style="text-align: left">
-            <div class="profile-bg" style="background-image: url('{$p.main_pic}');width:50px;height: 50px"
+            <div class="profile-bg smallimg" style="background-image: url('{$p.main_pic}');"
                  data-opt-bigimg="{$p.main_pic}" data-mid="{$p.id}">
             </div>
             <a data-opt-delpics data-mid={$p.id} data-opt-bigimg="{$p.main_pic}" style="color: red"> 删除</a>
@@ -86,8 +118,8 @@
         <td style="text-align: left">{volist name='$p["pics"]' id="pic"}
             <dl style="display:inherit;">
                 <dd>
-                    <div class="profile-bg"
-                         style="background-image: url('{$pic.file_path}');width:50px;height: 50px;display: inlie"
+                    <div class="profile-bg smallimg"
+                         style="background-image: url('{$pic.file_path}');"
                          data-opt-bigimg="{$pic.file_path}" data-picid="{$pic.id}"></div>
                     <a data-opt-delpics data-picid={$pic.id} data-opt-bigimg="{$pic.file_path}" title="删除此照片"
                        style="color: red">删除</a>
@@ -98,6 +130,7 @@
     </tr>
     {/volist}
 </table>
+{/if}
 {if condition='count($members)>0'}
 <div class="max-width  mx-auto">
     <div class="flex justify-between items-center caps">
