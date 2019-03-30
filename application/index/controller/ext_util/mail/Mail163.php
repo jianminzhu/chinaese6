@@ -22,15 +22,15 @@ function sendMail($to, $title, $content)
     $mail->SMTPAuth = true;
 
     //链接qq域名邮箱的服务器地址  
-    $mail->Host = 'smtp.163.com';//163邮箱：smtp.163.com
-
+//    $mail->Host = 'smtp.163.com';//163邮箱：smtp.163.com
+    $mail->Host = 'mail.chinesecompanion.com';
     //设置使用ssl加密方式登录鉴权  
 //    $mail->SMTPSecure = 'ssl';//163邮箱就注释
 
     //设置ssl连接smtp服务器的远程服务器端口号，以前的默认是25，但是现在新的好像已经不可用了 可选465或587  
 //    $mail->Port = 465;//qq邮箱：465
-     $mail->Port = 25;//163邮箱：25
-
+//     $mail->Port = 25;//163邮箱：25
+    $mail->Port = 2525;//chinesecompanion 邮箱：25
     //设置smtp的helo消息头 这个可有可无 内容任意  
     // $mail->Helo = 'Hello smtp.qq.com Server';  
 
@@ -41,22 +41,25 @@ function sendMail($to, $title, $content)
     $mail->CharSet = 'UTF-8';
 
     //设置发件人姓名（昵称） 任意内容，显示在收件人邮件的发件人邮箱地址前的发件人姓名  
-    $mail->FromName = 'zhujianmin2009@163.com';
+//    $mail->FromName = 'zhujianmin2009@163.com';
+    $mail->FromName = 'help@chinesecompanion.com';
 
     //smtp登录的账号 这里填入字符串格式的qq号即可  
-    $mail->Username = 'zhujianmin2009@163.com';
+//    $mail->Username = 'zhujianmin2009@163.com';
+    $mail->Username = 'help@chinesecompanion.com';
 
     //smtp登录的密码 使用生成的授权码（就刚才叫你保存的最新的授权码）  
-    $mail->Password = 'test163';//163邮箱也有授权码 进入163邮箱帐号获取
-
-    //设置发件人邮箱地址 这里填入上述提到的“发件人邮箱”  
-    $mail->From = 'zhujianmin2009@163.com';
+//    $mail->Password = 'test163';//163邮箱也有授权码 进入163邮箱帐号获取
+    $mail->Password = 'mar6ket4';
+    //设置发件人邮箱地址 这里填入上述提到的“发件人邮箱”
+//    $mail->From = 'zhujianmin2009@163.com';
+    $mail->From = 'help@chinesecompanion.com';
 
     //邮件正文是否为html编码 注意此处是一个方法 不再是属性 true或false  
     $mail->isHTML(true);
 
     //设置收件人邮箱地址 该方法有两个参数 第一个参数为收件人邮箱地址 第二参数为给该地址设置的昵称 不同的邮箱系统会自动进行处理变动 这里第二个参数的意义不大  
-    $mail->addAddress($to, '爱代码，爱生活世界');
+    $mail->addAddress($to, 'chinesecompanion');
 
     //添加该邮件的主题  
     $mail->Subject = $title;
