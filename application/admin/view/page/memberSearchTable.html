@@ -5,6 +5,7 @@
     }
 
     .bigimg {
+        width:300px;
         height: 300px
     }
 
@@ -12,7 +13,11 @@
         width: 50px;
         height: 50px
     }
-
+    .adel{
+        position: inherit;
+        margin-top: 30%;
+        margin-left: 30%;
+    }
 </style>
 <h1>&nbsp;</h1>
 <h1>&nbsp;</h1>
@@ -71,16 +76,20 @@
 </div>
 {/if}
 {if condition='$piconly eq true'}
-
 {volist name="members" id="p"}
 <div  style="display: inline;float: left">
-    <div  class="bigimg"> <img src='{$p.main_pic}' class="bigimg" alt=""></div><br>
-        <a data-opt-delpics data-mid={$p.id} style="color: red"> 删除</a>
+     <div class="profile-bg bigimg" style='background-image: url("{$p.main_pic}")'   >
+
+         <a class="adel" data-opt-delpics data-mid={$p.id} style="color: red"> 删除</a>
+     </div>
 </div>
 {volist name='$p["pics"]' id="pic"}
 <div style="display: inline;float: left">
-       <div  class="bigimg"> <img src='{$pic.file_path}' class="bigimg" alt=""></div><br>
-        <a data-opt-delpics data-picid={$pic.id} title="删除此照片" style="color: red">删除</a>
+    <div class="profile-bg bigimg" style='background-image: url("{$pic.file_path}")'   >
+
+        <a class="adel"  data-opt-delpics data-picid={$pic.id} title="删除此照片" style="color: red">删除</>
+    </div>
+
 </div>
 
 {/volist}
@@ -107,16 +116,17 @@
         <td style="text-align: left">
             <div class="profile-bg smallimg" style="background-image: url('{$p.main_pic}');"
                  data-opt-bigimg="{$p.main_pic}" data-mid="{$p.id}">
-            </div>
-            <a data-opt-delpics data-mid={$p.id} data-opt-bigimg="{$p.main_pic}" style="color: red"> 删除</a>
+            </div><br>
+            <a  data-opt-delpics data-mid={$p.id} data-opt-bigimg="{$p.main_pic}" style="color: red"> 删除</a>
         </td>
         <td style="text-align: left">{volist name='$p["pics"]' id="pic"}
             <dl style="display:inherit;">
                 <dd>
                     <div class="profile-bg smallimg"
                          style="background-image: url('{$pic.file_path}');"
-                         data-opt-bigimg="{$pic.file_path}" data-picid="{$pic.id}"></div>
-                    <a data-opt-delpics data-picid={$pic.id} data-opt-bigimg="{$pic.file_path}" title="删除此照片"
+                         data-opt-bigimg="{$pic.file_path}" data-picid="{$pic.id}">
+                    </div><br>
+                    <a  data-opt-delpics data-picid={$pic.id} data-opt-bigimg="{$pic.file_path}" title="删除此照片"
                        style="color: red">删除</a>
                 </dd>
             </dl>
