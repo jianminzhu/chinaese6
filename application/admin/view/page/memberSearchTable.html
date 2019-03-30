@@ -33,7 +33,7 @@
                         <use xlink:href="/assets/desktop/icons/icons.svg#icon-first"></use>
                     </svg>
                 </div>
-                <a href="#searchForm" data-page="1">{:lang("第一页")}</a>
+                <a href="#searchResults" data-page="1">{:lang("第一页")}</a>
             </div>
 
             <div class="flex items-center opacity-6">
@@ -42,14 +42,14 @@
                         <use xlink:href="/assets/desktop/icons/icons.svg#icon-menuleft"></use>
                     </svg>
                 </div>
-                <a href="#searchForm" data-page="{$prevPno}"> {:lang("上一页")}</a>
+                <a href="#searchResults" data-page="{$prevPno}"> {:lang("上一页")}</a>
             </div>
 
         </div>
 
         <div class="flex">
             {if condition="$pno neq $nextPno"}
-            <a href="#searchForm" data-page="{$nextPno}">
+            <a href="#searchResults" data-page="{$nextPno}">
                 <div class="flex items-center">
                     {:lang("下一页")}
                     <div class="fill-standard mx1">
@@ -62,7 +62,7 @@
             {/if}
             {if condition="$pno neq $lastPno"}
 
-            <a href="#searchForm" data-page="{$lastPno}">
+            <a href="#searchResults" data-page="{$lastPno}">
                 <div class="flex items-center ms2">
                     {:lang("最末页")}
                     <div class="fill-standard ms1">
@@ -150,7 +150,7 @@
                         <use xlink:href="/assets/desktop/icons/icons.svg#icon-first"></use>
                     </svg>
                 </div>
-                <a href="#searchForm" data-page="1">{:lang("第一页")}</a>
+                <a href="#searchResults" data-page="1">{:lang("第一页")}</a>
             </div>
 
             <div class="flex items-center opacity-6">
@@ -159,14 +159,14 @@
                         <use xlink:href="/assets/desktop/icons/icons.svg#icon-menuleft"></use>
                     </svg>
                 </div>
-                <a href="#searchForm" data-page="{$prevPno}"> {:lang("上一页")}</a>
+                <a href="#searchResults" data-page="{$prevPno}"> {:lang("上一页")}</a>
             </div>
 
         </div>
 
         <div class="flex">
             {if condition="$pno neq $nextPno"}
-            <a href="#searchForm" data-page="{$nextPno}">
+            <a href="#searchResults" data-page="{$nextPno}">
                 <div class="flex items-center">
                     {:lang("下一页")}
                     <div class="fill-standard mx1">
@@ -179,7 +179,7 @@
             {/if}
             {if condition="$pno neq $lastPno"}
 
-            <a href="#searchForm" data-page="{$lastPno}">
+            <a href="#searchResults" data-page="{$lastPno}">
                 <div class="flex items-center ms2">
                     {:lang("最末页")}
                     <div class="fill-standard ms1">
