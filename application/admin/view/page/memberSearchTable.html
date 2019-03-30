@@ -5,7 +5,6 @@
     }
 
     .bigimg {
-        display: inline;
         width: 300px;
         height: 300px
     }
@@ -75,7 +74,7 @@
 {if condition='$piconly eq true'}
 
     {volist name="members" id="p"}
-    <div class="profile-bg bigimg" style="background-image: url('{$p.main_pic}');"
+    <div class="profile-bg bigimg col-2" style="background-image: url('{$p.main_pic}');"
          data-mid="{$p.id}">
             <a data-opt-delpics data-mid={$p.id} style="color: red"> 删除</a>
             </div>
