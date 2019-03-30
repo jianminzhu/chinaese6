@@ -5,7 +5,6 @@
     }
 
     .bigimg {
-        width: 300px;
         height: 300px
     }
 
@@ -74,24 +73,15 @@
 {if condition='$piconly eq true'}
 
 {volist name="members" id="p"}
-<dl class=" col-2 bigimg">
-    <dd>
-        <div class="profile-bg " style="background-image: url('{$p.main_pic}');"
-             data-mid="{$p.id}">
-        </div>
+<span >
+    <img src='{$p.main_pic}' class="bigimg" alt=""><br>
         <a data-opt-delpics data-mid={$p.id} style="color: red"> 删除</a>
-    </dd>
-</dl>
+</span>
 {volist name='$p["pics"]' id="pic"}
-<dl class=" col-2 bigimg">
-    <dd>
-        <div class="profile-bg"
-             style="background-image: url('{$pic.file_path}');"
-             data-picid="{$pic.id}">
-        </div>
+<span>
+        <img src='{$pic.file_path}' class="bigimg" alt=""><br>
         <a data-opt-delpics data-picid={$pic.id} title="删除此照片" style="color: red">删除</a>
-    </dd>
-</dl>
+</span>
 
 {/volist}
 {/volist}
