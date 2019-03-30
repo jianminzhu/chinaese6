@@ -1,7 +1,7 @@
 
-<style>.td{width:25%;height:50px;}
+<style>
 
-th{ text-align: center;}
+th ,td{ text-align: center;}
 </style>
 <h1>&nbsp;</h1>
 <h1>&nbsp;</h1>
@@ -59,30 +59,26 @@ th{ text-align: center;}
     </div>
 </div>
 {/if}
-<div class="clearfix clear"></div>
 <table >
     <thead>
-    <th  style="width: 50px"><input type="checkbox" name="all" ></th>
-    <th  style="width: 50px">&nbsp;头像</th>
-    <th  >&nbsp;昵称</th>
-    <th  >&nbsp;年龄</th>
-    <th  >&nbsp;地址</th>
-    <th  >&nbsp;操作</th>
-    <th  >&nbsp;照片</th>
+    <th  style="width:80px">&nbsp;操作</th>
+    <th  style="width:50px">&nbsp;昵称</th>
+    <th  style="width:50px">&nbsp;年龄</th>
+    <th  style="width:50px">&nbsp;地址</th>
+    <th  style="width:50px">&nbsp;头像</th>
+    <th  style="width:300px;text-align: left">&nbsp;照片</th>
     </thead>
     {volist name="members" id="p"}
     <tr>
-        <td><input type="checkbox" name="uids" value="{$p.id}" ></td>
-        <td class="td"><img src="{$p.main_pic}" data-opt-bigimg="main" data-mid="{$p.id}" width="50px" height="50px" alt=""></td>
-        <td> <a href="/index.php/index/m/profile?id={$p.id}" target="_blank">{$p.nickname}</a></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a data-opt-delmember="{$p.id}">删除些会员</a>&nbsp;&nbsp;&nbsp;</td>
+        <td style="text-align: left"> <a href="/index.php/index/m/profile?id={$p.id}" target="_blank">{$p.nickname}</a></td>
         <td>{$p.age}</td>
         <td>{$p.address}</td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span data-opt-delmember="{$p.id}">删除</span>&nbsp;&nbsp;&nbsp;<span></span></td>
-        <td>{:count($p['pics'])} {volist name="$p['pics']" id="pic"}<img data-opt-bigimg="pics" data-picid="{$pic.id}" src="{$pic.file_path}" height="50px" alt="">{/volist}</td>
+        <td style="text-align: left"><img src="{$p.main_pic}" data-opt-bigimg="main" data-mid="{$p.id}" width="50px" height="50px" alt=""></td>
+        <td style="text-align: left">{:count($p['pics'])} {volist name="$p['pics']" id="pic"}<img data-opt-bigimg="pics" data-picid="{$pic.id}" src="{$pic.file_path}" height="50px" alt="">{/volist}</td>
     </tr>
     {/volist}
 </table>
-<div class="clearfix clear"></div>
 {if condition='count($members)>0'}
 <div class="max-width  mx-auto">
     <div class="flex justify-between items-center caps">
