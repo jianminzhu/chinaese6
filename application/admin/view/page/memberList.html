@@ -10,9 +10,29 @@
                 $form.find("[name=pno]").val(clickPage);
                 $bsearch.trigger("click");
             }
+        });
+        $("body").delegate("[data-opt-delpics]", "click", function () {
+            let mid= $(this).data("mid")||""
+            let picid= $(this).data("picid")||""
+            let url=`/index.php/admin/page/manager/delpics?mid=${mid}&picid=${picid}`
+            $.ajax(url).then(function(){
+                $("#bigimg").hide();
+            })
         })
         $("body").delegate("[data-opt-bigimg]", "mouseover", function () {
-            $("#bigimg").find("span").html("<img height='400px' src='" + $(this).attr("src") + "'>")
+            let picid = $(this).data("picid");
+            let mid = $(this).data("mid");
+            let imgsrc = $(this).attr("src")
+            let html = `
+<table><thead style="background-color: #7a869d">
+<th align="left"><button data-opt-delpics data-mid=${mid} data-picid=${picid} style="color: red"> 删除图片</button></th>
+<th style="text-align: right"><button href="javascript:void(0)"  onclick="$('#bigimg').hide()">X</button></th>
+</thead>
+<tr><td  colspan="2"><img height='400px' src='${imgsrc}'/> </td></tr>
+</table>`;
+
+            $("#bigimg").html(html)
+            $("#bigimg").css({"display": "flex"}).show();
             $("#bigimg").show();
         })
         $("select").on("change", function () {
@@ -39,10 +59,7 @@
         search().trigger("submit");
     })
 </script>
-<div id=bigimg  hidden style="display: flex;position: fixed;left:20%;top:10%;width: 300px;height: 300px;"><span name="img"></span>
-    <br/><h1 style="text-align: right"
-        onclick="$('#bigimg').hide()">
-        X</h1></div>
+<div id=bigimg style=" display: flex;position: fixed;left:20%;top:10%;width: 300px;height: 300px;"></div>
 
 <form name="searchForm" id="searchForm">
     <div class="search mt2 p2  mx-auto shadow rounded flex flex-wrap items-center justify-between max-width">
