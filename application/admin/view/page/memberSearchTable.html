@@ -61,19 +61,19 @@ th ,td{ text-align: center;}
 {/if}
 <table >
     <thead>
-    <th  style="width:80px">&nbsp;操作</th>
     <th  style="width:50px">&nbsp;昵称</th>
     <th  style="width:50px">&nbsp;年龄</th>
     <th  style="width:50px">&nbsp;地址</th>
+    <th  style="width:80px">&nbsp;操作</th>
     <th  style="width:50px">&nbsp;头像</th>
     <th  style="width:300px;text-align: left">&nbsp;照片</th>
     </thead>
     {volist name="members" id="p"}
     <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a data-opt-delmember="{$p.id}">删除些会员</a>&nbsp;&nbsp;&nbsp;</td>
         <td style="text-align: left"> <a href="/index.php/index/m/profile?id={$p.id}" target="_blank">{$p.nickname}</a></td>
         <td>{$p.age}</td>
         <td>{$p.address}</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a data-opt-delmember="{$p.id}">删除些会员</a>&nbsp;&nbsp;&nbsp;</td>
         <td style="text-align: left">
             <div class="profile-bg" style="background-image: url('{$p.main_pic}');width:50px;height: 50px"  data-opt-bigimg="{$p.main_pic}" data-mid="{$p.id}"  >
             </div>
