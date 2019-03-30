@@ -105,13 +105,16 @@ class Base extends Controller
      * @param $user
      * @return mixed
      */
-    public function nickNameToPinYing($cookieLang, $user)
+    public function predeal($cookieLang, $user,$getPics=false)
     {
         if ($cookieLang == "en-us" && $user) {
             $user["nickname"] = pinyinName($user["nickname"]);
             try {
                 $user["address"] = pinyinAddress($user["address"]);
             } catch (\Exception $e) {
+            }
+            if ($getPics) {
+                $user["pics"]=Db::table("pics")->where("m_id",$user["id"])->select();
             }
         }
         return $user;
@@ -226,7 +229,7 @@ class Base extends Controller
         $mid = 0;
         if ($loginUser) {
             $user = clone $loginUser;
-            $this->nickNameToPinYing($cookieLang, $user);
+            $this->predeal($cookieLang, $user);
             $mid = $loginUser->id;
         }
 
@@ -256,7 +259,7 @@ class Base extends Controller
         $members = [];
 
         foreach ($dbMembers as $member) {
-            $members[] = $this->nickNameToPinYing($cookieLang, $member);
+            $members[] = $this->predeal($cookieLang, $member,request()->param("pics")=="y");
         }
         $data = [
             "members" => $members,

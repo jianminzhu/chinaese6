@@ -16,21 +16,14 @@ class Manager extends Backend
         $this->assign([
             "pays" => $msgs = Db::query("SELECT  p.cost,p.startdate,p.`enddate` ,m.* FROM pay AS p  LEFT JOIN member AS m ON p.m_id=m.id "),
         ]);
-        return  view("page/paylist");
+        return view("page/paylist");
     }
-
-
     public function members()
     {
         $index = new Index();
-        $index->searchData();
+        $index->headData();
         return view("page/memberList");
     }
-
-
-//查看vip会员
-//查询 会员间对话
-//删除不合理照片
 
 
 }
