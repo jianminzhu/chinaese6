@@ -5,6 +5,7 @@
     }
 
     .bigimg {
+        display: inline;
         width: 300px;
         height: 300px
     }
@@ -73,7 +74,6 @@
 {/if}
 {if condition='$piconly eq true'}
 
-<span style="display: inline">
     {volist name="members" id="p"}
     <div class="profile-bg bigimg" style="background-image: url('{$p.main_pic}');"
          data-mid="{$p.id}">
@@ -88,7 +88,6 @@
 
     {/volist}
     {/volist}
-</span>
 
 {else}
 <table>
