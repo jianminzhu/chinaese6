@@ -118,6 +118,7 @@ class Base extends Controller
                 try {
                     $pics = Db::table("pics")->where("m_id", $user["id"])->select();
                 } catch (\Exception $e) {
+                    echo "ddddddddddddddddddddddd".$e->getMessage();
                 }
             }
         }
