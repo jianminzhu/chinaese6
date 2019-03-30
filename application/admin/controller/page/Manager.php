@@ -52,6 +52,20 @@ class Manager extends Backend
         return json(["isSuccess" => 0]);
 
     }
+    public function  delmember(){
+        $mid = request()->param("mid");
+        if ($mid &&$mid != "undefined") {
+            $m = Db::table("member")->where("id", $mid)->find() ;
+            if ($m) {
+                try {
+                    Db::table("member_del")->insert($m);
+                    Db::table("member")->where("id", $mid)->delete();
+                } catch (\Exception $e) {
+                }
+            }
+        }
+        return json(["isSuccess" => 0]);
+    }
 
 
 }

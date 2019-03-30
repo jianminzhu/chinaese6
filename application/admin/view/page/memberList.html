@@ -22,6 +22,17 @@
                 })
             }
         })
+        $("body").delegate("[data-opt-delmember]", "click", function () {
+            if (confirm("确认删除")) {
+                let mid = $(this).attr("data-opt-delmember") ;
+                let url = `/index.php/admin/page/manager/delmember?mid=${mid}`;
+                let jtr=$(this).closest("tr")
+                $.ajax(url).then(function () {
+                    $("#bigimg").hide();
+                    jtr.remove();
+                })
+            }
+        })
         $("body").delegate("[data-opt-bigimg]", "mouseover", function () {
             let picid = $(this).data("picid");
             let mid = $(this).data("mid");
