@@ -73,13 +73,13 @@
 {if condition='$piconly eq true'}
 
 {volist name="members" id="p"}
-<div  style="display: inline">
-    <img src='{$p.main_pic}' class="bigimg" alt=""><br>
+<div  style="display: inline;float: left">
+    <div  class="bigimg"> <img src='{$p.main_pic}' class="bigimg" alt=""></div><br>
         <a data-opt-delpics data-mid={$p.id} style="color: red"> 删除</a>
 </div>
 {volist name='$p["pics"]' id="pic"}
-<div style="display: inline">
-        <img src='{$pic.file_path}' class="bigimg" alt=""><br>
+<div style="display: inline;float: left">
+       <div  class="bigimg"> <img src='{$pic.file_path}' class="bigimg" alt=""></div><br>
         <a data-opt-delpics data-picid={$pic.id} title="删除此照片" style="color: red">删除</a>
 </div>
 
