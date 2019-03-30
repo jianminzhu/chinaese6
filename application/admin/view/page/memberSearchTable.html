@@ -75,12 +75,12 @@ th ,td{ text-align: center;}
         <td>{$p.age}</td>
         <td>{$p.address}</td>
         <td style="text-align: left">
-            <div class="profile-bg" style="background-image: url('{$p.main_pic}')"  style="width:50px;height: 50px"  data-opt-bigimg="main" data-mid="{$p.id}"  ></div><br>
+            <div class="profile-bg" style="background-image: url('{$p.main_pic}');width:50px;height: 50px"  data-opt-bigimg="main" data-mid="{$p.id}"  ></div><br>
             <button data-opt-delpics   data-mid={$p.id} style="color: red"> 删除图片</button>
         </td>
         <td style="text-align: left">{:count($p['pics'])} {volist name="$p['pics']" id="pic"}
             <dl>
-                <dt><div class="profile-bg" style="background-image: url('{$pic.file_path}')" style="width:50px;height: 50px" data-opt-bigimg="main" data-picid="{$pic.id}"></div>
+                <dt><div class="profile-bg" style="background-image: url('{$pic.file_path}');width:50px;height: 50px" data-opt-bigimg="main" data-picid="{$pic.id}"></div>
                 </dt>
                 <dd>
                     <button data-opt-delpics data-picid={$pic.id} style="color: red"> 删除图片</button></dd>
