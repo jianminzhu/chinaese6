@@ -1,7 +1,8 @@
-
 <style>
 
-th ,td{ text-align: center;}
+    th, td {
+        text-align: center;
+    }
 </style>
 <h1>&nbsp;</h1>
 <h1>&nbsp;</h1>
@@ -59,34 +60,41 @@ th ,td{ text-align: center;}
     </div>
 </div>
 {/if}
-<table >
+<table>
     <thead>
-    <th  style="width:50px">&nbsp;昵称</th>
-    <th  style="width:50px">&nbsp;年龄</th>
-    <th  style="width:50px">&nbsp;地址</th>
-    <th  style="width:80px">&nbsp;操作</th>
-    <th  style="width:50px">&nbsp;头像</th>
-    <th  style="width:300px;text-align: left">&nbsp;照片</th>
+    <th style="width:50px">&nbsp;昵称</th>
+    <th style="width:50px">&nbsp;年龄</th>
+    <th style="width:50px">&nbsp;地址</th>
+    <th style="width:80px">&nbsp;操作</th>
+    <th style="width:50px">&nbsp;头像</th>
+    <th style="width:300px;text-align: left">&nbsp;照片</th>
     </thead>
     {volist name="members" id="p"}
     <tr>
-        <td style="text-align: left"> <a href="/index.php/index/m/profile?id={$p.id}" target="_blank">{$p.nickname}</a></td>
+        <td style="text-align: left"><a href="/index.php/index/m/profile?id={$p.id}" target="_blank">{$p.nickname}</a>
+        </td>
         <td>{$p.age}</td>
         <td>{$p.address}</td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a data-opt-delmember="{$p.id}" style="color: red">删除些会员</a>&nbsp;&nbsp;&nbsp;</td>
-        <td style="text-align: left">
-            <div class="profile-bg" style="background-image: url('{$p.main_pic}');width:50px;height: 50px"  data-opt-bigimg="{$p.main_pic}" data-mid="{$p.id}"  >
-            </div>
-            <a data-opt-delpics   data-mid={$p.id} data-opt-bigimg="{$p.main_pic}" style="color: red" > 删除</a>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a data-opt-delmember="{$p.id}" style="color: red">删除些会员</a>&nbsp;&nbsp;&nbsp;
         </td>
-        <td style="text-align: left" >{volist name='$p["pics"]' id="pic"}
+        <td style="text-align: left">
+            <div class="profile-bg" style="background-image: url('{$p.main_pic}');width:50px;height: 50px"
+                 data-opt-bigimg="{$p.main_pic}" data-mid="{$p.id}">
+            </div>
+            <a data-opt-delpics data-mid={$p.id} data-opt-bigimg="{$p.main_pic}" style="color: red"> 删除</a>
+        </td>
+        <td style="text-align: left">{volist name='$p["pics"]' id="pic"}
             <dl style="display:inherit;">
                 <dd>
-                <div class="profile-bg" style="background-image: url('{$pic.file_path}');width:50px;height: 50px;display: inlie"  data-opt-bigimg="{$pic.file_path}" data-picid="{$pic.id}"></div>
-                 <a data-opt-delpics data-picid={$pic.id} data-opt-bigimg="{$pic.file_path}"  title="删除此照片"  style="color: red" >删除</a>
+                    <div class="profile-bg"
+                         style="background-image: url('{$pic.file_path}');width:50px;height: 50px;display: inlie"
+                         data-opt-bigimg="{$pic.file_path}" data-picid="{$pic.id}"></div>
+                    <a data-opt-delpics data-picid={$pic.id} data-opt-bigimg="{$pic.file_path}" title="删除此照片"
+                       style="color: red">删除</a>
                 </dd>
             </dl>
-            {/volist}</td>
+            {/volist}
+        </td>
     </tr>
     {/volist}
 </table>
