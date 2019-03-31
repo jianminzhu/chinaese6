@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . "/FlexPay.php";
+require_once  "FlexPay.php";
 function validate_signature($realParams)
 {
     $isSucc = false;
