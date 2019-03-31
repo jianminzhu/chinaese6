@@ -34,6 +34,7 @@ class Verotel extends Base
         try {
             $this->updateUserPayStatus();
             $this->headData();
+
             return "支付成功";//view("/index/paysucc",["data"=>json_encode($param)]);
         } catch (\Exception $e) {
         }
@@ -41,6 +42,7 @@ class Verotel extends Base
     }
     public function updateUserPayStatus(){
         try {
+            echo json_encode(request()->param());
             if ($this->isLogin()) {
                 $mid = $this->loginUser()->id;
                 $items= db("verotel_user")->where("mid",$mid)->where("is_pay_succ",0)->select();
