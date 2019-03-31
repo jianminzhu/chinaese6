@@ -42,7 +42,10 @@ class Verotel extends Base
         try {
             $param = request()->param();
             if (validate_signature($param)) {
-                db("verotel_pay")->insert($param);
+                try {
+                    db("verotel_pay")->insert($param);
+                } catch (\Exception $e) {
+                }
             }
             return view("/index/paysucc");
         } catch (\Exception $e) {
