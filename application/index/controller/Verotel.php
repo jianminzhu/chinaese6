@@ -39,6 +39,7 @@ class Verotel extends Base
                 } catch (\Exception $e) {
                 }
             }
+            $this->headData();
             return view("/index/paysucc");
         } catch (\Exception $e) {
         }
