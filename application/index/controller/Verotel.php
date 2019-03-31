@@ -13,28 +13,20 @@ class Verotel extends Base
         if ($this->isLogin()) {
             $url = payurl(99, "1 Year VIP Membership");
             $mid = $this->loginUser()->id;
-            db("verotel_user")->insert([
-                "mid" => $mid,
-                "md5" => md5($url),
-                "url" => $url
-            ]);
+            try {
+                db("verotel_user")->insert([
+                    "mid" => $mid,
+                    "md5" => md5($url),
+                    "url" => $url
+                ]);
+            } catch (\Exception $e) {
+            }
             $this->redirect($url);
         } else {
             $this->redirect("/index.php/index/a/login");
         }
     }
 
-    /*   public function test()
-       {
-           echo ExtGetHtml("http://travelling.chinesecompanion.com/index.php/index/verotel/succ?paymentMethod=CC&priceAmount=100&priceCurrency=EUR&saleID=18426632&shopID=115404&type=purchase&signature=0d0494359023b21a38e1f6844765f799e257523e");
-       }
-
-       public function testS()
-       {
-           $jsonstr = '{"paymentMethod":"CC","priceAmount":"2.64","priceCurrency":"EUR","saleID":"18426319","shopID":"115404","type":"purchase","signature":"ec0e2601184c1ca55376bcd95bcb0135a81c2c25"}';
-           $realParams = parseJsonParas($jsonstr);
-           echo "[[[[[" . validate_signature($realParams) . "]]]]";
-       }*/
 
     public function succ()
     {
