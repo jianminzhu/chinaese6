@@ -1,0 +1,9 @@
+{
+  "paymentMethod": "CC",
+  "priceAmount": "2.64",
+  "priceCurrency": "EUR",
+  "saleID": "18426319",
+  "shopID": "115404",
+  "type": "purchase",
+  "signature": "ec0e2601184c1ca55376bcd95bcb0135a81c2c25"
+}

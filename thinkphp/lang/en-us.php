@@ -77,6 +77,7 @@ return [
     "上一页" => "PREVIOUS",
     "第一页" => "FIRST",
 
+    "支付成功"=>"Paid Successfully",
     //reg
     "登录网站的密码" => "Your password",
     "邮箱已经被注册" => "This email has registered",
