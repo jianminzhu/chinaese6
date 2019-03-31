@@ -24,7 +24,7 @@ class Verotel extends Base
         }
     }
 
-    public function test()
+ /*   public function test()
     {
         echo ExtGetHtml("http://travelling.chinesecompanion.com/index.php/index/verotel/succ?paymentMethod=CC&priceAmount=100&priceCurrency=EUR&saleID=18426632&shopID=115404&type=purchase&signature=0d0494359023b21a38e1f6844765f799e257523e");
     }
@@ -34,7 +34,7 @@ class Verotel extends Base
         $jsonstr = '{"paymentMethod":"CC","priceAmount":"2.64","priceCurrency":"EUR","saleID":"18426319","shopID":"115404","type":"purchase","signature":"ec0e2601184c1ca55376bcd95bcb0135a81c2c25"}';
         $realParams = parseJsonParas($jsonstr);
         echo "[[[[[" . validate_signature($realParams) . "]]]]";
-    }
+    }*/
 
     public function succ()
     {
@@ -48,7 +48,6 @@ class Verotel extends Base
         } catch (\Exception $e) {
         }
         return redirect("/index.php/index/m/upgrade");
-
     }
 
     public function cancel()
