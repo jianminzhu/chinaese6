@@ -2,8 +2,8 @@
 
 namespace app\index\controller;
 
-require_once './ext_util/flexpay/FlexpayUtil.php';
-require_once './ext_util/fileUtil.php';
+require_once 'ext_util/flexpay/FlexpayUtil.php';
+require_once 'ext_util/fileUtil.php';
 
 class Verotel extends Base
 {
