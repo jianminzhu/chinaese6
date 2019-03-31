@@ -87,7 +87,7 @@ return [
     "发送失败" => "Sent Error.",
     "操作成功" => "Successful",
     "1年 VIP 会员" => "1 Year VIP Membership",
-    "1年VIP 升级 终身VIP" => "1 Year upgrade to lifetime",
+    "1年VIP 升级 终身VIP" => "1 Year VIP upgrade to lifetime VIP",
     "终身VIP会员" => "Lifetime VIP Membership",
     "每年" => "per year",
     "终身" => "Lifetime",
