@@ -48,6 +48,7 @@ class Verotel extends Base
                 foreach ($items as $item) {
                     try {
                         $html = ExtGetHtml($items["url"]);
+                        echo "succ".json_encode($html);
                         $params=json_decode($html);
                         if (validate_signature($params)) {
                             $saleID = $params["saleID"];
@@ -55,7 +56,6 @@ class Verotel extends Base
                             db("pay")->insert(["m_id"=>$mid,"type"=>1,"cost"=>$params["priceAmount"]]);
                             echo "succ ";
                         }
-                        echo json_encode($params);
                     } catch (\Exception $e) {
                         echo "-----".$html;
                     }
