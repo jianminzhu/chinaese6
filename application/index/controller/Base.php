@@ -25,15 +25,16 @@ class Base extends Controller
     public function vipInfo($id)
     {
         $isPay = false;
-
-        $vip = Db::query(" SELECT *, TIMESTAMPDIFF(DAY,startdate,enddate)AS remaining FROM pay where m_id=$id")[0];
-        if ($vip) {
+        $vip = [
+            "type" => "no",
+            "renge" => ""
+        ];
+        $vips = Db::query(" SELECT *, TIMESTAMPDIFF(DAY,startdate,enddate)AS remaining FROM pay where m_id=$id order by enddate desc ");
+        if ($vips) {
+            $vip = $vips[0];
             $vip["renge"] = $vip["cost"] > 199 ? lang("终身VIP会员") : lang("1年 VIP 会员");
             $vip["type"] = $vip["cost"] > 199 ? "lifetime" : "1year";
             $isPay = true;
-        }else{
-            $vip["type"] = "no";
-            $vip["renge"] = "";
         }
 
         return array($vip, $isPay);
