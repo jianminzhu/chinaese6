@@ -44,16 +44,20 @@ class Verotel extends Base
             if ($this->isLogin()) {
                 $mid = $this->loginUser()->id;
                 $items= db("verotel_user")->where("mid",$mid)->where("is_pay_succ",0)->select();
+                $html = "";
                 foreach ($items as $item) {
                     try {
-                        $params=json_decode(ExtGetHtml($items["url"]));
+                        $html = ExtGetHtml($items["url"]);
+                        $params=json_decode($html);
                         if (validate_signature($params)) {
                             $saleID = $params["saleID"];
                             db("verotel_user")->where("mid", $mid)->where("is_pay_succ", 0)->update(["saleID" => $saleID, "is_pay_succ" => "1"]);
                             db("pay")->insert(["m_id"=>$mid,"type"=>1,"cost"=>$params["priceAmount"]]);
                             echo "succ ";
                         }
+                        echo json_encode($params);
                     } catch (\Exception $e) {
+                        echo "-----".$html;
                     }
                 }
             }
