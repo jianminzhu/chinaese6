@@ -2,8 +2,8 @@
 
 namespace app\index\controller;
 
-require_once __DIR__ . './ext_util/flexpay/FlexpayUtil.php';
-require_once __DIR__ . './ext_util/fileUtil.php';
+require_once './ext_util/flexpay/FlexpayUtil.php';
+require_once './ext_util/fileUtil.php';
 
 class Verotel extends Base
 {
@@ -24,17 +24,17 @@ class Verotel extends Base
         }
     }
 
- /*   public function test()
-    {
-        echo ExtGetHtml("http://travelling.chinesecompanion.com/index.php/index/verotel/succ?paymentMethod=CC&priceAmount=100&priceCurrency=EUR&saleID=18426632&shopID=115404&type=purchase&signature=0d0494359023b21a38e1f6844765f799e257523e");
-    }
+    /*   public function test()
+       {
+           echo ExtGetHtml("http://travelling.chinesecompanion.com/index.php/index/verotel/succ?paymentMethod=CC&priceAmount=100&priceCurrency=EUR&saleID=18426632&shopID=115404&type=purchase&signature=0d0494359023b21a38e1f6844765f799e257523e");
+       }
 
-    public function testS()
-    {
-        $jsonstr = '{"paymentMethod":"CC","priceAmount":"2.64","priceCurrency":"EUR","saleID":"18426319","shopID":"115404","type":"purchase","signature":"ec0e2601184c1ca55376bcd95bcb0135a81c2c25"}';
-        $realParams = parseJsonParas($jsonstr);
-        echo "[[[[[" . validate_signature($realParams) . "]]]]";
-    }*/
+       public function testS()
+       {
+           $jsonstr = '{"paymentMethod":"CC","priceAmount":"2.64","priceCurrency":"EUR","saleID":"18426319","shopID":"115404","type":"purchase","signature":"ec0e2601184c1ca55376bcd95bcb0135a81c2c25"}';
+           $realParams = parseJsonParas($jsonstr);
+           echo "[[[[[" . validate_signature($realParams) . "]]]]";
+       }*/
 
     public function succ()
     {
