@@ -11,7 +11,7 @@ class Verotel extends Base
     public function pay()
     {
         if ($this->isLogin()) {
-            $url = payurl(125, "1 Year VIP Membership");
+            $url = payurl(99, "1 Year VIP Membership");
             $mid = $this->loginUser()->id;
             db("verotel_user")->insert([
                 "mid" => $mid,
