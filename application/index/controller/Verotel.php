@@ -57,7 +57,7 @@ class Verotel extends Base
                             echo "succ ";
                         }
                     } catch (\Exception $e) {
-                        echo "-----".$html;
+                        echo "-----".$e->getMessage().$html;
                     }
                 }
             }
