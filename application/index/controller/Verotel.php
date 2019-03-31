@@ -37,14 +37,14 @@ class Verotel extends Base
                 try {
                     db("verotel_pay")->insert($param);
                 } catch (\Exception $e) {
-
+                    echo $e->getMessage();
                 }
             }
             $this->headData();
-            return view("/index/paysucc",["data"=>json_encode($param)]);
+            return "支付成功";//view("/index/paysucc",["data"=>json_encode($param)]);
         } catch (\Exception $e) {
         }
-        return redirect("/index.php/index/m/upgrade");
+        return "从新支付";
     }
 
     public function cancel()
