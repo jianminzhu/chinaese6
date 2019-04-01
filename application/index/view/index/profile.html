@@ -112,7 +112,7 @@
                     </div>
                     <div class="pointer circle relative me1 {:in_array($m.id,$uIntrestMids)?'fill-action-highlight':'fill-action-unhighlight' }"
                          data-opt-addfavorite="" data-d-mid="{$m.id}">
-                        {$isPay==false?lang("会员可见"):""}
+                        {$isPay==True?'<img  src="/vip.png" height="60px"/>':""}
                     </div>
                 </div>
             </div>
