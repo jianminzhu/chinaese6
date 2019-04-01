@@ -11,6 +11,11 @@
 
 // 核心中文语言包
 return [
+    //foot
+    "关于我们"=>"About Us",
+    "联系我们"=>"Contact Us",
+
+
     "热门国家" => "Popular",
     "任何国家" => "Any contry",
     "所有国家" => "All Countries",
@@ -61,6 +66,9 @@ return [
     "我是" => "I'm ",
     "自我介绍" => "Description",
     "VIP可见" => "&nbsp;<a href='/index.php/index/m/upgrade'>For VIP Only</a>",
+
+
+
 
     "外表" => "Your Appearance",
     "管理照片" => "Manage Photos",
