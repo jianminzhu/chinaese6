@@ -22,7 +22,7 @@
     <div class="flex-auto flex items-center justify-end z3 me2">
 
         {if condition="$Think.session.isLogin eq true"}
-        {if condition="$u.vip.type == '1year' or $u.vip.type == 'no'" }
+        {if condition="$u.isPay != True" }
         <a id="evtGUpgradeMemberHeader" href="/index.php/index/m/upgrade"
            class="ad-295-46 flex items-center bg-green rounded text-decoration-none">
             <div class="long-text p1">
