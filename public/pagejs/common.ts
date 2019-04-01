@@ -285,7 +285,7 @@ function search() {
             setTimeout(function () {
                 $searchResults.html(html)
                 Loding.hideLodin();
-            },500)
+            },200)
         });
         return false;
     })
