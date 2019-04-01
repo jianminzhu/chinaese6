@@ -204,9 +204,14 @@ class M extends Base
         $member = $this->getMemberWithPay($id);
         $pics = Db::table("pics")->where("m_id", $id)->select();
         $emsg = "";
-        list($vip, $isPay) = $this->vipInfo($id);
-        list($cc) = $this->concatData($id, $isPay);
-        return ['m' => $member, "pics" => $pics, "cc" => $cc, "emsg" => $emsg, "isPay" => $isPay, "vip" => $vip];
+        list($vip,$isPay) = $this->vipInfo($id);
+        $logigUserIsPay = false;
+        $isLogin = $this->isLogin();
+        if ($isLogin) {
+            $logigUserIsPay = $this->loginUser()->isPay;
+        }
+        list($cc) = $this->concatData($id, $logigUserIsPay);
+        return ['m' => $member, "pics" => $pics, "cc" => $cc, "emsg" => $emsg, "isPay" => $isPay, "vip" => $vip,"isLogin"=> $isLogin];
     }
 
 
@@ -231,7 +236,7 @@ class M extends Base
             }
         }
         return redirect("/index.php/index/m/profiledit");
-    }  //上传照片
+    }
 
 
     function param($name, $default = "")

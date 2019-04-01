@@ -15,6 +15,7 @@ class Base extends Controller
         if ($dbMember) {
             list($vip, $isPay) =  $this->vipInfo($dbMember["id"]);
             $dbMember->vip = $vip;
+            $dbMember->isPay = $isPay;
         }
         return $dbMember;
     }

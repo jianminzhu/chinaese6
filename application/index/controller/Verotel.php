@@ -11,12 +11,13 @@ class Verotel extends Base
     public function pay()
     {
         if ($this->isLogin()) {
-            $url = payurl(99, "1 Year VIP Membership");
+            $custom1 = md5(guid());
+            $url = payurl(99, $custom1, "1 Year VIP Membership");
             $mid = $this->loginUser()->id;
             try {
                 db("verotel_user")->insert([
                     "mid" => $mid,
-                    "md5" => md5($url),
+                    "custom1" => $custom1,
                     "url" => $url
                 ]);
             } catch (\Exception $e) {
@@ -30,43 +31,21 @@ class Verotel extends Base
 
     public function succ()
     {
-
         try {
-            $this->updateUserPayStatus();
-            $this->headData();
-
-            return "支付成功----".   json_encode(request()->param());;//view("/index/paysucc",["data"=>json_encode($param)]);
-        } catch (\Exception $e) {
-        }
-        return "从新支付";
-    }
-    public function updateUserPayStatus(){
-        try {
+            $params = request()->param();
+            $custom1 = $params["custom1"];
+            db("verotel_pay")->insert($params);
+            db("verotel_user")->where("custom1", $custom1)->update(["is_pay_succ"=>1]);
             if ($this->isLogin()) {
-                $mid = $this->loginUser()->id;
-                $items= db("verotel_user")->where("mid",$mid)->where("is_pay_succ",0)->select();
-                $html = "";
-                foreach ($items as $item) {
-                    try {
-                        $html = ExtGetHtml($items["url"]);
-                        echo "succ".json_encode($html);
-                        $params=json_decode($html);
-                        if (validate_signature($params)) {
-                            $saleID = $params["saleID"];
-                            db("verotel_user")->where("mid", $mid)->where("is_pay_succ", 0)->update(["saleID" => $saleID, "is_pay_succ" => "1"]);
-                            db("pay")->insert(["m_id"=>$mid,"type"=>1,"cost"=>$params["priceAmount"]]);
-                            echo "succ ";
-                        }
-                    } catch (\Exception $e) {
-                        echo "-----".$e->getMessage().$html;
-                    }
-                }
+                $loginUser = $this->loginUser();
+                db("pay")->insert(["m_id" => $loginUser->id, "type" => 1, "cost" => $params["priceAmount"]]);
+                $this->refreshVipInfo($loginUser);
             }
-
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
-
+        $this->headData();
+        return  view("/index/paysucc",["data"=>json_encode($params)]);
     }
 
     public function cancel()

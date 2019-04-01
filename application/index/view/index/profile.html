@@ -188,7 +188,7 @@
             </div>
             <div class="col-3 me3 p1 relative overview-details-bg">
                 <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
-                {$isPay==true?$cc["手机"]:"**********"}
+                {$isLogin==True?$u["isPay"]!=True?"":$cc["手机"]:"**********"}
 
             </div>
             {$isPay==true?"":lang("VIP可见")}
@@ -199,7 +199,7 @@
             </div>
             <div class="col-3 me3 p1 relative  overview-details-bg ">
                 <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
-                {$isPay?$cc["邮箱"]:"**********"}
+                {$isLogin==True?$u["isPay"]!=True?"":$cc["邮箱"]:"**********"}
 
             </div>
             {$isPay==true?"":lang("VIP可见")}
@@ -210,7 +210,7 @@
             </div>
             <div class="col-3 me3 p1 relative  overview-details-bg ">
                 <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
-                {$isPay==true?$cc["QQ"]:"**********"}
+                {$isLogin==True?$u["isPay"]!=True?"":$cc["QQ"]:"**********"}
             </div>
             {$isPay==true?"":lang("VIP可见")}
         </div>
@@ -220,7 +220,7 @@
             </div>
             <div class="col-3 me3 p1 relative  overview-details-bg ">
                 <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
-                {$isPay==true?$cc["微信"]:"**********"}
+                {$isLogin==True?$u["isPay"]!=True?"":$cc["微信"]:"**********"}
             </div>
             {$isPay==true?"":lang("VIP可见")}
         </div>
