@@ -25,6 +25,7 @@ class A extends Base
 
     public function login($data = [])
     {
+        $this->headData();
         return view('/index/login', $data);
     }
 
@@ -73,20 +74,12 @@ class A extends Base
     public function tolang()
     {
         $lang = input('lang');
-        switch ($lang) {
-            case 'en':
-                cookie('think_var', 'en-us');
-                break;
-            case 'zn':
-                cookie('think_var', 'zh-cn');
-                break;
-            default:
-                cookie('think_var', 'zh-cn');
-                break;
+        $toLang = "en-us";
+        if ($lang == "zh-cn") {
+            $toLang = "zh-cn";
         }
+        cookie('think_var', $toLang);
+        return $this->ajax(true);
     }
-
-
-
 
 }

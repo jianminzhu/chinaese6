@@ -2,13 +2,13 @@
 <head>
     {include file="../application/index/view/index/_commoncss.html" /}
 </head>
-</html>
-<div id="headerouter" class="col-12 absolute top-0 min-height-12">
+{include file="../application/index/view/index/_head.html" /}
+<div id="headerouter" class="col-12 absolute top-0 min-height-12 ">
     <div class="overlay-7 fixed top-0 left-0 right-0 bottom-0"></div>
     <div class="absolute top-0 left-0 col-12 z2 flex items-center justify-between">
     </div>
 </div>
-<div class="relative white flex">
+<div class="relative white flex py5" style="margin-top: 10%">
     <div class="absolute top-0 left-0 col-12 z2 flex items-center justify-between">
 
         <div class="login relative max-width-1 white mx-auto">
@@ -64,5 +64,29 @@
     </div>
 </div>
 
-
-</span>
+<div class="absolute top-0 left-0 col-12 z2 flex items-center justify-between">
+    <div class="membernav">
+        <ul dir="ltr">
+            <li class="py1 px2" style=" background: rgb(177, 93, 81);">
+                <a class="flex items-center border-none">
+                    <div class="flex-none flex item-center">
+                        <svg>
+                            <use xlink:href="/assets/desktop/icons/icons.svg#icon-globe"></use>
+                        </svg>
+                    </div>
+                    {$lang=="zh-cn"?"中文":"English"}
+                    <div class="arrow inline-block">
+                        <svg>
+                            <use xlink:href="/assets/desktop/icons/icons.svg#icon-menuright"></use>
+                        </svg>
+                    </div>
+                </a>
+                <ul class="p0 pt1">
+                    <li class="p1"><span data-lang="zh-cn">中文</span></li>
+                    <li class="p1"><span data-lang="en-us">English</span></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+</html>

@@ -17,6 +17,7 @@ class M extends Base
 
     public function reg($data = ["param" => [], "emsgs" => []])
     {
+        $this->headData();
         return view('/index/reg', $data);
     }
 

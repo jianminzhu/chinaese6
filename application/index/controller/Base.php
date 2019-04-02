@@ -295,7 +295,7 @@ class Base extends Controller
             } else {
                 $nextPno = $pno + 1;
             }
-            $dbMembers = $this->getMemberWithWhere($mid)->page("$pno,$pageSize")->select();
+            $dbMembers = $this->getMemberWithWhere($mid)->page("$pno,$pageSize")->order("sort asc")->select();
         } catch (Exception $e) {
 
         }

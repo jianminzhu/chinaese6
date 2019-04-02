@@ -7,47 +7,11 @@
 </head>
 <body>
 
-<!-- Non-modal notices -->
-<div id="notices" role="dialog">
-    <div class="notices-content"></div>
-</div>
-<!--Header start-->
-
-
-<div id="headerouter" class="col-12 absolute top-0 min-height-12">
-    <div class="overlay-7 fixed top-0 left-0 right-0 bottom-0"></div>
-    <div class="absolute top-0 left-0 col-12 z2 flex items-center justify-between">
-
-        <a href="/" class="flex items-center white text-decoration-none m3">
-
-        </a>
-
-        <div class="mx3 flex items-center">
-            <div class="membernav">
-                <ul dir="ltr">
-                    <li class="py1 px2 rounded">
-                        <a class="flex items-center border-none">
-                            <span data-lang="en">English</span>&nbsp;
-                            |&nbsp;&nbsp;<span data-lang="zh">中文</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <a class="btn-bg btn-color block py1 px2 button relative overflow-hidden rounded shadow ms3 my3"
-               href="/index.php/index/a/login">{:lang("登录")}</a>
-
-        </div>
-    </div>
-</div>
-
-
-<!--Header end-->
-<!--Body start-->
-
+{include file="../application/index/view/index/_head.html" /}
+<div class="overlay-7 fixed top-0 left-0 right-0 bottom-0"></div>
 <div class="flex items-center justify-center absolute top-0 right-0 bottom-0 left-0">
     <div id="showstep1" class="flex fade-in body-font-color bg-white mt4 p3 rounded relative">
         <div class="max-width-1 me4">
-
             <h1 class="center h1 m0 mb2 mx-auto color-dark-grey">
                 {:lang("免费加入")}
             </h1>

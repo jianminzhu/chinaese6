@@ -155,8 +155,8 @@
                 <ul class="formContainer">
                     <form action="/index.php/index/m/uploadInfo" method="post">
                         <li class="sectionHeading clearfix"><h2>{:lang("基本资料")}</h2></li>
-
-
+                        <li class="clearfix"><label class="questionLabel">{:lang("邮箱")}:</label><span>{$u.email}<span
+                                class="textfieldRequiredMsg"> </span></span></li>
                         <li class="clearfix"><label class="questionLabel">{:lang("名字")}:</label><span><input
                                 name="nickname" value="{$u.nickname|default=''}" size="20" autocomplete="off"><span
                                 class="textfieldRequiredMsg"> </span></span></li>
