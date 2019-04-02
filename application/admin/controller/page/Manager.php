@@ -4,6 +4,7 @@ namespace app\admin\controller\page;
 
 use app\common\controller\Backend;
 use app\index\controller\Index;
+use app\index\controller\Base;
 use think\Db;
 
 class Manager extends Backend
@@ -51,6 +52,12 @@ class Manager extends Backend
         }
         return json(["isSuccess" => 0]);
 
+    }
+    public function updatesort(){
+        $mid = request()->param("mid");
+        $sort= intval(request()->param("sort"));
+        db("member")->where("id", $mid)->update(["sort" => $sort]);
+        return Base::ajax(true);
     }
     public function  delmember(){
         $mid = request()->param("mid");

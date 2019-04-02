@@ -45,7 +45,7 @@ class Base extends Controller
         return view($tpl, $data)->getContent();
     }
 
-    public function ajax($isSuccess, $data = [], $msg = "")
+    public static function ajax($isSuccess, $data = [], $msg = "")
     {
         return json(["isSuccess" => $isSuccess, "msg" => $msg, "data" => $data]);
     }

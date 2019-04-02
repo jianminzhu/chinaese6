@@ -27,6 +27,20 @@
                 })
             }
         })
+
+        $("body").delegate("[data-opt-updatesort]", "click", function () {
+            let mid = $(this).attr("data-opt-updatesort");
+            let $jp = $(this).parent();
+            let sort = $jp.find("input").val();
+            let url = `/index.php/admin/page/manager/updatesort?mid=${mid}&sort=${sort}`
+            $.ajax(url).then(function () {
+                let $msg = $jp.find("[name=msg]");
+                $msg.html("更新成功");
+                setTimeout(function () {
+                    $msg.html("")
+                }, 2000)
+            })
+        })
         $("body").delegate("[data-opt-delmember]", "click", function () {
             if (confirm("确认删除")) {
                 let mid = $(this).attr("data-opt-delmember");
