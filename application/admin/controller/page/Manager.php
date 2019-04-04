@@ -59,7 +59,7 @@ ms.`send_date`
 FROM message ms LEFT JOIN member mf ON mf.id=ms .`from_m_id`  
  LEFT JOIN member mt ON mt.id=ms .`to_m_id` 
  WHERE 1=1 $where 
- ORDER BY  send_date desc ,from_m_id ,to_m_id ",$param);
+ ORDER BY  from_m_id ,to_m_id,send_date desc  ",$param);
         return view("page/msglist",["msgs"=>    $data]);
     }
 
