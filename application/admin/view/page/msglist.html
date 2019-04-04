@@ -6,6 +6,7 @@
     function mhtml(url, data = {}) {
         return $.ajax({url: "/index.php" + url, type: 'get', data: data, dataType: "html"});
     }
+
     function search() {
         let $form = $('form[name="searchForm"]');
         $form.on("submit", function () {
@@ -16,12 +17,13 @@
         });
         return $form;
     }
+
     $(function () {
         search();
     })
 </script>
 <div class="max-width mx-auto mt0 ">
-    <form name="searchForm" id="searchForm"  >
+    <form name="searchForm" id="searchForm">
         <div class="search mt2 p2  mx-auto shadow rounded flex flex-wrap items-center justify-between max-width">
             <div class="border-bottom search-age m1">
                 <label for="fid">{:lang("发件人id")}</label>
