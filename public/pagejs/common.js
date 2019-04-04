@@ -182,8 +182,7 @@ function action() {
                         showNotice(res.data);
                         mhtml("/index/mail/msgDetailAjax?mid=" + $toid).then(function (html) {
                             $("#details").html(html);
-                            var scrollHeight = $('#details').prop("scrollHeight");
-                            $('#details').scrollTop(scrollHeight, 1);
+                            $("#details .message-holder").scrollTop($("#details .message-holder")[0].scrollHeight);
                         });
                     });
                 }
