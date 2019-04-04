@@ -176,13 +176,15 @@ function action() {
         var $toid = jit.data("toid");
         loginDo(function () {
             sendDo(function () {
-                var msg = jit.parent().find("textarea[name=message]").val();
+                var jmsg = jit.parent().find("textarea[name=message]");
+                var msg = jmsg.val();
                 if (msg != "") {
                     mdata("/index/mail/send", { to_m_id: $toid, msg: msg, "type": 2 }).then(function (res) {
                         showNotice(res.data);
                         mhtml("/index/mail/msgDetailAjax?mid=" + $toid).then(function (html) {
                             $("#details").html(html);
                             $("#details .message-holder").scrollTop($("#details .message-holder")[0].scrollHeight);
+                            jmsg.val("");
                         });
                     });
                 }
