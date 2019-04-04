@@ -6,7 +6,7 @@
 
 
     <title>{$lang=="en-us"?pinyinName($m.nickname):$m.nickname} . {$m.age} .
-        {$lang=="en-us"?pinyinAddress($m.address):$m.address},{$m.country|default=""}| www.chinesecompanion.com</title>
+        {$lang=="en-us"?pinyinAddress($m.city):$m.city},{$m.country|default=""}| www.chinesecompanion.com</title>
     <meta id="defaultmessage" content="处理过程中发生问题"/>
 
     <meta name="viewport"
@@ -160,7 +160,7 @@
             </div>
             <div class="col-3 me3 p1 relative overview-details-bg ">
                 <div class=" absolute top-0 right-0 bottom-0 left-0"></div>
-                {$lang=="en-us"?pinyinAddress($m.address):$m.address}
+                {$lang=="en-us"?pinyinAddress($m.city):$m.city}
             </div>
         </div>
         <div class="row flex items-stretch">

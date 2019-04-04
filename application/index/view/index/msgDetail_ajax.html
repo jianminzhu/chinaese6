@@ -1,0 +1,46 @@
+<div class="message-holder  col-8" style="height: 20px;">
+    {volist name="msgs" id="msg"}
+    {if condition="$msg.to_m_id eq $u.id"}
+    <div class="flex relative">
+        <div class="flex flex-auto items-center">
+            <div class="me3 mt3 relative flex-none">
+                <div class="sender-image circle border card-image-bg-color">
+                    <div class="fit col-12 height-12 circle overflow-hidden">
+                        <div class="profile-bg overflow-hidden circle" data-cm-modal-url=""
+                             style="background-image:url('{$m.main_pic}')"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="max-width-2 m0 flex flex-column col-6">
+                <div class="h5 px2 pt2 pb1">{$msg.send_date}</div>
+                <div class="message bg-white p2 rounded relative">
+                    <div class="flex items-center justify-between">
+                        <div class="col-11 mr2 break-word   p1 no-select clamp clamp4"
+                             title="{$msg.send_date}">
+                            <div>
+                                {$msg.msg}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {else}
+    <div class="flex relative">
+        <div class="flex flex-auto items-center justify-end">
+            <div class="max-width-2 m0 flex flex-column">
+                <div class="h5 px2 pt2 pb1 right-align">{$msg.send_date}</div>
+                <div class="my-message p2 rounded flex items-center relative">
+                    <div class="mr2 white break-word" title="{$msg.send_date}">
+                        {$msg.msg}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {/if}
+    {/volist}
+</div>

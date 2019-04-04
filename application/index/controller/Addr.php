@@ -3,8 +3,8 @@
 namespace app\index\controller;
 require('ext_util/fileUtil.php');
 require('ext_util/BytripUtil.php');
+include_once "ext_util/pinyin.php";
 
-use think\Controller;
 use think\Db;
 
 /**
@@ -48,22 +48,33 @@ function object_to_array($obj)
     return $obj;
 }
 
-class Addr extends Controller
+class Addr extends Base
 {
     public function loadstates()
     {
         $data = [];
         $stateid = request()->param("stateid");
         if ($stateid && trim($stateid) != "") {
-            $data= Db::query("select translation as n, attributeid as v,chinese as cn from cupidaddress where stateid=? order by sort asc", [$stateid]) ;
+            $data = Db::query("select translation as n, attributeid as v, countryid  from cupidaddress where stateid=? order by sort asc", [$stateid]);
         }
-
+        $toLang = $this->getLang();
         $countryid = request()->param("countryid");
         if ($countryid && trim($countryid) != "") {
-            $data = Db::query("select translation as n, attributeid as v,chinese as cn from cupidaddress where stateid is null  and countryid=? order by sort asc", [$countryid]);
+            $data = Db::query("select translation as n, attributeid as v, countryid  from cupidaddress where stateid is null  and countryid=? order by sort asc", [$countryid]);
 
         }
-        return ($data);
+        if ($toLang == "en-us") {
+            $realData = [];
+            foreach ($data as $it) {
+                if ($it["countryid"] == 42) {
+                    $it["n"] = pinyinAddress($it["n"]);
+                    $realData[] = $it;
+                }
+            }
+            $data = $realData;
+        }
+
+        return json($data);
     }
 
 

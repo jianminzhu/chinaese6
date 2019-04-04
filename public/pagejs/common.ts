@@ -94,6 +94,15 @@ function loginDo(fun) {
         }
     });
 }
+function sendDo(fun,fromId,toId) {
+    mdata("/index/mail/canSend",{fromId,toId}).then(function (res) {
+       let canSend =false
+        if (res.isSuccess) {
+            canSend = true;
+        }
+        fun(canSend);
+    });
+}
 
 function showDialogSentMsg(toMid) {
     mhtml("/index/dialog/sentMsgDialog", {otherId: toMid, name: "sentMsg"}).then(function (html) {
@@ -170,17 +179,22 @@ function action() {
     //表单发送消息
     $("body").delegate("[data-opt-dosendmsg]", "click", function () {
         var jit = $(this)
+        var $fromid = jit.data("fromid");
+        var $toid = jit.data("toid");
         loginDo(function () {
-            payDo(function () {
-                var $id = jit.attr("data-opt-dosendmsg");
+            sendDo(function () {
                 let msg = jit.parent().find("textarea[name=message]").val();
                 if (msg != "") {
-                    mdata("/index/mail/send", {to_m_id: $id, msg: msg, "type": 2}).then(function (res) {
+                    mdata("/index/mail/send", {to_m_id: $toid, msg: msg, "type": 2}).then(function (res) {
                         showNotice(res.data);
-                        window.location.reload();
+                        mhtml("/index/mail/msgDetailAjax?mid=" + $toid).then(function (html) {
+                            $("#details").html(html)
+                            var scrollHeight = $('#details').prop("scrollHeight");
+                            $('#details').scrollTop(scrollHeight,1;
+                        });
                     });
                 }
-            },"form");
+            },$fromid,$toid);
         })
     })
 

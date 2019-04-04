@@ -32,8 +32,8 @@
 <body>
 {include file="../application/index/view/index/_head.html" /}
 <div class="max-width mx-auto p2 flex relative py4">
-    <div class="col-12">
-        <div class="me2 col-3 max-width-2">
+    <div class="col-2">
+        <div class="me2 col-12 max-width-2">
             <div class="mb3 relative">
                 <div class="profile-image-header circle shadow border mx-auto relative">
 
@@ -55,15 +55,10 @@
                     <svg class="ms1 fill-standard relative tooltip">
                         <use xlink:href="/assets/desktop/icons/icons.svg#icon-profile"></use>
                     </svg>
-
-                    <div class="tooltip-text tooltip-text-width-auto truncate tooltip-text-center h5 rounded p1 bg-black-alpha-85 white absolute max-width-1 no-select">
-                        {:lang("普通会员")}
-                    </div>
-
                 </div>
             </div>
 
-            <div class="h4 mt1 center">{$m.age} <span>•</span> {$m.address}</div>
+            <div class="h4 mt1 center">{$m.age} <span>•</span> {$m.city}</div>
             <div class="border-top mt2 p2 flex items-center">
                 <div class="flex flex-wrap items-end justify-between col-12">
                     <div class="flex items-center mb2 me2">
@@ -107,81 +102,35 @@
                 </div>
             </div>
 
-
         </div>
-        <div class="col-8 border-left items-stretch px2 relative">
-            <div class="message-holder" style="height: 614px;">
-                {volist name="msgs" id="msg"}
-                {if condition="$msg.to_m_id eq $u.id"}
-                <div class="flex relative">
-                    <div class="flex flex-auto items-center">
-                        <div class="me3 mt3 relative flex-none">
-                            <div class="sender-image circle border card-image-bg-color">
-                                <div class="fit col-12 height-12 circle overflow-hidden">
-                                    <div class="profile-bg overflow-hidden circle" data-cm-modal-url=""
-                                         style="background-image:url('{$m.main_pic}')"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="max-width-2 m0 flex flex-column col-6">
-                            <div class="h5 px2 pt2 pb1">{$msg.send_date}</div>
-                            <div class="message bg-white p2 rounded relative">
-                                <div class="flex items-center justify-between">
-                                    <div class="col-11 mr2 break-word   p1 no-select clamp clamp4"
-                                         title="{$msg.send_date}">
-                                        <div>
-                                            {$msg.msg}
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {else}
-                <div class="flex relative">
-                    <div class="flex flex-auto items-center justify-end">
-                        <div class="max-width-2 m0 flex flex-column">
-                            <div class="h5 px2 pt2 pb1 right-align">{$msg.send_date}</div>
-                            <div class="my-message p2 rounded flex items-center relative">
-                                <div class="mr2 white break-word" title="{$msg.send_date}">
-                                    {$msg.msg}
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                {/if}
-                {/volist}
+    </div>
+    <div class="col-8 border-left">
+        <div id="details">
+            {include file="../application/index/view/index/msgDetail_ajax.html" /}
+        </div>
+        <div class="col-8 message-input-holder mt3 max-width-3">
+            <div class="inline-block animate-typing bg-light-grey pill ms2 p1 relative" hidden="">
+                <div class="bubble-large circle bg-light-grey absolute"></div>
+                <div class="bubble-small circle bg-light-grey absolute"></div>
+                <div class="inline-block dot circle"></div>
+                <div class="inline-block dot circle"></div>
+                <div class="inline-block dot circle"></div>
             </div>
-
-            <div class="message-input-holder mt3 max-width-3">
-                <div class="inline-block animate-typing bg-light-grey pill ms2 p1 relative" hidden="">
-                    <div class="bubble-large circle bg-light-grey absolute"></div>
-                    <div class="bubble-small circle bg-light-grey absolute"></div>
-                    <div class="inline-block dot circle"></div>
-                    <div class="inline-block dot circle"></div>
-                    <div class="inline-block dot circle"></div>
-                </div>
-                <div class="flex items-end">
-                    <div class="col sm-col-12 lg-col-11 border-bottom me1">
+            <div class="flex items-end">
+                <div class="col sm-col-12 lg-col-11 border-bottom me1">
                             <textarea name="message" rows="1" class="col-12 bg-transparent message-input border-none"
                                       placeholder="{:lang('消息内容')}"></textarea>
-                    </div>
-                    <button class="send-btn bg-theme p2 circle flex items-center border-none relative"
-                            data-opt-dosendmsg="{$m.id}">
-                        <svg class="icon-30 header-strip-fill">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                 xlink:href="/assets/desktop/icons/icons.svg#icon-paperairplane"></use>
-                        </svg>
-                    </button>
                 </div>
+                <button class="send-btn bg-theme p2 circle flex items-center border-none relative"
+                        data-opt-dosendmsg="{$m.id}" data-fromid="{$u.id}" data-toid="{$m.id}">
+                    <svg class="icon-30 header-strip-fill">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                             xlink:href="/assets/desktop/icons/icons.svg#icon-paperairplane"></use>
+                    </svg>
+                </button>
             </div>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>

@@ -91,6 +91,15 @@ function loginDo(fun) {
         }
     });
 }
+function sendDo(fun, fromId, toId) {
+    mdata("/index/mail/canSend", { fromId: fromId, toId: toId }).then(function (res) {
+        var canSend = false;
+        if (res.isSuccess) {
+            canSend = true;
+        }
+        fun(canSend);
+    });
+}
 function showDialogSentMsg(toMid) {
     mhtml("/index/dialog/sentMsgDialog", { otherId: toMid, name: "sentMsg" }).then(function (html) {
         var $sentMsgDialog = $("body").find("#sentMsgDialog");
@@ -101,22 +110,6 @@ function showDialogSentMsg(toMid) {
         $sentMsgDialog.html(html).show();
     });
 }
-var Loding = /** @class */ (function () {
-    function Loding() {
-    }
-    Loding.initLoding = function () {
-        if ($("#css_loading").length == 0) {
-            $("body").append("\n<style>\n    .loader-inner {\n        width: 100px;\n        height: 60px;\n        position: relative;\n    }\n\n    .loader-line-wrap {\n        -webkit-animation: spin 2000ms cubic-bezier(.175, .885, .32, 1.275) infinite;\n        animation: spin 2000ms cubic-bezier(.175, .885, .32, 1.275) infinite;\n        box-sizing: border-box;\n        height: 50px;\n        left: 0;\n        overflow: hidden;\n        position: absolute;\n        top: 0;\n        -webkit-transform-origin: 50% 100%;\n        transform-origin: 50% 100%;\n        width: 100px;\n    }\n\n    .loader-line {\n        border: 4px solid transparent;\n        border-radius: 100%;\n        box-sizing: border-box;\n        height: 100px;\n        left: 0;\n        margin: 0 auto;\n        position: absolute;\n        right: 0;\n        top: 0;\n        width: 100px;\n    }\n\n    .loader-line-wrap:nth-child(1) {\n        -webkit-animation-delay: -50ms;\n        animation-delay: -50ms;\n    }\n\n    .loader-line-wrap:nth-child(2) {\n        -webkit-animation-delay: -100ms;\n        animation-delay: -100ms;\n    }\n\n    .loader-line-wrap:nth-child(3) {\n        -webkit-animation-delay: -150ms;\n        animation-delay: -150ms;\n    }\n\n    .loader-line-wrap:nth-child(4) {\n        -webkit-animation-delay: -200ms;\n        animation-delay: -200ms;\n    }\n\n    .loader-line-wrap:nth-child(5) {\n        -webkit-animation-delay: -250ms;\n        animation-delay: -250ms;\n    }\n\n    .loader-line-wrap:nth-child(1) .loader-line {\n        border-color: hsl(0, 80%, 60%);\n        height: 90px;\n        width: 90px;\n        top: 7px;\n    }\n\n    .loader-line-wrap:nth-child(2) .loader-line {\n        border-color: hsl(60, 80%, 60%);\n        height: 76px;\n        width: 76px;\n        top: 14px;\n    }\n\n    .loader-line-wrap:nth-child(3) .loader-line {\n        border-color: hsl(120, 80%, 60%);\n        height: 62px;\n        width: 62px;\n        top: 21px;\n    }\n\n    .loader-line-wrap:nth-child(4) .loader-line {\n        border-color: hsl(180, 80%, 60%);\n        height: 48px;\n        width: 48px;\n        top: 28px;\n    }\n\n    .loader-line-wrap:nth-child(5) .loader-line {\n        border-color: hsl(240, 80%, 60%);\n        height: 34px;\n        width: 34px;\n        top: 35px;\n    }\n\n    @-webkit-keyframes spin {\n        0%, 15% {\n            -webkit-transform: rotate(0);\n            transform: rotate(0);\n        }\n        100% {\n            -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n        }\n    }\n\n    @keyframes spin {\n        0%, 15% {\n            -webkit-transform: rotate(0);\n            transform: rotate(0);\n        }\n        100% {\n            -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n        }\n    }\n</style>\n<div id=\"css_loading\" style=\"position: fixed;top:45%;left:45%;z-index:10002;display: none\">\n    <div class=\"loader-inner\">\n        <div class=\"loader-line-wrap\">\n            <div class=\"loader-line\"></div>\n        </div>\n        <div class=\"loader-line-wrap\">\n            <div class=\"loader-line\"></div>\n        </div>\n        <div class=\"loader-line-wrap\">\n            <div class=\"loader-line\"></div>\n        </div>\n        <div class=\"loader-line-wrap\">\n            <div class=\"loader-line\"></div>\n        </div>\n        <div class=\"loader-line-wrap\">\n            <div class=\"loader-line\"></div>\n        </div>\n    </div>\n</div>\n");
-        }
-    };
-    Loding.showLoding = function () {
-        $("#css_loading").show();
-    };
-    Loding.hideLodin = function () {
-        $("#css_loading").hide();
-    };
-    return Loding;
-}());
 /*
 * 搜索相关事件*/
 function search() {
@@ -179,17 +172,22 @@ function action() {
     //表单发送消息
     $("body").delegate("[data-opt-dosendmsg]", "click", function () {
         var jit = $(this);
+        var $fromid = jit.data("fromid");
+        var $toid = jit.data("toid");
         loginDo(function () {
-            payDo(function () {
-                var $id = jit.attr("data-opt-dosendmsg");
+            sendDo(function () {
                 var msg = jit.parent().find("textarea[name=message]").val();
                 if (msg != "") {
-                    mdata("/index/mail/send", { to_m_id: $id, msg: msg, "type": 2 }).then(function (res) {
+                    mdata("/index/mail/send", { to_m_id: $toid, msg: msg, "type": 2 }).then(function (res) {
                         showNotice(res.data);
-                        window.location.reload();
+                        mhtml("/index/mail/msgDetailAjax?mid=" + $toid).then(function (html) {
+                            $("#details").html(html);
+                            var scrollHeight = $('#details').prop("scrollHeight");
+                            $('#details').scrollTop(scrollHeight, 1);
+                        });
                     });
                 }
-            }, "form");
+            }, $fromid, $toid);
         });
     });
     //表单发送消息

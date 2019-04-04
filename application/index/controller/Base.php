@@ -143,7 +143,7 @@ class Base extends Controller
             if ($cookieLang == "en-us") {
                 try {
                     $user["nickname"] = pinyinName($user["nickname"]);
-                    $user["address"] = pinyinAddress($user["address"]);
+                    $user["city"] = pinyinAddress($user["city"]);
                 } catch (\Exception $e) {
                 }
             }
@@ -284,7 +284,6 @@ class Base extends Controller
         }
         $lastPno = $pno;
         $nextPno = $pno;
-
         try {
             $pageSize = intval(request()->param("__psize", 15));
             $count = $this->getMemberWithWhere($mid)->count();
@@ -296,6 +295,7 @@ class Base extends Controller
                 $nextPno = $pno + 1;
             }
             $dbMembers = $this->getMemberWithWhere($mid)->page("$pno,$pageSize")->order("sort asc")->select();
+
         } catch (Exception $e) {
 
         }

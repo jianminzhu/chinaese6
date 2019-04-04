@@ -26,6 +26,20 @@ class Mail extends Base
         }
         return $this->ajax(true, lang("发送成功"));
     }
+    public function canSend()
+    {
+        $isSucc = false;
+        if ($this->isLogin()) {
+            $fromid = request()->param("fromId");
+            $toid = request()->param("toId");
+            $toidIsPay= $this->memberIsPay($toid);
+            $fromidIsPay= $this->memberIsPay($fromid);
+            if ($toidIsPay || $fromidIsPay) {
+                $isSucc = true;
+            }
+        }
+        return $this->ajax($isSucc, lang("cansend"));
+    }
 
 
     public function msgDetail()
@@ -53,6 +67,32 @@ class Mail extends Base
             }
         }
     }
+    public function msgDetailAjax()
+    {
+        $mid = request()->param("mid");
+        if ($this->isLogin()) {
+            if ($mid) {
+                $other = Member::get($mid);
+                if ($other) {
+                    $this->headData();
+                    $u = $this->loginUser();
+                    $myMid = $u->id;
+                    session("lastUrl", "/index/mail/fromfavorite");
+                    $sql = "
+                        SELECT *
+                        FROM
+                          message AS msg 
+                         where  (from_m_id=$mid and  to_m_id=$myMid) or (from_m_id=$myMid and to_m_id=$mid) 
+                        ORDER BY send_date asc  
+                        ";
+                    $msgs = Db::query($sql);
+                    $arr = ["m" => $other, "my" => $u, "msgs" => count($msgs) > 0 ? $msgs : []];
+                    return view('/index/msgDetail_Ajax', $arr);
+                }
+            }
+        }
+    }
+
 
     public function msglist()
     {
