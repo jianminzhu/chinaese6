@@ -87,7 +87,7 @@ class Mail extends Base
                         ";
                     $msgs = Db::query($sql);
                     $arr = ["m" => $other, "my" => $u, "msgs" => count($msgs) > 0 ? $msgs : []];
-                    return view('/index/msgDetail_Ajax', $arr);
+                    return view('/index/msgDetail_ajax', $arr);
                 }
             }
         }
