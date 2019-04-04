@@ -127,9 +127,9 @@ class Base extends Controller
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public function searchData()
+    public function searchMembers($table="member")
     {
-        $this->assign($this->searchWithRequestParam());
+        $this->assign($this->searchWithRequestParam($table));
     }
 
     /**
@@ -161,7 +161,7 @@ class Base extends Controller
     public
     function search()
     {
-        $this->searchData();
+        $this->searchMembers();
         return view("/index/search");
     }
 
@@ -169,7 +169,7 @@ class Base extends Controller
     public
     function searchAdmin()
     {
-        $this->searchData();
+        $this->searchMembers();
         return view("../../admin/view/page/memberSearchTable");
     }
 
@@ -216,10 +216,9 @@ class Base extends Controller
      * @param $mid
      * @return Member
      */
-    public
-    function getMemberWithWhere($mid)
+    public function getMemberWithWhere($mid,$table="member")
     {
-        $table = Db::table("member");
+        $table = Db::table($table);
         $table->where('id', "<>", $mid);
 
         try {
@@ -229,6 +228,8 @@ class Base extends Controller
             $countryLive = request()->param("countryid");
             $stateLive = request()->param("stateid");
             $cityLive = request()->param("cityid");
+            $nickname = request()->param("nickname");
+
             if (trim($age_min) != "" && $age_min != "-1") {
                 $table->where("age", ">=", $age_min);
             }
@@ -247,6 +248,50 @@ class Base extends Controller
             if (trim($cityLive) != "" && $cityLive != "-1") {
                 $table->where("cityid", $cityLive);
             }
+            if ($nickname) {
+                $table->where("nickname", $nickname);
+            }
+        } catch (\Exception $e) {
+        }
+        return $table;
+    }
+
+    public static function makeMeberWhereByRequset($table="member")
+    {
+        $table = Db::table($table);
+        try {
+            $id = request()->param("id");
+            $sex = request()->param("sex");
+            $age_min = request()->param("age_min");
+            $age_max = request()->param("age_max");
+            $countryid = request()->param("countryid");
+            $stateid = request()->param("stateid");
+            $cityid = request()->param("cityid");
+            $nickname = request()->param("nickname");
+            if ($id) {
+                $table->where('id', $id);
+            }
+            if (trim($age_min) != "" && $age_min != "-1") {
+                $table->where("age", ">=", $age_min);
+            }
+            if (trim($age_max) != "" && $age_max != "-1") {
+                $table->where("age", "<=", $age_max);
+            }
+            if (trim($sex) != "" && $sex != "-1") {
+                $table->where("sex", $sex);
+            }
+            if (trim($countryid) != "" && $countryid != "-1") {
+                $table->where("countryid", $countryid);
+            }
+            if (trim($stateid) != "" && $stateid != "-1") {
+                $table->where("stateid", $stateid);
+            }
+            if (trim($cityid) != "" && $cityid != "-1") {
+                $table->where("cityid", $cityid);
+            }
+            if ($nickname) {
+                $table->where("nickname", $nickname);
+            }
         } catch (\Exception $e) {
         }
         return $table;
@@ -259,8 +304,7 @@ class Base extends Controller
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
-    public
-    function searchWithRequestParam()
+    public function searchWithRequestParam($table="member")
     {
         $cookieLang = cookie("think_var");
         if ($cookieLang) {
@@ -286,7 +330,7 @@ class Base extends Controller
         $nextPno = $pno;
         try {
             $pageSize = intval(request()->param("__psize", 15));
-            $count = $this->getMemberWithWhere($mid)->count();
+            $count = $this->getMemberWithWhere($mid,$table)->count();
             $lastPno = ceil($count / $pageSize);
             if ($pno >= $lastPno) {
                 $pno = $lastPno;
@@ -294,7 +338,7 @@ class Base extends Controller
             } else {
                 $nextPno = $pno + 1;
             }
-            $dbMembers = $this->getMemberWithWhere($mid)->page("$pno,$pageSize")->order("sort asc")->select();
+            $dbMembers = $this->getMemberWithWhere($mid,$table)->page("$pno,$pageSize")->order("sort asc")->select();
 
         } catch (Exception $e) {
 

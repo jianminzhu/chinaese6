@@ -21,6 +21,9 @@ ALTER TABLE  `bmember`
 
 
 
+
+
+
 ALTER TABLE  `pics`
   ADD COLUMN `pic_size` INT DEFAULT 0 NULL ;
 
@@ -36,8 +39,15 @@ ALTER TABLE member
 ALTER TABLE member
   ADD COLUMN `token` VARCHAR(64) NULL  ;
 
+CREATE
+VIEW member_has_message
+AS
+(
+SELECT * FROM member WHERE
+  id IN ( SELECT DISTINCT (from_m_id) FROM message  )
+OR id IN ( SELECT DISTINCT (to_m_id) FROM message)
 
-
+);
 
 
 

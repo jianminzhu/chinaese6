@@ -1,0 +1,31 @@
+<table>
+    <thead>
+        <th class="flex col-1 ">发件人</th>
+        <th class="flex col-1"> =&gt;</th>
+        <th>收件人</th>
+        <th class="flex col-3">消息内容</th>
+        <th class="flex col-1">发送时间</th>
+        <th class="flex col-1">发件人头像</th>
+        <th class="flex col-1">收件人头像</th>
+    </thead>
+    {volist name="msgs" id="msg"}
+    <tr>
+        <td class="flex col-1 pointer" data-opt-profile="{$msg.fid}">
+            【{$msg.fnickname}】
+        </td>
+        <td class="flex col-1"> =&gt;
+        </td>
+        <td class="flex col-1 pointer" data-opt-profile="{$msg.tid}"> 【{$msg.tnickname}】
+        </td>
+        <td class="flex col-3"> {$msg.msg}</td>
+        <td class="flex col-1"> {$msg.send_date}</td>
+        <td class="flex col-1">
+        <td  ><div class="profile-bg" style="height: 50px;width:50px;background-image:url('{$msg.fmain_pic}')"
+            title="Primary Photo"></div></td>
+        </td>
+        <td  ><div class="profile-bg" style="height: 50px;width:50px;background-image:url('{$msg.tmain_pic}')"
+            title="Primary Photo"></div></td>
+        </td>
+    </tr>
+    {/volist}
+</table>

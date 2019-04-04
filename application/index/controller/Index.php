@@ -2,10 +2,6 @@
 
 namespace app\index\controller;
 
-use think\db\exception\DataNotFoundException;
-use think\db\exception\ModelNotFoundException;
-use think\exception\DbException;
-
 
 class Index extends Base
 {
@@ -13,7 +9,7 @@ class Index extends Base
     {
         $this->headData();
         try {
-            $this->searchData();
+            $this->searchMembers();
         } catch ( Exception $e) {
             echo $e->getMessage();
         }
@@ -22,7 +18,7 @@ class Index extends Base
 
     public function search()
     {
-        $this->searchData();
+        $this->searchMembers();
         return view("/index/search");
     }
 }
