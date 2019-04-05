@@ -69,6 +69,7 @@ return [
 
 
 
+
     "外表" => "Your Appearance",
     "管理照片" => "Manage Photos",
     "保存" => "Save",
@@ -109,7 +110,7 @@ return [
     "密码" => "password",
     "发送秋波给" => "Send interest to ",
     "发送消息给" => "Send Msg to ",
-    "昵称" => "First Name",
+    "昵称"=>"Nickname",
     "加入最爱" => "Add to favorite",
     "女" => "Female",
     "男" => "Male",

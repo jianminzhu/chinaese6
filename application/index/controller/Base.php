@@ -229,6 +229,7 @@ class Base extends Controller
             $stateLive = request()->param("stateid");
             $cityLive = request()->param("cityid");
             $nickname = request()->param("nickname");
+            $lang=$this->getLang();
 
             if (trim($age_min) != "" && $age_min != "-1") {
                 $table->where("age", ">=", $age_min);
@@ -249,7 +250,12 @@ class Base extends Controller
                 $table->where("cityid", $cityLive);
             }
             if ($nickname) {
-                $table->where("nickname", $nickname);
+                if ($lang == "en-us") {
+                    $table->where("nickname_en", $nickname);
+                }else{
+                    $table->where("nickname", $nickname);
+                }
+
             }
         } catch (\Exception $e) {
         }

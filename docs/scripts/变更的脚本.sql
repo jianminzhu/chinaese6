@@ -50,6 +50,10 @@ OR id IN ( SELECT DISTINCT (to_m_id) FROM message)
 );
 
 
+ALTER TABLE `chinese6_companion`.`member`
+  ADD COLUMN `nickname_en` VARCHAR(256) NULL AFTER `id`;
+
+
 
 
 

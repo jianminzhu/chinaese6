@@ -21,6 +21,22 @@ class M extends Base
         return view('/index/reg', $data);
     }
 
+    public function updateNickname()
+    {
+        $count = 0;
+        $members = Db::table("member")->select();
+        $sqls = [];
+        foreach ($members as $member) {
+            $nickname_en = (pinyinName($member["nickname"]));
+            $id = $member["id"];
+            $sql = "update member set nickname_en='$nickname_en' where id=$id;";
+            $sqls[] = $sql;
+          //  $count = $count + Db::execute($sql);
+        }
+        return join("<br>",$sqls);
+
+    }
+
 
     public function savereg()
     {
@@ -205,14 +221,14 @@ class M extends Base
         $member = $this->getMemberWithPay($id);
         $pics = Db::table("pics")->where("m_id", $id)->select();
         $emsg = "";
-        list($vip,$isPay) = $this->vipInfo($id);
+        list($vip, $isPay) = $this->vipInfo($id);
         $logigUserIsPay = false;
         $isLogin = $this->isLogin();
         if ($isLogin) {
             $logigUserIsPay = $this->loginUser()->isPay;
         }
         list($cc) = $this->concatData($id, $logigUserIsPay);
-        return ['m' => $member, "pics" => $pics, "cc" => $cc, "emsg" => $emsg, "isPay" => $isPay, "vip" => $vip,"isLogin"=> $isLogin];
+        return ['m' => $member, "pics" => $pics, "cc" => $cc, "emsg" => $emsg, "isPay" => $isPay, "vip" => $vip, "isLogin" => $isLogin];
     }
 
 
@@ -325,11 +341,11 @@ class M extends Base
     public function deletePhoto()
     {
         $picid = request()->param("id");
-        if($picid && $picid != "undefined") {
+        if ($picid && $picid != "undefined") {
             try {
                 $pic = Db::table("pics")->where("id", $picid)->find();
                 if ($pic) {
-                    Db::table("del_pics")->insert(["file_path" => $pic["file_path"],"picid"=>$picid, "type" => "pics", "mid" => $pic["m_id"]]);
+                    Db::table("del_pics")->insert(["file_path" => $pic["file_path"], "picid" => $picid, "type" => "pics", "mid" => $pic["m_id"]]);
                     Db::table("pics")->where("id", $picid)->delete();
                 }
             } catch (\Exception $e) {
@@ -567,7 +583,6 @@ class M extends Base
         $this->headData();
         return view("/index/passwordReset", ["token" => request()->param("token")]);
     }
-
 
 
 }
