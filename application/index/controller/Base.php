@@ -222,7 +222,7 @@ class Base extends Controller
         $table->where('id', "<>", $mid);
 
         try {
-            $sex = request()->param("sex");
+            $sex = request()->param("sex","2");
             $age_min = request()->param("age_min");
             $age_max = request()->param("age_max");
             $countryLive = request()->param("countryid");
