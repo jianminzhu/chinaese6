@@ -23,18 +23,22 @@ class M extends Base
 
     public function updateNickname()
     {
+        $pno = intval(request()->param("pno", 1));
+        if ($pno < 0) {
+            $pno = 1;
+        }
+        $pageSize = intval(request()->param("__psize", 500));
+        $members = Db::table("member")->page("$pno,$pageSize")->select();
         $count = 0;
-        $members = Db::table("member")->select();
-        $sqls = [];
         foreach ($members as $member) {
-            $nickname_en = (pinyinName($member["nickname"]));
+            $nickname = $member["nickname"];
+            $nickname_en = (pinyinName($nickname));
             $id = $member["id"];
             $sql = "update member set nickname_en='$nickname_en' where id=$id;";
-            $sqls[] = $sql;
-          //  $count = $count + Db::execute($sql);
+            $count = $count + Db::execute($sql);
+            echo "<br>$nickname => $nickname_en";
         }
-        return join("<br>",$sqls);
-
+        return "$count,$pno,$pageSize";
     }
 
 
