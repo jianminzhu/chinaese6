@@ -80,6 +80,7 @@ class M extends Base
                 }
             }
         }
+        $this->headData();
         if (count($emsgs) == 0) {
             return view('/index/login', ["email" => $email, "pwd" => $pwd]);
         } else {
