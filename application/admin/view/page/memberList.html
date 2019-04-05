@@ -52,6 +52,9 @@
                 })
             }
         })
+        $("body").delegate("[data-opt-bigimg]", "mouseout", function () {
+            $("#bigimg").hide();
+        })
         $("body").delegate("[data-opt-bigimg]", "mouseover", function () {
             let picid = $(this).data("picid");
             let mid = $(this).data("mid");
