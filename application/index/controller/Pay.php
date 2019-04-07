@@ -32,7 +32,7 @@ class Pay extends Base
     {
         $payType = request()->param("type");
         if ($payType == "year") {
-            $cost = 169;
+            $cost = 5;
             session("cost", $cost);
         } else {
             $cost = 499;
@@ -44,8 +44,8 @@ class Pay extends Base
     function realStripe($token)
     {
         $isSucc = false;
-        $Secret = "sk_test_yD1UwUeF99VI5S5hKFHQAvGL00dWlCK5LX";
-//        $Secret = "sk_live_yYj5Td70UqufoFzOydps5h9u00jjVFsKNy";//LINE
+//        $Secret = "sk_test_yD1UwUeF99VI5S5hKFHQAvGL00dWlCK5LX";
+        $Secret = "sk_live_yYj5Td70UqufoFzOydps5h9u00jjVFsKNy";//LINE
         $cost = session("cost");
         $charge = [];
         if (!$cost) {
