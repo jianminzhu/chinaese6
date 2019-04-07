@@ -43,70 +43,81 @@
                         <div class="clear"></div>
                     </div>
                     <div id="Platinum" class="tabcontent" style="display: block;">
-                        <table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+                        <script>$(function () {
+                            $("#ptype tr").click(function () {
+                                $('[data-opt-payform]').each(function () {
+                                    $(this).toggle()
+                                })
+                                $payType = $("input[name=product]:checked").val()
+                                $.ajax("/index.php/index/pay/payType?type=" + $payType).then(function (html) {
+                                });
+                            })
+                        })</script>
+                        <table border="0" id="ptype" cellpadding="0" cellspacing="0" style="width:100%">
                             <tbody>
                             <tr>
-                                <script>$(function () {
-                                   $("[name=product]").change(function(){$('[data-opt-payform]').each(function(){$(this).toggle()})})
-                                })</script>
+
                                 <td width="20%" class="platinumbg h4">
-                                    <label for="foneyear" class="table col-12 cursor-pointer"  >
-                                    <div class="table-cell align-middle col-10">
-                                        <input type="radio" name="product" id="foneyear" checked="" value="year">
-                                        {:lang("1年 VIP 会员")}<div class="block icon circle relative">
-                                        <div class="absolute white ticked">
-                                            <!--?xml version="1.0" encoding="utf-8"?-->
-                                            <!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                                            <svg version="1.1" id="border" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 90 90" style="enable-background:new 0 0 90 90;" xml:space="preserve">
+                                    <label for="foneyear" class="table col-12 cursor-pointer">
+                                        <div class="table-cell align-middle col-10">
+                                            <input type="radio" name="product" id="foneyear" checked="" value="year">
+                                            {:lang("1年 VIP 会员")}
+                                            <div class="block icon circle relative">
+                                                <div class="absolute white ticked">
+                                                    <!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                                    <svg version="1.1" id="border" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 90 90" style="enable-background:new 0 0 90 90;" xml:space="preserve">
 <circle cx="45" cy="45" r="24"></circle>
 <path d="M45,0C20.2,0,0,20.1,0,45s20.2,45,45,45s45-20.2,45-45S69.9,0,45,0L45,0z M45,5c22.1,0,40,17.9,40,40S67.1,85,45,85
 	S5,67.1,5,45S22.9,5,45,5"></path>
 </svg>
 
-                                        </div>
-                                        <div class="absolute white unticked">
-                                            <!--?xml version="1.0" encoding="utf-8"?-->
-                                            <!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                                            <svg version="1.1" id="border" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 90 90" style="enable-background:new 0 0 90 90;" xml:space="preserve">
+                                                </div>
+                                                <div class="absolute white unticked">
+                                                    <!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                                    <svg version="1.1" id="border" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 90 90" style="enable-background:new 0 0 90 90;" xml:space="preserve">
 <path d="M45,0C20.2,0,0,20.1,0,45s20.2,45,45,45s45-20.2,45-45S69.9,0,45,0L45,0z M45,5c22.1,0,40,17.9,40,40S67.1,85,45,85
 	S5,67.1,5,45S22.9,5,45,5"></path>
 </svg>
 
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    </div>
-                                </label>
-                                          <br>
+                                    </label>
+                                    <br>
                                     Access All Companions' Contact Information( cell mobile, email, wechat, qq) For
                                     One
                                     Year
                                 </td>
-                            </tr>  <tr>
-                                <td width="20%" class="platinumbg h4" >
-                                    <label for="flifetime" class="table col-12 cursor-pointer" >
+                            </tr>
+                            <tr>
+                                <td width="20%" class="platinumbg h4">
+                                    <label for="flifetime" class="table col-12 cursor-pointer">
                                         <div class="table-cell align-middle col-10">
-                                            <input type="radio" name="product" id="flifetime"   value="year">
-                                            {:lang("终身VIP会员")}<div class="block icon circle relative">
-                                            <div class="absolute white ticked">
-                                                <!--?xml version="1.0" encoding="utf-8"?-->
-                                                <!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                                                <svg version="1.1" id="border" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 90 90" style="enable-background:new 0 0 90 90;" xml:space="preserve">
+                                            <input type="radio" name="product" id="flifetime" value="life">
+                                            {:lang("终身VIP会员")}
+                                            <div class="block icon circle relative">
+                                                <div class="absolute white ticked">
+                                                    <!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                                    <svg version="1.1" id="border" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 90 90" style="enable-background:new 0 0 90 90;" xml:space="preserve">
 <circle cx="45" cy="45" r="24"></circle>
 <path d="M45,0C20.2,0,0,20.1,0,45s20.2,45,45,45s45-20.2,45-45S69.9,0,45,0L45,0z M45,5c22.1,0,40,17.9,40,40S67.1,85,45,85
 	S5,67.1,5,45S22.9,5,45,5"></path>
 </svg>
 
-                                            </div>
-                                            <div class="absolute white unticked">
-                                                <!--?xml version="1.0" encoding="utf-8"?-->
-                                                <!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                                                <svg version="1.1" id="border" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 90 90" style="enable-background:new 0 0 90 90;" xml:space="preserve">
+                                                </div>
+                                                <div class="absolute white unticked">
+                                                    <!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                                    <svg version="1.1" id="border" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 90 90" style="enable-background:new 0 0 90 90;" xml:space="preserve">
 <path d="M45,0C20.2,0,0,20.1,0,45s20.2,45,45,45s45-20.2,45-45S69.9,0,45,0L45,0z M45,5c22.1,0,40,17.9,40,40S67.1,85,45,85
 	S5,67.1,5,45S22.9,5,45,5"></path>
 </svg>
 
+                                                </div>
                                             </div>
-                                        </div>
                                         </div>
                                     </label>
 
@@ -121,25 +132,13 @@
                 </div>
                 <div id="payment">
                     <div class="payment">
-                        <table data-opt-payform >
+                        <table data-opt-payform>
                             <tr>
                                 <td>
-                                        <form name="upgradeForm"  action="/index.php/index/verotel/pay"
-                                              method="post">
-
-                                        <button type="submit" class="stripe-button-el" style="visibility: visible;">
-                                        <span style="display: block; min-height: 30px;">{:lang("Pay with verotel")}</span>
-                                    </button>
-                                        <div class="col-8 inline-block align-middle">
-                                            <strong>
-                                                <span class="discount">&nbsp;€119 </span>
-                                            </strong>
-                                        </div>
-                                    </form>
-                                </td>
-                                <td>
-                                    <form name="payStripe"   action="/index.php/index/pay/payStripe"
+                                    <form name="payStripe" action="/index.php/index/pay/payStripe"
                                           method="post">
+                                        <!--pk_test_kjTZ7tqLZ5dYkdzDzdabZ2K500YtN3kHhk    test-->
+                                        <!--pk_live_kpUZ5RjCfUCmkJuriwVb5o3s00uhj2R48h   -->
                                         <script
                                                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                                 data-key="pk_test_kjTZ7tqLZ5dYkdzDzdabZ2K500YtN3kHhk"
@@ -149,11 +148,14 @@
                                                 data-image="//localhost/PayWithStripe.png"
                                                 data-locale="auto">
                                         </script>
-                                        <div class="col-8 inline-block align-middle">
-                                            <strong>
-                                                <span class="discount">&nbsp;$149 </span>
-                                            </strong>
-                                        </div>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form name="upgradeForm" action="/index.php/index/verotel/pay"
+                                          method="post">
+                                        <button type="submit" class="stripe-button-el" style="visibility: visible;">
+                                            <span style="display: block; min-height: 30px;">{:lang("Pay with verotel")}</span>
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
@@ -161,7 +163,7 @@
                         <table data-opt-payform style="display: none;">
                             <tr>
                                 <td>
-                                    <form name="payStripe"   action="/index.php/index/pay/payStripe"
+                                    <form name="payStripe" action="/index.php/index/pay/payStripe"
                                           method="post">
                                         <script
                                                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -172,11 +174,6 @@
                                                 data-image="//localhost/PayWithStripe.png"
                                                 data-locale="auto">
                                         </script>
-                                        <div class="col-8 inline-block align-middle">
-                                            <strong>
-                                                <span class="discount">&nbsp;$499 </span>
-                                            </strong>
-                                        </div>
                                     </form>
                                 </td>
                             </tr>

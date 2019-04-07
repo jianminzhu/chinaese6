@@ -112,6 +112,7 @@ return [
     "发送消息给" => "Send Msg to ",
     "昵称"=>"Nickname",
     "加入最爱" => "Add to favorite",
+    "支付失败"=>"Pay failed,If you have any questions, Please contact us:help@ChineseCompanion.com",
     "女" => "Female",
     "男" => "Male",
     "会员号" => "member id",
