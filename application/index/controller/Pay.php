@@ -35,7 +35,7 @@ class Pay extends Base
             $cost = 149;
             session("cost", $cost);
         } else {
-            $cost = 499;
+            $cost = 599;
             session("cost", $cost);
         }
         return $cost;
