@@ -33,8 +33,8 @@ class Base extends Controller
         $vips = Db::query(" SELECT *, TIMESTAMPDIFF(DAY,startdate,enddate)AS remaining FROM pay where m_id=$id order by enddate desc ");
         if ($vips) {
             $vip = $vips[0];
-            $vip["renge"] = $vip["cost"] > 199 ? lang("终身VIP会员") : lang("1年 VIP 会员");
-            $vip["type"] = $vip["cost"] > 199 ? "lifetime" : "1year";
+            $vip["renge"] = $vip["cost"] > 149 ? lang("终身VIP会员") : lang("1年 VIP 会员");
+            $vip["type"] = $vip["cost"] > 149 ? "lifetime" : "1year";
             $isPay = true;
         }
 
