@@ -13,7 +13,7 @@ class Pay extends Base
         return view("/index/payStripe");
     }
 
-    function stripe()
+    function payStripe()
     {
         $Publishable = "pk_test_kjTZ7tqLZ5dYkdzDzdabZ2K500YtN3kHhk";
         $Secret = "sk_test_yD1UwUeF99VI5S5hKFHQAvGL00dWlCK5LX";
