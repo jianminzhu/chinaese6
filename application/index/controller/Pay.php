@@ -51,6 +51,7 @@ class Pay extends Base
         if (!$cost) {
             $cost = 5;
         }
+        $stripePayDetail = "";
         try {
             \Stripe\Stripe::setApiKey($Secret);
             $charge = \Stripe\Charge::create(array(
@@ -85,7 +86,7 @@ class Pay extends Base
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
-        return array($isSucc, $charge);
+        return array($isSucc, $stripePayDetail);
     }
 
 
@@ -96,14 +97,14 @@ class Pay extends Base
         $isSucc = false;
         $msg = lang("支付失败");
         if ($token) {
-            list($isSucc, $charge1) = $this->realStripe($token);
+            list($isSucc, $stipeDetail) = $this->realStripe($token);
             if ($isSucc) {
                 $this->headData();
                 return view("/index/paysucc");
             }
         }
         $this->headData();
-        return view("/index/paysucc",["msg"=>$msg]);
+        return view("/index/paysucc",["msg"=>$msg,"stipeDetail"=>$stipeDetail]);
 
     }
 }
