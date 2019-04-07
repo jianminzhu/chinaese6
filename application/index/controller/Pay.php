@@ -32,7 +32,7 @@ class Pay extends Base
     {
         $payType = request()->param("type");
         if ($payType == "year") {
-            $cost = 5;
+            $cost = 149;
             session("cost", $cost);
         } else {
             $cost = 499;
