@@ -49,7 +49,7 @@ class Pay extends Base
         $cost = session("cost");
         $charge = [];
         if (!$cost) {
-            $cost = 169;
+            $cost = 5;
         }
         try {
             \Stripe\Stripe::setApiKey($Secret);
