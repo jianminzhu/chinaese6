@@ -102,6 +102,7 @@ class Pay extends Base
                 return view("/index/paysucc");
             }
         }
+        $this->headData();
         return view("/index/paysucc",["msg"=>$msg]);
 
     }
