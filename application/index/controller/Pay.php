@@ -28,29 +28,13 @@ class Pay extends Base
         return "";
     }
 
-    function payType()
-    {
-        $payType = request()->param("type");
-        if ($payType == "year") {
-            $cost = 149;
-            session("cost", $cost);
-        } else {
-            $cost = 599;
-            session("cost", $cost);
-        }
-        return $cost;
-    }
-
     function realStripe($token)
     {
         $isSucc = false;
 //        $Secret = "sk_test_yD1UwUeF99VI5S5hKFHQAvGL00dWlCK5LX";
         $Secret = "sk_live_yYj5Td70UqufoFzOydps5h9u00jjVFsKNy";//LINE
-        $cost = session("cost");
-        $charge = [];
-        if (!$cost) {
-            $cost = 5;
-        }
+        $payType= request()->param("payType");
+        $cost = $payType == "lifetime" ? 599:149;
         $stripePayDetail = "";
         try {
             \Stripe\Stripe::setApiKey($Secret);
@@ -104,7 +88,7 @@ class Pay extends Base
             }
         }
         $this->headData();
-        return view("/index/paysucc",["msg"=>$msg,"stipeDetail"=>$stipeDetail]);
+        return view("/index/paysucc",["msg"=>$msg,"stipeDetail"=>$stipeDetail,"param"=>request()->param()]);
 
     }
 }

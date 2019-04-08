@@ -1,34 +1,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr" data-device="desktop">
 <head>
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="keywords" content="{$keywords|default=''}"/>
 
-
-    <title>Upgrade</title>
-    <meta id="defaultmessage" content="Oops, something went wrong!">
     <meta name="viewport"
-          content="width=device-width, height=device-height, initial-scale=1, user-scalable=no, maximum-scale=1, shrink-to-fit=no">
-
-
-    <meta name="stm-result" content="ok">
-
-
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="/assets/css/basscss/basscss.min.css?v=165">
-    <link type="text/css" rel="stylesheet" href="/assets/css/site/modal/modal.css?v=165">
-
-
-    <link type="text/css" rel="stylesheet" href="/assets/css/global/global.css?v=165">
-
-    <link rel="stylesheet" href="/assets/desktop/css/chinalovecupid-hybrid.css?v=24">
-
-    <link type="text/css" rel="stylesheet" href="/assets/css/site/generic/membercolor.css?v=165">
-    <link type="text/css" rel="stylesheet" href="/assets/css/site/generic/membercolor_chinalovecupid.css?v=165">
-    <link type="text/css" rel="stylesheet" href="/assets/css/site/generic/memberheader.css?v=165">
-    <link type="text/css" rel="stylesheet" href="/assets/css/site/generic/memberlayout.css?v=165">
-    <link type="text/css" rel="stylesheet" href="/assets/css/site/payment/upgradeMembership.css?v=165">
+          content="height=device-height, initial-scale=1, user-scalable=no, maximum-scale=1, shrink-to-fit=yes">
+    {include file="../application/index/view/index/_commoncss.html" /}
 </head>
 <body>
 {include file="../application/index/view/index/_head.html" /}
@@ -39,27 +18,16 @@
             <div id="main-content">
 
                 <div id="subscription" class="ab">
-                    <div id="sub-hdr"><h2>{:lang("第一步，选择你要升级的会员类型")}</h2>
+                    <div id="sub-hdr">
                         <div class="clear"></div>
                     </div>
                     <div id="Platinum" class="tabcontent" style="display: block;">
-                        <script>$(function () {
-                            $("#ptype tr").click(function () {
-                                $('[data-opt-payform]').each(function () {
-                                    $(this).toggle()
-                                })
-                                $payType = $("input[name=product]:checked").val()
-                                $.ajax("/index.php/index/pay/payType?type=" + $payType).then(function (html) {
-                                });
-                            })
-                        })</script>
                         <table border="0" id="ptype" cellpadding="0" cellspacing="0" style="width:100%">
                             <tbody>
                             <tr>
                                 <td width="20%" class="platinumbg h4">
-                                    <label for="foneyear" class="table col-12 cursor-pointer">
+                                    <label class="table col-12">
                                         <div class="table-cell align-middle col-10">
-                                            <input type="radio" name="product" id="foneyear" checked="" value="year">
                                             {:lang("1年 VIP 会员")}
                                             <div class="block icon circle relative">
                                                 <div class="absolute white ticked">
@@ -84,17 +52,31 @@
                                             </div>
                                         </div>
                                     </label>
-                                    <br>
+
                                     Access All Companions' Contact Information( cell mobile, email, wechat, qq) For
                                     One
                                     Year
+                                    <form name="payStripe" action="/index.php/index/pay/payStripe"
+                                          method="post">
+                                        <input type="type" hidden value="year" name="payType">
+                                        <!--pk_test_kjTZ7tqLZ5dYkdzDzdabZ2K500YtN3kHhk    test-->
+                                        <!--pk_live_kpUZ5RjCfUCmkJuriwVb5o3s00uhj2R48h   -->
+                                        <script
+                                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                                data-key="pk_live_kpUZ5RjCfUCmkJuriwVb5o3s00uhj2R48h"
+                                                data-amount="14900"
+                                                data-name="chinesecompanion.com"
+                                                data-description="{:lang('1年 VIP 会员')}"
+                                                data-image="//localhost/PayWithStripe.png"
+                                                data-locale="auto">
+                                        </script>
+                                    </form>
                                 </td>
                             </tr>
                             <tr>
                                 <td width="20%" class="platinumbg h4">
-                                    <label for="flifetime" class="table col-12 cursor-pointer">
+                                    <label class="table col-12">
                                         <div class="table-cell align-middle col-10">
-                                            <input type="radio" name="product" id="flifetime" value="life">
                                             {:lang("终身VIP会员")}
                                             <div class="block icon circle relative">
                                                 <div class="absolute white ticked">
@@ -119,22 +101,10 @@
                                             </div>
                                         </div>
                                     </label>
-
-                                    Access All Companions' Contact Information( cell mobile, email, wechat, qq) For Lifetime
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                <div id="payment">
-                    <div class="payment">
-                        <table data-opt-payform>
-                            <tr>
-                                <td>
-                                    <form name="payStripe" action="/index.php/index/pay/payStripe"
-                                          method="post">
+                                    Access All Companions' Contact Information( cell mobile, email, wechat, qq) For
+                                    Lifetime
+                                    <form name="payStripe" action="/index.php/index/pay/payStripe" method="post">
+                                        <input type="type" hidden value="lifetime" name="payType">
                                         <!--pk_test_kjTZ7tqLZ5dYkdzDzdabZ2K500YtN3kHhk    test-->
                                         <!--pk_live_kpUZ5RjCfUCmkJuriwVb5o3s00uhj2R48h   -->
                                         <script
@@ -148,41 +118,15 @@
                                         </script>
                                     </form>
                                 </td>
-                                <!--<td>
-                                    <form name="upgradeForm" action="/index.php/index/verotel/pay"
-                                          method="post">
-                                        <button type="submit" class="stripe-button-el" style="visibility: visible;">
-                                            <span style="display: block; min-height: 30px;">{:lang("Pay with verotel")}</span>
-                                        </button>
-                                    </form>
-                                </td>-->
                             </tr>
+                            </tbody>
                         </table>
-                        <table data-opt-payform style="display: none;">
-                            <tr>
-                                <td>
-                                    <form name="payStripe" action="/index.php/index/pay/payStripe"
-                                          method="post">
-                                        <script
-                                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                                data-key="pk_live_kpUZ5RjCfUCmkJuriwVb5o3s00uhj2R48h"
-                                                data-amount="59900"
-                                                data-name="chinesecompanion.com"
-                                                data-description='{:lang("终身VIP会员")}'
-                                                data-image="//localhost/PayWithStripe.png"
-                                                data-locale="auto">
-                                        </script>
-                                    </form>
-                                </td>
-                            </tr>
-                        </table>
-
                     </div>
+                    <div class="clear"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 </body>
 </html>
