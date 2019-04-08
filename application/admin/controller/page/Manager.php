@@ -74,6 +74,7 @@ FROM message ms LEFT JOIN member mf ON mf.id=ms .`from_m_id`
                 try {
                     Db::table("del_pics")->insert(["mid" => $mid, "file_path" => $m["main_pic"], "type" => "main", "picid" => 0]);
                     Db::table("member")->where("id", $mid)->update(["main_pic" => "/nv_toux_del.jpg"]);
+                    $msg = "m_succ";
                 } catch (\Exception $e) {
                     $msg = $e->getMessage();
                 }
@@ -85,6 +86,7 @@ FROM message ms LEFT JOIN member mf ON mf.id=ms .`from_m_id`
                 if ($pic) {
                     Db::table("del_pics")->insert(["file_path" => $pic["file_path"], "picid" => $picid, "type" => "pics", "mid" => $pic["m_id"]]);
                     Db::table("pics")->where("id", $picid)->delete();
+                    $msg = "pic_succ";
                 }
             } catch (\Exception $e) {
                 $msg = $e->getMessage();
