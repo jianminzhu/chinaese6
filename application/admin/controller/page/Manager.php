@@ -67,6 +67,7 @@ FROM message ms LEFT JOIN member mf ON mf.id=ms .`from_m_id`
     {
         $mid = request()->param("mid");
         $picid = request()->param("picid");
+        $msg = "";
         if ($mid && $mid != "undefined") {
             $m = Db::table("member")->where("id", $mid)->find();
             if ($m) {
@@ -74,6 +75,7 @@ FROM message ms LEFT JOIN member mf ON mf.id=ms .`from_m_id`
                     Db::table("del_pics")->insert(["mid" => $mid, "file_path" => $m["main_pic"], "type" => "main", "picid" => 0]);
                     Db::table("member")->where("id", $mid)->update(["main_pic" => "/nv_toux_del.jpg"]);
                 } catch (\Exception $e) {
+                    $msg = $e->getMessage();
                 }
             }
         }
@@ -85,10 +87,10 @@ FROM message ms LEFT JOIN member mf ON mf.id=ms .`from_m_id`
                     Db::table("pics")->where("id", $picid)->delete();
                 }
             } catch (\Exception $e) {
-                echo $e->getMessage();
+                $msg = $e->getMessage();
             }
         }
-        return json(["isSuccess" => 0]);
+        return json(["isSuccess" => 0,"msg"=>$msg]);
 
     }
 
