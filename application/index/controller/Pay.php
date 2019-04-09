@@ -35,6 +35,7 @@ class Pay extends Base
         $Secret = "sk_live_yYj5Td70UqufoFzOydps5h9u00jjVFsKNy";//LINE
         $payType= request()->param("payType");
         $cost = $payType == "lifetime" ? 599:149;
+        $type=$payType == "lifetime" ? 10:1;
         $stripePayDetail = "";
         try {
             \Stripe\Stripe::setApiKey($Secret);
@@ -59,9 +60,11 @@ class Pay extends Base
                 } catch (\Exception $e) {
                     echo $e->getMessage();
                 }
-                $typePayByStripe = 10;
                 try {
-                    db("pay")->insert(["m_id" => $mid, "cost" => $cost, "type" => $typePayByStripe]);
+                    $startdate = gmdate("Y-m-d H:i:s", time() + 8 * 3600);
+                    $enddate = gmdate("Y-m-d H:i:s", strtotime("+$type  year") + 8 * 3600);
+                    $table = Db::table("pay");
+                    $table->insert(["m_id" => $mid, "cost" => $cost, "type" => $type, "startdate" => $startdate, "enddate" => $enddate]);
                 } catch (\Exception $e) {
                     echo $e->getMessage();
 
