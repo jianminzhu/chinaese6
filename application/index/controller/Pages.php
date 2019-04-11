@@ -15,6 +15,13 @@ class Pages extends Base
     }
 
 
+    public function contact()
+    {
+        $this->headData();
+        return view("/index/contact");
+    }
+
+
     public function succ()
     {
         try {
