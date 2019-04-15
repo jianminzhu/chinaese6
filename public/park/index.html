@@ -1,62 +1,101 @@
 <script src="js/spritejs.min.js"></script>
 <script src="js/jquery.min.js"></script>
+<script src="js/store.legacy.min.js"></script>
 <link rel="stylesheet" href="css/common.css">
 <script src="extjs/PardAdv.js"></script>
+<script src="carsRun.js?v=1"></script>
+<script type="text/javascript">
+    function fullScreen(){
+        var el = document.documentElement;
+        var rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+        if(typeof rfs != "undefined" && rfs) {
+            rfs.call(el);
+        };
+        return;
+    }
+</script>
 <script>
     $(function () {
+        fullScreen()
         let jbg = $(".profile-bg");
         let width = jbg.width();
         let height = jbg.height();
         adv = new PardAdv("#demo1", width, height);
         var arr = ["./img/car.png?m=" + Math.random(), "./img/jiebo.png?m=" + Math.random(), "./img/saodi.png?m=" + Math.random()];
+        var count = store.get('count') || 0;
+        if (typeof carsRun == "undefined") {
+            carsRun = {}
+        }
+        const cars = Object.keys(carsRun);
 
-        var direct = {}
-        let carNum = 100;
-        for (let i = 0; i < carNum; i++) {
-            let x = 800 + Math.ceil(10 * Math.random());
-            let y = 180 + Math.ceil(300 * Math.random());
-            let key = "car" + i;
-            direct[key] = {x: Math.random() > 0.5 ? 1 : -1, y: Math.random() > 0.5 ? 1 : -1}
-            let img = arr[Math.floor(100 * Math.random()) % 3];
-            adv.addCar(key, x, y, img);
-            console.log(key, x, y, img)
+        i = 0
+        for (const car of cars) {
+            let carPaths = carsRun[car];
+            var {x, y} = store.get(car) || carPaths[count % carPaths.length];
+            let colorkey = "color" + car;
+            let img = store.get(colorkey) || arr[Math.floor(100 * Math.random()) % 3];
+            store.set(colorkey, img)
+            store.set(car, {x, y})
+            adv.addCar(car, x, y, img);
         }
         setInterval(function () {
-            for (let i = 0; i < carNum; i++) {
-                let key = "car" + i;
-                adv.moveOffset(key, direct[key].x * Math.random(), direct[key].y * Math.random());
+            if (count > 1000000) {
+                count = 0;
             }
-        }, 100)
+            store.set('count', count++)
+            for (const car of cars) {
+                let carPath = carsRun[car];
+                let {x, y} = carPath[count % carPath.length];
+                store.set("car" + car, carPath[count]);
+                adv.moveCar(car, x, y);
+            }
+        }, 300)
 
         var jmsg = $("#msg");
         let items = [];
-        isRun = true;
+        isRun = false;
         let carId = 1;
         $("#demo1").mousemove(function (e) {
             if (isRun) {
                 var x = e.pageX;
                 var y = e.pageY;
-                var t= new Date().getTime();
-                let d = {x,y,t };
+                var t = new Date().getTime();
+                let d = {x, y, t};
                 items.push(d)
             }
         });
-
-        $("#demo1").dblclick(function () {
-            isRun = false;
-            $.ajax({url:"/index.php/index/m/json",data:{jsonStr: JSON.stringify({carId: carId, items: items})}}).then(function () {
+        allCar = {};
+        $("body").click(function () {
+            isRun = !isRun;
+            $("#msg").html(isRun ? carId + "采集中。。。" : "处理中");
+            if (isRun == false) {
+                let car = `car${carId}`;
+                allCar[car] = items;
+                items = [];
+                console.log(allCar[car])
+                $("#msg").html(carId + "处理完毕");
+                carId++
+            }
+        })
+        $("button").click(function () {
+            $.ajax({
+                url: "/index.php/index/addr/carsRun"
+                , method: "post"
+                , data: {jsonStr: JSON.stringify(allCar)}
+            }).then(function () {
                 jmsg.html("addSucc")
             })
-            $("#msg").html("||||")
-        }) .click(function () {
-            isRun = true;
-            $("#msg").html( "....")
-        })
+            return false
 
-
+        });
     })
 </script>
-<div class="profile-bg" id="d1" style="position:absolute;height:1080px;width:1920px;z-index: 1000;background-image: url('img/main.png?i=01');opacity: 1"></div>
+<meta charset="utf-8">
+<div class="profile-bg" id="d1"
+     style="position:absolute; z-index: 1000;background-image: url('img/main.png?i=01');opacity: 1"></div>
 <div id="demo1" style="position:absolute;z-index: 10001; "></div>
-<div id="msg" style="position:absolute;left:50%;z-index: 90000; font-size:6em;color:red;">00000</div>
+<div style="position:absolute;left:40%;z-index: 90000; font-size:4em;color:red;">
+    <button>提交</button>
+</div>
+<div id="msg" style="position:absolute;left:50%;z-index: 90000; font-size:1em;color:yellow;">00000</div>
 

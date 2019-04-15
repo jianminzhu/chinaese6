@@ -162,8 +162,15 @@ class Addr extends Base
     }
 
 
-    public function json(){
-        echo file_put_contents("smartpark/cars.json",request("jsonStr"));
+    public function carsRun()
+    {
+        try {
+            $jsonStr = request()->param("jsonStr");
+            file_put_contents("park/carsRun.js", "carsRun=" .    $jsonStr);
+            return "succ";
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 }
 
