@@ -1,0 +1,62 @@
+<script src="js/spritejs.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<link rel="stylesheet" href="css/common.css">
+<script src="extjs/PardAdv.js"></script>
+<script>
+    $(function () {
+        let jbg = $(".profile-bg");
+        let width = jbg.width();
+        let height = jbg.height();
+        adv = new PardAdv("#demo1", width, height);
+        var arr = ["./img/car.png?m=" + Math.random(), "./img/jiebo.png?m=" + Math.random(), "./img/saodi.png?m=" + Math.random()];
+
+        var direct = {}
+        let carNum = 100;
+        for (let i = 0; i < carNum; i++) {
+            let x = 800 + Math.ceil(10 * Math.random());
+            let y = 180 + Math.ceil(300 * Math.random());
+            let key = "car" + i;
+            direct[key] = {x: Math.random() > 0.5 ? 1 : -1, y: Math.random() > 0.5 ? 1 : -1}
+            let img = arr[Math.floor(100 * Math.random()) % 3];
+            adv.addCar(key, x, y, img);
+            console.log(key, x, y, img)
+        }
+        setInterval(function () {
+            for (let i = 0; i < carNum; i++) {
+                let key = "car" + i;
+                adv.moveOffset(key, direct[key].x * Math.random(), direct[key].y * Math.random());
+            }
+        }, 100)
+
+        var jmsg = $("#msg");
+        let items = [];
+        isRun = true;
+        let carId = 1;
+        $("#demo1").mousemove(function (e) {
+            if (isRun) {
+                var x = e.pageX;
+                var y = e.pageY;
+                var t= new Date().getTime();
+                let d = {x,y,t };
+                items.push(d)
+            }
+        });
+
+        $("#demo1").dblclick(function () {
+            isRun = false;
+            $.ajax({url:"/index.php/index/m/json",data:{jsonStr: JSON.stringify({carId: carId, items: items})}}).then(function () {
+                jmsg.html("addSucc")
+            })
+            $("#msg").html("||||")
+        }) .click(function () {
+            isRun = true;
+            $("#msg").html( "....")
+        })
+
+
+    })
+</script>
+<div class="profile-bg" id="d1" style="position:absolute;height:1080px;width:1920px;z-index: 1000;background-image: url('img/main.png?i=01');opacity: 1"></div>
+<div id="demo1" style="position:absolute;z-index: 10001; "></div>
+<div id="msg" style="position:absolute;left:50%;z-index: 90000; font-size:6em;color:red;">00000</div>
+

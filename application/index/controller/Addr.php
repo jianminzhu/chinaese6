@@ -160,6 +160,11 @@ class Addr extends Base
         $sql = $sql . implode("\n,", $values);
         return $sql;
     }
+
+
+    public function json(){
+        echo file_put_contents("smartpark/cars.json",request("jsonStr"));
+    }
 }
 
 
