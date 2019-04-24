@@ -34,6 +34,6 @@ class PardAdv{
         var srcX =  car.attr("x");
         var srcY =  car.attr("y");
         car.attr({pos: [srcX + x, srcY + y]});
-
     }
+
 }
