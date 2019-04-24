@@ -1,5 +1,8 @@
 <script src="/js_ext/SelectUtil.js?v=1.11"></script>
 <script src="/pagejs/SelectCountryStateCity.js?v=1.26"></script>
+<script>$(function(){
+    $('[ name="countryid"]').val(42).trigger("change")
+})</script>
 {if condition="$lang=='en-us'"}
 <select name="countryid">
     <option value="-1">Any Country</option>
