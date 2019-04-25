@@ -1,7 +1,7 @@
 $(function () {
     let srcW = 3427;
     let srcH = 1920;
-    let width = 3407;
+    let width = 1920;
     let resolution = [srcW, srcH]
     $("body,img,div").each(function () {
         $(this).addClass("bg").css({
