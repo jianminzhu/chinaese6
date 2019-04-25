@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+<body>
+<div id="app" class="bg">
+    <scene :viewport="viewport" :resolution="resolution">
+        <layer>
+            <group v-for="line in lines" :pos="line['group']['pos']">
+                <sprite :attrs=line['img']></sprite>
+                <s-label :attrs=line['line']></s-label>
+                <s-label :attrs=line['site']></s-label>
+            </group>
+            <group :pos="weather['pos']">
+                <sprite :attrs=weather['typeImg']></sprite>
+                <sprite :attrs=weather['warning']></sprite>
+                <s-label :attrs=weather['warningText']></s-label>
+                <s-label :attrs=weather['temperature']></s-label>
+                <s-label :attrs=weather['temperatureC']></s-label>
+                <s-label :attrs=weather['type']></s-label>
+                <s-label :attrs=weather['windDirect']></s-label>
+                <s-label :attrs=weather['windDirectText']></s-label>
+                <s-label :attrs=weather['windPower']></s-label>
+                <s-label :attrs=weather['windPowerText']></s-label>
+            </group>
+        </layer>
+    </scene>
+</div>
+<style>
+    .bg {
+        width: 3247px;
+        height: 1920px;
+        background-image: url("images/bg.png")
+    }
+</style>
+<script src="js/sprite-vue.ext.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
