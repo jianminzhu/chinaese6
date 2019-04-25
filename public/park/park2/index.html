@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
 <body>
+<img src="images/bg.png" class="bg">
 <div id="app" class="bg">
     <scene :viewport="viewport" :resolution="resolution">
         <layer>
+            <s-label :attrs=date></s-label>
             <group v-for="line in lines" :pos="line['group']['pos']">
                 <sprite :attrs=line['img']></sprite>
                 <s-label :attrs=line['line']></s-label>
@@ -28,12 +29,12 @@
     </scene>
 </div>
 <style>
-    .bg {
-        width: 3247px;
-        height: 1920px;
-        background-image: url("images/bg.png")
-    }
+.bg {
+    position: absolute;
+}
 </style>
+<script src="js/moment.min.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/sprite-vue.ext.js"></script>
 <script src="index.js"></script>
 </body>
