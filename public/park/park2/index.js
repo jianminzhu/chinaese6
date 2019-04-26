@@ -3,7 +3,7 @@ $(function () {
     let srcH = 1920;
     let width = 1920;
     let resolution = [srcW, srcH]
-    $("body,img,div").each(function () {
+    $("body,body>svg,body>img,body>div").each(function () {
         $(this).addClass("bg").css({
             width: `${width}px`,
             height: `${srcH * (width / srcW)}px`
@@ -17,10 +17,16 @@ $(function () {
     }
 
     histogram = {
-        conf: {root: "images/charts/histogram", head: "head.png", foot: "foot.png",bottom:"bottom.png", main: "main.png"},
-        yArr: [600, 400, 300, 200, 100, 0],
+        conf: {
+            root: "images/charts/histogram",
+            head: "head.png",
+            foot: "foot.png",
+            bottom: "bottom.png",
+            main: "main.png"
+        },
+        yArr: [600, 500, 400, 300, 200, 100, 0],
         values: [
-              {color: "blue", date: "4/11", value: 367}
+            {color: "blue", date: "4/11", value: 367}
             , {color: "blue", date: "4/12", value: 590}
             , {color: "blue", date: "4/13", value: 322}
             , {color: "blue", date: "4/14", value: 419}
@@ -85,10 +91,36 @@ $(function () {
             upTime: "18:35:00"
         }
     }
+    logisticsConf = {
+        name: {font: "18px Adobe Heiti Std R", fillColor: "#7E95C6"},
+        num: {font: "28px MantekaCyrillic-Regular", fillColor: "#FFF"}
+    }
+    logistics = [
+        {per: 30, name: "服装　", num: 3344},
+        {per: 10, name: "纪念品", num: 1120},
+        {per: 20, name: "生活用品", num: 10028},
+        {per: 40, name: "饮料　", num: 16998},
+    ]
 
     data = {
         resolution: resolution,
         viewport: [srcW / (srcW / width), srcH / (srcW / width)],
+        runingCarConfig: {
+            personName: {font: "24px MicrosoftYaHeiUI", fillColor: "#FFF"},
+            carNo: {font: "30px  STHeitiSC-Medium", fillColor: "#FFF"},
+            speed: {font: "36px MantekaCyrillic-Regular", fillColor: "#45C9C7"},
+            speedUnit: {font: "21px STHeitiSC-Light", fillColor: "#6B7CA0"},
+            upDate: {font: "20px ArialMT", fillColor: "#6B7CA0"},
+            upTime: {font: "33px Digital-7Mono", fillColor: "#9BAFDB"},
+        },
+        runingIndx: ["B100801", "B100802", "B100808", "B100809", "B100812"],
+        runCars,
+        persons,
+        linesArr,
+        histogram,
+        logisticsConf,
+        logistics,
+
         date: today,
         weather: {
             pos: [79, 631],
@@ -103,19 +135,7 @@ $(function () {
             warning: {pos: [55, 325], textures: "images/weather/台风预警.png"},
             warningText: {pos: [45, 375], text: "台风预警", font: '16px "MicrosoftYaHeiUI"', fillColor: "#AAC2EC"},
         },
-        runingCarConfig: {
-            personName: {font: "24px MicrosoftYaHeiUI", fillColor: "#FFF"},
-            carNo: {font: "30px  STHeitiSC-Medium", fillColor: "#FFF"},
-            speed: {font: "36px MantekaCyrillic-Regular", fillColor: "#45C9C7"},
-            speedUnit: {font: "21px STHeitiSC-Light", fillColor: "#6B7CA0"},
-            upDate: {font: "20px ArialMT", fillColor: "#6B7CA0"},
-            upTime: {font: "33px Digital-7Mono", fillColor: "#9BAFDB"},
-        },
-        runingIndx: ["B100801", "B100802", "B100808", "B100809", "B100812"],
-        runCars,
-        persons,
-        linesArr,
-        histogram,
+
         lines: [
             {
                 group: {pos: [80, 198]},

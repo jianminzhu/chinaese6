@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .bg {
+            position: absolute;
+        }
+    </style>
+<body>
+<script src="js/snap.svg.js"></script>
+<img src="testPie.png" class="bg" style="z-index: -1;margin-top: 40px;margin-left:10px;">
+<div id="svg" class="bg" style="width: 800px;height:400px; position: absolute;z-index: 10"></div>
+<script>
+    var s = Snap("#svg", 800, 400);
+    var ellipse1 = s.ellipse(138, 342, 110, 65);
+    var ellipse2 = s.ellipse(138, 342, 100, 55);
+    var ellipse3 = s.ellipse(138, 342, 90, 45);
+    ellipse1.attr({stroke: "red", strokeWidth: 10})
+    ellipse2.attr({stroke: "#CC9DE3", strokeWidth: 10})
+    ellipse3.attr({stroke: "#E4CA5F", strokeWidth: 10, fill: "#fff"})
+</script>
+</body>
+</html>

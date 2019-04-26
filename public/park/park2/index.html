@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
 <body>
 <img src="images/bg.png" class="bg"  style="z-index:1">
-<div class="bg" style="z-index:1000"> <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="500" hidden="500" style="z-index:1000">
-    <ellipse cx="300" cy="80" rx="100" ry="50" style="fill:yellow;stroke:dodgerblue;stroke-width:5" />
-</svg></div>
 <div id="app" class="bg"  style="z-index: 999">
     <scene :viewport="viewport" :resolution="resolution">
         <layer>
@@ -38,19 +35,48 @@
                 <s-label :pos='[770,i*88+20]' :attrs='{font:runingCarConfig["upDate"]["font"],fillColor:runingCarConfig["upDate"]["fillColor"],text:runCars[carId]["upDate"]}'></s-label>
                 <s-label :pos='[750,i*88+49]' :attrs='{font:runingCarConfig["upTime"]["font"],fillColor:runingCarConfig["upTime"]["fillColor"],text:runCars[carId]["upTime"]}'></s-label>
             </group>
-            <group :pos="[122,1425]"   v-for="(his,i) in histogram['values']" >
-                <group :pos="[i*65,0]">
-                    <sprite  :pos='[10,220]' :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["bottom"]}'></sprite>
-                    <sprite  :pos='[20,280]' :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["foot"]}'></sprite>
-                    <sprite  :pos='[20,Math.floor(276*(his["value"]/histogram["yArr"][0]))-5]' :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["head"]}'></sprite>
-                    <sprite  :pos='[20,Math.floor(276*(his["value"]/histogram["yArr"][0]))+10]' :attrs='{ size:[28,276*(1-his["value"]/histogram["yArr"][0])],textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["main"]}'></sprite>
+            <group>
+                <group :pos="[122,1425]"   v-for="(yVal,i) in histogram['yArr']" >
+                    <s-label :pos='[-50,Math.floor(276*(1-yVal/histogram["yArr"][0]))]' :attrs='{font:"18px STHeitiSC-Light",fillColor:"#61749C",text:yVal}'>{{yVal}}</s-label>
                 </group>
+                <group :pos="[122,1425]"   v-for="(his,i) in histogram['values']" >
+                    <group :pos="[i*65,0]">
+                        <sprite  :pos='[10,220]' :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["bottom"]}'></sprite>
+                        <sprite  :pos='[20,280]' :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["foot"]}'></sprite>
+                        <sprite  :pos='[20,Math.floor(276*(his["value"]/histogram["yArr"][0]))-5]' :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["head"]}'></sprite>
+                        <sprite  :pos='[20,Math.floor(276*(his["value"]/histogram["yArr"][0]))+10]' :attrs='{ size:[28,276*(1-his["value"]/histogram["yArr"][0])],textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["main"]}'></sprite>
+                        <s-label :pos='[20,306]' :attrs='{font:"18px STHeitiSC-Light",fillColor:"#61749C",text:his["date"]}'></s-label>
+                    </group>
+                </group>
+
             </group>
             <group :pos=[1344,1406]>
-                <sprite  :pos='[28,35]' :attrs='{ textures:"images/charts/pie/3.png"}'></sprite>
+                <sprite  :pos='[28,35]'  :attrs='{ textures: "images/charts/pie/"+Math.floor(logistics[0]["per"])+".png"}'></sprite>
+                <s-label :pos='[68,40]' :attrs='{font:"40px MantekaCyrillic-Regular",fillColor:"#FFF",text:logistics[0]["per"]}'></s-label>
+                <s-label :pos='[118,55]' :attrs='{font:"18px MantekaCyrillic-Regular",fillColor:"#FFF",text:"%"}'></s-label>
+                <s-label :pos='[78,135]' :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics[0]["name"]}'></s-label>
+                <!--  <s-label :pos='[128,135]' :attrs='{font:logisticsConf["num"]["font"],fillColor:logisticsConf["num"]["fillColor"],text:logistics[0]["num"]}'></s-label>-->
+
+                <sprite  :pos='[256,35]' :attrs='{ textures: "images/charts/pie/"+Math.floor(logistics[1]["per"])+".png"}'></sprite>
+                <s-label :pos='[296,40]' :attrs='{font:"40px MantekaCyrillic-Regular",fillColor:"#FFF",text:logistics[1]["per"]}'></s-label>
+                <s-label :pos='[346,55]' :attrs='{font:"18px MantekaCyrillic-Regular",fillColor:"#FFF",text:"%"}'></s-label>
+                <s-label :pos='[296,135]' :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics[1]["name"]}'></s-label>
+                <!--  <s-label :pos='[356,135]' :attrs='{font:logisticsConf["num"]["font"],fillColor:logisticsConf["num"]["fillColor"],text:logistics[1]["num"]}'></s-label>-->
+
+
+                <sprite  :pos='[28,206]' :attrs='{ textures: "images/charts/pie/"+Math.floor(logistics[2]["per"])+".png"}'></sprite>
+                <s-label :pos='[68,211]' :attrs='{font:"40px MantekaCyrillic-Regular",fillColor:"#FFF",text:logistics[2]["per"]}'></s-label>
+                <s-label :pos='[118,225]' :attrs='{font:"18px MantekaCyrillic-Regular",fillColor:"#FFF",text:"%"}'></s-label>
+                <s-label :pos='[78,306]' :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics[2]["name"]}'></s-label>
+                <!--  <s-label :pos='[128,306]' :attrs='{font:logisticsConf["num"]["font"],fillColor:logisticsConf["num"]["fillColor"],text:logistics[2]["num"]}'></s-label>-->
+
+
+                <sprite  :pos='[256,206]' :attrs='{ textures:"images/charts/pie/"+Math.floor(logistics[3]["per"])+".png"}'></sprite>
+                <s-label :pos='[296,211]' :attrs='{font:"40px MantekaCyrillic-Regular",fillColor:"#FFF",text:logistics[3]["per"]}'></s-label>
+                <s-label :pos='[346,225]' :attrs='{font:"18px MantekaCyrillic-Regular",fillColor:"#FFF",text:"%"}'></s-label>
+                <s-label :pos='[296,306]' :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics[3]["name"]}'></s-label>
+                <!--  <s-label :pos='[356,306]' :attrs='{font:logisticsConf["num"]["font"],fillColor:logisticsConf["num"]["fillColor"],text:logistics[3]["num"]}'></s-label>-->
             </group>
-
-
         </layer>
     </scene>
 </div>
