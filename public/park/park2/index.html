@@ -14,7 +14,7 @@
                 <s-label :attrs=line['site']></s-label>
             </group>
             <group :pos="weather['pos']">
-                <sprite :attrs=weather['typeImg'] ></sprite>
+                <sprite :attrs=weather['typeImg']></sprite>
                 <sprite :attrs=weather['warning']></sprite>
                 <s-label :attrs=weather['warningText']></s-label>
                 <s-label :attrs=weather['temperature']></s-label>
@@ -25,15 +25,23 @@
                 <s-label :attrs=weather['windPower']></s-label>
                 <s-label :attrs=weather['windPowerText']></s-label>
             </group>
-
-
+            <group :pos="[2443,807]" :attrs="runingCarConfig" v-for="(carId,i) in runingIndx" >
+                <sprite  :pos='[60,i*88+30]'  :attrs='{size:[50,50],textures:persons[runCars[carId]["personId"]]["img"]}'></sprite>
+                <s-label :pos='[125,i*88+40]' :attrs='{font:runingCarConfig["personName"]["font"],fillColor:runingCarConfig["personName"]["fillColor"],text:persons[runCars[carId]["personId"]]["name"] }'></s-label>
+                <s-label :pos='[235,i*88+40]' :attrs='{font:runingCarConfig["carNo"]["font"],fillColor:runingCarConfig["carNo"]["fillColor"],text:carId }'></s-label>
+                <sprite  :pos='[430,i*88+40]':attrs='{textures:linesArr[runCars[carId]["lineNo"]]["img"]}'></sprite>
+                <s-label :pos='[540,i*88+40]' :attrs='{font:runingCarConfig["speed"]["font"],fillColor:runingCarConfig["speed"]["fillColor"],text:runCars[carId]["speed"] }'></s-label>
+                <s-label :pos='[600,i*88+52]' :attrs='{font:runingCarConfig["speedUnit"]["font"],fillColor:runingCarConfig["speedUnit"]["fillColor"],text:"KM"}'></s-label>
+                <s-label :pos='[770,i*88+20]' :attrs='{font:runingCarConfig["upDate"]["font"],fillColor:runingCarConfig["upDate"]["fillColor"],text:runCars[carId]["upDate"]}'></s-label>
+                <s-label :pos='[750,i*88+49]' :attrs='{font:runingCarConfig["upTime"]["font"],fillColor:runingCarConfig["upTime"]["fillColor"],text:runCars[carId]["upTime"]}'></s-label>
+          </group>
         </layer>
     </scene>
 </div>
 <style>
-.bg {
-    position: absolute;
-}
+    .bg {
+        position: absolute;
+    }
 </style>
 <script src="js/moment.min.js"></script>
 <script src="js/jquery-3.3.1.min.js"></script>

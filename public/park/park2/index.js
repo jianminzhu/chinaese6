@@ -15,34 +15,63 @@ $(function () {
         fillColor: "#42A6B3",
         text: moment().format('YYYY/MM/DD   HH:mm:ss')
     }
-    lines = {
-        "1": {siteNum: 9, name: "1号线"},
-        "2": {siteNum: 4, name: "2号线"},
-        "3": {siteNum: 8, name: "3号线"},
-        "4": {siteNum: 6, name: "4号线"},
-        "5": {siteNum: 5, name: "5号线"},
-        "6": {siteNum: 11, name: "6号线"},
-        "7": {siteNum: 7, name: "7号线"},
-        "8": {siteNum: 2, name: "8号线"},
-        "9": {siteNum: 8, name: "9号线"},
-        "10": {siteNum: 15, name: "10号线"},
+    linesArr = {
+        "1": {img: "images/lines/line1.png", siteNum: 9, name: "1号线"},
+        "2": {img: "images/lines/line2.png", siteNum: 4, name: "2号线"},
+        "3": {img: "images/lines/line3.png", siteNum: 8, name: "3号线"},
+        "4": {img: "images/lines/line4.png", siteNum: 6, name: "4号线"},
+        "5": {img: "images/lines/line5.png", siteNum: 5, name: "5号线"},
+        "6": {img: "images/lines/line6.png", siteNum: 11, name: "6号线"}
     }
-    person = {
-        "ls": {name: "雷生", img: "images/person/ls.png"},
-        "xb": {name: "小白", img: "images/person/xb.png"},
-        "xz": {name: "小朱", img: "images/person/xz.png"},
-        "ss": {name: "森森", img: "images/person/ss.png"}
+    persons = {
+        "ls": {name: "雷生", img: "images/persons/ls.png"},
+        "xb": {name: "小白", img: "images/persons/xb.png"},
+        "xz": {name: "小朱", img: "images/persons/xz.png"},
+        "ss": {name: "森森", img: "images/persons/ss.png"}
     }
-    runingCars = [
-        {cardId: "B100801", personId: "ls", lineNo: "1", speed: "32KM", upDate: "2019/04/26", upTime: "18:35:00"},
-        {cardId: "B100802", personId: "xb", lineNo: "1", speed: "0KM", upDate: "2019/04/26", upTime: "18:35:00"},
-        {cardId: "B100808", personId: "xz", lineNo: "1", speed: "26KM", upDate: "2019/04/26", upTime: "18:35:00"},
-        {cardId: "B100809", personId: "ss", lineNo: "1", speed: "60KM", upDate: "2019/04/26", upTime: "18:35:00"},
-        {cardId: "B100812", personId: "ls", lineNo: "1", speed: "16KM", upDate: "2019/04/26", upTime: "18:35:00"}
-    ]
-    setInterval(function () {
-        today["text"] = moment().format('YYYY/MM/DD   HH:mm:ss')
-    }, 1000)
+    runCars = {
+        "B100801": {
+            cardNo: "B100801",
+            personId: "ls",
+            lineNo: "4",
+            speed: " 32",
+            upDate: "2019/04/26",
+            upTime: "18:35:00"
+        },
+        "B100802": {
+            cardNo: "B100802",
+            personId: "xb",
+            lineNo: "3",
+            speed: "  0",
+            upDate: "2019/04/26",
+            upTime: "18:35:00"
+        },
+        "B100808": {
+            cardNo: "B100808",
+            personId: "xz",
+            lineNo: "5",
+            speed: " 26",
+            upDate: "2019/04/26",
+            upTime: "18:35:00"
+        },
+        "B100809": {
+            cardNo: "B100809",
+            personId: "ss",
+            lineNo: "6",
+            speed: " 60",
+            upDate: "2019/04/26",
+            upTime: "18:35:00"
+        },
+        "B100812": {
+            cardNo: "B100812",
+            personId: "ls",
+            lineNo: "1",
+            speed: " 16",
+            upDate: "2019/04/26",
+            upTime: "18:35:00"
+        }
+    }
+
     data = {
         resolution: resolution,
         viewport: [srcW / (srcW / width), srcH / (srcW / width)],
@@ -60,46 +89,57 @@ $(function () {
             warning: {pos: [55, 325], textures: "images/weather/台风预警.png"},
             warningText: {pos: [45, 375], text: "台风预警", font: '16px "MicrosoftYaHeiUI"', fillColor: "#AAC2EC"},
         },
-        runningCars: {},
+        runingCarConfig: {
+            personName: {font: "24px MicrosoftYaHeiUI", fillColor: "#FFF"},
+            carNo: {font: "30px  STHeitiSC-Medium", fillColor: "#FFF"},
+            speed: {font: "36px MantekaCyrillic-Regular", fillColor: "#45C9C7"},
+            speedUnit: {font: "21px STHeitiSC-Light", fillColor: "#6B7CA0"},
+            upDate: {font: "20px ArialMT", fillColor: "#6B7CA0"},
+            upTime: {font: "33px Digital-7Mono", fillColor: "#9BAFDB"},
+        },
+        runingIndx: ["B100801", "B100802", "B100808", "B100809", "B100812"],
+        runCars,
+        persons,
+        linesArr,
         lines: [
             {
-                group: {pos: [80, 198], ars: [0.5, 0.5]},
-                img: {pos: [40, 80],id:"line6", textures: 'images/line/line6.png'},
+                group: {pos: [80, 198]},
+                img: {pos: [40, 80], id: "line6", textures: 'images/lines/line6.png'},
                 line: {pos: [76, 80], font: '27px bold MicrosoftYaHeiUI-Bold', fillColor: "#FFF", text: " 8号线路"},
                 site: {pos: [200, 86], font: "18px bold  MicrosoftYaHeiUILight", fillColor: "#B5CFFF", text: "10站"}
             }, {
                 group: {pos: [80, 238]},
-                img: {pos: [40, 80],id:"line2", textures: 'images/line/line2.png'},
+                img: {pos: [40, 80], id: "line2", textures: 'images/lines/line2.png'},
                 line: {pos: [76, 80], font: '27px bold MicrosoftYaHeiUI-Bold', fillColor: "#FFF", text: "19号线路"},
                 site: {pos: [200, 86], font: "18px bold  MicrosoftYaHeiUILight", fillColor: "#B5CFFF", text: " 8站"}
             }, {
                 group: {pos: [80, 278]},
-                img: {pos: [40, 80],id:"line3", textures: 'images/line/line3.png'},
+                img: {pos: [40, 80], id: "line3", textures: 'images/lines/line3.png'},
                 line: {pos: [76, 80], font: '27px bold MicrosoftYaHeiUI-Bold', fillColor: "#FFF", text: "10号线路"},
                 site: {pos: [200, 86], font: "18px bold  MicrosoftYaHeiUILight", fillColor: "#B5CFFF", text: " 2站"}
             }, {
                 group: {pos: [80, 318]},
-                img: {pos: [40, 80],id:"line4", textures: 'images/line/line4.png'},
+                img: {pos: [40, 80], id: "line4", textures: 'images/lines/line4.png'},
                 line: {pos: [76, 80], font: '27px bold MicrosoftYaHeiUI-Bold', fillColor: "#FFF", text: " 6号线路"},
                 site: {pos: [200, 86], font: "18px bold  MicrosoftYaHeiUILight", fillColor: "#B5CFFF", text: " 9站"}
             }, {
                 group: {pos: [80, 358]},
-                img: {pos: [40, 80],id:"line4", textures: 'images/line/line4.png'},
+                img: {pos: [40, 80], id: "line4", textures: 'images/lines/line4.png'},
                 line: {pos: [76, 80], font: '27px bold MicrosoftYaHeiUI-Bold', fillColor: "#FFF", text: "11号线路"},
                 site: {pos: [200, 86], font: "18px bold  MicrosoftYaHeiUILight", fillColor: "#B5CFFF", text: " 6站"}
             }, {
                 group: {pos: [80, 398]},
-                img: {pos: [40, 80],id:"line6", textures: 'images/line/line6.png'},
+                img: {pos: [40, 80], id: "line6", textures: 'images/lines/line6.png'},
                 line: {pos: [76, 80], font: '27px bold MicrosoftYaHeiUI-Bold', fillColor: "#FFF", text: "12号线路"},
                 site: {pos: [200, 86], font: "18px bold  MicrosoftYaHeiUILight", fillColor: "#B5CFFF", text: " 9站"}
             }, {
                 group: {pos: [80, 438]},
-                img: {pos: [40, 80],id:"line1", textures: 'images/line/line1.png'},
+                img: {pos: [40, 80], id: "line1", textures: 'images/lines/line1.png'},
                 line: {pos: [76, 80], font: '27px bold MicrosoftYaHeiUI-Bold', fillColor: "#FFF", text: "1号线路"},
                 site: {pos: [200, 86], font: "18px bold  MicrosoftYaHeiUILight", fillColor: "#B5CFFF", text: " 6站"}
             }, {
                 group: {pos: [80, 478]},
-                img: {pos: [40, 80],id:"line5", textures: 'images/line/line5.png'},
+                img: {pos: [40, 80], id: "line5", textures: 'images/lines/line5.png'},
                 line: {pos: [76, 80], font: '27px bold MicrosoftYaHeiUI-Bold', fillColor: "#FFF", text: "2号线路"},
                 site: {pos: [200, 86], font: "18px bold  MicrosoftYaHeiUILight", fillColor: "#B5CFFF", text: " 9站"}
             }]
@@ -107,8 +147,30 @@ $(function () {
     m = new Vue({
         el: "#app",
         data() {
-            return data ;
+            return data;
         },
         methods: {}
     })
+    setInterval(function () {
+        today["text"] = moment().format('YYYY/MM/DD   HH:mm:ss')
+    }, 1000)
+    setInterval(function () {
+        var carNos = Object.keys(runCars);
+        let now = moment();
+        let date = now.format("YYYY/MM/DD")
+        let time = now.format("hh:mm:ss")
+
+        function upCar(car) {
+            car["speed"] = Math.abs(Number(car["speed"]) + Math.ceil((Math.random() > 0.5 ? -1 : 1) * 10 * Math.random()))
+            car['upDate'] = date;
+            car['upTime'] = time;
+        }
+
+        for (const carNo of carNos) {
+            let car = runCars[carNo]
+            setTimeout(function () {
+                upCar(car);
+            },Math.ceil(5000* Math.random()))
+        }
+    },2000)
 })
