@@ -161,7 +161,11 @@ $(function () {
         let time = now.format("hh:mm:ss")
 
         function upCar(car) {
-            car["speed"] = Math.abs(Number(car["speed"]) + Math.ceil((Math.random() > 0.5 ? -1 : 1) * 10 * Math.random()))
+            let speed = Math.abs(Number(car["speed"]) + Math.ceil((Math.random() > 0.5 ? -1 : 1) * 10 * Math.random()));
+            if(speed>100) {
+                speed=  100 - 10 * Math.random();
+            }
+            car["speed"] = speed
             car['upDate'] = date;
             car['upTime'] = time;
         }
