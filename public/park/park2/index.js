@@ -50,46 +50,11 @@ $(function () {
         "ss": {name: "森森", img: "images/persons/ss.png"}
     }
     runCars = {
-        "B100801": {
-            cardNo: "B100801",
-            personId: "ls",
-            lineNo: "4",
-            speed: " 32",
-            upDate: "2019/04/26",
-            upTime: "18:35:00"
-        },
-        "B100802": {
-            cardNo: "B100802",
-            personId: "xb",
-            lineNo: "3",
-            speed: "  0",
-            upDate: "2019/04/26",
-            upTime: "18:35:00"
-        },
-        "B100808": {
-            cardNo: "B100808",
-            personId: "xz",
-            lineNo: "5",
-            speed: " 26",
-            upDate: "2019/04/26",
-            upTime: "18:35:00"
-        },
-        "B100809": {
-            cardNo: "B100809",
-            personId: "ss",
-            lineNo: "6",
-            speed: " 60",
-            upDate: "2019/04/26",
-            upTime: "18:35:00"
-        },
-        "B100812": {
-            cardNo: "B100812",
-            personId: "ls",
-            lineNo: "1",
-            speed: " 16",
-            upDate: "2019/04/26",
-            upTime: "18:35:00"
-        }
+        "B100801": { cardNo: "B100801", personId: "ls", lineNo: "4", speed: " 32", upDate: "2019/04/26", upTime: "18:35:00"},
+        "B100802": { cardNo: "B100802", personId: "xb", lineNo: "3", speed: "  0", upDate: "2019/04/26", upTime: "18:35:00"},
+        "B100808": { cardNo: "B100808", personId: "xz", lineNo: "5", speed: " 26", upDate: "2019/04/26", upTime: "18:35:00"},
+        "B100809": { cardNo: "B100809", personId: "ss", lineNo: "6", speed: " 60", upDate: "2019/04/26", upTime: "18:35:00"},
+        "B100812": { cardNo: "B100812", personId: "ls", lineNo: "1", speed: " 16", upDate: "2019/04/26", upTime: "18:35:00"}
     }
     logisticsConf = {
         name: {font: "18px Adobe Heiti Std R", fillColor: "#7E95C6"},
@@ -101,6 +66,10 @@ $(function () {
         {per: 20, name: "生活用品", num: 10028},
         {per: 40, name: "饮料　", num: 16998},
     ]
+    alarms={
+        today:{num:" 6"}
+
+    }
 
     data = {
         resolution: resolution,
@@ -120,7 +89,7 @@ $(function () {
         histogram,
         logisticsConf,
         logistics,
-
+        alarms,
         date: today,
         weather: {
             pos: [79, 631],
