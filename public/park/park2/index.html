@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
 <body>
-<img src="images/bg.png" class="bg">
-<div id="app" class="bg">
+<img src="images/bg.png" class="bg"  style="z-index:1">
+<div class="bg" style="z-index:1000"> <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="500" hidden="500" style="z-index:1000">
+    <ellipse cx="300" cy="80" rx="100" ry="50" style="fill:yellow;stroke:dodgerblue;stroke-width:5" />
+</svg></div>
+<div id="app" class="bg"  style="z-index: 999">
     <scene :viewport="viewport" :resolution="resolution">
         <layer>
             <s-label :attrs=date></s-label>
@@ -34,7 +37,20 @@
                 <s-label :pos='[600,i*88+52]' :attrs='{font:runingCarConfig["speedUnit"]["font"],fillColor:runingCarConfig["speedUnit"]["fillColor"],text:"KM"}'></s-label>
                 <s-label :pos='[770,i*88+20]' :attrs='{font:runingCarConfig["upDate"]["font"],fillColor:runingCarConfig["upDate"]["fillColor"],text:runCars[carId]["upDate"]}'></s-label>
                 <s-label :pos='[750,i*88+49]' :attrs='{font:runingCarConfig["upTime"]["font"],fillColor:runingCarConfig["upTime"]["fillColor"],text:runCars[carId]["upTime"]}'></s-label>
-          </group>
+            </group>
+            <group :pos="[122,1425]"   v-for="(his,i) in histogram['values']" >
+                <group :pos="[i*65,0]">
+                    <sprite  :pos='[10,220]' :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["bottom"]}'></sprite>
+                    <sprite  :pos='[20,280]' :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["foot"]}'></sprite>
+                    <sprite  :pos='[20,Math.floor(276*(his["value"]/histogram["yArr"][0]))-5]' :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["head"]}'></sprite>
+                    <sprite  :pos='[20,Math.floor(276*(his["value"]/histogram["yArr"][0]))+10]' :attrs='{ size:[28,276*(1-his["value"]/histogram["yArr"][0])],textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["main"]}'></sprite>
+                </group>
+            </group>
+            <group :pos=[1344,1406]>
+                <sprite  :pos='[28,35]' :attrs='{ textures:"images/charts/pie/3.png"}'></sprite>
+            </group>
+
+
         </layer>
     </scene>
 </div>

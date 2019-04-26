@@ -15,6 +15,20 @@ $(function () {
         fillColor: "#42A6B3",
         text: moment().format('YYYY/MM/DD   HH:mm:ss')
     }
+
+    histogram = {
+        conf: {root: "images/charts/histogram", head: "head.png", foot: "foot.png",bottom:"bottom.png", main: "main.png"},
+        yArr: [600, 400, 300, 200, 100, 0],
+        values: [
+              {color: "blue", date: "4/11", value: 367}
+            , {color: "blue", date: "4/12", value: 590}
+            , {color: "blue", date: "4/13", value: 322}
+            , {color: "blue", date: "4/14", value: 419}
+            , {color: "blue", date: "4/15", value: 530}
+            , {color: "blue", date: "4/16", value: 98}
+            , {color: "pink", date: "4/17", value: 200}
+        ]
+    }
     linesArr = {
         "1": {img: "images/lines/line1.png", siteNum: 9, name: "1号线"},
         "2": {img: "images/lines/line2.png", siteNum: 4, name: "2号线"},
@@ -101,6 +115,7 @@ $(function () {
         runCars,
         persons,
         linesArr,
+        histogram,
         lines: [
             {
                 group: {pos: [80, 198]},
@@ -162,8 +177,8 @@ $(function () {
 
         function upCar(car) {
             let speed = Math.abs(Number(car["speed"]) + Math.ceil((Math.random() > 0.5 ? -1 : 1) * 10 * Math.random()));
-            if(speed>100) {
-                speed=  100 - 10 * Math.random();
+            if (speed > 100) {
+                speed = 100 - 10 * Math.random();
             }
             car["speed"] = speed
             car['upDate'] = date;
@@ -174,7 +189,9 @@ $(function () {
             let car = runCars[carNo]
             setTimeout(function () {
                 upCar(car);
-            },Math.ceil(5000* Math.random()))
+            }, Math.ceil(5000 * Math.random()))
         }
-    },2000)
+    }, 2000)
+
+
 })
