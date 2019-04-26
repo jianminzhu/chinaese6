@@ -14,9 +14,9 @@
                 <s-label :attrs=line['site']></s-label>
             </group>
             <group>
-                <s-label :pos="[3175,141]" :attrs='{font:"60px MantekaCyrillic-Regular",fillColor:"#FF2B38"}' >{{alarms["today"]["num"]}}</s-label>
-                <s-label :pos="[3230,163]" :attrs='{font:"24px RTWSYueRoudGoG0v1-Regular",fillColor:"#FF2B38"}' >次</s-label>
-                <s-label :pos="[3169,200]" :attrs='{font:"21px MicrosoftYaHeiUI",fillColor:"#AE4446"}' >今日预警</s-label>
+                <s-label :pos="[3175,141]" :attrs='{font:"60px MantekaCyrillic-Regular",fillColor:"#FF2B38",text:alarms["today"]["num"]}' ></s-label>
+                <s-label :pos="[3230,163]" :attrs='{font:"24px RTWSYueRoudGoG0v1-Regular",fillColor:"#FF2B38",text:"次"}' ></s-label>
+                <s-label :pos="[3169,200]" :attrs='{font:"21px MicrosoftYaHeiUI",fillColor:"#AE4446",text:"今日预警"}' ></s-label>
             </group>
             <group :pos="weather['pos']">
                 <sprite :attrs=weather['typeImg']></sprite>
