@@ -156,6 +156,28 @@ $(function () {
         methods: {}
     })
     setInterval(function () {
+        try {
+            for (const his of histogram["values"]) {
+                his["value"] = Math.floor(Number(histogram["yArr"][0] )* Math.random())
+                console.log(his["value"])
+            }
+        } catch (e) {
+        }
+    },1000)
+    setInterval(function () {
+        try {
+            for (const his of logistics) {
+              let per= Math.floor(100* Math.random())
+                if (per > 90) {
+                    per=90
+                }
+                his["per"]=per
+            }
+        } catch (e) {
+        }
+    },1000)
+
+    setInterval(function () {
         today["text"] = moment().format('YYYY/MM/DD   HH:mm:ss')
     }, 1000)
     setInterval(function () {
@@ -181,6 +203,4 @@ $(function () {
             }, Math.ceil(5000 * Math.random()))
         }
     }, 2000)
-
-
 })
