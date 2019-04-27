@@ -5,17 +5,35 @@
     <style>
         .bg {
             position: absolute;
+        } 
+        .bg2{
+            width: 100%;
+            height: 100%;
+            background-position: 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            -webkit-print-color-adjust: exact;
+        }
+        *{
+            margin: 0px;
+            padding: 0px;
         }
     </style>
     <script src="js/moment.min.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/sprite-vue.ext.js"></script>
-    <script src="index.js?v=14"></script>
+    <script src="index.js?v=15"></script>
 <body>
 <img src="images/bg.png" class="bg"  style="z-index:1">
+<div style="z-index: 99999;top: 570px;left: 69px;width: 1920px;height: 1075.69px;" class="bg"> <video width="400" height="268" src="viedo/1.mp4"  autoplay="autoplay" loop="loop" ></video></div>
+<div style="z-index: 99999;top: 570px;left: 491px;width: 1920px;height: 1075.69px;" class="bg"> <video width="400" height="268" src="viedo/2.mp4" autoplay="autoplay" loop="loop" ></video></div>
+<div style="z-index: 99999;top: 570px;left: 913px;width: 1920px;height: 1075.69px;" class="bg"> <video width="400" height="268" src="viedo/3.mp4" autoplay="autoplay" loop="loop" ></video></div>
 <div id="app" class="bg"  style="z-index: 999">
     <scene :viewport="viewport" :resolution="resolution">
-        <layer>
+        <layer ref="layer">
+            <group v-for="(car,key,i) in cars">
+                <sprite  :attrs="{pos:[car['pos'][0],car['pos'][1]],textures:car['textures']}"  ref="rcars"></sprite>
+            </group>
             <s-label :attrs=date></s-label>
             <group v-for="line in lines" :pos="line['group']['pos']">
                 <sprite :attrs=line['img'] ref="lines"></sprite>
@@ -23,8 +41,8 @@
                 <s-label :attrs=line['site']></s-label>
             </group>
             <group>
-                <s-label :pos="[3175,141]" :attrs='{font:"60px MantekaCyrillic-Regular",fillColor:"#FF2B38",text:alarms["today"]["num"]}' ></s-label>
-                <s-label :pos="[3230,163]" :attrs='{font:"24px RTWSYueRoudGoG0v1-Regular",fillColor:"#FF2B38",text:"次"}' ></s-label>
+                <s-label :pos="[3170,141]" :attrs='{font:"60px MantekaCyrillic-Regular",fillColor:"#FF2B38",text:alarms["today"]["num"]}' ></s-label>
+                <s-label :pos="[3240,163]" :attrs='{font:"24px RTWSYueRoudGoG0v1-Regular",fillColor:"#FF2B38",text:"次"}' ></s-label>
                 <s-label :pos="[3169,200]" :attrs='{font:"21px MicrosoftYaHeiUI",fillColor:"#AE4446",text:"今日预警"}' ></s-label>
             </group>
             <group :pos="weather['pos']">
@@ -51,7 +69,7 @@
             </group>
             <group>
                 <group :pos="[122,1425]"   v-for="(yVal,i) in histogram['yArr']" >
-                    <s-label :pos='[-50,Math.floor(276*(1-yVal/histogram["yArr"][0]))]' :attrs='{font:"18px STHeitiSC-Light",fillColor:"#61749C",text:yVal}'>{{yVal}}</s-label>
+                    <s-label :pos='[-50,Math.floor(276*(1-yVal/histogram["yArr"][0]))]' :attrs='{font:"18px STHeitiSC-Light",fillColor:"#61749C",text:yVal}'></s-label>
                 </group>
                 <group :pos="[122,1425]"   v-for="(his,i) in histogram['values']" >
                     <group :pos="[i*65,0]">
@@ -62,7 +80,10 @@
                         <s-label :pos='[20,306]' :attrs='{font:"18px STHeitiSC-Light",fillColor:"#61749C",text:his["date"]}'></s-label>
                     </group>
                 </group>
-
+                <s-label :pos='[293,1760]' :attrs='{font:"47px  MantekaCyrillic-Regular",fillColor:"#47D7C9",text:histogram["total"]}'></s-label>
+                <s-label :pos='[histogram["total"].length*30 +293 ,1780]' :attrs='{font:"23px  RTWSYueRoudGoG0v1-Regular",fillColor:"#93C8DC",text:"公里"}'></s-label>
+                <s-label :pos='[264,1809]' :attrs='{font:"18px  STHeitiSC-Light",fillColor:"#748CBC",text:"上周累计"}'></s-label>
+                <s-label :pos='[histogram["lastWeekTotal"].length*20 +264 ,1809]' :attrs='{font:"18px  STHeitiSC-Light",fillColor:"#748CBC",text:histogram["lastWeekTotal"]+" 公里"}'></s-label>
             </group>
             <group :pos=[1344,1406]>
                 <sprite  :pos='[28,35]'  :attrs='{ textures: "images/charts/pie/"+Math.floor(logistics[0]["per"])+".png"}'></sprite>
@@ -70,7 +91,6 @@
                 <s-label :pos='[118,55]' :attrs='{font:"18px MantekaCyrillic-Regular",fillColor:"#FFF",text:"%"}'></s-label>
                 <s-label :pos='[78,135]' :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics[0]["name"]}'></s-label>
                 <!--  <s-label :pos='[128,135]' :attrs='{font:logisticsConf["num"]["font"],fillColor:logisticsConf["num"]["fillColor"],text:logistics[0]["num"]}'></s-label>-->
-
                 <sprite  :pos='[256,35]' :attrs='{ textures: "images/charts/pie/"+Math.floor(logistics[1]["per"])+".png"}'></sprite>
                 <s-label :pos='[296,40]' :attrs='{font:"40px MantekaCyrillic-Regular",fillColor:"#FFF",text:logistics[1]["per"]}'></s-label>
                 <s-label :pos='[346,55]' :attrs='{font:"18px MantekaCyrillic-Regular",fillColor:"#FFF",text:"%"}'></s-label>
