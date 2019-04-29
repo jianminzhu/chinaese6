@@ -6,7 +6,8 @@
         .bg {
             position: absolute;
         }
-        .bg2{
+
+        .bg2 {
             width: 100%;
             height: 100%;
             background-position: 50%;
@@ -14,28 +15,36 @@
             background-size: cover;
             -webkit-print-color-adjust: exact;
         }
-        *{
+
+        * {
             margin: 0px;
             padding: 0px;
         }
     </style>
-    <link rel="stylesheet" href="css/stylesheet.css" />
-    <script src="js/moment.min.js"></script>
+    <link rel="stylesheet" href="css/stylesheet.css"/>
     <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/moment.min.js"></script>
     <script src="js/d3/d3.v5.min.js"></script>
     <script src="js/sprite-vue.ext.js"></script>
     <script src="carsRun.js?v=5"></script>
 <body>
-<img src="images/bg.png?v=1" class="bg"  style="z-index:1">
-<div style="z-index: 99999;top: 570px;left: 69px;width: 1920px;height: 1075.69px;" class="bg"> <video width="400" height="268" src="viedo/1.mp4"  autoplay="autoplay" loop="loop" ></video></div>
-<div style="z-index: 99999;top: 570px;left: 491px;width: 1920px;height: 1075.69px;" class="bg"> <video width="400" height="268" src="viedo/2.mp4" autoplay="autoplay" loop="loop" ></video></div>
-<div style="z-index: 99999;top: 570px;left: 913px;width: 1920px;height: 1075.69px;" class="bg"> <video width="400" height="268" src="viedo/3.mp4" autoplay="autoplay" loop="loop" ></video></div>
-<div id="app" class="bg"  style="z-index: 999">
+<img src="images/bg.png?v=1" class="bg" style="z-index:1">
+<div style="z-index: 99999;top: 570px;left: 69px;width: 1920px;height: 1075.69px;" class="bg">
+    <video width="400" height="268" src="viedo/1.mp4" autoplay="autoplay" loop="loop"></video>
+</div>
+<div style="z-index: 99999;top: 570px;left: 491px;width: 1920px;height: 1075.69px;" class="bg">
+    <video width="400" height="268" src="viedo/2.mp4" autoplay="autoplay" loop="loop"></video>
+</div>
+<div style="z-index: 99999;top: 570px;left: 913px;width: 1920px;height: 1075.69px;" class="bg">
+    <video width="400" height="268" src="viedo/3.mp4" autoplay="autoplay" loop="loop"></video>
+</div>
+<div id="app" class="bg" style="z-index: 999">
     <scene :viewport="viewport" :resolution="resolution">
 
         <layer ref="layer">
             <group v-for="(car,key,i) in cars">
-                <sprite  :attrs="{id:car['id'],size:car['size'],pos:[car['pos'][0],car['pos'][1]],textures:car['textures']}"  ref="rcars"></sprite>
+                <sprite :attrs="{id:car['id'],size:car['size'],pos:[car['pos'][0],car['pos'][1]],textures:car['textures']}"
+                        ref="rcars"></sprite>
             </group>
             <s-label :attrs=date></s-label>
             <group v-for="line in lines" :pos="line['group']['pos']">
@@ -44,9 +53,12 @@
                 <s-label :attrs=line['site']></s-label>
             </group>
             <group>
-                <s-label :pos="[3170,141]" :attrs='{font:"60px MantekaCyrillic-Regular",fillColor:"#FF2B38",text:alarms["today"]["num"]}' ></s-label>
-                <s-label :pos="[3240,163]" :attrs='{font:"24px RTWSYueRoudGoG0v1-Regular",fillColor:"#FF2B38",text:"次"}' ></s-label>
-                <s-label :pos="[3169,200]" :attrs='{font:"21px MicrosoftYaHeiUI",fillColor:"#AE4446",text:"今日预警"}' ></s-label>
+                <s-label :pos="[3170,121]"
+                         :attrs='{font:"60px manteka_cyrillicregular",fillColor:"#FF2B38",text:alarms["today"]["num"]}'></s-label>
+                <s-label :pos="[3245,163]"
+                         :attrs='{font:"24px RTWSYueRoudGoG0v1-Regular",fillColor:"#FF2B38",text:"次"}'></s-label>
+                <s-label :pos="[3169,200]"
+                         :attrs='{font:"21px MicrosoftYaHeiUI",fillColor:"#AE4446",text:"今日预警"}'></s-label>
             </group>
             <group :pos="weather['pos']">
                 <sprite :attrs=weather['typeImg']></sprite>
@@ -60,66 +72,99 @@
                 <s-label :attrs=weather['windPower']></s-label>
                 <s-label :attrs=weather['windPowerText']></s-label>
             </group>
-            <group :pos="[2443,807]" :attrs="runingCarConfig" v-for="(carId,i) in runingIndx" >
-                <sprite  :pos='[60,i*88+30]'  :attrs='{size:[50,50],textures:persons[runCars[carId]["personId"]]["img"]}'></sprite>
-                <s-label :pos='[125,i*88+40]' :attrs='{font:runingCarConfig["personName"]["font"],fillColor:runingCarConfig["personName"]["fillColor"],text:persons[runCars[carId]["personId"]]["name"] }'></s-label>
-                <s-label :pos='[235,i*88+40]' :attrs='{font:runingCarConfig["carNo"]["font"],fillColor:runingCarConfig["carNo"]["fillColor"],text:carId }'></s-label>
-                <sprite  :pos='[430,i*88+40]':attrs='{textures:linesArr[runCars[carId]["lineNo"]]["img"]}'></sprite>
-                <s-label :pos='[540,i*88+40]' :attrs='{font:runingCarConfig["speed"]["font"],fillColor:runingCarConfig["speed"]["fillColor"],text:runCars[carId]["speed"] }'></s-label>
-                <s-label :pos='[600,i*88+52]' :attrs='{font:runingCarConfig["speedUnit"]["font"],fillColor:runingCarConfig["speedUnit"]["fillColor"],text:"KM"}'></s-label>
-                <s-label :pos='[770,i*88+20]' :attrs='{font:runingCarConfig["upDate"]["font"],fillColor:runingCarConfig["upDate"]["fillColor"],text:runCars[carId]["upDate"]}'></s-label>
-                <s-label :pos='[750,i*88+49]' :attrs='{font:runingCarConfig["upTime"]["font"],fillColor:runingCarConfig["upTime"]["fillColor"],text:runCars[carId]["upTime"]}'></s-label>
+            <group :pos="[2443,807]" :attrs="runingCarConfig" v-for="(carId,i) in runingIndx">
+                <sprite :pos='[60,i*88+30]'
+                        :attrs='{size:[50,50],textures:persons[runCars[carId]["personId"]]["img"]}'></sprite>
+                <s-label :pos='[125,i*88+40]'
+                         :attrs='{font:runingCarConfig["personName"]["font"],fillColor:runingCarConfig["personName"]["fillColor"],text:persons[runCars[carId]["personId"]]["name"] }'></s-label>
+                <s-label :pos='[235,i*88+40]'
+                         :attrs='{font:runingCarConfig["carNo"]["font"],fillColor:runingCarConfig["carNo"]["fillColor"],text:carId }'></s-label>
+                <sprite :pos='[430,i*88+40]' :attrs='{textures:linesArr[runCars[carId]["lineNo"]]["img"]}'></sprite>
+                <s-label :pos='[540,i*88+40]'
+                         :attrs='{font:runingCarConfig["speed"]["font"],fillColor:runingCarConfig["speed"]["fillColor"],text:runCars[carId]["speed"] }'></s-label>
+                <s-label :pos='[600,i*88+52]'
+                         :attrs='{font:runingCarConfig["speedUnit"]["font"],fillColor:runingCarConfig["speedUnit"]["fillColor"],text:"KM"}'></s-label>
+                <s-label :pos='[770,i*88+20]'
+                         :attrs='{font:runingCarConfig["upDate"]["font"],fillColor:runingCarConfig["upDate"]["fillColor"],text:runCars[carId]["upDate"]}'></s-label>
+                <s-label :pos='[750,i*88+49]'
+                         :attrs='{font:runingCarConfig["upTime"]["font"],fillColor:runingCarConfig["upTime"]["fillColor"],text:runCars[carId]["upTime"]}'></s-label>
             </group>
             <group>
-                <group :pos="[122,1425]"   v-for="(yVal,i) in histogram['yArr']" >
-                    <s-label :pos='[-50,Math.floor(276*(1-yVal/histogram["yArr"][0]))]' :attrs='{font:"18px STHeitiSC-Light",fillColor:"#61749C",text:yVal}'></s-label>
+                <group :pos="[122,1425]" v-for="(yVal,i) in histogram['yArr']">
+                    <s-label :pos='[-50,Math.floor(276*(1-yVal/histogram["yArr"][0]))]'
+                             :attrs='{font:"18px STHeitiSC-Light",fillColor:"#61749C",text:yVal}'></s-label>
                 </group>
-                <group :pos="[122,1425]"   v-for="(his,i) in histogram['values']" >
+                <group :pos="[122,1425]" v-for="(his,i) in histogram['values']">
                     <group :pos="[i*65,0]">
-                        <sprite  :pos='[10,220]' :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["bottom"]}'></sprite>
-                        <sprite  :pos='[20,280]' :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["foot"]}'></sprite>
-                        <sprite  :pos='[20,Math.floor(276*(his["value"]/histogram["yArr"][0]))-5]' :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["head"]}'></sprite>
-                        <sprite  :pos='[20,Math.floor(276*(his["value"]/histogram["yArr"][0]))+10]' :attrs='{ size:[28,276*(1-his["value"]/histogram["yArr"][0])],textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["main"]}'></sprite>
-                        <s-label :pos='[20,306]' :attrs='{font:"18px STHeitiSC-Light",fillColor:"#61749C",text:his["date"]}'></s-label>
+                        <sprite :pos='[10,220]'
+                                :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["bottom"]}'></sprite>
+                        <sprite :pos='[20,280]'
+                                :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["foot"]}'></sprite>
+                        <sprite :pos='[20,Math.floor(276*(his["value"]/histogram["yArr"][0]))-5]'
+                                :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["head"]}'></sprite>
+                        <sprite :pos='[20,Math.floor(276*(his["value"]/histogram["yArr"][0]))+10]'
+                                :attrs='{ size:[28,276*(1-his["value"]/histogram["yArr"][0])],textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["main"]}'></sprite>
+                        <s-label :pos='[20,306]'
+                                 :attrs='{font:"18px STHeitiSC-Light",fillColor:"#61749C",text:his["date"]}'></s-label>
                     </group>
                 </group>
-                <s-label :pos='[293,1760]' :attrs='{font:"47px  MantekaCyrillic-Regular",fillColor:"#47D7C9",text:histogram["total"]}'></s-label>
-                <s-label :pos='[histogram["total"].length*30 +293 ,1780]' :attrs='{font:"23px  RTWSYueRoudGoG0v1-Regular",fillColor:"#93C8DC",text:"公里"}'></s-label>
-                <s-label :pos='[264,1809]' :attrs='{font:"18px  STHeitiSC-Light",fillColor:"#748CBC",text:"上周累计"}'></s-label>
-                <s-label :pos='[histogram["lastWeekTotal"].length*20 +264 ,1809]' :attrs='{font:"18px  STHeitiSC-Light",fillColor:"#748CBC",text:histogram["lastWeekTotal"]+" 公里"}'></s-label>
+                <s-label :pos='[293,1760]'
+                         :attrs='{font:"47px  manteka_cyrillicregular",fillColor:"#47D7C9",text:histogram["total"]}'></s-label><!--manteka_cyrillicregular-->
+                <s-label :pos='[histogram["total"].length*30 +293 ,1780]'
+                         :attrs='{font:"23px RTWSYueRoudGoG0v1-Regular",fillColor:"#93C8DC",text:"公里"}'></s-label>
+                <s-label :pos='[264,1809]'
+                         :attrs='{font:"18px  STHeitiSC-Light",fillColor:"#748CBC",text:"上周累计"}'></s-label>
+                <s-label :pos='[histogram["lastWeekTotal"].length*20 +264 ,1809]'
+                         :attrs='{font:"18px  STHeitiSC-Light",fillColor:"#748CBC",text:histogram["lastWeekTotal"]+" 公里"}'></s-label>
             </group>
             <group :pos=[1344,1406]>
-                <sprite  :pos='[28,35]'  :attrs='{ textures: "images/charts/pie/"+Math.floor(logistics[0]["per"])+".png"}'></sprite>
-                <s-label :pos='[68,40]' :attrs='{font:"40px MantekaCyrillic-Regular",fillColor:"#FFF",text:logistics[0]["per"]}'></s-label>
-                <s-label :pos='[118,55]' :attrs='{font:"18px MantekaCyrillic-Regular",fillColor:"#FFF",text:"%"}'></s-label>
-                <s-label :pos='[78,135]' :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics[0]["name"]}'></s-label>
+                <sprite :pos='[28,35]'
+                        :attrs='{ textures: "images/charts/pie/"+Math.floor(logistics[0]["per"])+".png"}'></sprite>
+                <s-label :pos='[68,40]'
+                         :attrs='{font:"40px manteka_cyrillicregular",fillColor:"#FFF",text:logistics[0]["per"]}'></s-label>
+                <s-label :pos='[118,55]'
+                         :attrs='{font:"18px manteka_cyrillicregular",fillColor:"#FFF",text:"%"}'></s-label>
+                <s-label :pos='[78,135]'
+                         :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics[0]["name"]}'></s-label>
                 <!--  <s-label :pos='[128,135]' :attrs='{font:logisticsConf["num"]["font"],fillColor:logisticsConf["num"]["fillColor"],text:logistics[0]["num"]}'></s-label>-->
-                <sprite  :pos='[256,35]' :attrs='{ textures: "images/charts/pie/"+Math.floor(logistics[1]["per"])+".png"}'></sprite>
-                <s-label :pos='[296,40]' :attrs='{font:"40px MantekaCyrillic-Regular",fillColor:"#FFF",text:logistics[1]["per"]}'></s-label>
-                <s-label :pos='[346,55]' :attrs='{font:"18px MantekaCyrillic-Regular",fillColor:"#FFF",text:"%"}'></s-label>
-                <s-label :pos='[296,135]' :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics[1]["name"]}'></s-label>
+                <sprite :pos='[256,35]'
+                        :attrs='{ textures: "images/charts/pie/"+Math.floor(logistics[1]["per"])+".png"}'></sprite>
+                <s-label :pos='[296,40]'
+                         :attrs='{font:"40px manteka_cyrillicregular",fillColor:"#FFF",text:logistics[1]["per"]}'></s-label>
+                <s-label :pos='[346,55]'
+                         :attrs='{font:"18px manteka_cyrillicregular",fillColor:"#FFF",text:"%"}'></s-label>
+                <s-label :pos='[296,135]'
+                         :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics[1]["name"]}'></s-label>
                 <!--  <s-label :pos='[356,135]' :attrs='{font:logisticsConf["num"]["font"],fillColor:logisticsConf["num"]["fillColor"],text:logistics[1]["num"]}'></s-label>-->
 
 
-                <sprite  :pos='[28,206]' :attrs='{ textures: "images/charts/pie/"+Math.floor(logistics[2]["per"])+".png"}'></sprite>
-                <s-label :pos='[68,211]' :attrs='{font:"40px MantekaCyrillic-Regular",fillColor:"#FFF",text:logistics[2]["per"]}'></s-label>
-                <s-label :pos='[118,225]' :attrs='{font:"18px MantekaCyrillic-Regular",fillColor:"#FFF",text:"%"}'></s-label>
-                <s-label :pos='[78,306]' :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics[2]["name"]}'></s-label>
+                <sprite :pos='[28,206]'
+                        :attrs='{ textures: "images/charts/pie/"+Math.floor(logistics[2]["per"])+".png"}'></sprite>
+                <s-label :pos='[68,211]'
+                         :attrs='{font:"40px manteka_cyrillicregular",fillColor:"#FFF",text:logistics[2]["per"]}'></s-label>
+                <s-label :pos='[118,225]'
+                         :attrs='{font:"18px manteka_cyrillicregular",fillColor:"#FFF",text:"%"}'></s-label>
+                <s-label :pos='[78,306]'
+                         :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics[2]["name"]}'></s-label>
                 <!--  <s-label :pos='[128,306]' :attrs='{font:logisticsConf["num"]["font"],fillColor:logisticsConf["num"]["fillColor"],text:logistics[2]["num"]}'></s-label>-->
 
 
-                <sprite  :pos='[256,206]' :attrs='{ textures:"images/charts/pie/"+Math.floor(logistics[3]["per"])+".png"}'></sprite>
-                <s-label :pos='[296,211]' :attrs='{font:"40px MantekaCyrillic-Regular",fillColor:"#FFF",text:logistics[3]["per"]}'></s-label>
-                <s-label :pos='[346,225]' :attrs='{font:"18px MantekaCyrillic-Regular",fillColor:"#FFF",text:"%"}'></s-label>
-                <s-label :pos='[296,306]' :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics[3]["name"]}'></s-label>
+                <sprite :pos='[256,206]'
+                        :attrs='{ textures:"images/charts/pie/"+Math.floor(logistics[3]["per"])+".png"}'></sprite>
+                <s-label :pos='[296,211]'
+                         :attrs='{font:"40px manteka_cyrillicregular",fillColor:"#FFF",text:logistics[3]["per"]}'></s-label>
+                <s-label :pos='[346,225]'
+                         :attrs='{font:"18px manteka_cyrillicregular",fillColor:"#FFF",text:"%"}'></s-label>
+                <s-label :pos='[296,306]'
+                         :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics[3]["name"]}'></s-label>
                 <!--  <s-label :pos='[356,306]' :attrs='{font:logisticsConf["num"]["font"],fillColor:logisticsConf["num"]["fillColor"],text:logistics[3]["num"]}'></s-label>-->
             </group>
         </layer>
     </scene>
 </div>
 <span>
-    <div style="position:absolute;left:40%; z-index: 90000; font-size:4em;color:red;"><button data-opt-submit>修正路径</button></div>
-<div id="msg" style="position:absolute;left:40%; z-index: 90000; font-size:1em;color:yellow;">00000</div>
+    <div style="position:absolute;left:400px;top:10px; z-index: 90000; font-size:1em;color:yellow;"><button data-opt-submit="">修正路径</button></div>
+    <div id="msg" style="position:absolute;left:500px;top:10px; z-index: 90000; font-size:1em;color:yellow;">3采集中。。。</div>
 </span>
 </body>
 <script>$(function () {
@@ -142,10 +187,10 @@
     let carIds = Object.keys(carsRun);
     let scala = width / srcW;
     for (let i in carIds) {
-        let pos =carsRun[carIds[i]] ;
-        pos[0]=pos[0]*scala
-        pos[1]=pos[1]*scala
-        console.log("carIds ",carId)
+        let pos = carsRun[carIds[i]];
+        pos[0] = pos[0] * scala
+        pos[1] = pos[1] * scala
+        console.log("carIds ", carId)
 
     }
     $("body,body>svg,body>img,body>div").each(function () {
@@ -161,10 +206,10 @@
         text: moment().format('YYYY/MM/DD   HH:mm:ss')
     }
     cars = {
-        car1: {id: "car1", pos: [1150,350 ], size: [100, 100], textures: "images/cars/violet/1.png"},
-        car2: {id: "car2", pos: [1754, 251], size: [100, 100], textures: "images/cars/blue/1.png"},
-        car3: {id: "car3", pos: [1260,600 ], size: [100, 100], textures: "images/cars/pink/1.png"},
-        car4: {id: "car4", pos: [860, 368], size: [100, 100], textures: "images/cars/green/1.png"},
+        car1: {id: "car1", pos:[carsRun["car1"][0]["x"],carsRun["car1"][0]["y"]],  size: [100, 100], textures: "images/cars/violet/1.png"},
+        car2: {id: "car2", pos: [carsRun["car2"][0]["x"],carsRun["car2"][0]["y"]], size: [100, 100], textures: "images/cars/blue/1.png"},
+        car3: {id: "car3", pos: [carsRun["car3"][0]["x"],carsRun["car3"][0]["y"]], size: [100, 100], textures: "images/cars/pink/1.png"},
+        car4: {id: "car4", pos: [carsRun["car4"][0]["x"],carsRun["car4"][0]["y"]], size: [100, 100], textures: "images/cars/green/1.png"},
     }
 
 
@@ -247,7 +292,7 @@
     }
     logisticsConf = {
         name: {font: "18px Adobe Heiti Std R", fillColor: "#7E95C6"},
-        num: {font: "28px MantekaCyrillic-Regular", fillColor: "#FFF"}
+        num: {font: "28px manteka_cyrillicregular", fillColor: "#FFF"}
     }
     logistics = [
         {per: 30, name: "服装　", num: 3344},
@@ -261,9 +306,9 @@
     weather = {
         pos: [79, 631],
 
-        temperature: {pos: [123, 90], text: "16", font: '30px bold MantekaCyrillic-Regular', fillColor: "#FFF"},
+        temperature: {pos: [123, 90], text: "16", font: '30px bold manteka_cyrillicregular', fillColor: "#FFF"},
         temperatureC: {pos: [160, 90], text: "℃", font: '30px  ArialMT', fillColor: "#AAC2EC"},
-        type: {pos: [123, 160], text: "大雨", font: '30px bold MantekaCyrillic-Regular', fillColor: "#FFF"},
+        type: {pos: [123, 160], text: "大雨", font: '30px bold manteka_cyrillicregular', fillColor: "#FFF"},
         typeImg: {pos: [48, 145], textures: "images/weather/weather_bigRain.png"},
         windDirect: {pos: [135, 235], font: '12px "Adobe Heiti Std R"', fillColor: "#AAC2EC", text: "风向:"},
         windDirectText: {pos: [135, 255], font: '18px "Adobe Heiti Std R"', fillColor: "#FFF", text: "东南"},
@@ -277,8 +322,8 @@
         viewport: [srcW / (srcW / width), srcH / (srcW / width)],
         runingCarConfig: {
             personName: {font: "24px MicrosoftYaHeiUI", fillColor: "#FFF"},
-            carNo: {font: "30px  STHeitiSC-Medium", fillColor: "#FFF"},
-            speed: {font: "36px MantekaCyrillic-Regular", fillColor: "#45C9C7"},
+            carNo: {font: "30px manteka_cyrillicregular", fillColor: "#FFF"},// STHeitiSC-Medium
+            speed: {font: "36px manteka_cyrillicregular", fillColor: "#45C9C7"},
             speedUnit: {font: "21px STHeitiSC-Light", fillColor: "#6B7CA0"},
             upDate: {font: "20px ArialMT", fillColor: "#6B7CA0"},
             upTime: {font: "33px Digital-7Mono", fillColor: "#9BAFDB"},
@@ -350,11 +395,11 @@
                         iterations: Infinity,
                         direction: 'alternate',
                     });
-                },1000 * Math.random());
+                }, 1000 * Math.random());
 
 
             }
-            let count=0
+            let count = 0
             setInterval(function () {
                 if (count > 1000000) {
                     count = 0;
@@ -364,8 +409,8 @@
                     let srcCar = cars[carId];
                     let carPath = carsRun[srcCar.id];
                     let {x, y} = carPath[count % carPath.length];
-                    cars[carId].pos[0]= x
-                    cars[carId].pos[1]= y
+                    cars[carId].pos[0] = x
+                    cars[carId].pos[1] = y
                 }
             }, 10)
         },
@@ -456,15 +501,22 @@
     var min = d3.min(dataset);
     var max = d3.max(dataset);
 
-    var linear = d3.scale.linear()
-        .domain([min, max])
-        .range([0, 300]);
+    var xline = d3.scale.linear()
+        .domain([0, 3427])
+        .range([0, 1920]);
+    var yline = d3.scale.linear()
+        .domain([0, 1920])
+        .range([0, 960]);
+
+    alert(xLine(836))
+
+
 
     setTimeout(function () {
         let car1 = cars["car1"];
         let pos = car1.pos;
-        car1.pos=[pos[0]+50,pos[1]+50]
-    })
+        car1.pos = [pos[0] + 50, pos[1] + 50]
+    },1000)
 
 
 })
