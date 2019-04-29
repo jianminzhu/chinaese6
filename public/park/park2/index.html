@@ -109,7 +109,8 @@
                     </group>
                 </group>
                 <s-label :pos='[293,1760]'
-                         :attrs='{font:"47px  manteka_cyrillicregular",fillColor:"#47D7C9",text:histogram["total"]}'></s-label><!--manteka_cyrillicregular-->
+                         :attrs='{font:"47px  manteka_cyrillicregular",fillColor:"#47D7C9",text:histogram["total"]}'></s-label>
+                <!--manteka_cyrillicregular-->
                 <s-label :pos='[histogram["total"].length*30 +293 ,1780]'
                          :attrs='{font:"23px RTWSYueRoudGoG0v1-Regular",fillColor:"#93C8DC",text:"公里"}'></s-label>
                 <s-label :pos='[264,1809]'
@@ -159,12 +160,22 @@
                          :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics[3]["name"]}'></s-label>
                 <!--  <s-label :pos='[356,306]' :attrs='{font:logisticsConf["num"]["font"],fillColor:logisticsConf["num"]["fillColor"],text:logistics[3]["num"]}'></s-label>-->
             </group>
+            <group :pos="[1897,1451]" v-for="(hw,i) in huanWei">
+                <sprite :attrs='{pos: [35, i*80],size: hw["hourSize"],bgcolor:"#42A6B3" }'></sprite>
+                <sprite :attrs='{pos: [35,  i*80+25],size: hw["areaSize"],bgcolor:"#6AA3E4" }'></sprite>
+                <s-label :attrs='{pos:[-10,i*80-20] ,font:"30px manteka_cyrillicregular",fillColor:"#7E95C6" , text:hw["day"]}'></s-label>
+                <s-label :attrs='{pos:[-40,i*80+25],font:"18px STHeitiSC-Light",fillColor:"#7E95C6" ,text:hw["yearMonth"]}'></s-label>
+                <s-label :attrs='{pos:[384,i*80 ] ,font:"24px manteka_cyrillicregular",fillColor:"#42A6B3",text:hw["hour"]+"H"}'></s-label>
+                <s-label :attrs='{pos:[384,i*80+25] ,font:"24px manteka_cyrillicregular",fillColor:"#FFFFFF",text:hw["area"]+"㎡"}'></s-label>
+            </group>
         </layer>
     </scene>
 </div>
 <span>
-    <div style="position:absolute;left:400px;top:10px; z-index: 90000; font-size:1em;color:yellow;"><button data-opt-submit="">修正路径</button></div>
-    <div id="msg" style="position:absolute;left:500px;top:10px; z-index: 90000; font-size:1em;color:yellow;">3采集中。。。</div>
+    <div style="position:absolute;left:400px;top:10px; z-index: 90000; font-size:1em;color:yellow;"><button
+            data-opt-submit="">修正路径</button></div>
+    <div id="msg"
+         style="position:absolute;left:500px;top:10px; z-index: 90000; font-size:1em;color:yellow;">3采集中。。。</div>
 </span>
 </body>
 <script>$(function () {
@@ -206,11 +217,57 @@
         text: moment().format('YYYY/MM/DD   HH:mm:ss')
     }
     cars = {
-        car1: {id: "car1", pos:[carsRun["car1"][0]["x"],carsRun["car1"][0]["y"]],  size: [100, 100], textures: "images/cars/violet/1.png"},
-        car2: {id: "car2", pos: [carsRun["car2"][0]["x"],carsRun["car2"][0]["y"]], size: [100, 100], textures: "images/cars/blue/1.png"},
-        car3: {id: "car3", pos: [carsRun["car3"][0]["x"],carsRun["car3"][0]["y"]], size: [100, 100], textures: "images/cars/pink/1.png"},
-        car4: {id: "car4", pos: [carsRun["car4"][0]["x"],carsRun["car4"][0]["y"]], size: [100, 100], textures: "images/cars/green/1.png"},
+        car1: {
+            id: "car1",
+            pos: [carsRun["car1"][0]["x"], carsRun["car1"][0]["y"]],
+            size: [100, 100],
+            textures: "images/cars/violet/1.png"
+        },
+        car2: {
+            id: "car2",
+            pos: [carsRun["car2"][0]["x"], carsRun["car2"][0]["y"]],
+            size: [100, 100],
+            textures: "images/cars/blue/1.png"
+        },
+        car3: {
+            id: "car3",
+            pos: [carsRun["car3"][0]["x"], carsRun["car3"][0]["y"]],
+            size: [100, 100],
+            textures: "images/cars/pink/1.png"
+        },
+        car4: {
+            id: "car4",
+            pos: [carsRun["car4"][0]["x"], carsRun["car4"][0]["y"]],
+            size: [100, 100],
+            textures: "images/cars/green/1.png"
+        },
     }
+    scaleSize = function (dataset, index, type, height, scala = [0, 250]) {
+        let hourMaxIndex = d3.scan(dataset, function (a, b) {
+            return b[type] - a[type]
+        });
+        let scale = d3.scaleLinear()
+            .domain([0, dataset[hourMaxIndex][type]])
+            .range(scala);
+        return [scale(dataset[index][type]), height]
+    }
+
+    huanWeiData = Array(4).fill(0).map((v, i) => {
+        let hour = 3 + Math.floor(9 * Math.random());
+        return {hour: hour, area: Math.floor(hour * (( Math.random()) * 300))}
+    })
+    var now = moment()
+    huanWei = huanWeiData.map(function (it, index) {
+        var date = now.add(-1 * index, 'days')
+        return {
+            day: date.format("DD"),
+            yearMonth: date.format("YYYY/MM"),
+            hour: it["hour"],
+            area: it["area"],
+            hourSize: scaleSize(huanWeiData, index, "hour", 11),
+            areaSize: scaleSize(huanWeiData, index, "area", 5),
+        };
+    });
 
 
     histogram = {
@@ -332,6 +389,7 @@
         runCars,
         persons,
         linesArr,
+        huanWei,
         histogram,
         logisticsConf,
         logistics,
@@ -511,17 +569,17 @@
     alert(xLine(836))
 
 
-
     setTimeout(function () {
         let car1 = cars["car1"];
         let pos = car1.pos;
         car1.pos = [pos[0] + 50, pos[1] + 50]
-    },1000)
+    }, 1000)
 
 
 })
 </script>
 <script>
+
     var jmsg = $("#msg");
     let items = [];
     isRun = false;
