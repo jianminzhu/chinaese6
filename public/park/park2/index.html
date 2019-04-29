@@ -163,10 +163,14 @@
             <group :pos="[1897,1451]" v-for="(hw,i) in huanWei">
                 <sprite :attrs='{pos: [35, i*80],size: hw["hourSize"],bgcolor:"#42A6B3" }'></sprite>
                 <sprite :attrs='{pos: [35,  i*80+25],size: hw["areaSize"],bgcolor:"#6AA3E4" }'></sprite>
-                <s-label :attrs='{pos:[-10,i*80-20] ,font:"30px manteka_cyrillicregular",fillColor:"#7E95C6" , text:hw["day"]}'></s-label>
-                <s-label :attrs='{pos:[-40,i*80+25],font:"18px STHeitiSC-Light",fillColor:"#7E95C6" ,text:hw["yearMonth"]}'></s-label>
-                <s-label :attrs='{pos:[384,i*80 ] ,font:"24px manteka_cyrillicregular",fillColor:"#42A6B3",text:hw["hour"]+"H"}'></s-label>
-                <s-label :attrs='{pos:[384,i*80+25] ,font:"24px manteka_cyrillicregular",fillColor:"#FFFFFF",text:hw["area"]+"㎡"}'></s-label>
+                <s-label
+                        :attrs='{pos:[-10,i*80-20] ,font:"30px manteka_cyrillicregular",fillColor:"#7E95C6" , text:hw["day"]}'></s-label>
+                <s-label
+                        :attrs='{pos:[-40,i*80+25],font:"18px STHeitiSC-Light",fillColor:"#7E95C6" ,text:hw["yearMonth"]}'></s-label>
+                <s-label
+                        :attrs='{pos:[384,i*80 ] ,font:"24px manteka_cyrillicregular",fillColor:"#42A6B3",text:hw["hour"]+"H"}'></s-label>
+                <s-label
+                        :attrs='{pos:[384,i*80+25] ,font:"24px manteka_cyrillicregular",fillColor:"#FFFFFF",text:hw["area"]+"㎡"}'></s-label>
             </group>
         </layer>
     </scene>
@@ -254,7 +258,7 @@
 
     huanWeiData = Array(4).fill(0).map((v, i) => {
         let hour = 3 + Math.floor(9 * Math.random());
-        return {hour: hour, area: Math.floor(hour * (( Math.random()) * 300))}
+        return {hour: hour, area: Math.floor(hour * ((Math.random()) * 300))}
     })
     var now = moment()
     huanWei = huanWeiData.map(function (it, index) {
@@ -555,20 +559,21 @@
     //     direction: 'alternate',
     //     iterations: Infinity,
     // }));
-    var dataset = [1.2, 2.3, 0.9, 1.5, 3.3];
-    var min = d3.min(dataset);
-    var max = d3.max(dataset);
 
-    var xline = d3.scale.linear()
-        .domain([0, 3427])
-        .range([0, 1920]);
-    var yline = d3.scale.linear()
-        .domain([0, 1920])
-        .range([0, 960]);
-
-    alert(xLine(836))
-
-
+    setInterval(function () {
+        let data = Array(4).fill(0).map((v, i) => {
+            let hour = 3 + Math.floor(9 * Math.random());
+            return {hour: hour, area: Math.floor(hour * ((Math.random()) * 300))}
+        })
+        var a=data.map(function (it, index) {
+         let   hw = huanWei[index];
+         console.log(hw)
+            hw.area = d3.format("4.3d")(Math.random() * 1000 )
+            hw.hour = 1 + Math.floor(Math.random() * 12);
+            hw.hourSize = scaleSize(data, index, "hour", 11);
+            hw.areaSize = scaleSize(data, index, "area", 5);
+        });
+    }, 2000)
     setTimeout(function () {
         let car1 = cars["car1"];
         let pos = car1.pos;
