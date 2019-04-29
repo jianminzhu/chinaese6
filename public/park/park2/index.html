@@ -24,7 +24,7 @@
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/d3/d3.v5.min.js"></script>
     <script src="js/sprite-vue.ext.js"></script>
-    <script src="carsRun.js?v=4"></script>
+    <script src="carsRun.js?v=5"></script>
 <body>
 <img src="images/bg.png?v=1" class="bg"  style="z-index:1">
 <div style="z-index: 99999;top: 570px;left: 69px;width: 1920px;height: 1075.69px;" class="bg"> <video width="400" height="268" src="viedo/1.mp4"  autoplay="autoplay" loop="loop" ></video></div>
@@ -115,18 +115,12 @@
                 <!--  <s-label :pos='[356,306]' :attrs='{font:logisticsConf["num"]["font"],fillColor:logisticsConf["num"]["fillColor"],text:logistics[3]["num"]}'></s-label>-->
             </group>
         </layer>
-        <svg  width="500%" height="100%" version="1.1">
-            <rect x="20" y="20" rx="30" ry="50" width="400" height="100"
-                  style="fill:red;stroke:black;stroke-width:3;opacity: 0.5;">
-            </rect>
-        </svg>
     </scene>
 </div>
-<div style="position:absolute;left:40%; z-index: 90000; font-size:4em;color:red;">
-    <button data-opt-submit>修正路径</button>
-</div>
+<span>
+    <div style="position:absolute;left:40%; z-index: 90000; font-size:4em;color:red;"><button data-opt-submit>修正路径</button></div>
 <div id="msg" style="position:absolute;left:40%; z-index: 90000; font-size:1em;color:yellow;">00000</div>
-
+</span>
 </body>
 <script>$(function () {
     function wait(ms) {
@@ -145,10 +139,19 @@
     let srcH = 1920;
     let width = 1920;
     let resolution = [srcW, srcH]
+    let carIds = Object.keys(carsRun);
+    let scala = width / srcW;
+    for (let i in carIds) {
+        let pos =carsRun[carIds[i]] ;
+        pos[0]=pos[0]*scala
+        pos[1]=pos[1]*scala
+        console.log("carIds ",carId)
+
+    }
     $("body,body>svg,body>img,body>div").each(function () {
         $(this).addClass("bg").css({
             width: `${width}px`,
-            height: `${srcH * (width / srcW)}px`
+            height: `${srcH * scala}px`
         })
     })
     let today = {
