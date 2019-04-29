@@ -2,42 +2,31 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/store.legacy.min.js"></script>
 <link rel="stylesheet" href="css/common.css">
-<script src="extjs/PardAdv.js"></script>
+<script src="extjs/PardAdv.js?v=5"></script>
 <script src="carsRun.js?v=3"></script>
-<script type="text/javascript">
-    function fullScreen() {
-        var el = document.documentElement;
-        var rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;
-        if (typeof rfs != "undefined" && rfs) {
-            rfs.call(el);
-        }
-        ;
-        return;
-    }
-</script>
 <script>
     $(function () {
         $("[data-obj]").each(function () {
             $(this).css({ width: "1280px",height:"768" })
         })
-        fullScreen()
         let jbg = $("#demo1");
         let width = jbg.width();
         let height = jbg.height();
         adv = new PardAdv("#demo1", width, height);
-        var arr = ["./img/car.png?m=" + Math.random(), "./img/jiebo.png?m=" + Math.random(), "./img/saodi.png?m=" + Math.random()];
+
+
         var count = store.get('count') || 0;
         if (typeof carsRun == "undefined") {
             carsRun = {}
         }
         const cars = Object.keys(carsRun);
 
-        i = 0
+        var carsImg = [ "images/cars/blue/1.png",  "images/cars/green/1.png",  "images/cars/pink/1.png"];
         for (const car of cars) {
             let carPaths = carsRun[car];
             var {x, y} = store.get(car) || carPaths[count % carPaths.length];
             let colorkey = "color" + car;
-            let img = store.get(colorkey) || arr[Math.floor(100 * Math.random()) % 3];
+            let img = store.get(colorkey) || carsImg[Math.floor(100 * Math.random()) % 3];
             store.set(colorkey, img)
             store.set(car, {x, y})
             adv.addCar(car, x, y, img);
@@ -93,15 +82,17 @@
                 jmsg.html("addSucc")
             })
             return false
-
         });
     })
 </script>
 <meta charset="utf-8">
-<div data-obj id="d1" class="profile-bg" style="position:absolute; z-index: 1000;background-image: url('img/main2.png?i=01');opacity: 1"></div> 
+<div data-obj id="d1" class="profile-bg" style="position:absolute; z-index: 1000;background-image: url('images/main.png?i=01');opacity: 1"></div>
 <div data-obj id="demo1" style="position:absolute;z-index: 10001; "></div>
-<div style="position:absolute;left:40%;z-index: 90000; font-size:4em;color:red;">
+<div style="position:absolute; z-index: 90000; font-size:4em;color:red;">
     <button data-opt-submit>修正路径</button> 
 </div>
-<div id="msg" style="position:absolute;left:50%;z-index: 90000; font-size:1em;color:yellow;">00000</div>
+<div id="msg" style="position:absolute; z-index: 90000; font-size:1em;color:yellow;">00000</div>
+
+<style>*{margin: 0px;
+    padding: 0px}</style>
 
