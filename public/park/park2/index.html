@@ -226,25 +226,25 @@
             pos: [carsRun["car1"][0]["x"], carsRun["car1"][0]["y"]],
             size: [100, 100],
             textures: "images/cars/violet/1.png"
-        },
-        car2: {
-            id: "car2",
-            pos: [carsRun["car2"][0]["x"], carsRun["car2"][0]["y"]],
-            size: [100, 100],
-            textures: "images/cars/blue/1.png"
-        },
-        car3: {
-            id: "car3",
-            pos: [carsRun["car3"][0]["x"], carsRun["car3"][0]["y"]],
-            size: [100, 100],
-            textures: "images/cars/pink/1.png"
-        },
-        car4: {
-            id: "car4",
-            pos: [carsRun["car4"][0]["x"], carsRun["car4"][0]["y"]],
-            size: [100, 100],
-            textures: "images/cars/green/1.png"
-        },
+         },
+         car2: {
+             id: "car2",
+             pos: [carsRun["car2"][0]["x"], carsRun["car2"][0]["y"]],
+             size: [100, 100],
+             textures: "images/cars/blue/1.png"
+         },
+         car3: {
+             id: "car3",
+             pos: [carsRun["car3"][0]["x"], carsRun["car3"][0]["y"]],
+             size: [100, 100],
+             textures: "images/cars/pink/1.png"
+         },
+         car4: {
+             id: "car4",
+             pos: [carsRun["car4"][0]["x"], carsRun["car4"][0]["y"]],
+             size: [100, 100],
+             textures: "images/cars/green/1.png"
+         },
     }
     scaleSize = function (dataset, index, type, height, scala = [0, 250]) {
         let hourMaxIndex = d3.scan(dataset, function (a, b) {
@@ -466,7 +466,7 @@
                 if (count > 1000000) {
                     count = 0;
                 }
-                ++count
+                count ++;
                 for (const carId of Object.keys(cars)) {
                     let srcCar = cars[carId];
                     let carPath = carsRun[srcCar.id];
