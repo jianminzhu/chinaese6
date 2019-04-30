@@ -29,7 +29,7 @@
     <script src="js/video.min.js"></script>
     <script src="carsRun.js?v=7"></script>
 <body>
-<img src="images/bg.png?v=1" class="bg" style="z-index:1">
+<img src="images/bg2.png?v=1" class="bg" style="z-index:1">
 <div style="z-index: 99999;top: 570px;left: 69px;width: 1920px;height: 1075.69px;" class="bg">
     <video width="400" height="268" src="viedo/1.mp4" autoplay="autoplay" loop="loop"></video>
 </div>
@@ -43,9 +43,14 @@
     <scene :viewport="viewport" :resolution="resolution">
 
         <layer ref="layer">
-            <group v-for="(car,key,i) in cars">
-                <sprite :attrs="{id:car['id'],size:car['size'],pos:[car['pos'][0],car['pos'][1]],textures:car['textures']}"
-                        ref="rcars"></sprite>
+            <group>
+                <sprite :pos=[371,158] :attr='{textures:"images/map_bottom.png"}'></sprite>
+                <sprite :pos=[434,147]  :attr='{textures:"images/map_down.png"}'></sprite>
+                <group v-for="(car,key,i) in cars">
+                    <sprite :attrs="{id:car['id'],size:car['size'],pos:[car['pos'][0],car['pos'][1]],textures:car['textures']}"
+                            ref="rcars"></sprite>
+                </group>
+                <sprite :pos='[434,147]' :attrs='{textures:"images/map_up.png"}'></sprite>
             </group>
             <s-label :attrs=date></s-label>
             <group v-for="line in lines" :pos="line['group']['pos']">
@@ -225,27 +230,27 @@
         car1: {
             id: "car1",
             pos: [carsRun["car1"][0]["x"], carsRun["car1"][0]["y"]],
-            size: [100, 100],
+            size: [120, 90],
             textures: "images/cars/violet/1.png"
-         },
-         car2: {
-             id: "car2",
-             pos: [carsRun["car2"][0]["x"], carsRun["car2"][0]["y"]],
-             size: [100, 100],
-             textures: "images/cars/blue/1.png"
-         },
-         car3: {
-             id: "car3",
-             pos: [carsRun["car3"][0]["x"], carsRun["car3"][0]["y"]],
-             size: [100, 100],
-             textures: "images/cars/pink/1.png"
-         },
-         car4: {
-             id: "car4",
-             pos: [carsRun["car4"][0]["x"], carsRun["car4"][0]["y"]],
-             size: [100, 100],
-             textures: "images/cars/green/1.png"
-         },
+        },
+        car2: {
+            id: "car2",
+            pos: [carsRun["car2"][0]["x"], carsRun["car2"][0]["y"]],
+            size: [120, 90],
+            textures: "images/cars/blue/1.png"
+        },
+        car3: {
+            id: "car3",
+            pos: [carsRun["car3"][0]["x"], carsRun["car3"][0]["y"]],
+            size: [120, 90],
+            textures: "images/cars/pink/1.png"
+        },
+        car4: {
+            id: "car4",
+            pos: [carsRun["car4"][0]["x"], carsRun["car4"][0]["y"]],
+            size: [120, 90],
+            textures: "images/cars/green/1.png"
+        },
     }
     scaleSize = function (dataset, index, type, height, scala = [0, 250]) {
         let hourMaxIndex = d3.scan(dataset, function (a, b) {
@@ -467,7 +472,7 @@
                 if (count > 300) {
                     count = 0;
                 }
-                count +=1;
+                count += 1;
                 for (const carId of Object.keys(cars)) {
                     let srcCar = cars[carId];
                     let carPath = carsRun[srcCar.id];
@@ -566,10 +571,10 @@
             let hour = 3 + Math.floor(9 * Math.random());
             return {hour: hour, area: Math.floor(hour * ((Math.random()) * 300))}
         })
-        var a=data.map(function (it, index) {
-         let   hw = huanWei[index];
-         console.log(hw)
-            hw.area = d3.format("4.3d")(Math.random() * 1000 )
+        var a = data.map(function (it, index) {
+            let hw = huanWei[index];
+            console.log(hw)
+            hw.area = d3.format("4.3d")(Math.random() * 1000)
             hw.hour = 1 + Math.floor(Math.random() * 12);
             hw.hourSize = scaleSize(data, index, "hour", 11);
             hw.areaSize = scaleSize(data, index, "area", 5);
@@ -623,9 +628,9 @@
         })
         return false
     });
-    $(function(){
-        $("video").each(function(){
-            $(this).get(0).ready(function(){
+    $(function () {
+        $("video").each(function () {
+            $(this)[0].ready(function () {
                 var myPlayer = this;
                 myPlayer.play();
             });
