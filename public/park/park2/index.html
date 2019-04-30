@@ -83,8 +83,8 @@
                 <s-label :attrs=weather['windPowerText']></s-label>
             </group>
             <group :pos="[2443,807]" :attrs="runingCarConfig" v-for="(carId,i) in runingIndx">
-                <sprite :pos='[60,i*88+30]'
-                        :attrs='{size:[50,50],textures:persons[runCars[carId]["personId"]]["img"]}'></sprite>
+                <sprite :pos='[40,i*88+25]'
+                        :attrs='{size:[70,70],textures:persons[runCars[carId]["personId"]]["img"]}'></sprite>
                 <s-label :pos='[125,i*88+40]'
                          :attrs='{font:runingCarConfig["personName"]["font"],fillColor:runingCarConfig["personName"]["fillColor"],text:persons[runCars[carId]["personId"]]["name"] }'></s-label>
                 <s-label :pos='[235,i*88+40]'
@@ -314,15 +314,15 @@
         "6": {img: "images/lines/line6.png", siteNum: 11, name: "6号线"}
     }
     persons = {
-        "ls": {name: "小韩", img: "images/persons/ls.png"},
-        "xb": {name: "小张", img: "images/persons/xb.png"},
-        "xz": {name: "小李", img: "images/persons/xz.png"},
-        "ss": {name: "小王", img: "images/persons/ss.png"}
+        "hxm": {name: "韩小美", img: "images/persons/hxm.png"},
+        "fym": {name: "范英明", img: "images/persons/fym.png"},
+        "lqj": {name: "李强军", img: "images/persons/lqj.png"},
+        "zj": {name: "张杰",   img: "images/persons/zj.png"},
     }
     runCars = {
         "B100801": {
             cardNo: "B100801",
-            personId: "ls",
+            personId: "fym",
             lineNo: "4",
             speed: " 32",
             upDate: "2019/04/26",
@@ -330,7 +330,7 @@
         },
         "B100802": {
             cardNo: "B100802",
-            personId: "xb",
+            personId: "lqj",
             lineNo: "3",
             speed: "  0",
             upDate: "2019/04/26",
@@ -338,7 +338,7 @@
         },
         "B100808": {
             cardNo: "B100808",
-            personId: "xz",
+            personId: "zj",
             lineNo: "5",
             speed: " 26",
             upDate: "2019/04/26",
@@ -346,7 +346,7 @@
         },
         "B100809": {
             cardNo: "B100809",
-            personId: "ss",
+            personId: "hxm",
             lineNo: "6",
             speed: " 60",
             upDate: "2019/04/26",
@@ -354,7 +354,7 @@
         },
         "B100812": {
             cardNo: "B100812",
-            personId: "ls",
+            personId: "fym",
             lineNo: "1",
             speed: " 16",
             upDate: "2019/04/26",
@@ -373,7 +373,7 @@
     ]
     alarms = {
         today: {num: " 6"},
-        week: {totalAlarmNum: 10+Math.floor(Math.random()*70)}
+        week: {totalAlarmNum: 10 + Math.floor(Math.random() * 70)}
     }
     weather = {
         pos: [79, 631],
@@ -490,10 +490,10 @@
     })
     setInterval(function () {
         try {
-            weather["temperature"]["text"] = 10 + Math.floor(28 * Math.random())
-            let num = 2+ Math.floor(68 * Math.random());
+            weather["temperature"]["text"] = 12 + Math.floor(4 * Math.random())
+            let num = 2 + Math.floor(12 * Math.random());
             alarms.today.num = num < 10 ? " " + num : num;
-            alarms.week.totalAlarmNum = num+ Math.floor(Math.random()*70); 
+            alarms.week.totalAlarmNum = num + Math.floor(Math.random() * 70);
             let total = 0;
             for (const his of histogram["values"]) {
                 let kNumber = Math.floor(Number(histogram["yArr"][0]) * Math.random());
@@ -504,7 +504,7 @@
 
         } catch (e) {
         }
-    }, 1000)
+    }, 30000)
     setInterval(function () {
         try {
             for (const his of logistics) {
