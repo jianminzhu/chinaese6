@@ -29,7 +29,7 @@
     <script src="js/video.min.js"></script>
     <script src="carsRun.js?v=7"></script>
 <body>
-<img src="images/bg2.png?v=2" class="bg" style="z-index:1">
+<img src="images/bg2.png?v=1" class="bg" style="z-index:1">
 <div style="z-index: 99999;top: 570px;left: 69px;width: 1920px;height: 1075.69px;" class="bg">
     <video width="400" height="268" src="viedo/1.mp4" autoplay="autoplay" loop="loop"></video>
 </div>
@@ -45,7 +45,7 @@
         <layer ref="layer">
             <group>
                 <sprite :pos=[371,158] :attr='{textures:"images/map_bottom.png"}'></sprite>
-                <sprite :pos=[434,147]  :attr='{textures:"images/map_down.png"}'></sprite>
+                <sprite :pos=[434,147] :attr='{textures:"images/map_down.png"}'></sprite>
                 <group v-for="(car,key,i) in cars">
                     <sprite :attrs="{id:car['id'],size:car['size'],pos:[car['pos'][0],car['pos'][1]],textures:car['textures']}"
                             ref="rcars"></sprite>
@@ -65,6 +65,10 @@
                          :attrs='{font:"24px RTWSYueRoudGoG0v1-Regular",fillColor:"#FF2B38",text:"次"}'></s-label>
                 <s-label :pos="[3169,200]"
                          :attrs='{font:"21px MicrosoftYaHeiUI",fillColor:"#AE4446",text:"今日预警"}'></s-label>
+                <s-label :pos="[2919,78]"
+                         :attrs='{font:"49px manteka_cyrillicregular",fillColor:"#FFF",text:alarms["week"]["totalAlarmNum"]}'></s-label>
+                <s-label :pos='[2929+(""+alarms["week"]["totalAlarmNum"]).length*30,93]'
+                         :attrs='{font:"31px manteka_cyrillicregular",fillColor:"#6D7D9F",text:"次"}'></s-label>
             </group>
             <group :pos="weather['pos']">
                 <sprite :attrs=weather['typeImg']></sprite>
@@ -368,21 +372,21 @@
         {per: 40, name: "饮料　", num: 16998},
     ]
     alarms = {
-        today: {num: " 6"}
+        today: {num: " 6"},
+        week: {totalAlarmNum: 10+Math.floor(Math.random()*70)}
     }
     weather = {
         pos: [79, 631],
-
-        temperature: {pos: [123, 90], text: "16", font: '30px bold manteka_cyrillicregular', fillColor: "#FFF"},
-        temperatureC: {pos: [160, 90], text: "℃", font: '30px  ArialMT', fillColor: "#AAC2EC"},
-        type: {pos: [123, 160], text: "大雨", font: '30px bold manteka_cyrillicregular', fillColor: "#FFF"},
+        temperature: {pos: [123, 85], text: "16", font: '30px bold manteka_cyrillicregular', fillColor: "#FFF"},
+        temperatureC: {pos: [160, 85], text: "℃", font: '30px  ArialMT', fillColor: "#AAC2EC"},
+        type: {pos: [123, 155], text: "大雨", font: '30px bold manteka_cyrillicregular', fillColor: "#FFF"},
         typeImg: {pos: [48, 145], textures: "images/weather/weather_bigRain.png"},
-        windDirect: {pos: [135, 235], font: '12px "Adobe Heiti Std R"', fillColor: "#AAC2EC", text: "风向:"},
-        windDirectText: {pos: [135, 255], font: '18px "Adobe Heiti Std R"', fillColor: "#FFF", text: "东南"},
-        windPower: {pos: [185, 235], font: '12px "Adobe Heiti Std R"', fillColor: "#AAC2EC", text: "风力:"},
-        windPowerText: {pos: [185, 255], font: '18px "Adobe Heiti Std R"', fillColor: "#FFF", text: "9级"},
-        warning: {pos: [55, 325], textures: "images/weather/台风预警.png"},
-        warningText: {pos: [45, 375], text: "台风预警", font: '16px "MicrosoftYaHeiUI"', fillColor: "#AAC2EC"},
+        windDirect: {pos: [125, 220], font: '12px "Adobe Heiti Std R"', fillColor: "#AAC2EC", text: "风向:"},
+        windDirectText: {pos: [125, 240], font: '20px  Adobe Heiti Std R', fillColor: "#FFF", text: "东南"},
+        windPower: {pos: [175, 220], font: '12px "Adobe Heiti Std R"', fillColor: "#AAC2EC", text: "风力:"},
+        windPowerText: {pos: [175, 240], font: '20px  Adobe Heiti Std R', fillColor: "#FFF", text: "9级"},
+        warning: {pos: [55, 315], textures: "images/weather/台风预警.png"},
+        warningText: {pos: [45, 365], text: "台风预警", font: '16px "MicrosoftYaHeiUI"', fillColor: "#AAC2EC"},
     }
     data = {
         resolution: resolution,
@@ -487,8 +491,9 @@
     setInterval(function () {
         try {
             weather["temperature"]["text"] = 10 + Math.floor(28 * Math.random())
-            let num = Math.floor(68 * Math.random());
+            let num = 2+ Math.floor(68 * Math.random());
             alarms.today.num = num < 10 ? " " + num : num;
+            alarms.week.totalAlarmNum = num+ Math.floor(Math.random()*70); 
             let total = 0;
             for (const his of histogram["values"]) {
                 let kNumber = Math.floor(Number(histogram["yArr"][0]) * Math.random());
