@@ -24,7 +24,7 @@ var PardAdv = /** @class */ (function () {
             anchor: [0, 0.3],
             size: [80, 80],
             pos: [x, y],
-            borderRadius: 50
+            borderRadius: 50,
         });
         this.cars[id] = car;
         var v = this;
@@ -32,7 +32,7 @@ var PardAdv = /** @class */ (function () {
             car.animate(v.genCarImgs(pic), {
                 duration: 1000,
                 iterations: Infinity,
-                direction: 'alternate'
+                direction: 'alternate',
             });
         }, 1000 * Math.random());
         this.layer.append(car);

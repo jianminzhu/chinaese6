@@ -126,15 +126,28 @@
                 <s-label :pos='[296,211]' :attrs='{font:"40px manteka_cyrillicregular",fillColor:"#FFF",text:logistics["pies"][3]["per"]}'></s-label>
                 <s-label :pos='[346,225]' :attrs='{font:"18px manteka_cyrillicregular",fillColor:"#FFF",text:"%"}'></s-label>
                 <s-label :pos='[296,306]' :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics["pies"][3]["name"]}'></s-label>
-                <!--  <s-label :pos='[356,306]' :attrs='{font:logisticsConf["num"]["font"],fillColor:logisticsConf["num"]["fillColor"],text:logistics["pies"][3]["num"]}'></s-label>-->
             </group>
-            <group :pos="[1897,1451]" v-for="(hw,i) in huanWei">
+            <s-label :attrs='{pos:[1441,1806] ,font:"18px STHeitiSC-Light",fillColor:"#748CBC",text:logistics["lastWeekTotal"] }'></s-label>
+
+
+            <group :pos="[1897,1451]" v-for="(hw,i) in huanWei['items']">
                 <sprite :attrs='{pos: [35, i*80],size: hw["hourSize"],bgcolor:"#42A6B3" }'></sprite>
                 <sprite :attrs='{pos: [35,  i*80+25],size: hw["areaSize"],bgcolor:"#6AA3E4" }'></sprite>
                 <s-label :attrs='{pos:[-10,i*80-20] ,font:"30px manteka_cyrillicregular",fillColor:"#7E95C6" , text:hw["day"]}'></s-label>
                 <s-label :attrs='{pos:[-40,i*80+25],font:"18px STHeitiSC-Light",fillColor:"#7E95C6" ,text:hw["yearMonth"]}'></s-label>
                 <s-label :attrs='{pos:[384,i*80 ] ,font:"24px manteka_cyrillicregular",fillColor:"#42A6B3",text:hw["hour"]+"H"}'></s-label>
                 <s-label :attrs='{pos:[384,i*80+25] ,font:"24px manteka_cyrillicregular",fillColor:"#FFFFFF",text:hw["area"]+"㎡"}'></s-label>
+            </group>
+            <s-label :attrs='{pos:[1988,1806] ,font:"18px STHeitiSC-Light",fillColor:"#748CBC",text:huanWei["lastWeekTotal"] }'></s-label>
+            <group>
+                <s-label :attrs='{pos:[969,1755] ,font:"47px manteka_cyrillicregular",fillColor:"#47D7C9",text:connections["totalNumPerson"] }'></s-label>
+                <s-label :attrs='{pos:[969+(""+connections["totalNumPerson"]).length*28,1776] ,font:"23px manteka_cyrillicregular",fillColor:"#47D7C9",text: "人" }'></s-label>
+                <s-label :attrs='{pos:[869,1806] ,font:"18px STHeitiSC-Light",fillColor:"#748CBC",text:connections["highTimes"] }'></s-label>
+                <s-label :attrs='{pos:[886,1836] ,font:"18px STHeitiSC-Light",fillColor:"#748CBC",text:connections["highDays"] }'></s-label>
+            </group>
+            <group>
+                <sprite :pos='[762,1422]' :attrs='{size:[423,259],textures: "images/bar_main.png"}'></sprite>
+                <sprite :pos='[762,1680]' :attrs='{size:[423,30],textures: "images/bar_foot.png"}'></sprite>
             </group>
         </layer>
     </scene>
@@ -156,13 +169,13 @@
                 .range(scala);
             return [scale(dataset[index][type]), height]
         }
+        var now = moment()
 
         huanWeiData = Array(4).fill(0).map((v, i) => {
             let hour = 3 + Math.floor(9 * Math.random());
             return {hour: hour, area: Math.floor(hour * ((Math.random()) * 300))}
         })
-        var now = moment()
-        huanWei = huanWeiData.map(function (it, index) {
+        huanWei =  huanWeiData.map(function (it, index) {
             var date = now.add(-1 * index, 'days')
             return {
                 day: date.format("DD"),
@@ -173,8 +186,6 @@
                 areaSize: scaleSize(huanWeiData, index, "area", 5),
             };
         });
-
-
         histogram = {
             conf: {
                 root: "images/charts/histogram",
@@ -301,7 +312,12 @@
             runCars,
             persons,
             linesArr,
-            huanWei,
+            huanWei:{items:huanWei,lastWeekTotal:"上周累计：136,700㎡"},
+            connections: {
+                totalNumPerson:"1762",
+                "highTimes":"上周高峰时段：6:00-7:00 、18:00-17:00",
+                "highDays":`  上周高峰日：${now.add(-1, 'days').format("MM/DD")}、${now.add(-3, 'days').format("MM/DD")}(月/日)`,
+            },
             histogram,
             logisticsConf,
             logistics,
