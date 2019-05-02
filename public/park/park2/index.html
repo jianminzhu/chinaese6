@@ -185,12 +185,12 @@
             },
             yArr: [600, 500, 400, 300, 200, 100, 0],
             values: [
-                {color: "blue", date: "4/11", value: 367}
+                {color: "blue", date: "4/11",   value: 367}
                 , {color: "blue", date: "4/12", value: 590}
                 , {color: "blue", date: "4/13", value: 322}
                 , {color: "blue", date: "4/14", value: 419}
                 , {color: "blue", date: "4/15", value: 530}
-                , {color: "blue", date: "4/16", value: 98}
+                , {color: "blue", date: "4/16", value: 260}
                 , {color: "pink", date: "4/17", value: 200}
             ],
             total: "" + (367 + 590 + 322 + 419 + 530 + 98 + 200),
@@ -349,8 +349,8 @@
 
             function upCar(car) {
                 let speed = Math.abs(Math.floor(Number(car["speed"]) + Math.ceil((Math.random() > 0.5 ? -1 : 1) * 10 * Math.random())));
-                if (speed > 100) {
-                    speed = Math.floor(100 - 10 * Math.random());
+                if (speed > 60) {
+                    speed = Math.floor(70 - 10 * Math.random());
                 }
                 car["speed"] = speed
                 car['upDate'] = date;
