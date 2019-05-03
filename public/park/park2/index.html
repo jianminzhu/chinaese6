@@ -13,13 +13,13 @@
         height: 1920px;
     }</style>
     <link rel="stylesheet" href="css/stylesheet.css"/>
-    <script src="js/jquery-3.3.1.min.js"></script> 
+    <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/moment.min.js"></script>
     <script src="js/d3/d3.v5.min.js"></script>
     <script src="js/sprite-vue.ext.js"></script>
     <script src="js/spritejs.min.js"></script>
     <script src="js/video.min.js"></script>
-    
+
 <body>
 <div style="position:absolute;z-index:  10;top: 1118px;left: 138px;height:400px">
     <video style="position: absolute;left: 1px" width="690" height="280" src="viedo/3.mp4" autoplay="autoplay"
@@ -33,26 +33,18 @@
     <scene :viewport="viewport" :resolution="resolution">
 
         <layer ref="layer">
-            <s-label
-                    :attrs='{pos: [2074, 135],font: "38px Digital-7Mono",fillColor: "#42A6B3",text:now_time }'></s-label>
+            <s-label  :attrs='{pos: [2074, 135],font: "38px Digital-7Mono",fillColor: "#42A6B3",text:now_time }'></s-label>
             <group :pos="[79,208]" v-for="(line,value ,i) in linesArr" :pos="line['group']['pos']">
                 <sprite :attrs='{pos: [41, i*70+90] ,size:[30,30] ,borderRadius: 50,bgcolor:line["color"]}'></sprite>
-                <s-label
-                        :attrs='{pos:[90, i*70+90] ,font:"27px MicrosoftYaHeiUI-Bold",fillColor:"#FFFFFF" ,text:line["name"]}'></s-label>
-                <s-label
-                        :attrs='{pos:[210,i*70+95] ,font:"18px MicrosoftYaHeiUILight",fillColor:line["color"]  ,text:line["siteNum"]}'></s-label>
+                <s-label  :attrs='{pos:[90, i*70+90] ,font:"27px MicrosoftYaHeiUI-Bold",fillColor:"#FFFFFF" ,text:line["name"]}'></s-label>
+                <s-label  :attrs='{pos:[210,i*70+95] ,font:"18px MicrosoftYaHeiUILight",fillColor:line["color"]  ,text:line["siteNum"]}'></s-label>
             </group>
             <group>
-                <s-label :pos="[3165,131]"
-                         :attrs='{font:"60px manteka_cyrillicregular",fillColor:"#FF2B38",text:alarms["today"]["num"]}'></s-label>
-                <s-label :pos="[3235,161]"
-                         :attrs='{font:"24px RTWSYueRoudGoG0v1-Regular",fillColor:"#6B7CA0",text:"次"}'></s-label>
-                <s-label :pos="[3169,200]"
-                         :attrs='{font:"21px MicrosoftYaHeiUI",fillColor:"#AE4446",text:"今日预警"}'></s-label>
-                <s-label :pos="[2919,78]"
-                         :attrs='{font:"49px manteka_cyrillicregular",fillColor:"#FFF",text:alarms["week"]["totalAlarmNum"]}'></s-label>
-                <s-label :pos='[2929+(""+alarms["week"]["totalAlarmNum"]).length*30,93]'
-                         :attrs='{font:"31px manteka_cyrillicregular",fillColor:"#6D7D9F",text:"次"}'></s-label>
+                <s-label  :attrs='{pos:[3165,131],font:"60px manteka_cyrillicregular",fillColor:"#FF2B38",text:alarms["today"]["num"]}'></s-label>
+                <s-label  :attrs='{pos:[3235,161],font:"24px RTWSYueRoudGoG0v1-Regular",fillColor:"#6B7CA0",text:"次"}'></s-label>
+                <s-label  :attrs='{pos:[3169,200],font:"21px MicrosoftYaHeiUI",fillColor:"#AE4446",text:"今日预警"}'></s-label>
+                <s-label  :attrs='{pos:[2919,78],font:"49px manteka_cyrillicregular",fillColor:"#FFF",text:alarms["week"]["totalAlarmNum"]}'></s-label>
+                <s-label  :attrs='{pos:[2929+(""+alarms["week"]["totalAlarmNum"]).length*30,93],font:"31px manteka_cyrillicregular",fillColor:"#6D7D9F",text:"次"}'></s-label>
             </group>
             <group :pos="weather['pos']">
                 <sprite :attrs=weather['typeImg']></sprite>
@@ -68,143 +60,133 @@
             </group>
             <group>
                 <group>
-                    <s-label
-                            :attrs='{pos:[2709,190] ,font:"28px bold manteka_cyrillicregular",fillColor:"#AE4446",text:focus["times"][0][0] }'></s-label>
-                    <s-label
-                            :attrs='{pos:[2799,190] ,font:"28px bold manteka_cyrillicregular",fillColor:"#AE4446",text:focus["times"][0][1] }'></s-label>
+                    <s-label  :attrs='{pos:[2709,190] ,font:"28px bold manteka_cyrillicregular",fillColor:"#AE4446",text:focus["times"][0][0] }'></s-label>
+                    <s-label  :attrs='{pos:[2799,190] ,font:"28px bold manteka_cyrillicregular",fillColor:"#AE4446",text:focus["times"][0][1] }'></s-label>
                     <sprite :attrs='{pos:[2732,218],size:[91,3],bgcolor:"#AE4446"}'></sprite>
 
-                    <s-label
-                            :attrs='{pos:[2901,190] ,font:"28px bold manteka_cyrillicregular",fillColor:"#AE4446",text:focus["times"][1][0] }'></s-label>
-                    <s-label
-                            :attrs='{pos:[3011,190] ,font:"28px bold manteka_cyrillicregular",fillColor:"#AE4446",text:focus["times"][1][1] }'></s-label>
+                    <s-label  :attrs='{pos:[2901,190] ,font:"28px bold manteka_cyrillicregular",fillColor:"#AE4446",text:focus["times"][1][0] }'></s-label>
+                    <s-label  :attrs='{pos:[3011,190] ,font:"28px bold manteka_cyrillicregular",fillColor:"#AE4446",text:focus["times"][1][1] }'></s-label>
                     <sprite :attrs='{pos:[2944,218],size:[91,3], bgcolor:"#AE4446" }'></sprite>
                 </group>
                 <group v-for="(it,i) in focus['days']">
-                    <s-label
-                            :attrs='{pos:[2682+i*60,259] ,font:"28px bold manteka_cyrillicregular",fillColor: focus["dayIsFocus"][i]?"#AE4446":"#3D485F",text:it}'></s-label>
+                    <s-label  :attrs='{pos:[2682+i*60,259] ,font:"28px bold manteka_cyrillicregular",fillColor: focus["dayIsFocus"][i]?"#AE4446":"#3D485F",text:it}'></s-label>
                 </group>
 
             </group>
             <group :pos="[2443,807]" :attrs="runingCarConfig" v-for="(carId,i) in runingIndx">
-                <sprite :pos='[40,i*88+25]'
-                        :attrs='{size:[70,70],textures:persons[runCars[carId]["personId"]]["img"]}'></sprite>
-                <s-label :pos='[125,i*88+40]'
-                         :attrs='{font:runingCarConfig["personName"]["font"],fillColor:runingCarConfig["personName"]["fillColor"],text:persons[runCars[carId]["personId"]]["name"] }'></s-label>
-                <s-label :pos='[235,i*88+40]'
-                         :attrs='{font:runingCarConfig["carNo"]["font"],fillColor:runingCarConfig["carNo"]["fillColor"],text:carId }'></s-label>
-                <sprite :pos='[430,i*88+40]'
-                        :attrs='{size:[30,30] ,borderRadius: 50,bgcolor:linesArr[runCars[carId]["lineNo"]]["color"]}'></sprite>
-                <s-label :pos='[540,i*88+40]'
-                         :attrs='{font:runingCarConfig["speed"]["font"],fillColor:runingCarConfig["speed"]["fillColor"],text:runCars[carId]["speed"] }'></s-label>
-                <s-label :pos='[600,i*88+52]'
-                         :attrs='{font:runingCarConfig["speedUnit"]["font"],fillColor:runingCarConfig["speedUnit"]["fillColor"],text:"KM"}'></s-label>
-                <s-label :pos='[770,i*88+20]'
-                         :attrs='{font:runingCarConfig["upDate"]["font"],fillColor:runingCarConfig["upDate"]["fillColor"],text:runCars[carId]["upDate"]}'></s-label>
-                <s-label :pos='[750,i*88+49]'
-                         :attrs='{font:runingCarConfig["upTime"]["font"],fillColor:runingCarConfig["upTime"]["fillColor"],text:runCars[carId]["upTime"]}'></s-label>
+                <sprite :pos='[40,i*88+25]'  :attrs='{size:[70,70],textures:persons[runCars[carId]["personId"]]["img"]}'></sprite>
+                <s-label :pos='[125,i*88+40]'  :attrs='{font:runingCarConfig["personName"]["font"],fillColor:runingCarConfig["personName"]["fillColor"],text:persons[runCars[carId]["personId"]]["name"] }'></s-label>
+                <s-label :pos='[235,i*88+40]'  :attrs='{font:runingCarConfig["carNo"]["font"],fillColor:runingCarConfig["carNo"]["fillColor"],text:carId }'></s-label>
+                <sprite :pos='[430,i*88+40]'  :attrs='{size:[30,30] ,borderRadius: 50,bgcolor:linesArr[runCars[carId]["lineNo"]]["color"]}'></sprite>
+                <s-label :pos='[540,i*88+40]'  :attrs='{font:runingCarConfig["speed"]["font"],fillColor:runingCarConfig["speed"]["fillColor"],text:runCars[carId]["speed"] }'></s-label>
+                <s-label :pos='[600,i*88+52]'  :attrs='{font:runingCarConfig["speedUnit"]["font"],fillColor:runingCarConfig["speedUnit"]["fillColor"],text:"KM"}'></s-label>
+                <s-label :pos='[770,i*88+20]'  :attrs='{font:runingCarConfig["upDate"]["font"],fillColor:runingCarConfig["upDate"]["fillColor"],text:runCars[carId]["upDate"]}'></s-label>
+                <s-label :pos='[750,i*88+49]'  :attrs='{font:runingCarConfig["upTime"]["font"],fillColor:runingCarConfig["upTime"]["fillColor"],text:runCars[carId]["upTime"]}'></s-label>
             </group>
             <group>
                 <group :pos="[122,1425]" v-for="(yVal,i) in histogram['yArr']">
-                    <s-label :pos='[-50,Math.floor(276*(1-yVal/histogram["yArr"][0]))]'
-                             :attrs='{font:"18px STHeitiSC-Light",fillColor:"#61749C",text:yVal}'></s-label>
+                    <s-label :pos='[-50,Math.floor(276*(1-yVal/histogram["yArr"][0]))]'  :attrs='{font:"18px STHeitiSC-Light",fillColor:"#61749C",text:yVal}'></s-label>
                 </group>
                 <group :pos="[122,1425]" v-for="(his,i) in histogram['values']">
                     <group :pos="[i*65,0]">
-                        <sprite :pos='[10,220]'
-                                :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["bottom"]}'></sprite>
-                        <sprite :pos='[20,280]'
-                                :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["foot"]}'></sprite>
-                        <sprite :pos='[20,Math.floor(276*(his["value"]/histogram["yArr"][0]))-5]'
-                                :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["head"]}'></sprite>
-                        <sprite :pos='[20,Math.floor(276*(his["value"]/histogram["yArr"][0]))+10]'
-                                :attrs='{ size:[28,276*(1-his["value"]/histogram["yArr"][0])],textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["main"]}'></sprite>
-                        <s-label :pos='[20,306]'
-                                 :attrs='{font:"18px STHeitiSC-Light",fillColor:"#61749C",text:his["date"]}'></s-label>
+                        <sprite :pos='[10,-10+220]' :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["bottom"]}'></sprite>
+                        <sprite :pos='[20,-10+280]' :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["foot"]}'></sprite>
+                        <sprite :pos='[20,-10+Math.floor(276*(his["value"]/histogram["yArr"][0]))-5]' :attrs='{ textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["head"]}'></sprite>
+                        <sprite :pos='[20,-10+Math.floor(276*(his["value"]/histogram["yArr"][0]))+10]' :attrs='{ size:[28,276*(1-his["value"]/histogram["yArr"][0])],textures:histogram["conf"]["root"]+"/"+his["color"]+"/"+histogram["conf"]["main"]}'></sprite>
+                        <s-label :pos='[20,306]' :attrs='{font:"18px STHeitiSC-Light",fillColor:"#61749C",text:his["date"]}'></s-label>
                     </group>
                 </group>
-                <s-label :pos='[293,1760]'
-                         :attrs='{font:"47px  manteka_cyrillicregular",fillColor:"#47D7C9",text:histogram["total"]}'></s-label>
-                <s-label :pos='[histogram["total"].length*30 +293 ,1780]'
-                         :attrs='{font:"23px RTWSYueRoudGoG0v1-Regular",fillColor:"#93C8DC",text:"公里"}'></s-label>
-                <s-label :pos='[264,1809]'
-                         :attrs='{font:"18px  STHeitiSC-Light",fillColor:"#748CBC",text:"上周累计"}'></s-label>
-                <s-label :pos='[histogram["lastWeekTotal"].length*20 +264 ,1809]'
-                         :attrs='{font:"18px  STHeitiSC-Light",fillColor:"#748CBC",text:histogram["lastWeekTotal"]+" 公里"}'></s-label>
+                <s-label :pos='[293,1752]'  :attrs='{font:"47px  manteka_cyrillicregular",fillColor:"#47D7C9",text:histogram["total"]}'></s-label>
+                <s-label :pos='[histogram["total"].length*30 +293 ,1778]'  :attrs='{font:"23px RTWSYueRoudGoG0v1-Regular",fillColor:"#93C8DC",text:"公里"}'></s-label>
+
+                <s-label :pos='[244,1810]'  :attrs='{font:"18px  STHeitiSC-Light",fillColor:"#748CBC",text:"上周累计"}'></s-label>
+                <s-label :pos='[histogram["lastWeekTotal"].length*20 +264 ,1809]'  :attrs='{font:"18px  STHeitiSC-Light",fillColor:"#748CBC",text:histogram["lastWeekTotal"]+" 公里"}'></s-label>
             </group>
             <group :pos=[1344,1406]>
-                <sprite :pos='[28,35]'
-                        :attrs='{ textures: "images/charts/pie/"+Math.floor(logistics["pies"][0]["per"])+".png"}'></sprite>
-                <s-label :pos='[68,40]'
-                         :attrs='{font:"40px manteka_cyrillicregular",fillColor:"#FFF",text:logistics["pies"][0]["per"]}'></s-label>
-                <s-label :pos='[118,55]'
-                         :attrs='{font:"18px manteka_cyrillicregular",fillColor:"#FFF",text:"%"}'></s-label>
-                <s-label :pos='[78,135]'
-                         :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics["pies"][0]["name"]}'></s-label>
-                <!--  <s-label :pos='[128,135]' :attrs='{font:logisticsConf["num"]["font"],fillColor:logisticsConf["num"]["fillColor"],text:logistics["pies"][0]["num"]}'></s-label>-->
-                <sprite :pos='[256,35]'
-                        :attrs='{ textures: "images/charts/pie/"+Math.floor(logistics["pies"][1]["per"])+".png"}'></sprite>
-                <s-label :pos='[296,40]'
-                         :attrs='{font:"40px manteka_cyrillicregular",fillColor:"#FFF",text:logistics["pies"][1]["per"]}'></s-label>
-                <s-label :pos='[346,55]'
-                         :attrs='{font:"18px manteka_cyrillicregular",fillColor:"#FFF",text:"%"}'></s-label>
-                <s-label :pos='[296,135]'
-                         :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics["pies"][1]["name"]}'></s-label>
-                <!--  <s-label :pos='[356,135]' :attrs='{font:logisticsConf["num"]["font"],fillColor:logisticsConf["num"]["fillColor"],text:logistics["pies"][1]["num"]}'></s-label>-->
+                <sprite :pos='[28,35]'  :attrs='{ textures: "images/charts/pie/"+Math.floor(logistics["pies"][0]["per"])+".png"}'></sprite>
+                <s-label :pos='[28+40,35+5]'  :attrs='{font:"40px manteka_cyrillicregular",fillColor:"#FFF",text:logistics["pies"][0]["per"]}'></s-label>
+                <s-label :pos='[28+90,35+20]' :attrs='{font:"18px manteka_cyrillicregular",fillColor:"#FFF",text:"%"}'></s-label>
+                <s-label :pos='[28+20,35+100]' :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics["pies"][0]["name"]}'></s-label>
+                <s-label :attrs='{pos:[28+ 10+logistics["pies"][0]["name"].length*28,35+92],font: "28px manteka_cyrillicregular",fillColor:"#FFFFFF",text:logistics["pies"][0]["num"]}'></s-label>
 
 
-                <sprite :pos='[28,206]'
-                        :attrs='{ textures: "images/charts/pie/"+Math.floor(logistics["pies"][2]["per"])+".png"}'></sprite>
-                <s-label :pos='[68,211]'
-                         :attrs='{font:"40px manteka_cyrillicregular",fillColor:"#FFF",text:logistics["pies"][2]["per"]}'></s-label>
-                <s-label :pos='[118,225]'
-                         :attrs='{font:"18px manteka_cyrillicregular",fillColor:"#FFF",text:"%"}'></s-label>
-                <s-label :pos='[78,306]'
-                         :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics["pies"][2]["name"]}'></s-label>
-                <!--  <s-label :pos='[128,306]' :attrs='{font:logisticsConf["num"]["font"],fillColor:logisticsConf["num"]["fillColor"],text:logistics["pies"][2]["num"]}'></s-label>-->
+                <sprite :pos='[256,35]'  :attrs='{ textures: "images/charts/pie/"+Math.floor(logistics["pies"][1]["per"])+".png"}'></sprite>
+                <s-label :pos='[256+40,35+5]'  :attrs='{font:"40px manteka_cyrillicregular",fillColor:"#FFF",text:logistics["pies"][1]["per"]}'></s-label>
+                <s-label :pos='[256+90,35+20]' :attrs='{font:"18px manteka_cyrillicregular",fillColor:"#FFF",text:"%"}'></s-label>
+                <s-label :pos='[256+20,35+100]' :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics["pies"][1]["name"]}'></s-label>
+                <s-label :attrs='{pos:[256+ logistics["pies"][1]["name"].length*30,35+92],font: "28px manteka_cyrillicregular",fillColor:"#FFFFFF",text:logistics["pies"][1]["num"]}'></s-label>
 
 
-                <sprite :pos='[256,206]'
-                        :attrs='{ textures:"images/charts/pie/"+Math.floor(logistics["pies"][3]["per"])+".png"}'></sprite>
-                <s-label :pos='[296,211]'
-                         :attrs='{font:"40px manteka_cyrillicregular",fillColor:"#FFF",text:logistics["pies"][3]["per"]}'></s-label>
-                <s-label :pos='[346,225]'
-                         :attrs='{font:"18px manteka_cyrillicregular",fillColor:"#FFF",text:"%"}'></s-label>
-                <s-label :pos='[296,306]'
-                         :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics["pies"][3]["name"]}'></s-label>
+                <sprite :pos='[256,206]'  :attrs='{ textures: "images/charts/pie/"+Math.floor(logistics["pies"][2]["per"])+".png"}'></sprite>
+                <s-label :pos='[28+40,206+5]'  :attrs='{font:"40px manteka_cyrillicregular",fillColor:"#FFF",text:logistics["pies"][0]["per"]}'></s-label>
+                <s-label :pos='[28+90,206+20]' :attrs='{font:"18px manteka_cyrillicregular",fillColor:"#FFF",text:"%"}'></s-label>
+                <s-label :pos='[28+20,206+100]' :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics["pies"][2]["name"]}'></s-label>
+                <s-label :attrs='{pos:[28+ logistics["pies"][2]["name"].length*25,206+92],font: "28px manteka_cyrillicregular",fillColor:"#FFFFFF",text:logistics["pies"][2]["num"]}'></s-label>
+
+
+                <sprite :pos='[256,206]'  :attrs='{ textures:"images/charts/pie/"+Math.floor(logistics["pies"][3]["per"])+".png"}'></sprite>
+                <s-label :pos='[256+40,206+5]'  :attrs='{font:"40px manteka_cyrillicregular",fillColor:"#FFF",text:logistics["pies"][3]["per"]}'></s-label>
+                <s-label :pos='[256+90,206+20]' :attrs='{font:"18px manteka_cyrillicregular",fillColor:"#FFF",text:"%"}'></s-label>
+                <s-label :pos='[256+20,206+100]' :attrs='{font:logisticsConf["name"]["font"],fillColor:logisticsConf["name"]["fillColor"],text:logistics["pies"][3]["name"]}'></s-label>
+                <s-label :attrs='{pos:[256+20+ logistics["pies"][3]["name"].length*25,206+92],font: "28px manteka_cyrillicregular",fillColor:"#FFFFFF",text:logistics["pies"][3]["num"]}'></s-label>
             </group>
-            <s-label
-                    :attrs='{pos:[1441,1806] ,font:"18px STHeitiSC-Light",fillColor:"#748CBC",text:logistics["lastWeekTotal"] }'></s-label>
+            <s-label  :attrs='{pos:[1441,1806] ,font:"18px STHeitiSC-Light",fillColor:"#748CBC",text:logistics["lastWeekTotal"] }'></s-label>
+
+            <s-label  :attrs='{pos:[1556, 1750] ,font:"47px  manteka_cyrillicregular",fillColor:"#47D7C9",text:logistics["total"] }'></s-label>
+            <s-label  :attrs='{pos:[1556+(""+logistics["total"]).length*28,1778] ,font:"18px STHeitiSC-Light",fillColor:"#93C8DC",text:"万元" }'></s-label>
 
 
             <group :pos="[1897,1451]" v-for="(hw,i) in huanWei['items']">
                 <sprite :attrs='{pos: [35, i*80],size: hw["hourSize"],bgcolor:"#42A6B3" }'></sprite>
                 <sprite :attrs='{pos: [35,  i*80+25],size: hw["areaSize"],bgcolor:"#6AA3E4" }'></sprite>
-                <s-label
-                        :attrs='{pos:[-10,i*80-20] ,font:"30px manteka_cyrillicregular",fillColor:"#7E95C6" , text:hw["day"]}'></s-label>
-                <s-label
-                        :attrs='{pos:[-40,i*80+25],font:"18px STHeitiSC-Light",fillColor:"#7E95C6" ,text:hw["yearMonth"]}'></s-label>
-                <s-label
-                        :attrs='{pos:[384,i*80 ] ,font:"24px manteka_cyrillicregular",fillColor:"#42A6B3",text:hw["hour"]+"H"}'></s-label>
-                <s-label
-                        :attrs='{pos:[384,i*80+25] ,font:"24px manteka_cyrillicregular",fillColor:"#FFFFFF",text:hw["area"]+"㎡"}'></s-label>
+                <s-label  :attrs='{pos:[-10,i*80-20] ,font:"30px manteka_cyrillicregular",fillColor:"#7E95C6" , text:hw["day"]}'></s-label>
+                <s-label  :attrs='{pos:[-40,i*80+25],font:"18px STHeitiSC-Light",fillColor:"#7E95C6" ,text:hw["yearMonth"]}'></s-label>
+                <s-label  :attrs='{pos:[384,i*80 ] ,font:"24px manteka_cyrillicregular",fillColor:"#42A6B3",text:hw["hour"]+"H"}'></s-label>
+                <s-label  :attrs='{pos:[384,i*80+25] ,font:"24px manteka_cyrillicregular",fillColor:"#FFFFFF",text:hw["area"]+"㎡"}'></s-label>
             </group>
-            <s-label
-                    :attrs='{pos:[1988,1806] ,font:"18px STHeitiSC-Light",fillColor:"#748CBC",text:huanWei["lastWeekTotal"] }'></s-label>
+            <s-label  :attrs='{pos:[1988,1806] ,font:"18px STHeitiSC-Light",fillColor:"#748CBC",text:huanWei["lastWeekTotal"] }'></s-label>
             <group>
-                <s-label
-                        :attrs='{pos:[969,1755] ,font:"47px manteka_cyrillicregular",fillColor:"#47D7C9",text:connections["totalNumPerson"] }'></s-label>
-                <s-label
-                        :attrs='{pos:[969+(""+connections["totalNumPerson"]).length*28,1776] ,font:"23px manteka_cyrillicregular",fillColor:"#47D7C9",text: "人" }'></s-label>
-                <s-label
-                        :attrs='{pos:[869,1806] ,font:"18px STHeitiSC-Light",fillColor:"#748CBC",text:connections["highTimes"] }'></s-label>
-                <s-label
-                        :attrs='{pos:[886,1836] ,font:"18px STHeitiSC-Light",fillColor:"#748CBC",text:connections["highDays"] }'></s-label>
+                <s-label  :attrs='{pos:[969,1750] ,font:"47px manteka_cyrillicregular",fillColor:"#47D7C9",text:connections["totalNumPerson"] }'></s-label>
+                <s-label  :attrs='{pos:[969+(""+connections["totalNumPerson"]).length*28,1773] ,font:"23px manteka_cyrillicregular",fillColor:"#47D7C9",text: "人" }'></s-label>
+                <s-label  :attrs='{pos:[853,1808] ,font:"18px STHeitiSC-Light",fillColor:"#748CBC",text:connections["highTimes"] }'></s-label>
+                <s-label  :attrs='{pos:[853,1836] ,font:"18px STHeitiSC-Light",fillColor:"#748CBC",text:connections["highDays"] }'></s-label>
             </group>
+            <group><!--bar--->
+                <sprite :pos='[762,1442]' :attrs='{size:[423,259],textures: "images/area.png"}'></sprite>
+            </group>
+
             <group>
-                <sprite :pos='[762,1422]' :attrs='{size:[423,259],textures: "images/bar_main.png"}'></sprite>
-                <sprite :pos='[762,1680]' :attrs='{size:[423,30],textures: "images/bar_foot.png"}'></sprite>
+                <sprite :pos='[2523,433] ' :attrs='{ textures:"images/carRingBack.png"}'></sprite>
+                <s-label :attrs='{pos:[2492,486],font:"22px manteka_cyrillicregular",fillColor:"#FFFFFF",text:"728"}' ></s-label>
+                <s-label :attrs='{pos:[2492+44,486+12],font:"13px MicrosoftYaHeiUILight",fillColor:"#AFDDFF",text:"km"}' ></s-label>
+                <s-label :attrs='{pos:[2494,486+36],font:"14px MicrosoftYaHeiUILight",fillColor:"#9BAFDB",text:"43 小时"}' ></s-label>
+
+                <s-label :attrs='{pos:[2822,476],font:"22px manteka_cyrillicregular",fillColor:"#FFFFFF",text:"1118"}' ></s-label>
+                <s-label :attrs='{pos:[2822+48,476+12],font:"13px MicrosoftYaHeiUILight",fillColor:"#AFDDFF",text:"km"}' ></s-label>
+                <s-label :attrs='{pos:[2822,476+36],font:"14px MicrosoftYaHeiUILight",fillColor:"#9BAFDB",text:"40 小时"}' ></s-label>
+
+                <s-label :attrs='{pos:[2494,595],font:"22px manteka_cyrillicregular",fillColor:"#FFFFFF",text:"369"}' ></s-label>
+                <s-label :attrs='{pos:[2492+44,595+12],font:"13px MicrosoftYaHeiUILight",fillColor:"#AFDDFF",text:"km"}' ></s-label>
+                <s-label :attrs='{pos:[2494,595+36],font:"14px MicrosoftYaHeiUILight",fillColor:"#9BAFDB",text:"43 小时"}' ></s-label>
+
+                <s-label :attrs='{pos:[2822,595],font:"22px manteka_cyrillicregular",fillColor:"#FFFFFF",text:"450"}' ></s-label>
+                <s-label :attrs='{pos:[2822+44,595+12],font:"13px MicrosoftYaHeiUILight",fillColor:"#AFDDFF",text:"km"}' ></s-label>
+                <s-label :attrs='{pos:[2822,595+36],font:"14px MicrosoftYaHeiUILight",fillColor:"#9BAFDB",text:"60 小时"}' ></s-label>
+
+                <sprite :pos='[2954,433] ' :attrs='{ textures:"images/carRing.png"}'></sprite>
+                <s-label :attrs='{pos:[2933,482],font:"22px manteka_cyrillicregular",fillColor:"#FFFFFF",text:"10"}' ></s-label>
+                <s-label :attrs='{pos:[2959,494],font:"13px MicrosoftYaHeiUILight",fillColor:"#AFDDFF",text:"辆"}' ></s-label>
+
+                <s-label :attrs='{pos:[3253,472],font:"22px manteka_cyrillicregular",fillColor:"#FFFFFF",text:"5"}' ></s-label>
+                <s-label :attrs='{pos:[3268,483],font:"13px MicrosoftYaHeiUILight",fillColor:"#AFDDFF",text:"辆"}' ></s-label>
+
+                <s-label :attrs='{pos:[3253,595],font:"22px manteka_cyrillicregular",fillColor:"#FFFFFF",text:"7"}' ></s-label>
+                <s-label :attrs='{pos:[3268,606],font:"13px MicrosoftYaHeiUILight",fillColor:"#AFDDFF",text:"辆"}' ></s-label>
+
+                <s-label :attrs='{pos:[2943,595],font:"22px manteka_cyrillicregular",fillColor:"#FFFFFF",text:"3"}' ></s-label>
+                <s-label :attrs='{pos:[2958,606],font:"13px MicrosoftYaHeiUILight",fillColor:"#AFDDFF",text:"辆"}' ></s-label>
             </group>
+
         </layer>
     </scene>
 </div>
