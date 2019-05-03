@@ -4,8 +4,8 @@
 
 @font-face {
     font-family: 'digital-7mono';
-    src: url('css/dahot.digital-7_mono-webfont.woff2') format('woff2'),
-         url('css/dahot.digital-7_mono-webfont.woff') format('woff');
+    src: url('dahot.digital-7_mono-webfont.woff2') format('woff2'),
+         url('dahot.digital-7_mono-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -16,8 +16,8 @@
 
 @font-face {
     font-family: 'manteka_cyrillicregular';
-    src: url('css/manteka_cyrillic_regular-webfont.woff2') format('woff2'),
-         url('css/manteka_cyrillic_regular-webfont.woff') format('woff');
+    src: url('manteka_cyrillic_regular-webfont.woff2') format('woff2'),
+         url('manteka_cyrillic_regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
