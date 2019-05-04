@@ -133,7 +133,7 @@
             <s-label  :attrs='{pos:[1441,1806] ,font:"18px STHeitiSC-Light",fillColor:"#748CBC",text:logistics["lastWeekTotal"] }'></s-label>
 
             <s-label  :attrs='{pos:[1556, 1750] ,font:"47px  manteka_cyrillicregular",fillColor:"#47D7C9",text:logistics["total"] }'></s-label>
-            <s-label  :attrs='{pos:[1556+(""+logistics["total"]).length*28,1778] ,font:"18px STHeitiSC-Light",fillColor:"#93C8DC",text:"万元" }'></s-label>
+            <s-label  :attrs='{pos:[1556+(""+logistics["total"]).length*28,1778] ,font:"23px STHeitiSC-Light",fillColor:"#93C8DC",text:"万元" }'></s-label>
 
 
             <group :pos="[1897,1451]" v-for="(hw,i) in huanWei['items']">
@@ -147,7 +147,7 @@
             <s-label  :attrs='{pos:[1988,1806] ,font:"18px STHeitiSC-Light",fillColor:"#748CBC",text:huanWei["lastWeekTotal"] }'></s-label>
             <group>
                 <s-label  :attrs='{pos:[969,1750] ,font:"47px manteka_cyrillicregular",fillColor:"#47D7C9",text:connections["totalNumPerson"] }'></s-label>
-                <s-label  :attrs='{pos:[969+(""+connections["totalNumPerson"]).length*28,1773] ,font:"23px manteka_cyrillicregular",fillColor:"#47D7C9",text: "人" }'></s-label>
+                <s-label  :attrs='{pos:[969+(""+connections["totalNumPerson"]).length*28,1773] ,font:"23px manteka_cyrillicregular",fillColor:"#93C8DC",text: "人" }'></s-label>
                 <s-label  :attrs='{pos:[853,1808] ,font:"18px STHeitiSC-Light",fillColor:"#748CBC",text:connections["highTimes"] }'></s-label>
                 <s-label  :attrs='{pos:[853,1836] ,font:"18px STHeitiSC-Light",fillColor:"#748CBC",text:connections["highDays"] }'></s-label>
             </group>
