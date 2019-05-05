@@ -55,12 +55,12 @@ class Addr extends Base
         $data = [];
         $stateid = request()->param("stateid");
         if ($stateid && trim($stateid) != "") {
-            $data = Db::query("select translation as n, attributeid as v, countryid  from cupidaddress where stateid=? order by sort asc", [$stateid]);
+            $data = Db::query("select translation as n, attributeid as v, countryid  from cupidaddress where stateid=? order by sort asc ,attributeid ASC", [$stateid]);
         }
         $toLang = $this->getLang();
         $countryid = request()->param("countryid");
         if ($countryid && trim($countryid) != "") {
-            $data = Db::query("select translation as n, attributeid as v, countryid  from cupidaddress where stateid is null  and countryid=? order by sort asc", [$countryid]);
+            $data = Db::query("select translation as n, attributeid as v, countryid  from cupidaddress where stateid is null  and countryid=? order by sort asc ,attributeid ASC", [$countryid]);
 
         }
         if ($toLang == "en-us") {
