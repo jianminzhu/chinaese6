@@ -22,13 +22,19 @@
 
 <body>
 <div style="position:absolute;z-index:  10;top: 1118px;left: 138px;height:400px">
-    <video style="position: absolute;left: 1px" width="690" height="280" src="viedo/3.mp4" autoplay="autoplay"
-           loop="loop"></video>
+    <video style="position: absolute;left: 1px" width="690" height="280" src="viedo/3.mp4" autoplay="autoplay" loop="loop"></video>
     <video style="position: absolute;left: 752px;" width="690" height="280" src="viedo/2.mp4" autoplay="autoplay"
            loop="loop"></video>
     <video style="position: absolute;left: 1506px;" width="680" height="280" src="viedo/1.mp4" autoplay="autoplay"
            loop="loop"></video>
 </div>
+<div style="position:absolute;z-index:  10;">
+    <video width="387" height="216" style="z-index:12;position: absolute;left: 2487px;top: 1335px;" src="viedos/viedo.mp4" autoplay="autoplay" loop="loop"></video>
+    <video width="387" height="216" style="z-index:12;position: absolute;left: 2919px;top: 1587px;" src="viedos/viedo1.mp4" autoplay="autoplay" loop="loop"></video>
+    <video width="387" height="216" style="z-index:12;position: absolute;left: 2919px;top: 1335px;" src="viedos/viedo2.mp4" autoplay="autoplay" loop="loop"></video>
+    <video width="387" height="216" style="z-index:12;position: absolute;left: 2487px;top: 1590px;" src="viedos/viedo3.mp4" autoplay="autoplay" loop="loop"></video>
+</div>
+
 <div id="app" class="bg" style="z-index:  9;width:3427px;height:  1920px">
     <scene :viewport="viewport" :resolution="resolution">
 
@@ -75,6 +81,7 @@
             </group>
             <group :pos="[2443,807]" :attrs="runingCarConfig" v-for="(carId,i) in runingIndx">
                 <sprite :pos='[40,i*88+25]'  :attrs='{size:[70,70],textures:persons[runCars[carId]["personId"]]["img"]}'></sprite>
+                
                 <s-label :pos='[125,i*88+40]'  :attrs='{font:runingCarConfig["personName"]["font"],fillColor:runingCarConfig["personName"]["fillColor"],text:persons[runCars[carId]["personId"]]["name"] }'></s-label>
                 <s-label :pos='[235,i*88+40]'  :attrs='{font:runingCarConfig["carNo"]["font"],fillColor:runingCarConfig["carNo"]["fillColor"],text:carId }'></s-label>
                 <sprite :pos='[430,i*88+40]'  :attrs='{size:[30,30] ,borderRadius: 50,bgcolor:linesArr[runCars[carId]["lineNo"]]["color"]}'></sprite>
@@ -172,6 +179,13 @@
                 <s-label :attrs='{pos:[2822,595],font:"22px manteka_cyrillicregular",fillColor:"#FFFFFF",text:"450"}' ></s-label>
                 <s-label :attrs='{pos:[2822+44,595+12],font:"13px MicrosoftYaHeiUILight",fillColor:"#AFDDFF",text:"km"}' ></s-label>
                 <s-label :attrs='{pos:[2822,595+36],font:"14px MicrosoftYaHeiUILight",fillColor:"#9BAFDB",text:"60 小时"}' ></s-label>
+                <group>
+                <s-label :attrs='{pos:[2637-25,438],font:"36px manteka_cyrillicregular",fillColor:"#FFFFFF",text:"2655"}' ></s-label>
+                <s-label :attrs='{pos:[2637-25+4*23,449],font:"22px manteka_cyrillicregular",fillColor:"#AFDDFF",text:"km"}' ></s-label>
+                <s-label :attrs='{pos:[2637-50+2*23,479],font:"22px manteka_cyrillicregular",fillColor:"#AFDDFF",text:"186小时"}' ></s-label>
+
+                <s-label :attrs='{pos:[3075-10,438],font:"36px manteka_cyrillicregular",fillColor:"#FFFFFF",text:"25"}' ></s-label>
+                <s-label :attrs='{pos:[3075-10+2*23,449],font:"22px manteka_cyrillicregular",fillColor:"#AFDDFF",text:"辆"}' ></s-label>
 
                 <sprite :pos='[2954,433] ' :attrs='{ textures:"images/carRing.png"}'></sprite>
                 <s-label :attrs='{pos:[2933,482],font:"22px manteka_cyrillicregular",fillColor:"#FFFFFF",text:"10"}' ></s-label>
@@ -185,6 +199,7 @@
 
                 <s-label :attrs='{pos:[2943,595],font:"22px manteka_cyrillicregular",fillColor:"#FFFFFF",text:"3"}' ></s-label>
                 <s-label :attrs='{pos:[2958,606],font:"13px MicrosoftYaHeiUILight",fillColor:"#AFDDFF",text:"辆"}' ></s-label>
+                </group>
             </group>
 
         </layer>
