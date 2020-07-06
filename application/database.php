@@ -14,10 +14,14 @@ return [
     // 数据库类型
     'type' => 'mysql',
     //   'hostname' => '127.0.0.1',
-    'hostname'        => 'az1-ls7.a2hosting.com',
+//    'hostname'        => 'az1-ls7.a2hosting.com',
+//    'database' => 'chinese6_companion',
+//    'username' => 'chinese6_test2',
+//    'password' => 'xAGfF&WzdLP$',
+    'hostname'        => 'localhost',
     'database' => 'chinese6_companion',
-    'username' => 'chinese6_test2',
-    'password' => 'xAGfF&WzdLP$',
+    'username' => 'root',
+    'password' => 'root',
     // 端口
 //    'hostport'        => Env::get('database.hostport', '3306'),
     'hostport' => 3306,

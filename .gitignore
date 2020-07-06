@@ -1,5 +1,5 @@
-/runtime
-/.idea
-/.idea/workspace.xml
-/public/shenghui.txt
-/public/Uploads
+/runtime/
+/.idea/
+/public/Uploads/
+/application/database.php
+
