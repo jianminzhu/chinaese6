@@ -13,7 +13,7 @@ require("class.smtp.php"); //下载的文件必须放在该文件所在目录
 function sendMail( $toEmail, $subject, $body)
 {
     $userName = '442469884@qq.com';
-    $password = '？？？？？？';
+    $password = '';
     $fromEmail = $userName;
     // 实例化PHPMailer核心类
     $mail = new PHPMailer();
