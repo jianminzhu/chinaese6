@@ -15,19 +15,19 @@ function sendMail($toEmail, $subject, $body)
     $test = [
         "gmail" => [
             'host' => "smtp.gmail.com",
-            'userName' => 'zhujianmin2008@gmail.com',
+            'username' => 'zhujianmin2008@gmail.com',
             'password' => '',
             'port' => 465,
             'SMTPSecure' => 'ssl',
         ], "qq" => [
             'host' => "smtp.qq.com",
-            'userName' => '442469884@qq.com',
+            'username' => '442469884@qq.com',
             'password' => '',
             'port' => 465,
             'SMTPSecure' => 'ssl',
         ], "cc" => [
             'host' => "mail.chinesecompanion.com",
-            'userName' => 'support@chinesecompanion.com',
+            'username' => 'support@chinesecompanion.com',
             'password' => 'happy3000ok',
             'port' => 465,
             'SMTPSecure' => 'ssl',
@@ -36,7 +36,7 @@ function sendMail($toEmail, $subject, $body)
     $it = "qq";
     $config = $test[$it];
     $host = $config['host'];
-    $userName = $config['userName'];
+    $username = $config['username'];
     $password = $config['password'];
     $port = $config['port'];
     $SMTPSecure = $config['SMTPSecure'];
@@ -45,13 +45,13 @@ function sendMail($toEmail, $subject, $body)
         [
               $it
             , $host
-            , $userName
+            , $username
             , $password
             , $port
             , $SMTPSecure
         ]);
 
-    $fromEmail = $userName;
+    $fromEmail = $username;
     $mail = new PHPMailer();
     $mail->SMTPDebug = 1;
     $mail->isSMTP();
@@ -61,7 +61,7 @@ function sendMail($toEmail, $subject, $body)
     $mail->Port = $port;
     $mail->CharSet = 'UTF-8';
     $mail->FromName = '';
-    $mail->Username = $userName;
+    $mail->Username = $username;
     $mail->Password = $password;
     $mail->From = $fromEmail;
     $mail->isHTML(true);
