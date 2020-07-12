@@ -22,7 +22,7 @@ function sendMail( $toEmail, $subject, $body)
     $userName = 'zhujianmin2008@gmail.com';
     $password = '';
     $port = 465;
-    $SMTPSecure = 'ssl';
+    $SMTPSecure = 'ssl' ;
 
 //    $host = 'smtp.qq.com';
 //    $userName = '442469884@qq.com';
