@@ -24,11 +24,11 @@ function sendMail( $toEmail, $subject, $body)
 //    $port = 465 ;
 //    $SMTPSecure = 'ssl' ;
 
-    $host = 'smtp.qq.com';
+    $host = 'smtp.qq.com' ;
     $userName = '442469884@qq.com';
     $password = '';
     $port = 465;
-    $SMTPSecure = 'ssl';
+    $SMTPSecure = 'ssl' ;
 
     $fromEmail = $userName;
     // 实例化PHPMailer核心类
