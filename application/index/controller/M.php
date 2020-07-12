@@ -3,13 +3,14 @@
 namespace app\index\controller;
 require('ext_util/fileUtil.php');
 require('ext_util/BytripUtil.php');
-include_once "ext_util/mail/Mail163.php";
 
 use app\index\model\Member;
 use app\index\model\Pics;
+use PHPMailer;
 use think\Db;
 use think\Exception;
 use think\exception\PDOException;
+use think\facade\Config;
 use think\Validate;
 
 class M extends Base
@@ -451,9 +452,48 @@ class M extends Base
         return $member;
     }
 
-    public function sendMail($to, $title, $content)
+    public function sendMail($toEmail, $subject, $body)
     {
-        return sendMail($to, $title, $content);
+        $mailConfig = config("ext_config.mail");
+        $host = $mailConfig["host"];
+        $port = $mailConfig["port"];
+        $username = $mailConfig["username"];
+        $password = $mailConfig["password"];
+        $fromEmail = $username;
+        // 实例化PHPMailer核心类
+        $mail = new PHPMailer();
+// 是否启用smtp的debug进行调试 开发环境建议开启 生产环境注释掉即可 默认关闭debug调试模式
+        $mail->SMTPDebug = 0;
+// 使用smtp鉴权方式发送邮件
+        $mail->isSMTP();
+// smtp需要鉴权 这个必须是true
+        $mail->SMTPAuth = true;
+// 链接qq域名邮箱的服务器地址
+        $mail->Host = $host;
+// 设置使用ssl加密方式登录鉴权
+        $mail->SMTPSecure = 'ssl';
+// 设置ssl连接smtp服务器的远程服务器端口号
+        $mail->Port = $port;
+// 设置发送的邮件的编码
+        $mail->CharSet = 'UTF-8';
+// 设置发件人昵称 显示在收件人邮件的发件人邮箱地址前的发件人姓名
+        $mail->FromName = '';
+// smtp登录的账号 QQ邮箱即可
+        $mail->Username = $username;
+// smtp登录的密码 使用生成的授权码
+        $mail->Password = $password;
+// 设置发件人邮箱地址 同登录账号
+        $mail->From = $fromEmail;
+// 邮件正文是否为html编码 注意此处是一个方法
+        $mail->isHTML(true);
+        $mail->addAddress($toEmail);
+// 添加该邮件的主题
+        $mail->Subject = $subject;
+// 添加邮件正文
+        $mail->Body = $body;
+// 发送邮件 返回状态
+        $status = $mail->send();
+        return $status;
     }
 
     public function sendResetPasswordMail()
@@ -506,7 +546,8 @@ class M extends Base
             $email = $member["email"];
             $token = md5($member["pwd"] . $email);
             $lang = $this->getLang();
-            $url = "http://travelling.chinesecompanion.com/index.php/index/m/resetPassword?token=$token&lang=$lang";
+            $domain = config("ext_config.domain");
+            $url = $domain . "/index.php/index/m/resetPassword?token=$token&lang=$lang";
             $content = $this->render('/index/_resetpassword', ["name" => $member["nickname"], "email" => $email, "url" => $url]);
         } catch (\Exception $e) {
             $isSucc = false;
