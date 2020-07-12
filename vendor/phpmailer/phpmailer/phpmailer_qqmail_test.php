@@ -34,7 +34,7 @@ function sendMail( $toEmail, $subject, $body)
 // 链接qq域名邮箱的服务器地址
     $mail->Host = $host;
 // 设置使用ssl加密方式登录鉴权
-    $mail->SMTPSecure = 'ssl';
+    $mail->SMTPSecure = 'tls';
 // 设置ssl连接smtp服务器的远程服务器端口号
     $mail->Port = $port;
 // 设置发送的邮件的编码
