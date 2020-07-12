@@ -32,7 +32,7 @@ function sendMail( $toEmail, $subject, $body)
 
     $fromEmail = $userName;
     $mail = new PHPMailer();
-    $mail->SMTPDebug = 0;
+    $mail->SMTPDebug = 1;
     $mail->isSMTP();
     $mail->SMTPAuth = true;
     $mail->Host = $host;
