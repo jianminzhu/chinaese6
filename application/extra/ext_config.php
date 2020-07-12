@@ -7,7 +7,7 @@ return  array(
         'mail' =>
             array(
                 'host' => "mail.chinesecompanion.com",
-                'userName' => 'support@chinesecompanion.com',
+                'username' => 'support@chinesecompanion.com',
                 'password' => 'happy3000ok',
                 'port' => 465,
                 'SMTPSecure' => 'ssl',
