@@ -6,9 +6,10 @@ return  array(
         'domain' => "http://www.chinesecompanion.com",
         'mail' =>
             array(
-                'host' => 'smtp.qq.com',
+                'host' => "mail.chinesecompanion.com",
+                'userName' => 'support@chinesecompanion.com',
+                'password' => 'happy3000ok',
                 'port' => 465,
-                'username' => '442469884@qq.com',
-                'password' => ''
+                'SMTPSecure' => 'ssl',
             )
     );
