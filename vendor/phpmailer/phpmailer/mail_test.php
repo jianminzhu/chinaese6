@@ -10,25 +10,46 @@ require("class.smtp.php"); //下载的文件必须放在该文件所在目录
  * @return bool
  * @throws phpmailerException
  */
-function sendMail( $toEmail, $subject, $body)
+function sendMail($toEmail, $subject, $body)
 {
-//    $host = "mail.chinesecompanion.com";
-//    $userName = 'support@chinesecompanion.com';
-//    $password = '';
-//    $port = 465;
-//    $SMTPSecure = 'ssl';
+    $test = [
+        "gmail" => [
+            'host' => "smtp.gmail.com",
+            'userName' => 'zhujianmin2008@gmail.com',
+            'password' => '',
+            'port' => 465,
+            'SMTPSecure' => 'ssl',
+        ], "qq" => [
+            'host' => "smtp.qq.com",
+            'userName' => '442469884@qq.com',
+            'password' => '',
+            'port' => 465,
+            'SMTPSecure' => 'ssl',
+        ], "cc" => [
+            'host' => "mail.chinesecompanion.com",
+            'userName' => 'support@chinesecompanion.com',
+            'password' => 'happy3000ok',
+            'port' => 465,
+            'SMTPSecure' => 'ssl',
+        ]
+    ];
+    $it = "qq";
+    $config = $test[$it];
+    $host = $config['host'];
+    $userName = $config['userName'];
+    $password = $config['password'];
+    $port = $config['port'];
+    $SMTPSecure = $config['SMTPSecure'];
 
-//    $host = "smtp.gmail.com";
-//    $userName = 'zhujianmin2008@gmail.com';
-//    $password = '';
-//    $port = 465 ;
-//    $SMTPSecure = 'ssl' ;
-
-    $host = 'smtp.qq.com';
-    $userName = '442469884@qq.com';
-    $password = '';
-    $port = 465;
-    $SMTPSecure = 'ssl';
+    echo join("\n",
+        [
+              $it
+            , $host
+            , $userName
+            , $password
+            , $port
+            , $SMTPSecure
+        ]);
 
     $fromEmail = $userName;
     $mail = new PHPMailer();
@@ -50,8 +71,9 @@ function sendMail( $toEmail, $subject, $body)
     $status = $mail->send();
     return $status;
 }
+
 $toEmail = '442469884@qq.com';
 $body = '<h1>q1test</h1>';
 $subject = 'q1test';
-$status = sendMail( $toEmail, $subject, $body);
+$status = sendMail($toEmail, $subject, $body);
 echo $status;
