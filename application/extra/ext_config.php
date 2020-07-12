@@ -9,6 +9,6 @@ return  array(
                 'host' => 'smtp.qq.com',
                 'port' => 465,
                 'username' => '442469884@qq.com',
-                'password' => 'pflzicherjikbiei'
+                'password' => ''
             )
     );
