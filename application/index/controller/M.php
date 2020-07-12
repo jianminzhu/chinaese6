@@ -463,7 +463,7 @@ class M extends Base
 
         $fromEmail = $username;
         $mail = new PHPMailer();
-        $mail->SMTPDebug = 1;
+        $mail->SMTPDebug = 0;
         $mail->isSMTP();
         $mail->SMTPAuth = true;
         $mail->Host = $host;
