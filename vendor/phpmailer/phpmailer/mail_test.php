@@ -21,7 +21,7 @@ function sendMail( $toEmail, $subject, $body)
     $host = "smtp.gmail.com";
     $userName = 'zhujianmin2008@gmail.com';
     $password = '';
-    $port = 465;
+    $port = 465 ;
     $SMTPSecure = 'ssl' ;
 
 //    $host = 'smtp.qq.com';
