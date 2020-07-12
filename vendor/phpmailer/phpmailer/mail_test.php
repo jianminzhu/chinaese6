@@ -18,17 +18,17 @@ function sendMail( $toEmail, $subject, $body)
 //    $port = 465;
 //    $SMTPSecure = 'ssl';
 
-    $host = "smtp.gmail.com";
-    $userName = 'zhujianmin2008@gmail.com';
-    $password = '';
-    $port = 465 ;
-    $SMTPSecure = 'ssl' ;
-
-//    $host = 'smtp.qq.com';
-//    $userName = '442469884@qq.com';
+//    $host = "smtp.gmail.com";
+//    $userName = 'zhujianmin2008@gmail.com';
 //    $password = '';
-//    $port = 465;
-//    $SMTPSecure = 'ssl';
+//    $port = 465 ;
+//    $SMTPSecure = 'ssl' ;
+
+    $host = 'smtp.qq.com';
+    $userName = '442469884@qq.com';
+    $password = '';
+    $port = 465;
+    $SMTPSecure = 'ssl';
 
     $fromEmail = $userName;
     // 实例化PHPMailer核心类
