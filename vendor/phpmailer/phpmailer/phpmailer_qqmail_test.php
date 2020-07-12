@@ -12,8 +12,16 @@ require("class.smtp.php"); //下载的文件必须放在该文件所在目录
  */
 function sendMail( $toEmail, $subject, $body)
 {
-    $userName = '442469884@qq.com';
-    $password = '';
+    $host = "mail.chinesecompanion.com";
+    $userName = 'support@chinesecompanion.com';
+    $password = 'happy3000ok';
+    $port = 465;
+
+//    $host = 'smtp.qq.com';
+//    $userName = '442469884@qq.com';
+//    $password = '';
+//    $port = 465;
+
     $fromEmail = $userName;
     // 实例化PHPMailer核心类
     $mail = new PHPMailer();
@@ -24,11 +32,11 @@ function sendMail( $toEmail, $subject, $body)
 // smtp需要鉴权 这个必须是true
     $mail->SMTPAuth = true;
 // 链接qq域名邮箱的服务器地址
-    $mail->Host = 'smtp.qq.com';
+    $mail->Host = $host;
 // 设置使用ssl加密方式登录鉴权
     $mail->SMTPSecure = 'ssl';
 // 设置ssl连接smtp服务器的远程服务器端口号
-    $mail->Port = 465;
+    $mail->Port = $port;
 // 设置发送的邮件的编码
     $mail->CharSet = 'UTF-8';
 // 设置发件人昵称 显示在收件人邮件的发件人邮箱地址前的发件人姓名
