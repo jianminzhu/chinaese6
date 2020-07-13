@@ -551,7 +551,7 @@ class M extends Base
     function updatePassword()
     {
         $rule = [
-            'pwd' => 'require|min:6|max:8',
+            'pwd' => 'require|min:6|max:12',
             'pwd_confirm' => 'require|confirm:pwd',
             'token' => 'require'
         ];
@@ -559,7 +559,7 @@ class M extends Base
         $msg = [
             'pwd.require' => '密码不能为空',
             'pwd_confirm.require' => '确认密码不能为空',
-            'pwd.max' => '密码最长8位',
+            'pwd.max' => '密码最长12位',
             'pwd.min' => '密码最少5位',
             'pwd_confirm.confirm' => '两次密码不一致'
         ];
